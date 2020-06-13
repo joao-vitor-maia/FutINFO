@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 500vh;
+    box-sizing: border-box;
+    background-color: rgb(250, 250, 250);
+    font-family: Arial, Helvetica, sans-serif;
+}
+/******Header******/
+header {
+    font-family: 'Montserrat', sans-serif!important;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: #006FC7;
+}
+.container {
+    height: 80px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center!important;
+    background-color: #006FC7;
+}
+.logo_header {
+    height: 70px;
+}
+.menu {
+    margin-right: 20px;
+}
+.menu ul,li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+.menu a {
+    font-weight: 600;
+    font-size: 18px;
+    color: #FFF;
+    padding:10px;
+    text-decoration: none;
+}
+.menu li:hover {
+    transition: all ease 0.5s;
+    color: rgb(230, 230, 230);
+}
+.btn_signUp {
+    margin-left: 100px;
+    max-width: 215px;
+    height: 40px;
+    line-height: 12px;
+    background-color: #FFF;
+    border-radius: 8px;
+    color: #000;
+    cursor: pointer;
+    transition: all ease 0.7s;
+}
+.btn_txt {
+    font-size: 14px;
+    padding: 3px 15px;
+}
+.btn_signUp:hover {
+    background-color: #091E32;
+    color: #FFF;
+}
+.menuMobile {
+    display: none;
+    width:40px;
+	height:40px;
+	margin-top:40px;
+	margin-bottom:40px;
+	margin-right:20px;
+}
+.mm_line {
+    height: 3px;
+    background-color:#091E32;
+}
+@media screen and (max-width: 915px) {
+    header .container {
+        flex-direction: row;
+    }
+    header {
+        height: auto;
+    }
+    nav ul {
+        transition: all 1s;
+        height: 220px;
+        flex-direction: column;
+        padding: 6px 15px;
+	
+        position: absolute;
+        left: 0;
+        top: 80px;
+	    width: 100%;
+	    background-color: #006FC7;
+	}
+    .logo_header {
+        height: 60px;
+    }
+    .menuMobile {
+        cursor: pointer;
+        float: right!important;
+        margin-top: 40px;
+        display:flex;
+		flex-direction: column;
+		justify-content:space-around;
+    }
+    .btn_signUp {
+        margin-left: 0;
+    }
+}
