@@ -23,7 +23,7 @@ header {
     background-color: #006FC7;
 }
 .logo_header {
-    height: 70px;
+    height: 60px;
 }
 .menu {
     margin-right: 20px;
@@ -76,6 +76,47 @@ header {
     height: 3px;
     background-color:#091E32;
 }
+/******Section******/
+section {
+    padding-top: 20px;
+    height: 600px;
+    display: flex;
+    background-color: rgb(218, 218, 218);
+    justify-content:center;
+}
+section table, th, td {
+    padding: 5px;
+    border: 1px solid #005496;
+}
+.container_section {
+    display: flex!important;
+    height: 600px;
+    width: 1200px;
+}
+.table_area {
+    height: 210px;
+    width: 400px;
+    max-width: 400px;
+}
+.times {
+    width: 120px;
+}
+/******Responsivo******/
+@media screen and (max-width:1000px) {
+    .logo_header {
+        height: 50px;
+    }
+    .menu a {
+        font-weight: 600;
+        font-size: 16px;
+        color: #FFF;
+        padding: 10px;
+        text-decoration: none;
+    }
+    .btn_signUp {
+        margin-left: 50px;
+    }
+}
 @media screen and (max-width: 915px) {
     header .container {
         flex-direction: row;
@@ -83,17 +124,17 @@ header {
     header {
         height: auto;
     }
+    /******Menu Header Mobile*****/
     nav ul {
         transition: all 1s;
         height: 220px;
         flex-direction: column;
         padding: 6px 15px;
-	
         position: absolute;
         left: 0;
         top: 80px;
 	    width: 100%;
-	    background-color: #006FC7;
+	    background-color: rgb(0, 98, 179);
 	}
     .logo_header {
         height: 60px;

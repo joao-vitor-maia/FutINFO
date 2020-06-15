@@ -1,14 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const usuarioController = require("@controller/usuariosController");
-
+const pagesController = require("@controller/pagesController");
 
 router.post("/cadastrarUsuario",usuarioController.cadastrar);
-router.get("/gerarToken", (dados,req,res) => {
-    console.log(new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}).valueOf())
-})
-router.get("/Home",(req,res) => {
-    res.render("pages/index.handlebars");
-})
+router.get("/home",pagesController.renderHome)
 
 module.exports = router
