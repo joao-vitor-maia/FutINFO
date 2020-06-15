@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const logs = require("@middlewares/sendError")
+const usuarioController = require("@controller/usuariosController");
+const pagesController = require("@controller/pagesController");
 
-router.get('/',logs,(req,res) => {
-    res.send("Teste");
-})
+router.post("/cadastrarUsuario",usuarioController.cadastrar);
+router.get("/home",pagesController.renderHome)
 
 module.exports = router
