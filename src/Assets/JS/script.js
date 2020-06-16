@@ -9,5 +9,5 @@ window.onload = function(){
 	});
 };
 $(window).on('load', function(){
-    var menu = $('.menuMobile');
+    $('.menuMobile')
 })
