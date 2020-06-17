@@ -36,14 +36,10 @@ header {
 }
 .menu a {
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16.5px;
     color: #FFF;
     padding:10px;
     text-decoration: none;
-}
-.menu li:hover {
-    transition: all ease 0.5s;
-    color: rgb(230, 230, 230);
 }
 .btn_signUp {
     margin-left: 100px;
@@ -78,29 +74,121 @@ header {
 }
 /******Section******/
 section {
+    font-family: 'Montserrat', sans-serif!important;
     padding-top: 20px;
     height: 600px;
-    display: flex;
+    display: flex!important;
     background-color: rgb(218, 218, 218);
     justify-content:center;
 }
-section table, th, td {
-    padding: 5px;
-    border: 1px solid #005496;
+table, th, td {
+    padding: 8px 7.6px;
+    margin-top: 3px;
+    text-align: center;
+    font-size: medium;
+    border: 3.5px solid #005496;
 }
 .container_section {
-    display: flex!important;
+    display: flex;
     height: 600px;
-    width: 1200px;
+    width: 1300px;
+}
+.tables_column {
+    display: flex;
+    flex-direction: column;
 }
 .table_area {
     height: 210px;
+    padding-bottom: 55px;
     width: 400px;
     max-width: 400px;
 }
 .times {
     width: 120px;
 }
+.divisao_area {
+    background-color: #005496;
+    width: 280px!important;
+    line-height: 41px;
+    height: 41px;
+    text-align: center;
+}
+.divisao_h1 {
+    font-weight: 400;
+    padding: 0px 10px;
+    text-align: center;
+    font-size: 21px;
+    color: #FFF;
+}
+.area_time {
+    display: flex!important;
+}
+.time_png {
+    height: 20px;
+    max-height: 20px!important;
+}
+.nome_time {
+    margin-left: 12px;
+}
+.link_table a {
+    cursor: pointer;
+    font-size: 15.5px;
+    text-decoration: none;
+    color: #2E2EFE;
+}
+/******Fim das tabelas******/
+
+.news_area {
+    display: flex;
+    flex-direction: column;
+}
+.news {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    border: 2px solid #005496;
+    border-radius: 10px;
+    height: 255px;
+    width: 460px;
+    background-color: rgb(253, 252, 252);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.img_news_png {
+    border-radius: 10px 0px 0px 10px;
+    width: 213px;
+    height: 100%;
+    max-width: 215px;
+}
+.text_new{
+    display: flex;
+    color: #0057b9;
+    flex-direction: column;
+}
+.text_new_top  {
+    font-size: 14px;
+    padding:15px;
+}
+.text_new_top a {
+    color: #0057b9;
+    text-decoration: none;
+}
+.text_new_center {
+    padding:10px;
+   align-items: center!important;
+}
+.h1_new_center {
+    font-size: 26px;
+    margin-left: 35px;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.p_new {
+    font-size: 14.5px;
+}
+.new_link {
+    font-size: 13px;
+    float: right!important;
+}
+
 /******Responsivo******/
 @media screen and (max-width:1000px) {
     .logo_header {
@@ -126,7 +214,6 @@ section table, th, td {
     }
     /******Menu Header Mobile*****/
     nav ul {
-        transition: all 1s;
         height: 220px;
         flex-direction: column;
         padding: 6px 15px;
