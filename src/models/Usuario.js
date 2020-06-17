@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const bcrypt = require("bcrypt")
 
-const Usuario = new Schema({
+const usuario = new Schema({
     nome: {
         type:String,
         unique:true,
@@ -23,11 +22,15 @@ const Usuario = new Schema({
         max:30,
         required:true
     },
-    horario: {
-        type:mongoose.Types.ObjectId,
-        ref:"horarios"
+    horarioId: {
+        type:Schema.Types.ObjectId,
+        ref:"horario"
     },
-    date: {
+    quadraId: {
+        type:Schema.Types.ObjectId,
+        ref:"quadra"
+    },
+    data: {
         type:Date,
         default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"}),
         required:true
@@ -35,8 +38,11 @@ const Usuario = new Schema({
     admin: {
         type:Boolean,
         default:false,
-        required:true
+    },
+    afiliado:{
+        type:Boolean,
+        default:false
     }
 });
 
-module.exports = mongoose.model("usuarios",Usuario);
+module.exports = mongoose.model("Usuario",usuario);

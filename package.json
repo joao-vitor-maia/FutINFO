@@ -14,6 +14,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "jsonwebtoken": "^8.5.1",
     "module-alias": "^2.2.2",
     "mongoose": "^5.9.18",
     "path": "^0.12.7",
@@ -24,9 +25,9 @@
   "devDependencies": {},
   "_moduleAliases": {
     "@routes": "src/routes/routes.js",
-    "@logs": "src/logs",
     "@middlewares": "src/middleware",
     "@controller": "src/controller",
-    "@models": "src/models"
+    "@models": "src/models",
+    "@auth": "src/auth"
   }
 }

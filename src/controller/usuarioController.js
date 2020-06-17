@@ -29,13 +29,12 @@ exports.cadastrar = async(req,res) => {
                 senha:senha
             };
             await new Usuario(dados).save();
-            return res.json({resultado:"sucesso"});
+            return res.json({message:"success"});
         }else{
-            return res.json({resultado:"invalidado"});
+            return res.json({message:"invalid"});
         };
 
     }catch(err){
-        console.log(err);
-        return res.json({resultado:"erro"});
+        return res.json({message:"error"});
     };
 };
