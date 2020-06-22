@@ -10,5 +10,6 @@ router.get("/pagina-inicial",pageController.renderHome);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
 router.get("/efetuando-login",auth.gerarToken);
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
+router.post("/efetuando-comentario",usuarioController.comentar);
 
 module.exports = router
