@@ -1,13 +1,12 @@
 const usuarios = require("@models/Usuario");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-exports.generateToken = async (req,res) => {
+exports.gerarToken = async (req,res) => {
    try{
-        const jwt = require("jsonwebtoken");
-
         const email = req.body.email;
         const senha = req.body.senha;
-
+        
         const usuario = await usuarios.findOne({email:email});
         if(usuario == null) {
             return res.json({message:"not found"})
@@ -20,7 +19,8 @@ exports.generateToken = async (req,res) => {
                 const token = jwt.sign({
                     id:usuario._id,
                     nome:usuario.nome,
-                    email:usuario.email
+                    email:usuario.email,
+                    afiliado:usuario.afiliado
                 },process.env.SECRETKEY,{expiresIn:"3d"});
                 
                 return res.json({message:token});
@@ -28,6 +28,22 @@ exports.generateToken = async (req,res) => {
         };
 
    }catch(err){
-        res.send({erro:err});
+        res.json({message:"error"});
    }
-}
+};
+exports.autorizarUsuario = async (req,res,next) => {
+    try{
+        const token = req.body.token;
+    
+    jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
+        if(error){
+            return res.json({message:"unauthorized"});
+        }else{
+            console.log(decoded.id)
+            next();
+        };
+    });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};

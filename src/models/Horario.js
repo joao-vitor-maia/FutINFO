@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 const horario = new Schema({
     usuarioId: {
         type:Schema.Types.ObjectId,
-        ref:"usuarios",
+        ref:"Usuario",
         required:true
     },
     quadraId: {
         type:Schema.Types.ObjectId,
-        ref:"quadras",
-        required:"true"
+        ref:"Quadra",
+        required:true
     },
     horarioInicial: {
         type:Date,
@@ -23,6 +23,10 @@ const horario = new Schema({
     dia: {
         type:Date,
         required:true
+    },
+    data: {
+        type:Date,
+        default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"})
     }
 });
 

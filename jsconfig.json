@@ -5,10 +5,11 @@
       "baseUrl": "./",
       "paths": {
         "@logs/*": ["src/logs/*"],
-        "@middlewares/*": ["src/middleware/*"],
+        "@middleware/*": ["src/middleware/*"],
         "@controller/*": ["src/controller/*"],
         "@models/*": ["src/models/*"],
-        "@auth/*": ["src/auth/*"]
+        "@auth/*": ["src/auth/*"],
+        "@config/*": ["src/config/*"]
       }
     },
     "exclude": ["node_modules", "dist"]
