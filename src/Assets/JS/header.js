@@ -8,6 +8,3 @@ window.onload = function(){
 		}
 	});
 };
-$(window).on('load', function(){
-    $('.menuMobile')
-})
