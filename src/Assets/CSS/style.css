@@ -90,7 +90,7 @@ table, th, td {
 .container_section {
     display: flex;
     height: 600px;
-    width: 1300px;
+    width: 1320px;
 }
 .tables_column {
     display: flex;
@@ -213,6 +213,49 @@ table, th, td {
     margin-left: 5px;
     font-size: 12px;
     color: #005496;
+}
+/******Fim das notícias******/
+.slide_area {
+    padding-top: 6px;
+    margin-left: 55px;
+    height: 125vw;
+}
+.slide_textCenter {
+    background-color: #005496;
+    width: 350px!important;
+    height:45px;
+    text-align: center;
+}
+.textSlide {
+    font-size: 15.5px;
+    line-height: 45px;
+    font-weight: 400;
+    color: #FFF;
+}
+/******Slide IMG******/
+.slide {
+    max-width: 350px!important;
+    padding-top: 4px;
+    position: relative;
+}
+.slide > * {
+	width: 100%;
+	position: absolute;
+	opacity: 1;
+	transition: .5s;
+}
+.slide > .active {
+	position: relative;
+	opacity: 1;
+}
+.slide_conteudo {
+    position: absolute;
+}
+.imgSlide {
+    object-fit: cover;
+    height: 250px;
+    width: 350px;
+    max-width: 350px!important;
 }
 
 /******Responsivo******/
