@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    height: 500vh;
     box-sizing: border-box;
     background-color: rgb(250, 250, 250);
     font-family: Arial, Helvetica, sans-serif;
@@ -76,7 +75,7 @@ header {
 section {
     font-family: 'Montserrat', sans-serif!important;
     padding-top: 20px;
-    height: 600px;
+    height: 950px;
     display: flex!important;
     justify-content:center;
 }
@@ -218,12 +217,12 @@ table, th, td {
 .slide_area {
     padding-top: 6px;
     margin-left: 55px;
-    height: 125vw;
 }
 .slide_textCenter {
     background-color: #005496;
+    border-radius: 4.5px;
     width: 350px;
-    margin-bottom: 22px;
+    margin-bottom: 30px;
     height:45px;
     text-align: center;
 }
@@ -247,10 +246,13 @@ table, th, td {
 
 }
 /******Slide IMG******/
+.slideInt {
+    height: 400px;
+    max-height: 400px;
+}
 .slide {
     max-width: 350px;
     padding-top: 7px;
-    margin-bottom: 40px;
     position: relative;
 	overflow: hidden!important;
 }
@@ -275,6 +277,22 @@ table, th, td {
     width: 350px;
     max-width: 350px!important;
 }
+.btn_quadra {
+    height: 50px;
+    width: 350px;
+    max-width: 350px!important;
+    background-color: #005496;
+    line-height: 18px;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+}
+.p_btn {
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFF;
+}
 /******2º slide******/
 .slideTwo {
     max-width: 350px;
@@ -292,6 +310,25 @@ table, th, td {
 .slideTwo > .active {
     position: relative;
     opacity: 1;
+}
+/******Botão do 2 SLIDE******/
+.Twobtn_quadra {
+    height: 50px;
+    width: 350px;
+    max-width: 350px!important;
+    background-color: #005496;
+    line-height: 18px;
+    border-radius: 5px;
+    text-align: center;
+    position: absolute;
+    cursor: pointer;
+    margin-top: 4px;
+}
+/******Footer******/
+footer {
+    margin-top: 10px;
+    height: 250px;
+    background-color: #006FC7;
 }
 /******Responsivo******/
 @media screen and (max-width:1000px) {
