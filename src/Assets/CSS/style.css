@@ -223,6 +223,7 @@ table, th, td {
 .slide_textCenter {
     background-color: #005496;
     width: 350px;
+    margin-bottom: 22px;
     height:45px;
     text-align: center;
 }
@@ -248,8 +249,8 @@ table, th, td {
 /******Slide IMG******/
 .slide {
     max-width: 350px;
-    max-height: 250px;
-    padding-top: 4px;
+    padding-top: 7px;
+    margin-bottom: 40px;
     position: relative;
 	overflow: hidden!important;
 }
@@ -264,6 +265,7 @@ table, th, td {
 	opacity: 1;
 }
 .slide_conteudo {
+    cursor: pointer;
     position: absolute;
 }
 .imgSlide {
@@ -273,7 +275,24 @@ table, th, td {
     width: 350px;
     max-width: 350px!important;
 }
-
+/******2º slide******/
+.slideTwo {
+    max-width: 350px;
+    max-height: 250px;
+    padding-top: 8px;
+    position: relative;
+    overflow: hidden!important;
+}
+.slideTwo > * {
+    width: 100%;
+    position: absolute;
+    opacity: 1;
+    transition: .5s;
+}
+.slideTwo > .active {
+    position: relative;
+    opacity: 1;
+}
 /******Responsivo******/
 @media screen and (max-width:1000px) {
     .logo_header {
