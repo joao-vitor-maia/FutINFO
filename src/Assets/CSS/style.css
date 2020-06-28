@@ -327,8 +327,50 @@ table, th, td {
 /******Footer******/
 footer {
     margin-top: 10px;
-    height: 250px;
+    height: 195px;
     background-color: #006FC7;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.container_footer {
+    margin-top: 10px;
+    height: 175px;
+    width: 1200px;
+    display: flex;
+    align-items: center!important;
+    justify-content: space-evenly;
+}
+.logo_footer {
+    max-width: 400px;
+}
+.logoFooter {
+    height: 70px;
+}
+.parceiros_footer_area {
+    align-items: center;
+    max-width: 400px;
+}
+.h1Parceiros {
+    text-align: center!important;
+    font-size: 21px;
+    color: #fff;
+}
+.parceiros_footer {
+    margin-top: 25px;
+    max-width: 400px;
+    display: flex;
+    max-height: 120px!important;
+}
+.mercadoImg {
+    height: 100px;
+    cursor: pointer;
+    width: 30%;
+}
+.fotografiaImg {
+    cursor: pointer;
+    width: 35%;
+    height: 10%;
 }
 /******Responsivo******/
 @media screen and (max-width:1000px) {
