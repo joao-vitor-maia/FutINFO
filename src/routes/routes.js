@@ -23,5 +23,7 @@ router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Quadra
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
+router.put("/efetuando-editar-nome-da-quadra",quadraController.editarQuadra);
+router.post("/efetuando-adicionar-imagens",quadraController.adicionarImagem);
 
 module.exports = router

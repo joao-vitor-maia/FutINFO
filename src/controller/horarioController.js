@@ -65,7 +65,7 @@ exports.agendarHorario = async(req,res) => {
                     // });
 
                     // const message = await transporter.sendMail({
-                    //     from:"FutINFO<jvitormaia123@gmail.com>",
+                    //     from:"FutINFO<teste>",
                     //     to:[donoQuadra.email],
                     //     subject:"Agendamento de horario",
                     //     html:"Olá voçê recebeu uma solicitação para agendamento de horarios."

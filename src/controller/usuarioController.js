@@ -47,25 +47,28 @@ exports.editar = async(req,res) => {
     const token = req.body.token;
     const Senha = req.body.senha;
 
-    jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-        if(error){
-            return res.json({message:"unauthorized"});
-        }else{
-            //Atualizando dados
-            const usuario = await Usuario.findById(decoded.id);
-            const senha = await new Promise((resolve, reject) => {
-                bcrypt.hash(Senha, 10, function(err, hash) {
-                    if(err) {
-                      reject(err)
-                    }else{
-                      resolve(hash)
-                    };
-                });  
-            });
-            usuario.senha = senha;
-            await usuario.save();
-            return res.json({message:"success"});
-            
-        };
-    });
+    if(validator.isLength(Senha,{min:8,max:30}) ){
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error){
+                return res.json({message:"unauthorized"});
+            }else{
+                //Atualizando dados
+                const usuario = await Usuario.findById(decoded.id);
+                const senha = await new Promise((resolve, reject) => {
+                    bcrypt.hash(Senha, 10, function(err, hash) {
+                        if(err) {
+                          reject(err)
+                        }else{
+                          resolve(hash)
+                        };
+                    });  
+                });
+                usuario.senha = senha;
+                await usuario.save();
+                return res.json({message:"success"});
+                
+            };
+        });
+    };
+    
 };

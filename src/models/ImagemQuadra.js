@@ -7,12 +7,6 @@ const imagemQuadra = new Schema({
         ref:"Quadra",
         required:true
     },
-    nome: {
-        type:String,
-        min:2,
-        max:60,
-        required:true
-    },
     imagemBase64: {
         type:String,
         required:true
