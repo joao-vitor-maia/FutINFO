@@ -12,21 +12,17 @@ const horario = new Schema({
         ref:"Quadra",
         required:true
     },
-    horarioInicial: {
-        type:Date,
-        required:true
+    aprovado: {
+        type:Boolean,
+        default:false
     },
-    horarioFinal: {
-        type:Date,
-        required:true
-    },
-    dia: {
-        type:Date,
+    horarioIntervalo: {
+        type:Object,
         required:true
     },
     data: {
         type:Date,
-        default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"})
+        default:new Date()
     }
 });
 

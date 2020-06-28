@@ -34,7 +34,7 @@ const quadra = new Schema({
     },
     data: {
         type:Date,
-        default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"})
+        default:new Date()
     }
 });
 

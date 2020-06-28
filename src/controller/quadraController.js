@@ -26,7 +26,6 @@ exports.salvarQuadra = async (req,res) => {
             const token = req.body.token;
 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-                console.log(decoded.afiliado)
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
                 }else{
@@ -41,11 +40,11 @@ exports.salvarQuadra = async (req,res) => {
 
 
                     //Salvando cada imagem do array separadamente
-                        for(i=0; i<imagemBase64.length; i++){
+                        for(imagem of imagemBase64){
                             const dadosImagem = {
                                 quadraId:quadra._id,
                                 nome:nomeImagem,
-                                imagemBase64:imagemBase64[i]
+                                imagemBase64:imagem
                             };
                             await new ImagemQuadra(dadosImagem).save();
                             

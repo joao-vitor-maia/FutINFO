@@ -21,10 +21,6 @@ const usuario = new Schema({
         max:30,
         required:true
     },
-    data: {
-        type:Date,
-        default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"})
-    },
     admin: {
         type:Boolean,
         default:false
@@ -32,6 +28,10 @@ const usuario = new Schema({
     afiliado:{
         type:Boolean,
         default:false
+    },
+    data: {
+        type:Date,
+        default:new Date()
     }
 });
 

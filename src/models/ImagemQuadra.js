@@ -16,6 +16,10 @@ const imagemQuadra = new Schema({
     imagemBase64: {
         type:String,
         required:true
+    },
+    data: {
+        type:Date,
+        default:new Date()
     }
 });
 

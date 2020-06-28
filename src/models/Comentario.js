@@ -10,12 +10,12 @@ const comentario = new Schema({
     conteudo: {
         type:String,
         min:2,
-        max:500,
+        max:700,
         required:true
     },
     data: {
         type:Date,
-        default:new Date().toLocaleString("pt-BR", {timeZone: "America/Sao_Paulo"})
+        default:new Date()
     }
 });
 
