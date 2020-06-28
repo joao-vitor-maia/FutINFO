@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const handlebars = require("express-handlebars");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
 const path = require("path");
 require("dotenv").config();
 require("module-alias/register");
