@@ -2,6 +2,7 @@ const Usuario = require("@models/Usuario");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
 const sanitize = require("sanitize-html");
+const jwt = require("jsonwebtoken");
 
 exports.cadastrar = async(req,res) => {
     try{
@@ -41,4 +42,30 @@ exports.cadastrar = async(req,res) => {
     }catch(err){
         return res.json({message:"error"});
     };
+};
+exports.editar = async(req,res) => {
+    const token = req.body.token;
+    const Senha = req.body.senha;
+
+    jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+        if(error){
+            return res.json({message:"unauthorized"});
+        }else{
+            //Atualizando dados
+            const usuario = await Usuario.findById(decoded.id);
+            const senha = await new Promise((resolve, reject) => {
+                bcrypt.hash(Senha, 10, function(err, hash) {
+                    if(err) {
+                      reject(err)
+                    }else{
+                      resolve(hash)
+                    };
+                });  
+            });
+            usuario.senha = senha;
+            await usuario.save();
+            return res.json({message:"success"});
+            
+        };
+    });
 };

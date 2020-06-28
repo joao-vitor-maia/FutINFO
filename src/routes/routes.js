@@ -13,8 +13,13 @@ router.get("/pagina-inicial",pageController.renderHome);
 //Usuarios
 router.get("/efetuando-login",auth.gerarToken);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
-router.post("/efetuando-comentario",comentarioController.comentar);
+router.put("/efetuando-atualizacao-de-senha",usuarioController.editar);
+
+//Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);
+
+//Comentário
+router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Quadra
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
