@@ -91,7 +91,7 @@ exports.editarQuadra = async (req,res) => {
 exports.adicionarImagem = async (req,res) => {
     try{
         const token = req.body.token;
-        const imagens = ["imagem1","imagem2"];
+        const imagens = ["imagem1","imagem2","imagem3"];
 
         if(Object.entries(imagens).length == 0){
             return res.json({message:"invalid"});
@@ -119,4 +119,24 @@ exports.adicionarImagem = async (req,res) => {
     }catch(error){
         return res.json({message:"error"});
     };
+};
+exports.deletarImagem = async (req,res) => {
+    try{
+        const token = req.body.token;
+        const Imagem = req.body.imagem64;
+
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error || decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                const quadra = await Quadra.findOne({usuarioId:decoded.id});
+                const resultadoDelete = await ImagemQuadra.findOneAndDelete({imagemBase64:Imagem, quadraId:quadra});
+                const resultado = resultadoDelete == null?"not found":"success";
+                return res.json({message:resultado});
+                
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    }
 };
