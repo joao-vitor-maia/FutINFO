@@ -90,7 +90,7 @@ table, th, td {
 .container_section {
     display: flex;
     height: 600px;
-    width: 1300px;
+    width: 1320px;
 }
 .tables_column {
     display: flex;
@@ -167,7 +167,7 @@ table, th, td {
     padding:15px;
 }
 .text_new_top a {
-    font-size: 17px;
+    font-size: 13px;
     border-bottom:2px solid #0281e2;
     padding-bottom: 5px;
     color: #005496;
@@ -214,7 +214,85 @@ table, th, td {
     font-size: 12px;
     color: #005496;
 }
+/******Fim das notícias******/
+.slide_area {
+    padding-top: 6px;
+    margin-left: 55px;
+    height: 125vw;
+}
+.slide_textCenter {
+    background-color: #005496;
+    width: 350px;
+    margin-bottom: 22px;
+    height:45px;
+    text-align: center;
+}
+.textSlide {
+    font-size: 15.5px;
+    line-height: 45px;
+    font-weight: 400;
+    color: #FFF;
+}
+.slide_name {
+    height: 50px;
+    line-height: 10px;
+}
+.h2_slideName {
+    font-size: 22px;
+    color: #152E6B;
+}
+.p_slidesbText{
+    font-size: 11.5px;
+    color: #152E6B;
 
+}
+/******Slide IMG******/
+.slide {
+    max-width: 350px;
+    padding-top: 7px;
+    margin-bottom: 40px;
+    position: relative;
+	overflow: hidden!important;
+}
+.slide > * {
+	width: 100%;
+	position: absolute;
+	opacity: 1;
+	transition: .5s;
+}
+.slide > .active {
+	position: relative;
+	opacity: 1;
+}
+.slide_conteudo {
+    cursor: pointer;
+    position: absolute;
+}
+.imgSlide {
+    object-fit: cover;
+    height: 250px;
+    max-height: 250px;
+    width: 350px;
+    max-width: 350px!important;
+}
+/******2º slide******/
+.slideTwo {
+    max-width: 350px;
+    max-height: 250px;
+    padding-top: 8px;
+    position: relative;
+    overflow: hidden!important;
+}
+.slideTwo > * {
+    width: 100%;
+    position: absolute;
+    opacity: 1;
+    transition: .5s;
+}
+.slideTwo > .active {
+    position: relative;
+    opacity: 1;
+}
 /******Responsivo******/
 @media screen and (max-width:1000px) {
     .logo_header {
