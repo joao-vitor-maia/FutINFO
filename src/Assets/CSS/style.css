@@ -327,7 +327,7 @@ table, th, td {
 /******Footer******/
 footer {
     margin-top: 10px;
-    height: 195px;
+    height: 205px;
     background-color: #006FC7;
     display: flex;
     justify-content: center;
@@ -351,7 +351,8 @@ footer {
     align-items: center;
     max-width: 400px;
 }
-.h1Parceiros {
+.h1Parceiros,
+.h1Pages {
     text-align: center!important;
     font-size: 21px;
     color: #fff;
@@ -371,6 +372,23 @@ footer {
     cursor: pointer;
     width: 35%;
     height: 10%;
+}
+.paginas_footer_area {
+    max-width: 400px;
+    align-items: center;
+}
+.listaPage_footer {
+    max-width: 400px;
+    display: flex;
+    max-height: 120px!important;
+}
+.ulFooter a {
+    text-decoration: none;
+    color: #FFF;
+}
+.listFooter {
+    padding: 0px 0px 12px 0px;
+    font-size: 12.5px;
 }
 /******Responsivo******/
 @media screen and (max-width:1000px) {
