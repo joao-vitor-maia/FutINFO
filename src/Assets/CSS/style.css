@@ -75,7 +75,7 @@ header {
 section {
     font-family: 'Montserrat', sans-serif!important;
     padding-top: 20px;
-    height: 950px;
+    height: 935px;
     display: flex!important;
     justify-content:center;
 }
@@ -146,13 +146,13 @@ table, th, td {
     border: 2px solid #005496;
     border-radius: 10px;
     max-height: 250px!important;
-    width: 500px;
+    width: 465px;
     background-color: rgb(253, 252, 252);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .img_news_png {
     border-radius: 10px 0px 0px 10px;
-    width: 213px;
+    width: 200px;
     height: 100%;
     max-width: 215px;
 }
@@ -178,7 +178,7 @@ table, th, td {
 }
 .h1_new_center {
     color: #005496;
-    font-size: 30px;
+    font-size: 26.5px;
     display: flex;
     justify-content:center;
 }
@@ -191,7 +191,7 @@ table, th, td {
     font-style: italic;
     padding-bottom: 7px;
     border-bottom: 3px solid #0281e2;
-    font-size: 14.5px;
+    font-size: 13.5px;
 }
 .new_link {
     margin-left: 50px;
@@ -206,11 +206,11 @@ table, th, td {
     display: flex;
 }
 .calendar_text_img {
-    height: 20px;
+    height: 17px;
 }
 .date_text {
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 11px;
     color: #005496;
 }
 /******Fim das notícias******/
@@ -326,8 +326,7 @@ table, th, td {
 }
 /******Footer******/
 footer {
-    margin-top: 10px;
-    height: 205px;
+    height: 200px;
     background-color: #006FC7;
     display: flex;
     justify-content: center;
@@ -354,24 +353,24 @@ footer {
 .h1Parceiros,
 .h1Pages {
     text-align: center!important;
-    font-size: 21px;
+    font-size: 22px;
     color: #fff;
 }
 .parceiros_footer {
     margin-top: 25px;
     max-width: 400px;
     display: flex;
-    max-height: 120px!important;
+    max-height: 75px!important;
 }
 .mercadoImg {
-    height: 100px;
+    height: 75px;
     cursor: pointer;
-    width: 30%;
+    width: 25%;
 }
 .fotografiaImg {
     cursor: pointer;
-    width: 35%;
-    height: 10%;
+    width: 30%;
+    height: 110px;
 }
 .paginas_footer_area {
     max-width: 400px;
@@ -379,16 +378,38 @@ footer {
 }
 .listaPage_footer {
     max-width: 400px;
-    display: flex;
-    max-height: 120px!important;
+    max-height: 75px!important;
 }
 .ulFooter a {
     text-decoration: none;
     color: #FFF;
 }
 .listFooter {
-    padding: 0px 0px 12px 0px;
+    font-weight: normal;
+    padding-top: 2px;
+    padding: 0px 0px 8px 0px;
     font-size: 12.5px;
+}
+/******FooterCopy*****/
+.footerCopy {
+    padding-top: 3px;
+    height: 60px;
+    border-top: 1px solid #032aa8;
+    background-color: #006FC7;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+.copyItems {
+    padding:5px;
+    display: flex!important;
+}
+.logoFooter {
+    height: 40px;
+}
+.pCopy {
+    margin-left: 15px;
+    font-size: 13px;
+    color: #FFF;
 }
 /******Responsivo******/
 @media screen and (max-width:1000px) {
