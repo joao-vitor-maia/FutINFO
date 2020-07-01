@@ -10,6 +10,7 @@ exports.salvarQuadra = async (req,res) => {
         const rua = req.body.rua; 
         const cep = req.body.cep; 
         const bairro = req.body.bairro; 
+        const numeroRua = req.body.numeroRua;
         const quadraComNomeIgual = await Quadra.find({nome:nome});
 
         const imagemBase64 = ["imagem1","imagem2"];
@@ -18,7 +19,8 @@ exports.salvarQuadra = async (req,res) => {
         if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome && Object.entries(quadraComNomeIgual).length == 0 &&
         validator.isLength(rua,{min:2,max:60}) && sanitize(rua,{allowedTags:[], allowedAttributes:{} }) == rua &&
         validator.isLength(cep,{min:8,max:9}) && sanitize(cep,{allowedTags:[], allowedAttributes:{} }) == cep && /[0-9]{5}-[0-9]{3}/.test(cep) &&
-        validator.isLength(bairro,{min:2,max:60}) && sanitize(bairro,{allowedTags:[], allowedAttributes:{} }) == bairro ){
+        validator.isLength(bairro,{min:2,max:60}) && sanitize(bairro,{allowedTags:[], allowedAttributes:{} }) == bairro &&
+        validator.isLength(numeroRua,{min:1,max:5}) && sanitize(numeroRua,{allowedTags:[], allowedAttributes:{} }) == numeroRua && validator.isInt(numeroRua) ){
             
             const token = req.body.token;
 
@@ -26,9 +28,11 @@ exports.salvarQuadra = async (req,res) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
                 }else{
+
                     const dadosQuadra = {
                         nome:nome,
                         rua:rua,
+                        numeroRua:numeroRua,
                         cep:cep,
                         bairro:bairro,
                         usuarioId:decoded.id

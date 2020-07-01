@@ -20,7 +20,8 @@ exports.gerarToken = async (req,res) => {
                     id:usuario._id,
                     nome:usuario.nome,
                     email:usuario.email,
-                    afiliado:usuario.afiliado
+                    afiliado:usuario.afiliado,
+                    admin:usuario.admin
                 },process.env.SECRETKEY,{expiresIn:"3d"});
                 
                 return res.json({message:token});

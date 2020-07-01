@@ -20,6 +20,10 @@ const quadra = new Schema({
         max:60,
         required:true
     },
+    numeroRua: {
+        type:Number,
+        required:true
+    },
     bairro: {
         type:String,
         min:2,
