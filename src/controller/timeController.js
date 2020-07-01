@@ -1,8 +1,10 @@
-const time = 
+const Time = require("@models/Time");
 const jwt = require("jsonwebtoken");
+const validator = require("validator");
 
 exports.registrarTime = async (req,res) => {
     try{
+        const token = req.body.token;
         const divisao = req.body.divisao; 
         const nome = req.body.nome;
         const ponto = req.body.ponto;
@@ -25,6 +27,7 @@ exports.registrarTime = async (req,res) => {
                         vitoria:vitoria,
                         derrota:derrota
                     };
+                    await Time(dados).save();
 
                     return res.json({message:"success"});
                 };
@@ -34,6 +37,7 @@ exports.registrarTime = async (req,res) => {
             return res.json({message:"invalid"});
         };
     }catch(err){
+        console.log(err)
         return res.json({message:"error"});
     };
 };
