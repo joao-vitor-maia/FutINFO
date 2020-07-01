@@ -385,7 +385,7 @@ footer {
     color: #FFF;
 }
 /******Responsivo******/
-@media screen and (max-width:1000px) {
+@media screen and (max-width:1150px) {
     .logo_header {
         height: 50px;
     }
@@ -400,13 +400,13 @@ footer {
         margin-left: 50px;
     }
 }
-@media screen and (max-width: 915px) {
+@media screen and (max-width: 768px) {
     header .container {
         flex-direction: row;
     }
     header {
         height: auto;
-    }
+    }   
     /******Menu Header Mobile*****/
     nav ul {
         height: 220px;
@@ -424,7 +424,6 @@ footer {
     .menuMobile {
         cursor: pointer;
         float: right!important;
-        margin-top: 40px;
         display:flex;
 		flex-direction: column;
 		justify-content:space-around;
