@@ -2,35 +2,60 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat";
 }
-/* ---- Header ---- */
-.headerNav{
-    display:flex;
-    justify-content: space-around;
-    background:#006FC7;
-}
-.btnResponsivo{
+section{
     color:white;
+    width:60%;
+    margin: auto;
+    max-width:450px;
+    margin-top:12vh;
 }
-.btnCadastro:hover{
-    background:#084b83;
-    color: white; 
+.logoFutInfo {
+    width: 100%;
+    max-width:500px;
+    height: 100%;
+    margin: 1vh auto;
+    margin-bottom:5vh;
 }
-.logo{
-    position:relative;
-    width:10%;
-}
-.logoImg{
+.logoImg {
     width:100%;
-    height:100%;
 }
-.cadastrarMeResponsivo{
-    display:none;
+.labelLogin {
+    font-size:larger;
 }
-@media screen and (max-width:575px){
-    /* ---- Header ---- */
-    .btn.btnCadastro{
-        display:none;
-    }
+.inputArea div{
+    display:flex;
+    text-align:center;
+    margin-bottom:20px;
+}
+.inputLogin{
+    border-radius:10px;
+    width:100%;
+}
+#labelLogin{
+    margin-right:7px;
+}
+.botoesArea{
+    display:flex;
+    margin-bottom:30px;
+}
+.botoes{
+    text-align:center;
+    border-radius:5px;
+    padding:5px;
+}
+.botaoLogin{
+    width:100%;
+}
+.opcoes{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    padding-bottom:10px;
+    border-bottom:4px solid;
+}
+.form{
+    margin:auto;
+    max-width:350px;
 }
