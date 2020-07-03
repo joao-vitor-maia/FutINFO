@@ -1,8 +1,9 @@
+document.querySelector("#senha").value = atob(localStorage.getItem("senha"));
+
 async function login(){
     const email = document.querySelector("#email").value;
     const senha = document.querySelector("#senha").value;
-    
-    if(validator.isEmail(email)){
+    const lembrarMe = document.querySelector("#lembrarMe").checked;
         const dados = {
             email:email,
             senha:senha
@@ -19,16 +20,16 @@ async function login(){
         
         if(resultado.message == "error"){
             alert("Ocorreu um erro ao efetuar login.");
-        }else if(resultado.message == "not found"){
-            alert("O email digitado está incorreto.");
-        }else if(resultado.message == "incorrect password"){
-            alert("A senha digitada está incorreta.");
+        }else if(resultado.message == "not found" || resultado.message == "incorrect password"){
+            alert("O email ou senha digitados estão incorretos.");
         }else{
             localStorage.setItem("token",resultado.message);
+            if(lembrarMe == true){
+                localStorage.setItem("senha",btoa(senha))
+            }else{
+                localStorage.removeItem("senha")
+            }
             location.href = "/pagina-inicial";
         };
 
-    }else{
-        alert("Digite os dados corretamente");
-    };
 }
