@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+section{
+    color:white;
+    width:60%;
+    margin: auto;
+    max-width:450px;
+    margin-top:12vh;
+}
+.logoFutInfo {
+    width: 100%;
+    max-width:500px;
+    height: 100%;
+    margin: 1vh auto;
+    margin-bottom:5vh;
+}
+.logoImg {
+    width:100%;
+}
+.labelLogin {
+    font-size:larger;
+}
+.inputArea div{
+    display:flex;
+    text-align:center;
+    margin-bottom:40px;
+}
+.inputLogin{
+    border-radius:10px;
+    width:100%;
+}
+#labelLogin{
+    margin-right:7px;
+}
+.botoesArea{
+    display:flex;
+    margin-bottom:40px;
+}
+.botoes{
+    text-align:center;
+    border-radius:5px;
+    padding:10px;
+}
+.botaoLogin{
+    width:100%;
+}
+.opcoes{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    padding-bottom:10px;
+    border-bottom:4px solid;
+}
+.form{
+    margin:auto;
+    max-width:400px;
+}
