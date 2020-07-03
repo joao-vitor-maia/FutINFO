@@ -9,11 +9,12 @@ const horarioController = require("@controller/horarioController");
 const noticiaController = require("@controller/noticiaController");
 const timeController = require("@controller/timeController");
 
-//Estáticas
+//Páginas
 router.get("/pagina-inicial",pageController.renderHome);
+router.get("/login",pageController.renderLogin);
 
 //Usuarios
-router.get("/efetuando-login",auth.gerarToken);
+router.post("/efetuando-login",auth.gerarToken);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
 router.put("/efetuando-atualizacao-de-senha",usuarioController.editar);
 

@@ -9,7 +9,7 @@ section{
     width:60%;
     margin: auto;
     max-width:450px;
-    margin-top:12vh;
+    margin-top:2vh;
 }
 .logoFutInfo {
     width: 100%;
@@ -32,6 +32,7 @@ section{
 .inputLogin{
     border-radius:10px;
     width:100%;
+    text-align: center;
 }
 #labelLogin{
     margin-right:7px;
@@ -48,12 +49,19 @@ section{
 .botaoLogin{
     width:100%;
 }
+a{
+    color:white;
+}
 .opcoes{
+    color:white;
     display:flex;
     flex-wrap: nowrap;
     justify-content:space-between;
     padding-bottom:10px;
     border-bottom:4px solid;
+}
+.opcoes div a{
+    color:white;
 }
 .form{
     margin:auto;

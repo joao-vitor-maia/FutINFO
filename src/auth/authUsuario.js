@@ -6,7 +6,7 @@ exports.gerarToken = async (req,res) => {
    try{
         const email = req.body.email;
         const senha = req.body.senha;
-        
+
         const usuario = await usuarios.findOne({email:email});
         if(usuario == null) {
             return res.json({message:"not found"})
@@ -22,7 +22,7 @@ exports.gerarToken = async (req,res) => {
                     email:usuario.email,
                     afiliado:usuario.afiliado,
                     admin:usuario.admin
-                },process.env.SECRETKEY,{expiresIn:"3d"});
+                },process.env.SECRETKEY,{expiresIn:"10h"});
                 
                 return res.json({message:token});
             };

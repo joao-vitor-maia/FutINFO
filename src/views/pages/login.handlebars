@@ -20,29 +20,29 @@
             <div class="inputArea">
                 <div>
                     <label for="email" class="labelLogin" id="labelLogin">Email:</label>
-                    <input type="text" class="inputLogin" id="email">
+                    <input type="email" class="inputLogin" id="email">
                 </div>
                 <div>
                     <label for="senha" class="labelLogin">Senha:</label>
-                    <input type="text" class="inputLogin" id="senha">
+                    <input type="password" class="inputLogin" id="senha">
                 </div>
             </div>
             <div class="botoesArea">
                 <button class="botoes">
                     Voltar
                 </button>
-                <button class="botoes botaoLogin">
+                <button class="botoes botaoLogin" type="submit" onclick="login()">
                     Login
                 </button>
             </div>
             <div class="opcoes">
                 <div>
-                    <input type="checkbox" name="checkbox" id="checkbox">
+                    <input type="checkbox" name="lembrarMe" id="lembrarMe">
                     Lembrar-me
                 </div>
                 <div>
-                    Esqueci a senha <br>
-                    Cadastrar-me
+                    <a href="#">Esqueci a senha</a> <br>
+                    <a href="#">Cadastrar-me</a>
                 </div>
             </div>
 
@@ -58,6 +58,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+    <script src="/JS/validator.js"></script>
+    <script src="/JS/login.js"></script>
 </body>
 
 </html>

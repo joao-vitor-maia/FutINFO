@@ -24,3 +24,10 @@ exports.renderHome = async (req,res) => {
         return res.json({message:"error"});
     }
 }
+exports.renderLogin = async (req,res) => {
+    try{
+        res.render("pages/login.handlebars");
+    }catch(err){
+        return res.json({message:"error"});
+    }
+}
