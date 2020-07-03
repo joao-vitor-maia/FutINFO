@@ -19,12 +19,20 @@
         <div class="form">
             <div class="inputArea">
                 <div>
+                    <label for="nome" class="labelLogin">Nome:</label>
+                    <input type="text" class="inputLogin" id="nome">
+                </div>
+                <div>
                     <label for="email" class="labelLogin" id="labelLogin">Email:</label>
                     <input type="email" class="inputLogin" id="email">
                 </div>
                 <div>
                     <label for="senha" class="labelLogin">Senha:</label>
-                    <input type="password" class="inputLogin" id="senha" onkeyup="lembrarSenha()">
+                    <input type="password" class="inputLogin" id="senha">
+                </div>
+                <div>
+                    <label for="senhaReserva" class="labelLogin">Senha Reserva:</label>
+                    <input type="text" class="inputLogin" id="senhaReserva">
                 </div>
             </div>
             <div class="botoesArea">
@@ -33,25 +41,13 @@
                         Voltar
                     </button>
                 </a>
-                <button class="botoes botaoLogin btn-success" type="submit" onclick="login()">
-                    Login
+                <button class="botoes botaoLogin btn-success" onclick="cadastrar()">
+                    Cadastrar-me
                 </button>
             </div>
-            <div class="opcoes">
-                <div>
-                    <input type="checkbox" name="lembrarMe" id="lembrarMe">
-                    Lembrar-me
-                </div>
-                <div>
-                    Esqueci a senha <br>
-                    <a href="/cadastrar">Cadastrar-me</a>
-                </div>
-            </div>
-
-        </div>
     </section>
 
-    <script src="/JS/login.js"></script>
+    <script src="/JS/cadastrar.js"></script>
 </body>
 
 </html>

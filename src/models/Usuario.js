@@ -17,8 +17,14 @@ const usuario = new Schema({
     },
     senha: {
         type:String,
-        min:8,
+        min:2,
         max:30,
+        required:true
+    },
+    senhaReserva:{
+        type:String,
+        min:2,
+        max:60,
         required:true
     },
     admin: {

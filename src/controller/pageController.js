@@ -31,3 +31,10 @@ exports.renderLogin = async (req,res) => {
         return res.json({message:"error"});
     }
 }
+exports.renderCadastro = async (req,res) => {
+    try{
+        res.render("pages/cadastro.handlebars");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+}

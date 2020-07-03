@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 exports.gerarToken = async (req,res) => {
-   try{
+   try{        
         const email = req.body.email;
         const senha = req.body.senha;
 

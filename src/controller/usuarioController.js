@@ -9,13 +9,15 @@ exports.cadastrar = async(req,res) => {
         const nome = req.body.nome;
         const email = req.body.email;
         const Senha = req.body.senha;
+        const senhaReserva = req.body.senhaReserva;
 
         const usuarioComEmailIgual = await Usuario.find({email:email});
 
         //Validando dados do Usuário e salvando no banco
         if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
         validator.isEmail(email) && sanitize(email,{allowedTags:[], allowedAttributes:{} }) == email && validator.isLength(email,{min:11,max:60}) &&
-        validator.isLength(Senha,{min:8,max:30}) &&
+        validator.isLength(Senha,{min:2,max:30}) &&
+        validator.isLength(senhaReserva,{min:2,max:60}) &&
         usuarioComEmailIgual.length == 0
         ){
             const senha = await new Promise((resolve, reject) => {
@@ -30,7 +32,8 @@ exports.cadastrar = async(req,res) => {
             const dados = {
                 nome:nome,
                 email:email,
-                senha:senha
+                senha:senha,
+                senhaReserva:senhaReserva
             };
 
             await new Usuario(dados).save();            
@@ -47,7 +50,7 @@ exports.editar = async(req,res) => {
     const token = req.body.token;
     const Senha = req.body.senha;
 
-    if(validator.isLength(Senha,{min:8,max:30}) ){
+    if(validator.isLength(Senha,{min:2,max:30}) ){
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
             if(error){
                 return res.json({message:"unauthorized"});
