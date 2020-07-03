@@ -30,16 +30,50 @@ header {
 }
 .btn-person {
     font-weight: bolder;
+    color: #000;
     font-size: 14.5px;
 }
 .btn-person:hover {
     color: #FFF;
     background-color: #004377;
 }
+.btn-person a {
+    font-weight: bolder;
+    color: #000;
+    text-decoration: none;
+}
 /***** Menu bottom *****/
 .menuMobile_bottom {
-    height: 15vh;
+    height: 20vh;
     background-color: #006FC7;
+    font-family: 'Montserrat', sans-serif!important;
+}
+.menuArea {
+    display: flex!important;
+    align-items: center;
+    height: 100%;
+    max-width: 100%;
+    justify-content: space-evenly!important;
+}
+.optionsContainer {
+    min-width: 85px;
+    color: #FFF;
+}
+/***** Opções menu bottom *****/
+.menuItem {
+    cursor: pointer;
+    padding: 0px 25px 0px 25px;
+    display: flex;
+    flex-direction: column;
+}
+.iconItem {
+    height: 35px;
+    max-height: 35px!important;
+}
+.textItem {
+    margin-top: 1px;
+    padding: 4px 0px 0px 0px;
+    font-size: 14.5px;
 }
 /***** Responsivo *****/
 @media screen and (min-width:991px) and (max-width:1199px) {
