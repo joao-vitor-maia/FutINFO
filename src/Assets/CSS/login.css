@@ -2,14 +2,16 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Montserrat";
+    font-family: Arial, sans-serif;
 }
+/****** Section ******/
 section{
     color:white;
     width:60%;
     margin: auto;
     max-width:450px;
     margin-top:2vh;
+    font-family: 'Montserrat', sans-serif;
 }
 .logoFutInfo {
     width: 70%;
@@ -25,6 +27,7 @@ section{
     font-size:larger;
     white-space:nowrap;
 }
+/****** Inputs ******/
 .inputArea div{
     display:flex;
     text-align:center;
@@ -38,6 +41,13 @@ section{
 #labelLogin{
     margin-right:7px;
 }
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    border:3px solid #006FC7;
+    outline:0;
+}
+/****** Botões ******/
 .botoesArea{
     display:flex;
     margin-bottom:40px;
