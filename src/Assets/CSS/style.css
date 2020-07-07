@@ -138,6 +138,28 @@ table, tr, td, th, thead {
     object-fit: cover;
 }
 /***** Texto notícias *****/
+.newsText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.h1TitleNews {
+    font-weight: bold;
+    font-size: 28px;
+    color: #006FC7;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0062cc;
+}
+.sbTitleNews {
+    font-size: 16px;
+    color:#0062cc; 
+    max-width: 100%;
+}
+.newsTextBottom {
+    border-top: 2px solid #0062cc;
+}
 /***** Responsivo *****/
 @media screen and (min-width:991px) and (max-width:1199px) {
     .nav-item a {
