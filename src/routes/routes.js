@@ -13,6 +13,7 @@ const timeController = require("@controller/timeController");
 router.get("/pagina-inicial",pageController.renderHome);
 router.get("/login",pageController.renderLogin);
 router.get("/cadastrar",pageController.renderCadastro);
+router.get("/horarios-reservados",pageController.renderHorarios);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);
