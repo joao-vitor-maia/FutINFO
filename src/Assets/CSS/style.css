@@ -79,14 +79,13 @@ header {
 /***** Section *****/
 section {
     height: 100em;
-    background-color: #F2F2F2;
     font-family: 'Montserrat', sans-serif;
 }
 /***** Tabelas *****/
 table {
-    min-width: 290px;
-    max-width: 290px!important;
-    font-size: 15.5px;
+    min-width: 305px;
+    max-width: 305px!important;
+    font-size: 14px;
 }
 table, tr, td, th, thead {
     border-bottom-color: #005496;
@@ -96,8 +95,8 @@ table, tr, td, th, thead {
     border-bottom-color: #005496;
 }
 .tableContainer {
-    width: 292px;
-    max-width: 292px!important;
+    width: 305px;
+    max-width: 305px!important;
     border:2px solid #011a5f;
 }
 .table thead th {
@@ -120,12 +119,16 @@ table, tr, td, th, thead {
 .thTime {
     width: 50%;
 }
+.timeText {
+    font-weight: bold;
+    color: #011a5f;
+}
 /***** Notícias *****/
 .news {
     width: 550px;
     max-width: 550px!important;
-    height: 225px;
-    border: 1px solid #000;
+    height: 250px;
+    border: 1px solid #004ea2;
     border-radius: 5px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -143,22 +146,67 @@ table, tr, td, th, thead {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-left: 2px solid #0062cc;
 }
 .h1TitleNews {
-    font-weight: bold;
-    font-size: 28px;
-    color: #006FC7;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #0062cc;
+    font-weight: 600;
+    padding-top: 5px;
+    font-size: 22px;
+    color: #0B48DE;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #004ea2;
 }
 .sbTitleNews {
-    font-size: 16px;
-    color:#0062cc; 
+    font-size: 14.5px;
+    color:#0062b3; 
     max-width: 100%;
+    font-weight: 600;
+    font-style: italic;
+    padding: 0px 3px 12px 3px;
+    border-bottom: 2px solid #334677;
 }
 .newsTextBottom {
     border-top: 2px solid #0062cc;
+}
+
+/***** Calendário *****/
+.dateNews {
+    margin-right: auto;
+}
+.textDate {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #012b96;
+    margin-left: 10px;
+}
+.dateLinkText a {
+    font-size: 14px;
+}
+.calendarIMG {
+    width: 20px;
+}
+/***** Slide *****/
+.slideArea {
+    margin-left: 3rem;
+    height: 250px;
+    max-height: 250px!important;
+    background-color: #DDD;
+}
+.carouselPerson {
+    height: 250px;
+    max-height: 250px!important;
+}
+.slideText {
+    background-color: #011a5f;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+.h2slideText {
+    font-size: 17px;
+    line-height: 35px;
+    color: #FFF;
 }
 /***** Responsivo *****/
 @media screen and (min-width:991px) and (max-width:1199px) {
@@ -193,4 +241,6 @@ table, tr, td, th, thead {
 .optionsContainer {
     padding-top: 13px;
 }
+}
+@media screen and (min-width:1199px) and (max-width:1360px) {
 }
