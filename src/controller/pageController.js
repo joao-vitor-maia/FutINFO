@@ -38,3 +38,10 @@ exports.renderCadastro = async (req,res) => {
         return res.json({message:"error"});
     };
 }
+exports.renderHorarios = async (req,res) => {
+    try{
+        res.render("pages/horarios");
+    }catch(err){
+        return res.json({message:"error"});
+    }
+}

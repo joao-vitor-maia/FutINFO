@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<!------- Head ------>
+
+<head>
+    <!------- Fonte importada ------>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+    </style>
+    <!-------------- Meta ---------->
+    <meta name="description"
+        content="Classificação e artilheiros de cada divisão atualizadas, quadras com fotos em HD disponíveis para visualização!">
+    <meta name="keywords"
+        content="Futebol, Várzea, Futebol varzeano, Cachoeira do Sul, Quadras Cachoeira do Sul, Classificação, Artilheiros">
+    <meta name="robots" content="">
+    <meta name="revisit-after" content="7 day">
+    <meta name="language" content="Portuguese">
+    <meta name="generator" content="N/A">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FutINFO - Futebol várzeano de Cachoeira do Sul</title>
+    <!------- Estilização ------>
+    <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/horarios.css">
+</head>
+<!------- Body ------>
+
+<body>
+    <!------- Header ------>
+    <header class="d-none d-sm-none d-md-block d-lg-block">
+        <div class="container container-header">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <!------- Logo ------>
+                <a href="#" class="navbar-brand">
+                    <img class="logo_header" src="/Images/LOGO-FUTINFO.jpg">
+                </a>
+                <!------- Botão menu Mobile ------>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuHeader"
+                    aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuHeader">
+                    <!------- Menu Header ------>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active py-2"><a href="#">Início</a></li>
+                        <li class="nav-item py-2"><a href="#">Classificação e artilheiros</a></li>
+                        <li class="nav-item py-2"><a href="#">Ver quadras</a></li>
+                        <li class="nav-item py-2"><a href="#">Sobre a FutINFO</a></li>
+                    </ul>
+                    <!------- Botão inscrever-se ------>
+                    <div class="ml-auto py-1">
+                        <a href="/login">
+                            <button type="button" class="btn btn-person">Entrar ou inscrever-se</button>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!------- Menu bottom ------>
+    <div class="menuMobile_bottom fixed-bottom d-block d-sm-block d-md-none d-lg-none">
+        <div class="menuArea">
+            <div class="optionsContainer d-flex justify-content-around align-items-center">
+                <div class="menuItem text-center">
+                    <img class="iconItem" src="/Images/Menu-bottom/home.svg">
+                    <p class="textItem">Início</p>
+                </div>
+                <div class="menuItem text-center">
+                    <img class="iconItem" src="/Images/Menu-bottom/artilheiro.svg">
+                    <p class="textItem">Artilheiros</p>
+                </div>
+
+                <div class="menuItem text-center">
+                    <img class="iconItem" src="/Images/Menu-bottom/quadra.svg">
+                    <p class="textItem">Quadras</p>
+                </div>
+                <div class="menuItem text-center">
+                    <img class="iconItem" src="/Images/Menu-bottom/classificacao.svg">
+                    <p class="textItem">Classificação</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------- section ------->
+    <section>
+        <div class="horariosPendentes">
+            <h1 class="titulo">
+                Horários pendentes
+            </h1>
+            <!------- card area ------->
+            <div class="cardArea">
+                <div class="card">
+                    <h4 class="nomePendente">
+                        Gustavo
+                    </h4>
+
+                    <div class="cardConteudo">Dia:16</div>
+                    <div class="cardConteudo">Início:14:30</div>
+                    <div class="cardConteudo">Fim:17:00</div>
+                    <div class="cardConteudo">Aprovado:Sim</div>
+
+                    <button class="btn btn-danger">Recusar</button>
+                    <button class="btn btn-success">Aprovar</button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="horariosAprovados">
+            <h1 class="titulo">
+                Horários aprovados
+            </h1>
+            <!------- card area ------->
+            <div class="cardArea">
+                <div class="card cardAprovado">
+                    <h4 class="nomeAprovado">
+                        Gustavo
+                    </h4>
+
+                    <div class="cardConteudo">Dia:16</div>
+                    <div class="cardConteudo">Início:14:30</div>
+                    <div class="cardConteudo">Fim:17:00</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!------- Scripts ------>
+    <script src="/JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/JS/popper.min.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/fa9fd24602.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
