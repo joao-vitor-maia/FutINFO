@@ -82,10 +82,29 @@ section {
     background-color: #F2F2F2;
     font-family: 'Montserrat', sans-serif;
 }
+/***** Tabelas *****/
+table {
+    min-width: 290px;
+    max-width: 290px!important;
+    font-size: 15.5px;
+}
+table, tr, td, th, thead {
+    border-bottom-color: #005496;
+}
+.table-bordered td, .table-bordered th {
+    border: 3px solid #005496;
+    border-bottom-color: #005496;
+}
 .tableContainer {
-    width: 220px;
-    max-width: 220px!important;
+    width: 292px;
+    max-width: 292px!important;
     border:2px solid #011a5f;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: #005496;
 }
 .tableTitle {
     background-color: #011a5f;
@@ -94,10 +113,31 @@ section {
     line-height: 35px;
 }
 .h3-title {
-    font-size: 15.5px;
+    font-size: 17px;
     line-height: 35px;
     color: #FFF;
 }
+.thTime {
+    width: 50%;
+}
+/***** Notícias *****/
+.news {
+    width: 550px;
+    max-width: 550px!important;
+    height: 225px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.newsImg {
+    object-fit: cover;
+}
+.imgNews {
+    height: 100%;
+    width: 225px;
+    object-fit: cover;
+}
+/***** Texto notícias *****/
 /***** Responsivo *****/
 @media screen and (min-width:991px) and (max-width:1199px) {
     .nav-item a {
