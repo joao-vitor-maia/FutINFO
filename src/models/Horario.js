@@ -12,6 +12,18 @@ const horario = new Schema({
         ref:"Quadra",
         required:true
     },
+    ano: {
+        type:String,
+        required:true
+    },
+    mes: {
+        type:String,
+        required:true
+    },
+    dia: {
+        type:String,
+        required:true
+    },
     aprovado: {
         type:Boolean,
         default:false

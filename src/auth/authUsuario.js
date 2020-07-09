@@ -34,16 +34,35 @@ exports.gerarToken = async (req,res) => {
 };
 exports.autorizarUsuario = async (req,res,next) => {
     try{
-        const token = req.body.token;
+        const token = req.headers["Authorization"];
     
-    jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
-        if(error){
+        jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
+            if(error){
+                return res.json({message:"unauthorized"});
+            }else{
+                return res.json({message:"authorized"});
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.autorizarAfiliado = async (req,res,next) => {
+    try{
+        if(req.headers["Authorization"] == undefined){
             return res.json({message:"unauthorized"});
-        }else{
-            console.log(decoded.id)
-            next();
         };
-    });
+
+        const token = req.headers["Authorization"];
+
+        jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
+            if(error && decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                next();
+            };
+        });
+        
     }catch(err){
         return res.json({message:"error"});
     };

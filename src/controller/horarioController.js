@@ -15,7 +15,7 @@ exports.agendarHorario = async(req,res) => {
         const HorarioInicial = req.body.horarioInicial;
         const HorarioFinal = req.body.horarioFinal;
 
-        //Data como horario inicial e final
+        //Pegando dados da data
         const horarioInicial = new Date(`${ano},${mes},${dia} ${HorarioInicial}`);
         const horarioFinal = new Date(`${ano},${mes},${dia} ${HorarioFinal}`);
 
@@ -32,6 +32,7 @@ exports.agendarHorario = async(req,res) => {
             const horariosDoBanco = await Horario.find();
             
             for(let horarioDoBanco of horariosDoBanco){ 
+                //Horários não podem se sobrepor
                 if(fns.areIntervalsOverlapping(horarioIntervalo,horarioDoBanco.horarioIntervalo)){
                     return res.json({message:"conflict"});
                 }
@@ -45,6 +46,9 @@ exports.agendarHorario = async(req,res) => {
                     const dados = {
                         usuarioId:decoded.id,
                         quadraId:quadraId,
+                        ano:ano,
+                        mes:mes,
+                        dia:dia,
                         horarioIntervalo:horarioIntervalo
                     };
 
