@@ -238,9 +238,57 @@ article {
     padding: 10px 0px 0px 0px;
 }
 .page-item {
-    font-size: 16px;
+    font-size: 15px;
 }
-
+/***** Footer *****/
+footer {
+    font-family: 'Montserrat', sans-serif;
+    height:auto;
+    margin-top: 10px;
+    background-color: #006fc7;
+    display: flex;
+    justify-content: center; 
+}
+.container-footer {
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.brand-footer {
+    justify-content: center;
+    max-height: 80px!important;
+}
+.brand-footer-IMG {
+    width: 8em;
+}
+.copyText {
+    line-height: 105px;
+    margin-left: 1.5em;
+    color: #FFF;
+    font-size: 14px;
+}
+.list-footer {
+    padding-top: 2em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.h1TitleFooter {
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 600;
+}
+.liFooter li {
+    list-style: none;
+    font-size: 12.5px;
+    align-items: center;
+    color: #FFF;
+    padding: 5px 0px 5px 0px;
+}
+.liFooter a {
+    color: #FFF;
+}
 /***** Responsivo *****/
 @media screen and (min-width:991px) and (max-width:1199px) {
     .nav-item a {
@@ -252,6 +300,7 @@ article {
 }
 @media screen and (min-width:0px) and (max-width:991px) {
     header {
+ 
         height: auto!important;
     }
 }
