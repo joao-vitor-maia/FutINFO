@@ -25,6 +25,8 @@ router.put("/efetuando-atualizacao-de-senha",usuarioController.editar);
 
 //Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);
+router.post("/efetuando-aprovar-horario",horarioController.aprovar);
+router.post("/efetuando-recusar-horario",horarioController.recusar);
 
 //Comentário
 router.post("/efetuando-comentario",comentarioController.comentar);

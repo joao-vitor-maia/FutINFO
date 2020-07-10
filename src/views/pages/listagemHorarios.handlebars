@@ -97,7 +97,6 @@
             <div class="cardArea">
                 {{#each horarioPendente}}
                 <div class="card">
-
                     <h4 class="nomePendente">
                         {{this.usuarioId.nome}}
                     </h4>
@@ -107,8 +106,8 @@
                     <div class="cardConteudo">Fim:{{this.horarioIntervalo.end}}</div>
                     <div class="cardConteudo">Aprovado:{{#if this.aprovado}}Sim{{else}}Não{{/if}}</div>
 
-                    <button class="btn btn-danger">Recusar</button>
-                    <button class="btn btn-success" onclick="aprovar()">Aprovar</button>
+                    <button class="btn btn-danger" value="{{this._id}}" onclick="recusar()">Recusar</button>
+                    <button class="btn btn-success" value="{{this._id}}" onclick="aprovar()">Aprovar</button>
                 </div>
                 {{else}}
             </div>

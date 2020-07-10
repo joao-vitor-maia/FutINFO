@@ -21,7 +21,7 @@ async function cadastrar(){
         const resultado = await resultadoObject.json();
         
         if(resultado.message == "error"){
-            alert("Ocorreu um erro ao efetuar login.");
+            alert("Ocorreu um erro ao efetuar cadastro.");
         }else if(resultado.message == "invalid"){
             alert("Os dados estão inválidos");
         }else{

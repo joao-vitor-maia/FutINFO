@@ -84,3 +84,39 @@ exports.agendarHorario = async(req,res) => {
         return res.json({message:"error"});
     }
 }
+exports.aprovar = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const idHorario = req.body.idHorario;
+        
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error || decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                const horario = await Horario.findById(idHorario);
+                horario.aprovado = true;
+                await horario.save();
+                return res.json({message:"success"})
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"})
+    }
+}
+exports.recusar = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const idHorario = req.body.idHorario;
+        
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error || decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                await Horario.findByIdAndRemove(idHorario);
+                return res.json({message:"success"})
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"})
+    }
+}

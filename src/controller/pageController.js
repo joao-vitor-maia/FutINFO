@@ -60,12 +60,12 @@ exports.renderCadastro = async (req, res) => {
 }
 exports.renderListagemHorarios = async (req, res) => {
     try{
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMDY1OThkYmEzOTAzMTQ1NDAyOWFjMyIsIm5vbWUiOiJndXN0YXZvIiwiZW1haWwiOiJndXN0YXZvQGdtYWlsLmNvbSIsImFmaWxpYWRvIjp0cnVlLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU5NDMwMDY5MSwiZXhwIjoxNTk0MzM2NjkxfQ.dvf8KcuF9JmGkI_T-2QXDfddSNp7Cxe5ZL45LcYWvhI";
+        // const token = req.headers["Authorization"];
 
-        jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
-            if (error || decoded.afiliado != true) {
-                return res.json({message: "unauthorized"});
-            } else {
+        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
+        //     if (error || decoded.afiliado != true) {
+        //         res.redirect("/login");
+        //     } else {
                 //Pegando lista de horarios 
                 const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
 
@@ -91,8 +91,8 @@ exports.renderListagemHorarios = async (req, res) => {
                         return horario.toJSON();
                     })
                 });
-            };
-        });
+        //     };
+        // });
     }catch(err){
         return res.json({message: "error"});
     };
