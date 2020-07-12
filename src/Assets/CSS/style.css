@@ -78,14 +78,17 @@ header {
 }
 /***** Section *****/
 section {
-    height: 34em;
+    /*height: 34em;*/
+    height: auto!important;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
 }
 /***** Tabelas *****/
 table {
-    min-width: 305px;
-    max-width: 305px!important;
+    min-width: 308px;
+    max-width: 308px!important;
     font-size: 14px;
+    text-align: left;
 }
 table, tr, td, th, thead {
     border-bottom-color: #005496;
@@ -95,8 +98,8 @@ table, tr, td, th, thead {
     border-bottom-color: #005496;
 }
 .tableContainer {
-    width: 305px;
-    max-width: 305px!important;
+    width: 308px;
+    max-width: 308px!important;
     border:2px solid #011a5f;
 }
 .table thead th {
@@ -118,10 +121,15 @@ table, tr, td, th, thead {
 }
 .thTime {
     width: 50%;
+    text-align: center;
 }
 .timeText {
     font-weight: bold;
     color: #011a5f;
+}
+.h1-viewTable {
+    font-size: 17px;
+    font-weight: 600;
 }
 /***** Notícias *****/
 .news {
@@ -235,10 +243,10 @@ article {
     font-family: 'Montserrat', sans-serif;
 }
 .pagination {
-    padding: 10px 0px 0px 0px;
+    padding: 15px 0px 0px 0px;
 }
 .page-item {
-    font-size: 15px;
+    font-size: 15.5px;
 }
 /***** Footer *****/
 footer {
@@ -290,20 +298,7 @@ footer {
     color: #FFF;
 }
 /***** Responsivo *****/
-@media screen and (min-width:991px) and (max-width:1199px) {
-    .nav-item a {
-        font-size: 15px;
-    }
-    .btn-person {
-        font-size: 13px;
-    }
-}
-@media screen and (min-width:0px) and (max-width:991px) {
-    header {
- 
-        height: auto!important;
-    }
-}
+/***** Responsivo menu bottom *****/
 @media screen and (min-width:1px) and (max-width: 400px) {
     .menuItem {
     cursor: pointer;
@@ -324,5 +319,54 @@ footer {
     padding-top: 13px;
 }
 }
-@media screen and (min-width:1199px) and (max-width:1360px) {
+/***** Responsivo removendo classificação *****/
+@media screen and (max-width:1257px){
+    .slideArea {
+        margin-left: 4.5rem;
+    }
+    .areaContainer {
+        margin-right: 15px;
+    }
+}
+@media screen and (max-width:1199px) {
+    .nav-item a {
+        font-size: 15px;
+    }
+    .btn-person {
+        font-size: 13px;
+    }
+    .slideArea {
+        margin-left: 11.5rem;
+    }
+    .news {
+        margin-left: 5px;
+        width: 615px;
+        max-width: 615px!important;
+    }
+    .h1TitleNews {
+        font-size: 27px;
+    }
+    .sbTitleNews {
+        font-size: 14.3px;
+    }
+    .textDate  {
+        font-size: 13.5px;
+    }
+    .news-h3-Link {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:1122px) {
+    .slideArea {
+        margin-left: 15rem;
+    }
+}
+/***** Responsivo menu header mobile *****/
+@media screen and (max-width:991px) {
+    header {
+        height: auto!important;
+    }
+    .areaConteudo {
+       display: unset;
+    }
 }
