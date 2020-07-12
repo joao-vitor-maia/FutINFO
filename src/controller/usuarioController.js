@@ -9,17 +9,18 @@ exports.cadastrar = async(req,res) => {
         const nome = req.body.nome;
         const email = req.body.email;
         const Senha = req.body.senha;
-        const senhaReserva = req.body.senhaReserva;
+        const SenhaReserva = req.body.senhaReserva;
 
         const usuarioComEmailIgual = await Usuario.find({email:email});
 
         //Validando dados do Usuário e salvando no banco
-        if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
+        if(Object.entries(usuarioComEmailIgual).length > 0){
+            return res.json({message:"users equal"});
+
+        }else if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
         validator.isEmail(email) && sanitize(email,{allowedTags:[], allowedAttributes:{} }) == email && validator.isLength(email,{min:11,max:60}) &&
-        validator.isLength(Senha,{min:2,max:30}) &&
-        validator.isLength(senhaReserva,{min:2,max:60}) &&
-        usuarioComEmailIgual.length == 0
-        ){
+        validator.isLength(Senha,{min:8,max:30}) &&
+        validator.isLength(SenhaReserva,{min:2,max:60}) ){
             const senha = await new Promise((resolve, reject) => {
                 bcrypt.hash(Senha, 10, function(err, hash) {
                     if(err) {
@@ -29,6 +30,16 @@ exports.cadastrar = async(req,res) => {
                     };
                 });  
             });
+            const senhaReserva = await new Promise((resolve, reject) => {
+                bcrypt.hash(SenhaReserva, 10, function(err, hash) {
+                    if(err) {
+                      reject(err)
+                    }else{
+                      resolve(hash)
+                    };
+                });  
+            });
+
             const dados = {
                 nome:nome,
                 email:email,
@@ -47,18 +58,27 @@ exports.cadastrar = async(req,res) => {
     };
 };
 exports.editar = async(req,res) => {
-    const token = req.body.token;
-    const Senha = req.body.senha;
+    try{        
+        
+        const email = req.body.email;
+        const senhaNova = req.body.senhaNova;
+        const senhaReserva = req.body.senhaReserva;
+        
+        const usuario = await Usuario.findOne({email:email});
+        
+        if(usuario == null) { 
+            return res.json({message:"not found"}) 
+        }else{   
+            const senhaIsValid = await bcrypt.compare(senhaReserva,usuario.senhaReserva);
 
-    if(validator.isLength(Senha,{min:2,max:30}) ){
-        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error){
-                return res.json({message:"unauthorized"});
+            if(senhaIsValid == false){
+                return res.json({message:"incorrect password"});    
+            }else if(!validator.isLength(senhaNova,{min:8,max:30})){
+                return res.json({message:"invalid"});
             }else{
-                //Atualizando dados
-                const usuario = await Usuario.findById(decoded.id);
+                
                 const senha = await new Promise((resolve, reject) => {
-                    bcrypt.hash(Senha, 10, function(err, hash) {
+                    bcrypt.hash(senhaNova, 10, function(err, hash) {
                         if(err) {
                           reject(err)
                         }else{
@@ -69,9 +89,11 @@ exports.editar = async(req,res) => {
                 usuario.senha = senha;
                 await usuario.save();
                 return res.json({message:"success"});
-                
             };
-        });
-    };
+        };
+
+   }catch(err){
+        res.json({message:"error"});
+   }
     
 };

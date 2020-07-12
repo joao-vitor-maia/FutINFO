@@ -83,7 +83,7 @@ exports.agendarHorario = async(req,res) => {
         console.log(err)
         return res.json({message:"error"});
     }
-}
+};
 exports.aprovar = async(req,res) => {
     try{
         const token = req.headers["authorization"];
@@ -102,7 +102,7 @@ exports.aprovar = async(req,res) => {
     }catch(err){
         return res.json({message:"error"})
     }
-}
+};
 exports.recusar = async(req,res) => {
     try{
         const token = req.headers["authorization"];
@@ -119,4 +119,4 @@ exports.recusar = async(req,res) => {
     }catch(err){
         return res.json({message:"error"})
     }
-}
+};

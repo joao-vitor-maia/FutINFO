@@ -17,11 +17,12 @@ router.get("/pagina-inicial",pageController.renderHome);
 router.get("/login",pageController.renderLogin);
 router.get("/cadastrar",pageController.renderCadastro);
 router.get("/horarios-reservados",pageController.renderListagemHorarios);
+router.get("/redefinir-senha",pageController.renderRedefinirSenha);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
-router.put("/efetuando-atualizacao-de-senha",usuarioController.editar);
+router.post("/efetuando-atualizacao-de-senha",usuarioController.editar);
 
 //Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);

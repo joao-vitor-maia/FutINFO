@@ -1,4 +1,4 @@
-const usuarios = require("@models/Usuario");
+const Usuario = require("@models/Usuario");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -7,7 +7,7 @@ exports.gerarToken = async (req,res) => {
         const email = req.body.email;
         const senha = req.body.senha;
 
-        const usuario = await usuarios.findOne({email:email});
+        const usuario = await Usuario.findOne({email:email});
         if(usuario == null) {
             return res.json({message:"not found"})
         }else{
@@ -34,7 +34,7 @@ exports.gerarToken = async (req,res) => {
 };
 exports.autorizarUsuario = async (req,res,next) => {
     try{
-        const token = req.headers["Authorization"];
+        const token = req.headers["authorization"];
     
         jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
             if(error){
@@ -49,11 +49,11 @@ exports.autorizarUsuario = async (req,res,next) => {
 };
 exports.autorizarAfiliado = async (req,res,next) => {
     try{
-        if(req.headers["Authorization"] == undefined){
+        if(req.headers["authorization"] == undefined){
             return res.json({message:"unauthorized"});
         };
 
-        const token = req.headers["Authorization"];
+        const token = req.headers["authorization"];
 
         jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
             if(error && decoded.afiliado != true){

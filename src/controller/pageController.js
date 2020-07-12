@@ -39,7 +39,7 @@ exports.renderHome = async (req, res) => {
             message: "error"
         });
     }
-}
+};
 exports.renderLogin = async (req, res) => {
     try {
         res.render("pages/login.handlebars");
@@ -48,7 +48,7 @@ exports.renderLogin = async (req, res) => {
             message: "error"
         });
     }
-}
+};
 exports.renderCadastro = async (req, res) => {
     try {
         res.render("pages/cadastro.handlebars");
@@ -57,7 +57,7 @@ exports.renderCadastro = async (req, res) => {
             message: "error"
         });
     };
-}
+};
 exports.renderListagemHorarios = async (req, res) => {
     try{
         // const token = req.headers["Authorization"];
@@ -96,4 +96,13 @@ exports.renderListagemHorarios = async (req, res) => {
     }catch(err){
         return res.json({message: "error"});
     };
-}
+};
+exports.renderRedefinirSenha = async (req,res) => {
+    try {
+        res.render("pages/redefinirSenha.handlebars");
+    } catch (err) {
+        return res.json({
+            message: "error"
+        });
+    }
+};
