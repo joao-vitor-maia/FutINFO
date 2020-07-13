@@ -44,7 +44,7 @@ header {
 }
 /***** Menu bottom *****/
 .menuMobile_bottom {
-    height: 20vh;
+    height: 12vh;
     background-color: #006FC7;
     font-family: 'Montserrat', sans-serif!important;
 }
@@ -63,18 +63,18 @@ header {
 /***** Opções menu bottom *****/
 .menuItem {
     cursor: pointer;
-    padding: 0px 25px 0px 25px;
+    padding: 5px 25px 0px 25px;
     display: flex;
     flex-direction: column;
 }
 .iconItem {
-    height: 35px;
-    max-height: 35px!important;
+    height: 28px;
+    max-height: 28px!important;
 }
 .textItem {
     margin-top: 1px;
     padding: 4px 0px 0px 0px;
-    font-size: 14.5px;
+    font-size: 12.5px;
 }
 /***** Section *****/
 section {
@@ -297,6 +297,34 @@ footer {
 .liFooter a {
     color: #FFF;
 }
+/***** Menu top slides *****/
+aside {
+    font-family: 'Montserrat', sans-serif;
+    height: 100px;
+    background-color: #DDD;
+    display: flex;
+    justify-content: center;
+}
+.container-aside {
+    flex: 1;
+}
+.titleQuadra-aside {
+    height: 30px;
+    width: 100%;
+    background-color: #011a5f;
+    text-align: center!important;
+}
+.titleAside {
+    color: #FFF;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+.areaQuadra-aside {
+    width: 120px;
+    height: 80px;
+    background-color: #000;
+    margin-left: 6px;
+}
 /***** Responsivo *****/
 /***** Responsivo menu bottom *****/
 @media screen and (min-width:1px) and (max-width: 400px) {
@@ -435,5 +463,24 @@ footer {
     .news {
         width: 405px;
         max-width:405px!important;
+    }
+    .container-footer {
+        flex-direction: column-reverse!important;
+    }
+}
+@media screen and (max-width:576px) {
+    body {
+        padding-top: 100rem;
+        padding-bottom: 5rem;
+    }
+    .list-footer {
+        display: none;
+    }
+    .brand-footer-IMG {
+    width: 7em;
+    height: 4em;
+    }
+    .copyText {
+        line-height: 85px;
     }
 }
