@@ -79,63 +79,51 @@ header {
 /***** Menu top slides*****/
 aside {
     font-family: 'Montserrat', sans-serif;
-    height: 27rem;
+    height: 32rem;
     border: 1.5px solid #011a5f;
     display: flex;
     flex-direction: column!important;
     margin-top: 2px;
 }
-.container-aside {
-    height: 25rem;
-    width: 100%!important;
-}
-/***** Quadras*****/
-.areaQuadra-aside {
-    display: flex;
+.slideTitle-aside {
     width: 100%;
-}
-.quadraArea-aside {
-    padding-top: 10px;
-    max-width: 190px!important;
-    max-height: 10rem!important;
-}
-.quadraimg {
-    max-width: 190px!important;
-}
-.titleQuadra-aside {
     height: 30px;
-    width: 100%;
     background-color: #011a5f;
-    text-align: center;
 }
-.h1Title-aside {
-    line-height: 30px;
-    font-size: 16px;
+.slideArea-aside {
+    margin-top: 10px;
+}
+.p-slideTitle-aside {
+    line-height: 30px!important;
+    text-align: center;
+    font-size: 15px;
     font-weight: 600;
     color: #FFF;
 }
-.h1Quadra-aside {
-    font-size: 14px;
-    font-weight: 600;
+.slideInt-aside {
+    width: auto;
+}
+/***** Nomes slide *****/
+.slideName-aside {
+    margin-top: 7px;
+}
+.p-slideName-aside {
+    font-size: 15px;
+    font-weight: bold;
     color: #040256;
 }
-.quadraTitle-aside {
-    padding-top: 10px;
-}
-.sbtextQuadra-aside {
-    font-weight: 400;
+.p-sbText-slideName-aside {
     color: #040256;
-    font-size: 13px;
+    font-size: 12px;
 }
-.fontbtnPerson {
-    font-size: 11px;
+.btn-aside-person {
+    font-size: 12.5px;
 }
-.btn-fontPerson {
-    font-size: 14px;
+.btn-View {
+    font-size: 15.5px;
 }
 /***** Section *****/
 section {
-    /*height: 34em;*/
     height: auto!important;
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -447,16 +435,9 @@ footer {
      flex-direction: unset;
     }
 }
-/*@media screen and (max-width:965px) {
-    .news {
-        margin-left: 10px;
-        width: 525px;
-        max-width: 525px!important;
-    }
-}*/
 @media screen and (max-width:778px) {
     .news {
-        margin-left: -2px;
+        margin-left: -8px;
         width: 440px;
         max-width: 440px!important;
     }
@@ -479,7 +460,7 @@ footer {
         font-size: 11.6px;
     }
     .dateNews {
-     flex-direction: unset;
+     flex-direction: column;
     }
     .slideArea {
         margin-left: 14.5rem;
@@ -487,15 +468,94 @@ footer {
 }
 @media screen and (max-width:680px) {
     .imgNews {
-    width: 165px;
+        width: 165px;
     }
     .news {
-        width: 405px;
-        max-width:405px!important;
+       width: 425px;
+        max-width:100%;
     }
 @media screen and (max-width:576px) {
     .news {
-        width: 465px;
-        max-width: 465px;
+        width: 500px;
+    }
+    .container-footer {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .copyText {
+        line-height: unset;
+        font-size: 14px;
+    }
+    .brand-footer-IMG {
+        display: none;
+    }
+}
+@media screen and (max-width:444px){
+    .news {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:426px){
+    .brand-footer {
+        align-items: center;
+    }
+    .brand-footer-IMG {
+        display: none;
+    }
+    .copyText {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width:378px){
+    aside {
+        height: 50rem;
+    }
+    .p-slideName-aside{
+        margin-left: 10px;
+    }
+    .p-sbText-slideName-aside {
+        margin-left: 10px;
+    }
+    .btn-aside-person {
+        margin-left: 10px;
+    }
+    .slideArea-aside {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center ;
+    }
+    .slideInt-aside {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        padding:10px 0px 10px 10px;
+    }
+    .btn-View {
+        width: 90%;
+    }
+    .news {
+        width: 100%;
+    }
+    .imgNews {
+        width: 125px;
+    }
+}
+@media screen and (max-width:296px) {
+    .news {
+        width: 100%;
+    }
+    .imgNews {
+        width: 100px;
+    }
+    .h1TitleNews {
+        font-size: 16px;
+    }
+    .sbTitleNews {
+        font-size: 11px;
+        font-style: unset!important;
     }
 }
