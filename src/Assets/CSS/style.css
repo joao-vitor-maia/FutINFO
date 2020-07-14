@@ -76,6 +76,63 @@ header {
     padding: 4px 0px 0px 0px;
     font-size: 14.5px;
 }
+/***** Menu top slides*****/
+aside {
+    font-family: 'Montserrat', sans-serif;
+    height: 27rem;
+    border: 1.5px solid #011a5f;
+    display: flex;
+    flex-direction: column!important;
+    margin-top: 2px;
+}
+.container-aside {
+    height: 23rem;
+    width: 100%!important;
+}
+/***** Quadras*****/
+.areaQuadra-aside {
+    display: flex;
+    width: 100%;
+}
+.quadraArea-aside {
+    padding-top: 10px;
+    max-width: 190px!important;
+    max-height: 10rem!important;
+}
+.quadraimg {
+    max-width: 190px!important;
+}
+.titleQuadra-aside {
+    height: 30px;
+    width: 100%;
+    background-color: #011a5f;
+    text-align: center;
+}
+.h1Title-aside {
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFF;
+}
+.h1Quadra-aside {
+    font-size: 14px;
+    font-weight: 600;
+    color: #040256;
+}
+.quadraTitle-aside {
+    padding-top: 10px;
+}
+.sbtextQuadra-aside {
+    font-weight: 400;
+    color: #040256;
+    font-size: 13px;
+}
+.fontbtnPerson {
+    font-size: 11px;
+}
+.btn-fontPerson {
+    font-size: 15px;
+}
 /***** Section *****/
 section {
     /*height: 34em;*/
@@ -430,10 +487,29 @@ footer {
 }
 @media screen and (max-width:680px) {
     .imgNews {
-    width: 165px;
+        width: 165px;
     }
     .news {
         width: 405px;
         max-width:405px!important;
     }
+     .container-footer {
+        flex-direction: column-reverse;
+    }
+    .brand-footer-IMG {
+        height: 4rem;
+    }
+    .copyText {
+        line-height: 85px;
+    }
+    .liFooter li {
+        font-size: 14px;
+    }
+@media screen and (max-width:576px) {
+    .news {
+        width: 465px;
+        max-width: 465px;
+    }
+}
+@media screen and (max-width:421px) {
 }
