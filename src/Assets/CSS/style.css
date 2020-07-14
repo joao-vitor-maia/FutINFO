@@ -79,7 +79,7 @@ header {
 /***** Menu top slides*****/
 aside {
     font-family: 'Montserrat', sans-serif;
-    height: 32rem;
+    height: 28.5rem;
     border: 1.5px solid #011a5f;
     display: flex;
     flex-direction: column!important;
@@ -101,7 +101,7 @@ aside {
     color: #FFF;
 }
 .slideInt-aside {
-    width: auto;
+   
 }
 /***** Nomes slide *****/
 .slideName-aside {
@@ -510,7 +510,7 @@ footer {
 
 @media screen and (max-width:378px){
     aside {
-        height: 50rem;
+        height: 48rem;
     }
     .p-slideName-aside{
         margin-left: 10px;
@@ -535,13 +535,23 @@ footer {
         padding:10px 0px 10px 10px;
     }
     .btn-View {
-        width: 90%;
+        width: 100%;
     }
     .news {
         width: 100%;
     }
     .imgNews {
         width: 125px;
+    }
+    .h1TitleNews {
+        font-size: 18px;
+    }
+    .sbTitleNews {
+        font-size: 11px;
+        font-style: unset!important;
+    }
+    .dateNews {
+        flex-direction: unset;
     }
 }
 @media screen and (max-width:296px) {
@@ -557,5 +567,8 @@ footer {
     .sbTitleNews {
         font-size: 11px;
         font-style: unset!important;
+    }
+    .dateNews {
+        flex-direction: column;
     }
 }
