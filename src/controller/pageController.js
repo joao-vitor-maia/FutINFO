@@ -1,3 +1,4 @@
+const handlebars = require("express-handlebars");
 const Usuario = require("@models/Usuario");
 const Horario = require("@models/Horario");
 const Quadra = require("@models/Quadra");
@@ -8,36 +9,37 @@ const jwt = require("jsonwebtoken");
 
 exports.renderHome = async (req, res) => {
     try {
-        const quadras = await Quadra.find();
-        const noticias = await Noticia.find().sort({
-            divisao: 1
-        });
-        const time1Divisao = await Time.find({
-            divisao: 1
-        });
-        const time2Divisao = await Time.find({
-            divisao: 2
-        });
-        const time3Divisao = await Time.find({
-            divisao: 3
-        });
-        const time4Divisao = await Time.find({
-            divisao: 4
-        });
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
+        const limit = 3;
+        const skip = (pageAtual*limit)-limit;
+
+        //Consultas
+        const quadras = await Quadra.find().sort({data: -1}).limit(limit);
+        const noticias = await Noticia.find().sort({data: -1}).skip(skip).limit(limit);
+        
+        const noticiasTotal = await Noticia.find();
+        const pagesTotal = Math.ceil(noticiasTotal.length/limit );
+
+        const time1Divisao = await Time.find({divisao: 1});
+        const time2Divisao = await Time.find({divisao: 2});
+        const time3Divisao = await Time.find({divisao: 3});
+        const time4Divisao = await Time.find({divisao: 4});
+
 
         res.render("pages/index", {
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal
+            },
             quadras: quadras.map(quadras => quadras.toJSON()),
-            noticias: noticias.map(noticias => noticias.toJSON()),
-            time1Divisao: time1Divisao.map(times => times.toJSON()),
-            time2Divisao: time2Divisao.map(times => times.toJSON()),
-            time3Divisao: time3Divisao.map(times => times.toJSON()),
-            time4Divisao: time4Divisao.map(times => times.toJSON())
+            noticias: noticias.map(noticias => {
+                noticias.data.data = fns.format(noticias.data.data, "dd/MM/yyyy");
+                return noticias.toJSON();
+            })
         });
-    } catch (err) {
-        console.log(err)
-        return res.json({
-            message: "error"
-        });
+    }catch (err){
+        return res.json({message: "error"});
     }
 };
 exports.renderLogin = async (req, res) => {

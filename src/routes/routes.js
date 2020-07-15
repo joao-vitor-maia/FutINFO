@@ -14,6 +14,7 @@ router.get("/autorizar",auth.autorizarUsuario)
 
 //Páginas
 router.get("/pagina-inicial",pageController.renderHome);
+router.get("/pagina-inicial/:page",pageController.renderHome);
 router.get("/login",pageController.renderLogin);
 router.get("/cadastrar",pageController.renderCadastro);
 router.get("/horarios-reservados",pageController.renderListagemHorarios);
