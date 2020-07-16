@@ -476,6 +476,9 @@ footer {
         max-width:100%;
     }
 @media screen and (max-width:576px) {
+    aside {
+        height: 30.5rem;
+    }
     .news {
         width: 500px;
     }
@@ -552,8 +555,16 @@ footer {
         font-style: unset!important;
     }
     .dateNews {
-        flex-direction: unset;
+        flex-direction: column;
     }
+    .p-slideName-aside {
+        font-size: 15.5px;
+    }
+    .p-sbText-slideName-aside {
+        color: #040256;
+        font-size: 11px;
+    }
+    
 }
 @media screen and (max-width:296px) {
     .news {
