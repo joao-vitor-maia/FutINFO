@@ -21,8 +21,8 @@ const noticia = new Schema({
         required:true
     },
     data: {
-        type:String,
-        default:fns.format(new Date(), "dd/MM/yyyy")
+        type:Object,
+        default:{data:new Date()}
     }
 });
 
