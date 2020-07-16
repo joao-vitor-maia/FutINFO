@@ -12,13 +12,14 @@ const timeController = require("@controller/timeController");
 //Auth
 router.get("/autorizar",auth.autorizarUsuario)
 
-//Páginas
+//Páginas 
 router.get("/pagina-inicial",pageController.renderHome);
 router.get("/pagina-inicial/:page",pageController.renderHome);
 router.get("/login",pageController.renderLogin);
 router.get("/cadastrar",pageController.renderCadastro);
 router.get("/horarios-reservados",pageController.renderListagemHorarios);
 router.get("/redefinir-senha",pageController.renderRedefinirSenha);
+router.get("/registrar-quadra",pageController.renderRegistrarQuadra);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);
