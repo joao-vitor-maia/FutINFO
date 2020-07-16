@@ -1,4 +1,3 @@
-const handlebars = require("express-handlebars");
 const Usuario = require("@models/Usuario");
 const Horario = require("@models/Horario");
 const Quadra = require("@models/Quadra");
@@ -107,4 +106,11 @@ exports.renderRedefinirSenha = async (req,res) => {
             message: "error"
         });
     }
+};
+exports.renderRegistrarQuadra = async (req,res) => {
+    try{
+        res.render("pages/registrarQuadra");
+    }catch(err){
+        return res.json({message:"error"});
+    };
 };

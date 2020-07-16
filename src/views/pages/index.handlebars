@@ -236,7 +236,7 @@
             </div>
             <!------- Slide ------>
             <div class="slideConteudo">
-              <div id="first-slide" class="carousel slide" data-ride="carousel">
+              <div id="slide{{this._id}}" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner carouselPerson">
                   <div class="carousel-item active">
                     <img class="d-block w-100" src="/Images/Slide/img-1.jpg" alt="Primeiro Slide">
@@ -249,11 +249,11 @@
                   </div>
                 </div>
                 <!------- Controladores slide ------>
-                <a class="carousel-control-prev" href="#first-slide" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#slide{{this._id}}" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Anterior</span>
                 </a>
-                <a class="carousel-control-next" href="#first-slide" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#slide{{this._id}}" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Próximo</span>
                 </a>
