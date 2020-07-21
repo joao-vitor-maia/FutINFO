@@ -127,7 +127,7 @@ aside {
 }
 /***** Section *****/
 section {
-    height: auto!important;
+    height: 1050px;
     font-family: 'Montserrat', sans-serif;
     display: flex;
 }

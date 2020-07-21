@@ -76,7 +76,8 @@
                     <img class="d-block img-person-mobile w-100 h-75" src="../Images/Slide/img-2.jpg" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block img-person-mobile  w-100 h-75" src="../Images/Slide/img-3.jpg" alt="Second slide">
+                    <img class="d-block img-person-mobile  w-100 h-75" src="../Images/Slide/img-3.jpg"
+                      alt="Second slide">
                   </div>
                   <div class="carousel-item">
                     <img class="d-block img-person-mobile w-100 h-75" src="../Images/Slide/img-2.jpg" alt="Third slide">
@@ -110,14 +111,14 @@
   <section class="py-3">
     <div class="container-fluid">
       <div class="row areaConteudo">
-              <!------- Área tabela ------>
+        <!------- Área tabela ------>
         <div class="col-3 areaContainer d-none d-none d-xl-block">
-            <div class="tableTitle text-center">
-                    <div class="areaGeral">
+          <div class="tableTitle text-center">
+            <div class="areaGeral">
               <h3 class="h3-title">1º Divisão</h3>
               <!------- Tabela ------>
               <div class="table-area">
-              <table class="table table-bordered">
+                <table class="table table-bordered">
                   <thead>
                     <tr>
                       <th class="thTime" scope="col">Time</th>
@@ -141,143 +142,153 @@
                       <td>{{this.derrota}}</td>
                     </tr>
                   </tbody>
+              </div>
+              {{/each}}
+              </table>
+            </div>
+            <!------- Texto ver tabela ------>
+            <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >>
+                <div class="tableTitle text-center">
+                  <div class="areaGeral">
+                    <h3 class="h3-title">2º Divisão</h3>
+                    <!------- Tabela ------>
+                    <div class="table-area">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th class="thTime" scope="col">Time</th>
+                            <th scope="col">J</th>
+                            <th scope="col">P</th>
+                            <th scope="col">V</th>
+                            <th scope="col">D</th>
+                          </tr>
+                        </thead>
+                        {{#each time2Divisao}}
+                        <tbody>
+                          <tr>
+                            <td class="tdTime w-100">
+                              {{this.divisao}}º -
+                              <img width="13" src="/Images/TimesPNG/flamengo.png" />
+                              <span class="timeText">{{this.nome}}</span>
+                            </td>
+                            <td>{{this.jogo}}</td>
+                            <td>{{this.ponto}}</td>
+                            <td>{{this.vitoria}}</td>
+                            <td>{{this.derrota}}</td>
+                          </tr>
+                        </tbody>
+                    </div>
+                    {{/each}}
+                    </table>
+                  </div>
+                  <!------- Texto ver tabela ------>
+                  <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
                 </div>
-                {{/each}}
-              </table>
-              </div>
-              <!------- Texto ver tabela ------>
-              <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
-            </div>
-              <!------- 2º tabela ------>
-             <div class="areaGeral">
-            <div class="tableTitle text-center">
-              <h3 class="h3-title">1º Divisão</h3>
-              <!------- Tabela ------>
-              <div class="table-area">
-              <table class="table table-bordered">
-                <thead>
-                  <tr> 
-                    <th class="thTime" scope="col">Time</th>
-                    <th scope="col">J</th>
-                    <th scope="col">P</th>
-                    <th scope="col">V</th>
-                    <th scope="col">D</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="tdTime w-100">
-                      1º -
-                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
-                      <span class="timeText">Bom Retiro</span>
-                    </td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr>
-                </tbody>
-                <!------- 2º Time da tabela ------>
-                <tbody>
-                  <tr>
-                    <td class="tdTime w-100">
-                      1º -
-                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
-                      <span class="timeText">Elite F.C</span>
-                    </td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr>
-                </tbody>
-                <!------- 3º Time da tabela ------>
-                <tbody>
-                  <tr>
-                    <td class="tdTime w-100">
-                      1º -
-                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
-                      <span class="timeText">Atlético Z.N</span>
-                    </td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                    <td>3</td>
-                  </tr>
-                </tbody>
-              </table>
-              </div>
-              <!------- Texto ver tabela ------>
-              <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
-            </div>
+                <div class="tableTitle text-center">
+                  <div class="areaGeral">
+                    <h3 class="h3-title">3º Divisão</h3>
+                    <!------- Tabela ------>
+                    <div class="table-area">
+                      <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            <th class="thTime" scope="col">Time</th>
+                            <th scope="col">J</th>
+                            <th scope="col">P</th>
+                            <th scope="col">V</th>
+                            <th scope="col">D</th>
+                          </tr>
+                        </thead>
+                        {{#each time3Divisao}}
+                        <tbody>
+                          <tr>
+                            <td class="tdTime w-100">
+                              {{this.divisao}}º -
+                              <img width="13" src="/Images/TimesPNG/flamengo.png" />
+                              <span class="timeText">{{this.nome}}</span>
+                            </td>
+                            <td>{{this.jogo}}</td>
+                            <td>{{this.ponto}}</td>
+                            <td>{{this.vitoria}}</td>
+                            <td>{{this.derrota}}</td>
+                          </tr>
+                        </tbody>
+                    </div>
+                    {{/each}}
+                    </table>
+                  </div>
+                  <!------- Texto ver tabela ------>
+                  <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
+                </div>
+              </a></h1>
+          </div>
 
-            </div>
         </div>
       </div>
-        <!------- News ------>
-        <div class="col-xl-5 col-lg-5 col-sm-4 col-xs-12">
-          {{#each noticias}}
-          <div class="news d-flex">
-            <div class="newsImg">
-              <img class="imgNews" src="/Images/Slide/img-1.jpg">
+      <!------- News ------>
+      <div class="col-xl-5 col-lg-5 col-sm-4 col-xs-12">
+        {{#each noticias}}
+        <div class="news d-flex">
+          <div class="newsImg">
+            <img class="imgNews" src="/Images/Slide/img-1.jpg">
+          </div>
+          <div class="newsText text-center w-100">
+            <h1 class="h1TitleNews">{{this.manchete}}</h1>
+            <p class="sbTitleNews">
+              {{this.conteudo}}
+            </p>
+            <div class="dateNews d-flex mt-1">
+              <div class="textDate">
+                <img width="15" class="calendarIMG" src="/Images/News/calendar.svg">
+                {{this.data.data}}
+              </div>
+              <div class="dateNews-links mt-2">
+                <h3 class="news-h3-Link"><a href="#">Ver classificação atualizada >></a></h3>
+              </div>
             </div>
-            <div class="newsText text-center w-100">
-              <h1 class="h1TitleNews">{{this.manchete}}</h1>
-              <p class="sbTitleNews">
-                {{this.conteudo}}
-              </p>
-              <div class="dateNews d-flex mt-1">
-                <div class="textDate">
-                  <img width="15" class="calendarIMG" src="/Images/News/calendar.svg">
-                  {{this.data.data}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <!------- Área do slide ------>
+      <div class="col-xl-3 col-lg-4 col-sm d-none d-sm-block slideArea">
+        <div class="slideText mt-2 text-center">
+          <h3 class="h3slideText">Quadras disponíveis</h3>
+        </div>
+        <div class="CarouselArea">
+          {{#each quadras}}
+          <div class="nomeQuadra">
+            <h3 class="titleQuadra">{{this.nome}}</h3>
+            <p class="pQuadra">{{this.rua}}, {{this.numeroRua}}</p>
+          </div>
+          <!------- Slide ------>
+          <div class="slideConteudo">
+            <div id="slide{{this._id}}" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner carouselPerson">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="/Images/Slide/img-1.jpg" alt="Primeiro Slide">
                 </div>
-                <div class="dateNews-links mt-2">
-                  <h3 class="news-h3-Link"><a href="#">Ver classificação atualizada >></a></h3>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="/Images/Slide/img-2.jpg" alt="Segundo Slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="/Images/Slide/img-3.jpg" alt="Terceiro Slide">
                 </div>
               </div>
+              <!------- Controladores slide ------>
+              <a class="carousel-control-prev" href="#slide{{this._id}}" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+              </a>
+              <a class="carousel-control-next" href="#slide{{this._id}}" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+              </a>
             </div>
           </div>
           {{/each}}
         </div>
-        <!------- Área do slide ------>
-        <div class="col-xl-3 col-lg-4 col-sm d-none d-sm-block slideArea">
-          <div class="slideText mt-2 text-center">
-            <h3 class="h3slideText">Quadras disponíveis</h3>
-          </div>
-          <div class="CarouselArea">
-            {{#each quadras}}
-            <div class="nomeQuadra">
-              <h3 class="titleQuadra">{{this.nome}}</h3>
-              <p class="pQuadra">{{this.rua}}, {{this.numeroRua}}</p>
-            </div>
-            <!------- Slide ------>
-            <div class="slideConteudo">
-              <div id="slide{{this._id}}" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner carouselPerson">
-                  <div class="carousel-item active">
-                    <img class="d-block w-100" src="/Images/Slide/img-1.jpg" alt="Primeiro Slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="/Images/Slide/img-2.jpg" alt="Segundo Slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="/Images/Slide/img-3.jpg" alt="Terceiro Slide">
-                  </div>
-                </div>
-                <!------- Controladores slide ------>
-                <a class="carousel-control-prev" href="#slide{{this._id}}" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Anterior</span>
-                </a>
-                <a class="carousel-control-next" href="#slide{{this._id}}" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Próximo</span>
-                </a>
-              </div>
-            </div>
-            {{/each}}
-          </div>
-        </div>
+      </div>
   </section>
   <!------- Article paginação ------>
   <article class="d-flex align-items-center justify-content-center">
@@ -337,4 +348,4 @@
   <script src="https://kit.fontawesome.com/fa9fd24602.js" crossorigin="anonymous"></script>
 </body>
 
- </html>
+</html>

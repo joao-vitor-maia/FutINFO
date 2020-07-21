@@ -38,7 +38,7 @@ exports.renderHome = async (req, res) => {
             }),
             time1Divisao:time1Divisao.map(time => time.toJSON()),
             time2Divisao:time2Divisao.map(time => time.toJSON()),
-            time3Divisao:time3Divisao.map(time => time.toJSON()),
+            time3Divisao:time3Divisao.map(time => time.toJSON()),  
             time4Divisao:time4Divisao.map(time => time.toJSON()),
         });
     }catch (err){
