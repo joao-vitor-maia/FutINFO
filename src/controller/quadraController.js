@@ -7,6 +7,7 @@ const ImagemQuadra = require("@models/ImagemQuadra");
 exports.salvarQuadra = async (req,res) => {
     try{
         const nome = req.body.nome; 
+        const esporte = req.body.esporte;   
         const rua = req.body.rua; 
         const cep = req.body.cep; 
         const bairro = req.body.bairro; 
@@ -17,6 +18,7 @@ exports.salvarQuadra = async (req,res) => {
         
         //Validação
         if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome && Object.entries(quadraComNomeIgual).length == 0 &&
+        validator.isLength(esporte,{min:2,max:60}) && sanitize(esporte,{allowedTags:[], allowedAttributes:{} }) == esporte &&
         validator.isLength(rua,{min:2,max:60}) && sanitize(rua,{allowedTags:[], allowedAttributes:{} }) == rua &&
         validator.isLength(cep,{min:8,max:9}) && sanitize(cep,{allowedTags:[], allowedAttributes:{} }) == cep && /[0-9]{5}-[0-9]{3}/.test(cep) &&
         validator.isLength(bairro,{min:2,max:60}) && sanitize(bairro,{allowedTags:[], allowedAttributes:{} }) == bairro &&
@@ -31,6 +33,7 @@ exports.salvarQuadra = async (req,res) => {
 
                     const dadosQuadra = {
                         nome:nome,
+                        esporte:esporte,
                         rua:rua,
                         numeroRua:numeroRua,
                         cep:cep,
