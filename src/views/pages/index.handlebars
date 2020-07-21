@@ -73,13 +73,13 @@
               <div id="carousel-one" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="d-block w-100 h-75" src="../Images/Slide/img-2.jpg" alt="First slide">
+                    <img class="d-block img-person-mobile w-100 h-75" src="../Images/Slide/img-2.jpg" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100 h-75" src="../Images/Slide/img-3.jpg" alt="Second slide">
+                    <img class="d-block img-person-mobile  w-100 h-75" src="../Images/Slide/img-3.jpg" alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100 h-75" src="../Images/Slide/img-2.jpg" alt="Third slide">
+                    <img class="d-block img-person-mobile w-100 h-75" src="../Images/Slide/img-2.jpg" alt="Third slide">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carousel-one" role="button" data-slide="prev">
@@ -105,42 +105,18 @@
     <div class="d-flex justify-content-center mt-4">
       <button type="button" class="btn btn-primary btnView">Ver todas as quadras >></button>
     </div>
-
   </aside>
-  <!------- Menu bottom -----
-    <div class="menuMobile_bottom fixed-bottom d-block d-sm-none d-md-none d-lg-none">
-        <div class="menuArea">
-            <div class="optionsContainer d-flex justify-content-around align-items-center">
-                <div class="menuItem text-center">
-                    <img class="iconItem" src="/Images/Menu-bottom/home.svg">
-                    <p class="textItem">Início</p>
-                </div>
-                 <div class="menuItem text-center">
-                    <img class="iconItem" src="/Images/Menu-bottom/artilheiro.svg">
-                    <p class="textItem">Artilheiros</p>
-                </div>
-                
-                 <div class="menuItem text-center">
-                    <img class="iconItem" src="/Images/Menu-bottom/quadra.svg">
-                    <p class="textItem">Quadras</p>
-                </div>
-                <div class="menuItem text-center">
-                    <img class="iconItem" src="/Images/Menu-bottom/classificacao.svg">
-                    <p class="textItem">Classificação</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    -->
   <!------- Section ------>
   <section class="py-3">
     <div class="container-fluid">
       <div class="row areaConteudo">
+              <!------- Área tabela ------>
         <div class="col-3 areaContainer d-none d-none d-xl-block">
-          <div class="tableContainer">
             <div class="tableTitle text-center">
+                    <div class="areaGeral">
               <h3 class="h3-title">1º Divisão</h3>
               <!------- Tabela ------>
+              <div class="table-area">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -193,11 +169,76 @@
                   </tr>
                 </tbody>
               </table>
+              </div>
               <!------- Texto ver tabela ------>
               <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
             </div>
-          </div>
+              <!------- 2º tabela ------>
+             <div class="areaGeral">
+            <div class="tableTitle text-center">
+              <h3 class="h3-title">1º Divisão</h3>
+              <!------- Tabela ------>
+              <div class="table-area">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th class="thTime" scope="col">Time</th>
+                    <th scope="col">J</th>
+                    <th scope="col">P</th>
+                    <th scope="col">V</th>
+                    <th scope="col">D</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="tdTime w-100">
+                      1º -
+                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
+                      <span class="timeText">Bom Retiro</span>
+                    </td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+                <!------- 2º Time da tabela ------>
+                <tbody>
+                  <tr>
+                    <td class="tdTime w-100">
+                      1º -
+                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
+                      <span class="timeText">Elite F.C</span>
+                    </td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+                <!------- 3º Time da tabela ------>
+                <tbody>
+                  <tr>
+                    <td class="tdTime w-100">
+                      1º -
+                      <img width="13" src="/Images/TimesPNG/flamengo.png" />
+                      <span class="timeText">Atlético Z.N</span>
+                    </td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              <!------- Texto ver tabela ------>
+              <h1 class="h1-viewTable"><a href="#classificacao">Ver tabela completa >></a></h1>
+            </div>
+
+            </div>
         </div>
+      </div>
         <!------- News ------>
         <div class="col-xl-5 col-lg-5 col-sm-4 col-xs-12">
           {{#each noticias}}

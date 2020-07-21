@@ -122,6 +122,9 @@ aside {
 .btn-View {
     font-size: 15.5px;
 }
+.img-person-mobile {
+    width: 2px;
+}
 /***** Section *****/
 section {
     height: auto!important;
@@ -142,11 +145,6 @@ table, tr, td, th, thead {
     border: 3px solid #005496;
     border-bottom-color: #005496;
 }
-.tableContainer {
-    width: 308px;
-    max-width: 308px!important;
-    border:2px solid #011a5f;
-}
 .table thead th {
     vertical-align: bottom;
     border-bottom-width: 2px;
@@ -163,6 +161,9 @@ table, tr, td, th, thead {
     font-size: 17px;
     line-height: 35px;
     color: #FFF;
+}
+.areaGeral {
+    margin-bottom: 20px;
 }
 .thTime {
     width: 50%;
@@ -477,7 +478,7 @@ footer {
     }
 @media screen and (max-width:576px) {
     aside {
-        height: 30.5rem;
+        height: 32.5rem;
     }
     .news {
         width: 500px;
@@ -514,7 +515,7 @@ footer {
 
 @media screen and (max-width:378px){
     aside {
-        height: 34rem;
+        height: 535px;
     }
     .p-slideName-aside{
         margin-left: 10px;
@@ -583,4 +584,19 @@ footer {
     .dateNews {
         flex-direction: column;
     }
+}
+@media screen and (max-width:250px) {
+    aside {
+        height: 905px;
+    }
+    aside img {
+        max-width: 200px;
+    }
+    .slideInt-aside {
+        display: unset;
+    }
+    .h1TitleNews {
+        display: none!important;
+    }
+
 }
