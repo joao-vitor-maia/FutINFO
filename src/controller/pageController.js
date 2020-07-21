@@ -35,7 +35,11 @@ exports.renderHome = async (req, res) => {
             noticias: noticias.map(noticias => {
                 noticias.data.data = fns.format(noticias.data.data, "dd/MM/yyyy");
                 return noticias.toJSON();
-            })
+            }),
+            time1Divisao:time1Divisao.map(time => time.toJSON()),
+            time2Divisao:time2Divisao.map(time => time.toJSON()),
+            time3Divisao:time3Divisao.map(time => time.toJSON()),
+            time4Divisao:time4Divisao.map(time => time.toJSON()),
         });
     }catch (err){
         return res.json({message: "error"});
@@ -59,7 +63,7 @@ exports.renderCadastro = async (req, res) => {
         });
     };
 };
-exports.renderListagemHorarios = async (req, res) => {
+exports.renderHorarioAfiliado = async (req, res) => {
     try{
         // const token = req.headers["Authorization"];
 
@@ -112,5 +116,44 @@ exports.renderRegistrarQuadra = async (req,res) => {
         res.render("pages/registrarQuadra");
     }catch(err){
         return res.json({message:"error"});
+    };
+};
+exports.renderHorarioUsuario = async (req, res) => {
+    try{
+        // const token = req.headers["Authorization"];
+
+        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
+        //     if (error) {
+        //         res.redirect("/login");
+        //     } else {
+                //Pegando lista de horarios 
+                const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
+
+                const horariosAprovados = await Horario.find({aprovado: true}).populate("usuarioId").sort({data: "-1"});
+
+                res.render("pages/HorarioUsuario", {
+                    horarioPendente: horariosPendentes.map(horario => {
+                        //Formatando data para hora
+                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+
+                        horario.horarioIntervalo.start = horaInicial;
+                        horario.horarioIntervalo.end = horaFinal;
+                        return horario.toJSON();
+                    }),
+                    horarioAprovado: horariosAprovados.map(horario => {
+                        //Formatando data para hora
+                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+
+                        horario.horarioIntervalo.start = horaInicial;
+                        horario.horarioIntervalo.end = horaFinal;
+                        return horario.toJSON();
+                    })
+                });
+        //     };
+        // });
+    }catch(err){
+        return res.json({message: "error"});
     };
 };

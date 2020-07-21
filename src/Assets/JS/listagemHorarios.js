@@ -13,7 +13,7 @@ async function aprovar(){
     const resultado = await resultadoObject.json();
         
     if(resultado.message == "error"){
-        alert("Ocorreu um erro ao efetuar cadastro");
+        alert("Ocorreu um erro ao aprovar horário");
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
     }else{
@@ -35,7 +35,7 @@ async function recusar(){
     const resultado = await resultadoObject.json();
         
     if(resultado.message == "error"){
-        alert("Ocorreu um erro ao efetuar cadastro");
+        alert("Ocorreu um erro ao recusar horário");
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
     }else{

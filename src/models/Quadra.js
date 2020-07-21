@@ -14,6 +14,12 @@ const quadra = new Schema({
         max:60,
         required:true
     },
+    esporte: {
+        type:String,
+        min:2,
+        max:60,
+        required:true
+    },
     rua: {
         type:String,
         min:2,
