@@ -177,6 +177,10 @@ table, tr, td, th, thead {
     font-size: 17px;
     font-weight: 600;
 }
+td , th {
+    font-size: 12.5px;
+    text-align: left;
+}
 /***** Notícias *****/
 .news {
     width: 550px;
