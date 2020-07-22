@@ -160,8 +160,24 @@ exports.renderHorarioAfiliado = async (req, res) => {
     };
 };
 exports.renderHorarioSolicitado = async (req, res) => {
-    try {
-        res.render("pages/Afiliado/afiliado.handlebars");
+    try{
+        // const token = req.headers["Authorization"];
+
+        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
+        //     if (error || decoded.afiliado != true) {
+        //         res.redirect("/login");
+        //     }else {
+                //    peguei todas as quadras do usuario, peguei os horarios delas (ou seja todos os horarios solicitados)
+                //    const quadras = await Quadra.find({_id:"decoded.id"});
+                //    const horarios = quadras.map(quadra => {
+                //         return await Horario.find({quadraId:quadra._id})
+                //    });
+                const horarios = await Horario.find().sort({data:1}).populate("quadraId");
+                res.render("pages/Afiliado/afiliado.handlebars",{
+                    horarios:horarios.map(horario => horario.toJSON())
+                });
+        //     };
+        // }); 
     } catch (err) {
         return res.json({
             message: "error"
