@@ -15,11 +15,14 @@ router.get("/autorizar",auth.autorizarUsuario)
 //Páginas 
 router.get("/pagina-inicial",pageController.renderHome);
 router.get("/pagina-inicial/:page",pageController.renderHome);
-router.get("/login",pageController.renderLogin);
-router.get("/cadastrar",pageController.renderCadastro);
-router.get("/horarios-reservados",pageController.renderHorarioUsuario);
-router.get("/redefinir-senha",pageController.renderRedefinirSenha);
-router.get("/registrar-quadra",pageController.renderRegistrarQuadra);
+//Usuario
+router.get("/usuario/login",pageController.renderLogin);
+router.get("/usuario/cadastrar",pageController.renderCadastro);
+router.get("/usuario/horarios-reservados",pageController.renderHorarioUsuario);
+router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
+//Afiliado
+router.get("/afiliado/registrar-quadra",pageController.renderRegistrarQuadra);
+router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);

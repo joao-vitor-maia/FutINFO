@@ -45,9 +45,49 @@ exports.renderHome = async (req, res) => {
         return res.json({message: "error"});
     }
 };
+//Usuario
+exports.renderHorarioUsuario = async (req, res) => {
+    try{
+        // const token = req.headers["Authorization"];
+
+        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
+        //     if (error) {
+        //         res.redirect("/login");
+        //     } else {
+                //Pegando lista de horarios 
+                const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
+
+                const horariosAprovados = await Horario.find({aprovado: true}).populate("usuarioId").sort({data: "-1"});
+
+                res.render("pages/Usuario/HorarioUsuario", {
+                    horarioPendente: horariosPendentes.map(horario => {
+                        //Formatando data para hora
+                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+
+                        horario.horarioIntervalo.start = horaInicial;
+                        horario.horarioIntervalo.end = horaFinal;
+                        return horario.toJSON();
+                    }),
+                    horarioAprovado: horariosAprovados.map(horario => {
+                        //Formatando data para hora
+                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+
+                        horario.horarioIntervalo.start = horaInicial;
+                        horario.horarioIntervalo.end = horaFinal;
+                        return horario.toJSON();
+                    })
+                });
+        //     };
+        // });
+    }catch(err){
+        return res.json({message: "error"});
+    };
+};
 exports.renderLogin = async (req, res) => {
     try {
-        res.render("pages/login.handlebars");
+        res.render("pages/Usuario/login.handlebars");
     } catch (err) {
         return res.json({
             message: "error"
@@ -56,11 +96,28 @@ exports.renderLogin = async (req, res) => {
 };
 exports.renderCadastro = async (req, res) => {
     try {
-        res.render("pages/cadastro.handlebars");
+        res.render("pages/Usuario/cadastro.handlebars");
     } catch (err) {
         return res.json({
             message: "error"
         });
+    };
+};
+exports.renderRedefinirSenha = async (req,res) => {
+    try {
+        res.render("pages/Usuario/redefinirSenha.handlebars");
+    } catch (err) {
+        return res.json({
+            message: "error"
+        });
+    }
+};
+//Afiliado
+exports.renderRegistrarQuadra = async (req,res) => {
+    try{
+        res.render("pages/registrarQuadra");
+    }catch(err){
+        return res.json({message:"error"});
     };
 };
 exports.renderHorarioAfiliado = async (req, res) => {
@@ -102,58 +159,12 @@ exports.renderHorarioAfiliado = async (req, res) => {
         return res.json({message: "error"});
     };
 };
-exports.renderRedefinirSenha = async (req,res) => {
+exports.renderHorarioSolicitado = async (req, res) => {
     try {
-        res.render("pages/redefinirSenha.handlebars");
+        res.render("pages/Afiliado/afiliado.handlebars");
     } catch (err) {
         return res.json({
             message: "error"
         });
     }
-};
-exports.renderRegistrarQuadra = async (req,res) => {
-    try{
-        res.render("pages/registrarQuadra");
-    }catch(err){
-        return res.json({message:"error"});
-    };
-};
-exports.renderHorarioUsuario = async (req, res) => {
-    try{
-        // const token = req.headers["Authorization"];
-
-        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
-        //     if (error) {
-        //         res.redirect("/login");
-        //     } else {
-                //Pegando lista de horarios 
-                const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
-
-                const horariosAprovados = await Horario.find({aprovado: true}).populate("usuarioId").sort({data: "-1"});
-
-                res.render("pages/HorarioUsuario", {
-                    horarioPendente: horariosPendentes.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
-
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    }),
-                    horarioAprovado: horariosAprovados.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
-
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    })
-                });
-        //     };
-        // });
-    }catch(err){
-        return res.json({message: "error"});
-    };
 };
