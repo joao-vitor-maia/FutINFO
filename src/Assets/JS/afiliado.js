@@ -1,5 +1,5 @@
 async function aprovar(){
-    const idHorario = event.target.value;
+    const idHorario = event.target.id;
 
     const resultadoObject = await fetch("/efetuando-aprovar-horario",{
         method:"POST",
@@ -17,11 +17,12 @@ async function aprovar(){
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
     }else{
-        location.href = "/horarios-reservados";
+        location.href = "/afiliado/horarios-solicitados";
     };
 };
 async function recusar(){
-    const idHorario = event.target.value;
+    const idHorario = event.target.id;
+    alert(idHorario)
 
     const resultadoObject = await fetch("/efetuando-recusar-horario",{
         method:"POST",
@@ -39,6 +40,6 @@ async function recusar(){
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
     }else{
-        location.href = "/horarios-reservados";
+        location.href = "/afiliado/horarios-solicitados";
     };
 };

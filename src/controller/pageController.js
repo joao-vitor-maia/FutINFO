@@ -172,13 +172,21 @@ exports.renderHorarioSolicitado = async (req, res) => {
                 //    const horarios = quadras.map(quadra => {
                 //         return await Horario.find({quadraId:quadra._id})
                 //    });
-                const horarios = await Horario.find().sort({data:1}).populate("quadraId");
+                const horarios = await Horario.find({aprovado:false}).sort({data:1}).populate("quadraId usuarioId");
                 res.render("pages/Afiliado/afiliado.handlebars",{
-                    horarios:horarios.map(horario => horario.toJSON())
+                    //Formatando hoario
+                    horarios:horarios.map(horario => {
+                        horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
+                        horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
+                        return horario.toJSON();
+                    }),
+                    horariosLength:horarios.length
+
                 });
         //     };
         // }); 
     } catch (err) {
+        console.log(err)
         return res.json({
             message: "error"
         });
