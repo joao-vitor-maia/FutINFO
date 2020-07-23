@@ -84,7 +84,7 @@ nav ul {
 }
 /***** Main *****/
 main {
-    height: 300vh;
+    height:220vh;
     font-family: 'Reem Kufi', sans-serif;
 }
 .main-area {
@@ -183,7 +183,7 @@ footer {
         flex-direction: column;
     }
     main {
-        height: 250vh;
+        height: 390vh;
     }
     .card-person {
         height: 23em;
