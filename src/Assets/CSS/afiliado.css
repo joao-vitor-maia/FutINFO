@@ -84,7 +84,7 @@ nav ul {
 }
 /***** Main *****/
 main {
-    height:220vh;
+    height:auto;
     font-family: 'Reem Kufi', sans-serif;
 }
 .main-area {
@@ -107,6 +107,7 @@ main {
     justify-content: center;
     align-items: center;
     flex: 1;
+    flex-wrap:wrap;
 }
 .title-day {
     font-family: 'Reem Kufi', sans-serif;
