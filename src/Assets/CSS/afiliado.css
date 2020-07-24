@@ -184,7 +184,7 @@ footer {
         flex-direction: column;
     }
     main {
-        height: 390vh;
+        height: auto!important;
     }
     .card-person {
         height: 23em;
@@ -202,10 +202,14 @@ footer {
     aside {
         height: auto;
     }
+    nav {
+        padding-top: 0px;
+    }
     .navbar-toggler {
         padding: .25rem .75rem;
-        font-size: 1.25rem;
-        line-height: 2;
+        margin-left: 30px;
+        font-size: 1.5rem;
+        line-height: 1;
         background-color: #0679dc;
         border: 1px solid #5d000000;
         border-radius: .25rem;
