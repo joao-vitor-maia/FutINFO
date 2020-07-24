@@ -22,7 +22,6 @@ async function aprovar(){
 };
 async function recusar(){
     const idHorario = event.target.id;
-    alert(idHorario)
 
     const resultadoObject = await fetch("/efetuando-recusar-horario",{
         method:"POST",

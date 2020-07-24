@@ -55,9 +55,11 @@ exports.renderHorarioUsuario = async (req, res) => {
         //         res.redirect("/login");
         //     } else {
                 //Pegando lista de horarios 
-                const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
+                const horariosPendentes = await Horario.find({aprovado: "pendente"}).populate("usuarioId").sort({data: "-1"});
 
-                const horariosAprovados = await Horario.find({aprovado: true}).populate("usuarioId").sort({data: "-1"});
+                const horariosAprovados = await Horario.find({aprovado: "verdadeiro"}).populate("usuarioId").sort({data: "-1"});
+
+                const horariosRecusados = await Horario.find({aprovado: "falso"}).populate("usuarioId").sort({data: "-1"});
 
                 res.render("pages/Usuario/HorarioUsuario", {
                     horarioPendente: horariosPendentes.map(horario => {
@@ -70,6 +72,15 @@ exports.renderHorarioUsuario = async (req, res) => {
                         return horario.toJSON();
                     }),
                     horarioAprovado: horariosAprovados.map(horario => {
+                        //Formatando data para hora
+                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+
+                        horario.horarioIntervalo.start = horaInicial;
+                        horario.horarioIntervalo.end = horaFinal;
+                        return horario.toJSON();
+                    }),
+                    horarioRecusado: horariosRecusados.map(horario => {
                         //Formatando data para hora
                         const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
                         const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
@@ -167,12 +178,12 @@ exports.renderHorarioSolicitado = async (req, res) => {
         //     if (error || decoded.afiliado != true) {
         //         res.redirect("/login");
         //     }else {
-                //    peguei todas as quadras do usuario, peguei os horarios delas (ou seja todos os horarios solicitados)
+                //    peguei todas as quadras no nome do admin, peguei os horarios delas (ou seja todos os horarios solicitados)
                 //    const quadras = await Quadra.find({_id:"decoded.id"});
                 //    const horarios = quadras.map(quadra => {
                 //         return await Horario.find({quadraId:quadra._id})
                 //    });
-                const horarios = await Horario.find({aprovado:false}).sort({data:1}).populate("quadraId usuarioId");
+                const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
                 res.render("pages/Afiliado/afiliado.handlebars",{
                     //Formatando hoario
                     horarios:horarios.map(horario => {

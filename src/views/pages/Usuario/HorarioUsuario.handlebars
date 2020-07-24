@@ -31,7 +31,7 @@
     
     <!------- section ------->
     <section>
-        <div class="horariosPendentes">
+        <div>
             {{#if horarioPendente}}
             <h1 class="titulo">
                 Horários pendentes
@@ -48,7 +48,7 @@
                     <div class="cardConteudo">Dia:{{this.dia}}</div>
                     <div class="cardConteudo">Início:{{this.horarioIntervalo.start}}</div>
                     <div class="cardConteudo">Fim:{{this.horarioIntervalo.end}}</div>
-                    <div class="cardConteudo">Aprovado:{{#if this.aprovado}}Sim{{else}}Não{{/if}}</div>
+                    <div class="cardConteudo">Aprovado:Pendente</div>
 
                 </div>
                 {{else}}
@@ -60,7 +60,7 @@
         </div>
 
 
-        <div class="horariosAprovados">
+        <div>
             {{#if horarioAprovado}}
             <h1 class="titulo">
                 Horários aprovados
@@ -77,13 +77,42 @@
                     <div class="cardConteudo">Dia:{{this.dia}}</div>
                     <div class="cardConteudo">Início:{{this.horarioIntervalo.start}}</div>
                     <div class="cardConteudo">Fim:{{this.horarioIntervalo.end}}</div>
-                    <div class="cardConteudo">Aprovado:{{#if this.aprovado}}Sim{{else}}Não{{/if}}</div>
+                    <div class="cardConteudo">Aprovado:Sim</div>
 
                 </div>
                 {{else}}
             </div>
             <h1 class="titulo">
                 Você não possui horários aprovados
+            </h1>
+            {{/each}}
+        </div>
+
+
+        <div>
+            {{#if horarioRecusado}}
+            <h1 class="titulo">
+                Horários recusados
+            </h1>
+            {{/if}}
+            <!------- card area ------->
+            <div class="cardArea">
+                {{#each horarioRecusado}}
+                <div class="card cardAprovado">
+                    <h4 class="nomeRecusado">
+                        {{this.usuarioId.nome}}
+                    </h4>
+
+                    <div class="cardConteudo">Dia:{{this.dia}}</div>
+                    <div class="cardConteudo">Início:{{this.horarioIntervalo.start}}</div>
+                    <div class="cardConteudo">Fim:{{this.horarioIntervalo.end}}</div>
+                    <div class="cardConteudo">Aprovado:Recusado</div>
+
+                </div>
+                {{else}}
+            </div>
+            <h1 class="titulo">
+                Você não possui horários recusados
             </h1>
             {{/each}}
         </div>

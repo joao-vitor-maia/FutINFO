@@ -94,7 +94,7 @@ exports.aprovar = async(req,res) => {
                 return res.json({message:"unauthorized"});
             }else{
                 const horario = await Horario.findById(idHorario);
-                horario.aprovado = true;
+                horario.aprovado = "verdadeiro";
                 await horario.save();
                 return res.json({message:"success"})
             };
@@ -112,7 +112,9 @@ exports.recusar = async(req,res) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
             }else{
-                await Horario.findByIdAndRemove(idHorario);
+                const horario = await Horario.findById(idHorario);
+                horario.aprovado = "falso";
+                horario.save();
                 return res.json({message:"success"})
             };
         });

@@ -25,8 +25,8 @@ const horario = new Schema({
         required:true
     },
     aprovado: {
-        type:Boolean,
-        default:false
+        type:String,
+        default:"pendente"
     },
     horarioIntervalo: {
         type:Object,
