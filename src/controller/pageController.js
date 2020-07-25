@@ -20,11 +20,10 @@ exports.renderHome = async (req, res) => {
         const noticiasTotal = await Noticia.find();
         const pagesTotal = Math.ceil(noticiasTotal.length/limit );
 
-        const time1Divisao = await Time.find({divisao: 1});
-        const time2Divisao = await Time.find({divisao: 2});
-        const time3Divisao = await Time.find({divisao: 3});
-        const time4Divisao = await Time.find({divisao: 4});
-
+        const time1Divisao = await Time.find({divisao: 1}).sort({classificacao:1});
+        const time2Divisao = await Time.find({divisao: 2}).sort({classificacao:1});
+        const time3Divisao = await Time.find({divisao: 3}).sort({classificacao:1});
+        const time4Divisao = await Time.find({divisao: 4}).sort({classificacao:1});
 
         res.render("pages/index", {
             pagination:{

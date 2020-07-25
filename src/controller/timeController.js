@@ -5,15 +5,21 @@ const validator = require("validator");
 exports.registrarTime = async (req,res) => {
     try{
         const token = req.body.token;
-        const divisao = req.body.divisao; 
+        const divisao = req.body.divisao;
+        const classificacao = req.body.classificacao; 
         const nome = req.body.nome;
         const ponto = req.body.ponto;
         const jogo = req.body.jogo;
         const vitoria = req.body.vitoria;
         const derrota = req.body.derrota;
 
-        if((divisao > 0 && divisao < 5 ) ||
-        validator.isLength(nome,{min:2,max:60}) ){
+        if(validator.isLength(nome,{min:2,max:60}) && 
+        validator.isInt(divisao) &&
+        validator.isInt(classificacao) &&
+        validator.isInt(ponto) &&
+        validator.isInt(jogo) &&
+        validator.isInt(vitoria) &&
+        validator.isInt(derrota)){
 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
@@ -25,7 +31,8 @@ exports.registrarTime = async (req,res) => {
                         ponto:ponto,
                         jogo:jogo,
                         vitoria:vitoria,
-                        derrota:derrota
+                        derrota:derrota,
+                        classificacao:classificacao
                     };
                     await Time(dados).save();
 

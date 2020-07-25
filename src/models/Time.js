@@ -8,6 +8,10 @@ const time = Schema({
         max:4,
         required:true
     },
+    classificacao: {
+        type:Number,
+        required:true   
+    },
     nome: {
         type:String,
         min:2,
