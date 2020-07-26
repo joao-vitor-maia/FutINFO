@@ -14,10 +14,9 @@ section {
     font-family: 'Montserrat', sans-serif;
 }
 aside {
-    height: 150vh;
+    height: 130vh;
     /*background-color: #005194;*/
     background-color: #002747;
-
 }
 aside > nav {
     font-family: 'Montserrat', sans-serif;
@@ -47,7 +46,7 @@ nav ul {
     width: 100%;
 }
 .item-li {
-    font-size:16px;
+    font-size:15px;
     font-weight: 500;
     color: #FFF;
     padding-top:25px;
@@ -59,6 +58,8 @@ nav ul {
     background-color: #0679d8;
     color: #FFF;
     border-radius: 3px;
+    font-size: 14px;
+    border-bottom: 2px solid #FFF;
 }
 .img-li-aside {
     height: 27px;
@@ -111,6 +112,7 @@ nav ul {
    color: #FFF;
    border-radius: 3px;
 }
+
 /***** Main *****/
 main {
     height:auto;
@@ -136,7 +138,6 @@ main {
     justify-content: center;
     align-items: center;
     flex: 1;
-    flex-wrap:wrap;
 }
 .title-day {
     font-family: 'Reem Kufi', sans-serif;
@@ -150,83 +151,52 @@ main {
     font-size: 30px;
     line-height: 90px;
 }
-/***** Cards*****/
-.card-person {
-    width: 25em;
-    height: 24em;
-    background-color: #00559a;
-    border: 1px solid #000000;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-bottom: 8px;
+/***** Tabela *****/
+.area-tabela {
+    font-family: 'Montserrat', Arial, sans-serif;
 }
-.card-title {
-    background-color: #013d5c;
-    padding:10px;
+thead,
+tbody {
 }
-.h2-title-card {
-    text-align: center!important;
-    color: #FFF;
-    font-size: 20px;
-}
-.date-card-area {
-    display: flex;
-    flex-direction: column;
-}
-.card-img-icon {
-    margin-right: 5px;
-    height: 25px;
-}
-.item-li-card {
-    padding-bottom: 10px;
-    padding-top:10px;
-    font-size: 17px;
-    color: #FFF;
-}
-/***** Botão *****/
-.btn-area {
-    padding-left: 20px;
-    max-width: 100%;
-}
-.btn-success-person {
-    width:50%;
+.text-top-table {
+    text-align: center;
     font-size: 14px;
+    color: #005194;
 }
-.btn-danger-person {
-    font-size: 14px
+.textUser-body-table {
+    font-size: 14px;
+    color: #011a5f;
+}
+.text-body-table {
+    font-weight: bold;
+    font-size: 14px;
+    color: #011a5f;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #011a5f;
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #011a5f;
+}
+/***** Paginação *****/
+.paginacao-area {
+    display: flex;
+    justify-content: center;
+    width: 100%!important;
+    border: 1px solid #011a5f;
+}
+.pagination {
+    background-color: #FFF;
 }
 /***** Footer *****/
 footer {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
     height: 80px;
-    background-color: #006fc7;
-    margin-top: 5px;
+    width: 100%;
 }
 /***** Responsivo *****/
-@media screen and (max-width:1035px) {
-    .btn-success-person {
-    width:60%;
-    font-size: 14px;
-    }
-}
-@media screen and (max-width:927px) {
-    .area-horarios {
-        flex-direction: column;
-    }
-    main {
-        height: auto!important;
-    }
-    .card-person {
-        height: 23em;
-        width: 92%;
-        margin-bottom:10px;
-    }
-    .btn-success-person {
-        font-size: 15px;
-    }
-    .btn-danger-person {
-        font-size: 15px;
-    }
-}
 @media screen and (max-width:768px) {
     aside {
         height: auto;
@@ -244,8 +214,4 @@ footer {
         border-radius: .25rem;
         text-align: center;
     }
-    .card-person {
-        
-    }
-
 }
