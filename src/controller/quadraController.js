@@ -7,6 +7,7 @@ const ImagemQuadra = require("@models/ImagemQuadra");
 exports.salvarQuadra = async (req,res) => {
     try{
         const nome = req.body.nome; 
+        const precoHora = req.body.precoHora;
         const esporte = req.body.esporte;   
         const rua = req.body.rua; 
         const cep = req.body.cep; 
@@ -22,7 +23,8 @@ exports.salvarQuadra = async (req,res) => {
         validator.isLength(rua,{min:2,max:60}) && sanitize(rua,{allowedTags:[], allowedAttributes:{} }) == rua &&
         validator.isLength(cep,{min:8,max:9}) && sanitize(cep,{allowedTags:[], allowedAttributes:{} }) == cep && /[0-9]{5}-[0-9]{3}/.test(cep) &&
         validator.isLength(bairro,{min:2,max:60}) && sanitize(bairro,{allowedTags:[], allowedAttributes:{} }) == bairro &&
-        validator.isLength(numeroRua,{min:1,max:5}) && sanitize(numeroRua,{allowedTags:[], allowedAttributes:{} }) == numeroRua && validator.isInt(numeroRua) ){
+        validator.isLength(numeroRua,{min:1,max:5}) && sanitize(numeroRua,{allowedTags:[], allowedAttributes:{} }) == numeroRua && validator.isInt(numeroRua) &&
+        validator.isLength(precoHora,{min:1})){
             
             const token = req.body.token;
 
@@ -38,6 +40,7 @@ exports.salvarQuadra = async (req,res) => {
                         numeroRua:numeroRua,
                         cep:cep,
                         bairro:bairro,
+                        precoHora:{valor:precoHora},
                         usuarioId:decoded.id
                     };
                     const quadra = await new Quadra(dadosQuadra).save();

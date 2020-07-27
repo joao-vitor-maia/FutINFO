@@ -23,6 +23,8 @@ router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
 //Afiliado
 router.get("/afiliado/registrar-quadra",pageController.renderRegistrarQuadra);
 router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
+router.get("/afiliado/historico-horarios",pageController.renderAfiliadoHistorico);
+router.get("/afiliado/historico-horarios/:page",pageController.renderAfiliadoHistorico);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);

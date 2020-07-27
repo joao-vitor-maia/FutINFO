@@ -16,6 +16,7 @@ async function aprovar(){
         alert("Ocorreu um erro ao aprovar horário");
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
+        location.href = "/usuario/login";
     }else{
         location.href = "/afiliado/horarios-solicitados";
     };

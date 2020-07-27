@@ -14,7 +14,7 @@ exports.renderHome = async (req, res) => {
         const skip = (pageAtual*limit)-limit;
 
         //Consultas
-        const quadras = await Quadra.find().sort({data: -1}).limit(limit);
+        const quadras = await Quadra.find().sort({data: -1}).limit(2);
         const noticias = await Noticia.find().sort({data: -1}).skip(skip).limit(limit);
         
         const noticiasTotal = await Noticia.find();
@@ -130,44 +130,37 @@ exports.renderRegistrarQuadra = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-exports.renderHorarioAfiliado = async (req, res) => {
+exports.renderAfiliadoHistorico = async (req, res) => {
     try{
-        // const token = req.headers["Authorization"];
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
+        const limit = 8;
+        const skip = (pageAtual*limit)-limit;
 
-        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
-        //     if (error || decoded.afiliado != true) {
-        //         res.redirect("/login");
-        //     } else {
-                //Pegando lista de horarios 
-                const horariosPendentes = await Horario.find({aprovado: false}).populate("usuarioId").sort({data: "-1"});
+        //Consulta
+        const horarios = await Horario.find({aprovado:"verdadeiro"}).sort({data:1}).populate("quadraId usuarioId").skip(skip).limit(limit);
+        const horariosTotal = await Horario.find({aprovado:"verdadeiro"});
+        const pagesTotal = Math.ceil(horariosTotal.length/limit );
 
-                const horariosAprovados = await Horario.find({aprovado: true}).populate("usuarioId").sort({data: "-1"});
+        const horariosPendenteLength = await Horario.find({aprovado:"pendente"});
 
-                res.render("pages/listagemHorarios", {
-                    horarioPendente: horariosPendentes.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
-
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    }),
-                    horarioAprovado: horariosAprovados.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
-
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    })
-                });
-        //     };
-        // });
+        res.render("pages/Afiliado/AfiliadoHistorico",{
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal
+            },
+            historico:horarios.map(horario => {
+                horario.quadraId.precoHora.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(horario.quadraId.precoHora.valor);
+                horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
+                horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
+                return horario.toJSON();
+            }),
+            horarioLength:horariosPendenteLength.length
+        })
     }catch(err){
-        return res.json({message: "error"});
-    };
+        console.log(err)
+        return res.json({message:"error"});
+    }
 };
 exports.renderHorarioSolicitado = async (req, res) => {
     try{
@@ -175,24 +168,24 @@ exports.renderHorarioSolicitado = async (req, res) => {
 
         // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
         //     if (error || decoded.afiliado != true) {
-        //         res.redirect("/login");
+        //         res.redirect("/usuario/login");
         //     }else {
-                //    peguei todas as quadras no nome do admin, peguei os horarios delas (ou seja todos os horarios solicitados)
-                //    const quadras = await Quadra.find({_id:"decoded.id"});
-                //    const horarios = quadras.map(quadra => {
-                //         return await Horario.find({quadraId:quadra._id})
-                //    });
-                const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
-                res.render("pages/Afiliado/afiliado.handlebars",{
-                    //Formatando hoario
-                    horarios:horarios.map(horario => {
-                        horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
-                        horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
-                        return horario.toJSON();
-                    }),
-                    horariosLength:horarios.length
+                    // //peguei todas as quadras no nome do admin, peguei os horarios delas (ou seja todos os horarios solicitados)
+                    // const quadras = await Quadra.find({_id:decoded.id});
+                    // const horarios = quadras.map(async (quadra) => {
+                    //     return await Horario.find({quadraId:quadra._id})
+                    // });
+                    const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+                    res.render("pages/Afiliado/afiliado.handlebars",{
+                        //Formatando hoario
+                        horarios:horarios.map(horario => {
+                            horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
+                            horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
+                            return horario.toJSON();
+                        }),
+                        horariosLength:horarios.length
 
-                });
+                    });
         //     };
         // }); 
     } catch (err) {

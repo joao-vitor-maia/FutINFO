@@ -29,7 +29,7 @@ exports.agendarHorario = async(req,res) => {
                 end:horarioFinal
             };
 
-            const horariosDoBanco = await Horario.find();
+            const horariosDoBanco = await Horario.find({quadraId:quadraId});
             
             for(let horarioDoBanco of horariosDoBanco){ 
                 //Horários não podem se sobrepor
