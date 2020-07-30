@@ -1,0 +1,288 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/***** Header *****/
+header {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+}
+section {
+    font-family: 'Montserrat', sans-serif;
+}
+aside {
+    height: 130vh;
+    /*background-color: #005194;*/
+    background-color: #002747;
+}
+aside > nav {
+    font-family: 'Montserrat', sans-serif;
+}
+.title-afiliado {
+    font-family: 'Reem Kufi', sans-serif;
+    height: 95px;
+    background-color: #005194;
+    display: flex;
+    align-items: center;
+    justify-content: center!important;
+    border-bottom: 5px solid #FFF;
+}
+.h1-titleAfiliado {
+    font-size: 30px;
+    color: #FFF;
+}
+/***** Lista aside *****/
+nav ul, li {
+    list-style: none!important;
+}
+nav ul {
+    background-color: #002747;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin: auto;
+    width: 100%;
+}
+.item-li {
+    font-size:15px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    cursor: pointer;
+}
+.li-active {
+    padding: 10px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+    font-size: 14px;
+    border-bottom: 2px solid #FFF;
+}
+.img-li-aside {
+    height: 27px;
+    margin-right: 10px;
+}
+.notificacao {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 8px;
+    border-radius: 3px;
+}
+.li-text {
+    transition: ease 0.5s;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 20px;
+    border-width: thin;
+}
+.li-text:hover {
+     padding: 10px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+}
+/***** Item da lista person *****/
+.item-li-link {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    border-top: 2px solid #FFF;
+    cursor: pointer;
+}
+.item-li-link a {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    cursor: pointer;
+    text-decoration: none;
+}
+.li-text-link {
+    transition: ease 0.5s;
+    padding-bottom: 20px;
+}
+.li-text-link:hover {
+    padding: 10px;
+   background-color: #0679d8;
+   color: #FFF;
+   border-radius: 3px;
+}
+
+/***** Main *****/
+main {
+    height:auto;
+    font-family: 'Reem Kufi', sans-serif;
+}
+.title-day {
+    font-family: 'Reem Kufi', sans-serif;
+    height:90px;
+    background-color: #011a5f;
+}
+.h1-title-day {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 90px;
+}
+/***** Área dos inputs *****/
+.inputs-edit-area {
+    font-family: 'Montserrat', Arial, sans-serif;
+    /*border:1px solid #002747;*/
+    height: 57rem;
+}
+.input-text-p {
+    font-size: 21px;
+    font-weight:600;
+    color: #011a5f;
+    border-bottom:2px solid #000a24;
+    text-align: center!important;
+}
+/***** Inputs content *****/
+.inputs-content {
+    display: flex;
+    flex-direction: column!important;
+    align-items: center;
+}
+/***** Input name *****/
+.input-name-area,
+.input-location-area,
+.input-image-area {
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+.text-input-name,
+.text-input-location,
+.text-input-image,
+.text-input-send {
+    font-size: 19px;
+    color: #011a5f;
+    font-weight: 600;
+}
+.input-name,
+.input-location {
+    outline-color: #006FC7;
+    border-color: #011a5f;
+    font-size: 14.5px;
+    padding: 10px;
+    width: 350px;
+    border-radius: 4px;
+}
+.input-send {
+    font-size: 15px;
+    width: auto;
+    padding: 10px;
+    outline-color: #006FC7;
+    border-color: #011a5f;
+
+}
+.input-description {
+    height: 200px;
+    outline-color: #006FC7;
+    border-color: #011a5f;
+    font-size: 14.5px;
+    padding: 10px;
+    width: 350px;
+    text-align: unset;
+    border-radius: 4px;
+}
+.limite-text {
+    font-size: 15.5px;
+    margin-left: 7px;
+    color: rgb(138, 138, 138);
+}
+/***** bottons *****/
+.btn-area {
+  margin-top: 40px;
+}
+.btn-success-person {
+    width: 350px;
+    font-size: 16px;
+}
+/***** Footer *****/
+footer {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+    width: 100%;
+}
+/***** Responsivo *****/
+@media screen and (max-width: 992px) {
+    .inputs-edit-area {
+        height: 61rem;
+    }
+    .text-input-name, .text-input-location, .text-input-image, .text-input-send {
+    font-size: 16px;
+    color: #011a5f;
+    font-weight: 600;
+}
+    .input-name,
+    .input-location {
+        width: 300px;
+    }
+    .input-description {
+        width: 300px;
+        height: 250px;
+        padding: 8px;
+    }
+    .input-send {
+        font-size: 13px;
+    }
+    .limite-text {
+        font-size: 13px;
+    }
+        .btn-success-person {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 895px) {
+    .inputs-edit-area {
+        height: 65rem;
+    }
+}
+@media screen and (max-width:768px) {
+    aside {
+        height: auto;
+    }
+    nav {
+        padding-top: 0px;
+    }
+    .navbar-toggler {
+        padding: .25rem .75rem;
+        margin-left: 30px;
+        font-size: 1.5rem;
+        line-height: 1;
+        background-color: #0679dc;
+        border: 1px solid #5d000000;
+        border-radius: .25rem;
+        text-align: center;
+    }
+        .inputs-edit-area {
+        height: 60rem;
+    }
+}
+@media screen and (max-width: 525px) {
+    .inputs-edit-area {
+        height: 63rem;
+    }
+}
+@media screen and (max-width: 399px) {
+    .inputs-edit-area {
+        height: 65rem;
+    }
+}
+@media screen and (max-width: 344px) {
+    .btn-success-person {
+        width: 300px;
+        font-size: 14px;
+    }
+    .input-send {
+        padding: 0;
+    }
+}
+
