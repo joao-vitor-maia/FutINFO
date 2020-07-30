@@ -125,7 +125,7 @@ exports.renderRedefinirSenha = async (req,res) => {
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
-        res.render("pages/registrarQuadra");
+        res.render("pages/Afiliado/registrarQuadra");
     }catch(err){
         return res.json({message:"error"});
     };
