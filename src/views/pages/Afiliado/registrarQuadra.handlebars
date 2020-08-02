@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-editar.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-registrar.css">
   <title>Histórico de agendamento</title>
 </head>
 
@@ -89,11 +89,19 @@
                         <input placeholder="Ex: quadra Medeiros José" type="text" maxlength="100" class="input-name">
                         <span class="limite-text">* Limite de 100 caracteres</span>
                       </div>
+     <!------- Input Cep ------>
+                            <div class="input-cep-area">
+                              <p class="text-input-name py-2">CEP:</p>
+                              <input placeholder="Ex: 96500-000" maxlength="10" class="input-cep" type="text">
+                              <span class="limite-text">* Limite de 10 caracteres</span>
+                            </div>
       <!------- Input localização ------>
                       <div class="input-location-area">
-                        <p class="text-input-location py-2">Localização da quadra:</p>
-                        <input placeholder="Ex: Avenida Brasil, 1587" type="text" maxlength="100" class="input-location">
-                        <span class="limite-text">* Limite de 100 caracteres</span>
+                        <p class="text-input-location py-2">Rua e número da quadra:</p>
+                        <div class="inputs-area d-flex">
+                        <input placeholder="Ex: Avenida Brasil" type="text" maxlength="100" class="input-location">
+                        <input placeholder="Nº 1587" type="text" maxlength="25" class="input-number">
+                        </div>
                       </div>
       <!------- Input imagens ------>
                       <div class="input-image-area">
