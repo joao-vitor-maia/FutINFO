@@ -12,7 +12,7 @@
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/CSS/afiliado-editar.css">
-  <title>Histórico de agendamento</title>
+  <title>Editar quadra</title>
 </head>
 
 <body>
@@ -86,27 +86,27 @@
       <!------- Input nome ------>
                       <div class="input-name-area">
                         <p class="text-input-name py-2">Nome da quadra:</p>
-                        <input placeholder="Ex: quadra Medeiros José" type="text" maxlength="100" class="input-name">
+                        <input placeholder="Ex: quadra Medeiros José" type="text" maxlength="100" class="input-name" id="nome">
                         <span class="limite-text">* Limite de 100 caracteres</span>
                       </div>
      <!------- Input Cep ------>
                             <div class="input-cep-area">
                               <p class="text-input-name py-2">CEP:</p>
-                              <input placeholder="Ex: 96500-000" maxlength="10" class="input-cep" type="text">
+                              <input placeholder="Ex: 96500-000" maxlength="10" class="input-cep" type="text" id="cep">
                               <span class="limite-text">* Limite de 10 caracteres</span>
                             </div>
       <!------- Input localização ------>
                       <div class="input-location-area">
                         <p class="text-input-location py-2">Rua e número da quadra:</p>
                         <div class="inputs-area d-flex">
-                        <input placeholder="Ex: Avenida Brasil" type="text" maxlength="100" class="input-location">
-                        <input placeholder="Nº 1587" type="text" maxlength="25" class="input-number">
+                        <input placeholder="Ex: Avenida Brasil" type="text" maxlength="100" class="input-location" id="rua">
+                        <input placeholder="Nº 1587" type="text" maxlength="25" class="input-number" id="numeroRua">
                         </div>
                       </div>
       <!------- Input imagens ------>
                       <div class="input-image-area">
                         <p class="text-input-image py-2">Descrição da quadra:</p>
-                        <textarea class="input-description" maxlength="500"></textarea>
+                        <textarea class="input-description" maxlength="500" id="descricao"></textarea>
                         <span class="limite-text">* Limite de 500 caracteres</span>
                       </div>
       <!------- Input enviar imagens ------>
@@ -116,7 +116,7 @@
                         <span class="limite-text">* Limite de 7 imagens</span>
                       </div>
                       <div class="btn-area">
-                        <button class=" btn btn-success btn-success-person">Salvar alterações</button>
+                        <button class=" btn btn-success btn-success-person" onclick="editarQuadra()">Salvar alterações</button>
                           </div>
                     </div>
                 </div>
@@ -137,5 +137,6 @@
    <script src="/JS/jquery-3.1.1.min.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/Afiliado/editarQuadra.js" type="text/javascript"></script>
 </body>
 </html>

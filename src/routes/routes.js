@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
+//Controllers
 const usuarioController = require("@controller/usuarioController");
 const pageController = require("@controller/pageController");
 const auth = require("@auth/authUsuario");
@@ -8,6 +10,10 @@ const comentarioController = require("@controller/comentarioController");
 const horarioController = require("@controller/horarioController");
 const noticiaController = require("@controller/noticiaController");
 const timeController = require("@controller/timeController");
+//Middlewares
+const multerConfig = require("../config/multer");
+
+//---ROTAS---
 
 //Auth
 router.get("/autorizar",auth.autorizarUsuario)
@@ -22,6 +28,7 @@ router.get("/usuario/horarios-reservados",pageController.renderHorarioUsuario);
 router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
 //Afiliado
 router.get("/afiliado/registrar-quadra",pageController.renderRegistrarQuadra);
+router.get("/afiliado/editar-quadra",pageController.renderEditarQuadra);
 router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
 router.get("/afiliado/historico-horarios",pageController.renderAfiliadoHistorico);
 router.get("/afiliado/historico-horarios/:page",pageController.renderAfiliadoHistorico);
@@ -40,8 +47,8 @@ router.post("/efetuando-recusar-horario",horarioController.recusar);
 router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Quadra
-router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
-router.put("/efetuando-editar-nome-da-quadra",quadraController.editarQuadra);
+router.post("/efetuando-registrar-quadra" ,multer(multerConfig).array("file",7) ,quadraController.salvarQuadra);
+router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",quadraController.adicionarImagem);
 router.delete("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
 
