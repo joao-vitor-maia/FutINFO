@@ -47,7 +47,7 @@ router.post("/efetuando-recusar-horario",horarioController.recusar);
 router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Quadra
-router.post("/efetuando-registrar-quadra" ,multer(multerConfig).array("file",7) ,quadraController.salvarQuadra);
+router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
 router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",quadraController.adicionarImagem);
 router.delete("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
