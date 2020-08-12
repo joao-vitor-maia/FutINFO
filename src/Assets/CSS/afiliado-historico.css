@@ -50,7 +50,7 @@ nav ul {
     font-weight: 500;
     color: #FFF;
     padding-top:25px;
-    padding-bottom: 25px; 
+    padding-bottom: 40px; 
     cursor: pointer;
 }
 .li-active {
@@ -76,12 +76,20 @@ nav ul {
     border-bottom: 2px solid #FFF;
     padding-bottom: 20px;
     border-width: thin;
+    font-size: 14px;
 }
 .li-text:hover {
      padding: 10px;
     background-color: #0679d8;
     color: #FFF;
     border-radius: 3px;
+}
+.li-collapse {
+    padding: 10px;
+    font-size: 15px;
+}
+.li-collapse:hover {
+    color: #006fca;
 }
 /***** Item da lista person *****/
 .item-li-link {
@@ -112,32 +120,20 @@ nav ul {
    color: #FFF;
    border-radius: 3px;
 }
+.li-active-jQuery {
+     padding: 10px;
+   background-color: #0679d8;
+   color: #FFF;
+   border-radius: 3px;
+}
+.arrowDown-li {
+    margin-left: 4px;
+}
 
 /***** Main *****/
 main {
     height:auto;
     font-family: 'Reem Kufi', sans-serif;
-}
-.main-area {
-    background-color: rgb(255, 255, 255);
-}
-.title-solicitado {
-    height: 95px;
-    background-color: #002747;
-}
-.h3-solicitado {
-    line-height: 95px;
-    font-size: 30px;
-    text-align: center;
-    font-weight: 500;
-    color: #FFF;
-}
-.area-horarios {
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
 }
 .title-day {
     font-family: 'Reem Kufi', sans-serif;
@@ -151,43 +147,82 @@ main {
     font-size: 30px;
     line-height: 90px;
 }
-/***** Tabela *****/
-.area-tabela {
+/***** Área dos inputs *****/
+.inputs-edit-area {
     font-family: 'Montserrat', Arial, sans-serif;
+    /*border:1px solid #002747;*/
+    height: 65rem;
 }
-thead,
-tbody {
-}
-.text-top-table {
-    text-align: center;
-    font-size: 14px;
-    color: #005194;
-}
-.textUser-body-table {
-    font-size: 14px;
+.input-text-p {
+    font-size: 21px;
+    font-weight:600;
     color: #011a5f;
+    border-bottom:2px solid #000a24;
+    text-align: center!important;
 }
-.text-body-table {
-    font-weight: bold;
-    font-size: 14px;
-    color: #011a5f;
-}
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #011a5f;
-}
-.table-bordered td, .table-bordered th {
-    border: 1px solid #011a5f;
-}
-/***** Paginação *****/
-.paginacao-area {
+/***** Inputs content *****/
+.inputs-content {
     display: flex;
-    justify-content: center;
-    width: 100%!important;
-    border: 1px solid #011a5f;
+    flex-direction: column!important;
+    align-items: center;
 }
-.pagination {
-    background-color: #FFF;
+/***** Input name *****/
+.input-name-area,
+.input-location-area,
+.input-image-area,
+.input-cep-area {
+    padding-left: 20px;
+    margin-bottom: 30px;
+    max-width:500px!important;
+}
+.text-input-name,
+.text-input-location,
+.text-input-image {
+    font-size: 19px;
+    color: #011a5f;
+    font-weight: 600;
+}
+.input-name,
+.input-location,
+.input-cep {
+    outline-color: #006FC7;
+    border-color: #011a5f;
+    font-size: 14.5px;
+    padding: 10px;
+    width: 350px;
+    border-radius: 4px;
+}
+.input-number {
+    width: 35%;
+    outline-color: #006FC7;
+    border-color: #011a5f;
+    margin-left: 10px;
+    border-radius: 4px;
+    font-size: 14.5px;
+    padding: 10px;
+}
+.input-description {
+    height: 200px;
+    outline-color: #006FC7;
+    border-color: #011a5f;
+    font-size: 14.5px;
+    padding: 10px;
+    width: 350px;
+    text-align: unset;
+    border-radius: 4px;
+}
+.limite-text {
+    font-size: 15.5px;
+    margin-left: 7px;
+    color: rgb(138, 138, 138);
+}
+/***** bottons *****/
+.btn-area {
+  margin-top: 40px;
+}
+.btn-success-person {
+    width: 350px;
+    font-size: 16px;
 }
 /***** Footer *****/
 footer {
@@ -197,6 +232,39 @@ footer {
     width: 100%;
 }
 /***** Responsivo *****/
+@media screen and (max-width: 992px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+    .text-input-name, .text-input-location, .text-input-image {
+    font-size: 16px;
+    color: #011a5f;
+    font-weight: 600;
+}
+    .input-name,
+    .input-location {
+        width: 300px;
+    }
+    .input-description {
+        width: 300px;
+        height: 250px;
+        padding: 8px;
+    }
+    .input-send {
+        font-size: 13px;
+    }
+    .limite-text {
+        font-size: 13px;
+    }
+        .btn-success-person {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 895px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+}
 @media screen and (max-width:768px) {
     aside {
         height: auto;
@@ -214,4 +282,54 @@ footer {
         border-radius: .25rem;
         text-align: center;
     }
+        .inputs-edit-area {
+        height: 75rem;
+    }
 }
+@media screen and (max-width: 525px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+    .input-number {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 399px) {
+    .inputs-edit-area {
+        height: 75rem;
+        
+    }
+    .input-name,
+    .input-location,
+    .input-cep {
+        width: 300px!important;
+    }
+}
+@media screen and (max-width: 344px) {
+    .btn-success-person {
+        width: 300px;
+        font-size: 14px;
+    }
+    .inputs-edit-area {
+        height: 79rem;   
+    }
+    .input-send {
+        padding: 0;
+        width: auto!important;
+    }
+    .inputs-area {
+        flex-direction: column;
+        width: auto;
+    }
+    .input-number {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
+    }
+    .input-name,
+    .input-location,
+    .input-cep {
+        width: auto!important;
+    }
+}
+

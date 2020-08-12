@@ -1,4 +1,5 @@
 const Usuario = require("@models/Usuario");
+const ImagemQuadra = require("@models/ImagemQuadra")
 const Horario = require("@models/Horario");
 const Quadra = require("@models/Quadra");
 const Noticia = require("@models/Noticia");
@@ -28,9 +29,19 @@ exports.renderHome = async (req, res) => {
         res.render("pages/index", {
             pagination:{
                 page:pageAtual,
-                pageCount:pagesTotal
+                pageCount:pagesTotal 
             },
-            quadras: quadras.map(quadras => quadras.toJSON()),
+            quadras: await Promise.all(quadras.map(async (quadra) => {
+
+                const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({data:1}).limit(3)
+
+                const dados = {
+                    quadra: quadra.toJSON(),
+                    imagens: imagens.map(imagem => imagem.toJSON())
+                };
+                    
+                return dados;
+            })),
             noticias: noticias.map(noticias => {
                 noticias.data.data = fns.format(noticias.data.data, "dd/MM/yyyy");
                 return noticias.toJSON();
@@ -116,16 +127,25 @@ exports.renderCadastro = async (req, res) => {
 exports.renderRedefinirSenha = async (req,res) => {
     try {
         res.render("pages/Usuario/redefinirSenha.handlebars");
-    } catch (err) {
-        return res.json({
-            message: "error"
-        });
+    } catch(err){
+        return res.json({message: "error"});
     }
 };
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
-        res.render("pages/Afiliado/registrarQuadra");
+        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        
+        res.render("pages/Afiliado/registrarQuadra",{
+            horarioLength:horarios.length
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarQuadra = async (req,res) => {
+    try{
+        res.render("pages/Afiliado/editarQuadra");
     }catch(err){
         return res.json({message:"error"});
     };
@@ -150,7 +170,6 @@ exports.renderAfiliadoHistorico = async (req, res) => {
                 pageCount:pagesTotal
             },
             historico:horarios.map(horario => {
-                horario.quadraId.precoHora.valor = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(horario.quadraId.precoHora.valor);
                 horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
                 horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
                 return horario.toJSON();

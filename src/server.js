@@ -14,7 +14,10 @@ const routes = require('@routes');
 app.engine("handlebars", handlebars({
     defaultLayout: 'main',
     helpers: {
-        paginate: paginate
+        paginate: paginate,
+        ifEquals: function(arg1, arg2, options) {
+            return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+        }
     }
 }));
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +37,7 @@ app.use("/", routes);
 
 //Public
 app.use('/', express.static(path.join(__dirname, 'Assets')));
+app.use('/uploads/', express.static(path.join(__dirname, 'uploads')));
 
 //Conectando banco de dados 
 mongoose.Promise = global.Promise;

@@ -9,17 +9,6 @@ const quadra = new Schema({
     },
     nome: {
         type:String,
-        unique:true,
-        min:2,
-        max:60,
-        required:true
-    },
-    precoHora: {
-        type:Object,
-        required:true
-    },
-    esporte: {
-        type:String,
         min:2,
         max:60,
         required:true
@@ -34,17 +23,15 @@ const quadra = new Schema({
         type:Number,
         required:true
     },
-    bairro: {
-        type:String,
-        min:2,
-        max:60,
-        required:true
-    },
     cep: {
         type:String,
         min:8,
         max:9,
         required:true
+    },
+    descricao: {
+        type:String,
+        max:500
     },
     data: {
         type:Date,

@@ -14,7 +14,7 @@ async function redefinirSenha() {
             senhaReserva:senhaReserva
         };
     
-        const resultadoObject = await fetch("/efetuando-atualizacao-de-senha", {
+        const resultadoObject = await fetch("efetuando-atualizacao-de-senha", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
