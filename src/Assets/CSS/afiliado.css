@@ -47,7 +47,7 @@ nav ul {
     width: 100%;
 }
 .item-li {
-    font-size:16px;
+    font-size:14px;
     font-weight: 500;
     color: #FFF;
     padding-top:25px;
@@ -59,6 +59,7 @@ nav ul {
     background-color: #0679d8;
     color: #FFF;
     border-radius: 3px;
+    font-size: 14px;
 }
 .img-li-aside {
     height: 27px;
@@ -74,6 +75,7 @@ nav ul {
     transition: ease 0.5s;
     border-bottom: 2px solid #FFF;
     padding-bottom: 20px;
+    font-size: 14px;
     border-width: thin;
 }
 .li-text:hover {
@@ -81,6 +83,22 @@ nav ul {
     background-color: #0679d8;
     color: #FFF;
     border-radius: 3px;
+}
+.li-collapse {
+    padding: 10px;
+    font-size: 15px;
+}
+.li-collapse:hover {
+    color: #006fca;
+}
+.li-active-jQuery {
+    padding: 10px;
+  background-color: #0679d8;
+  color: #FFF;
+  border-radius: 3px;
+}
+.arrowDown-li {
+   margin-left: 4px;
 }
 /***** Item da lista person *****/
 .item-li-link {
