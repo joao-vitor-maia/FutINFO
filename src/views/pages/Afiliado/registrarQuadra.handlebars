@@ -12,7 +12,7 @@
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/CSS/afiliado-registrar.css">
-  <title>Registrar quadra</title>
+  <title>Registrar endereço da quadra</title>
 </head>
 
 <body>
@@ -51,9 +51,27 @@
                 <img class="img-li-aside" src="/Images/Afiliados/clock.svg" height="23">
                 <span class="li-text">Histórico de agendamento</span>
               </li>
-              <li class="item-li">
+                 <!------- Item com collapse ------>
+              <li class="item-li item-li-collapse" data-toggle="collapse" href="#imgs-li" aria-expanded="false" aria-controls="imgs-li">
+                <img class="img-li-aside" src="/Images/Afiliados/photo.svg" height="23">
+                <span class="li-text li-textjQuery">Imagens da quadra
+                <img class="arrowDown-li" src="/Images/Afiliados/down-arrow.svg" height="17">
+                </span>
+                <div class="collapse" id="imgs-li">
+                  <ul class="ul-collapse">
+                    <li class="li-collapse">Adicionar imagens
+                <img class="arrowDown-li" src="/Images/Afiliados/plus.svg" height="17">
+                    </li>
+                    <li class="li-collapse">Remover imagens
+                <img class="arrowDown-li" src="/Images/Afiliados/minus.svg" height="17">
+                    </li>
+                  </ul>
+                </div>
+              </li>
+        <!------- Fim do Item com collapse ------>
+                           <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/add.svg" height="23">
-                <span class="li-active">Registrar minha quadra</span>
+                <span class="li-text">Registrar endereço da quadra</span>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/order.svg" height="23">
@@ -76,7 +94,7 @@
       <!------- Main ------>
       <main class="main-area px-1 pt-1 p-0 col-xl-8 col-lg-8 col-md-7 col-12">
             <div class="title-day w-100">
-                    <h1 class="h1-title-day">Registrar minha quadra</h1>
+                    <h1 class="h1-title-day">Registrar endereço da minha quadra</h1>
                   </div>
       <!------- Área dos inputs ------>
                 <div class="inputs-edit-area">
@@ -109,12 +127,7 @@
                         <textarea class="input-description" maxlength="500" id="descricao"></textarea>
                         <span class="limite-text">* Limite de 500 caracteres</span>
                       </div>
-      <!------- Input enviar imagens ------>
-                      <div class="input-send-area">
-                        <p class="text-input-send">Enviar imagens da quadra:</p>
-                        <input type="file" multiple="multiple" class="input-send" maxlength="7" id="imagens" accept="image/*" enctype="multipart/form-data">
-                        <span class="limite-text">* Limite de 7 imagens</span>
-                      </div>
+      <!------- Botão de registrar ------>
                       <div class="btn-area">
                         <button class=" btn btn-success btn-success-person" onclick="registrar()">Registrar quadra</button>
                           </div>
@@ -135,6 +148,7 @@
     </footer>
    <!------- Scripts ------>
    <script src="/JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+     <script src="/JS/app.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
    <script src="/JS/Afiliado/registrarQuadra.js" type="text/javascript"></script>
