@@ -14,7 +14,7 @@ section {
     font-family: 'Montserrat', sans-serif;
 }
 aside {
-    height: 130vh;
+    height: auto;
     /*background-color: #005194;*/
     background-color: #002747;
 }
