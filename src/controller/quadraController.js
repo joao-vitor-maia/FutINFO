@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const sanitize = require("sanitize-html");
 const validator = require("validator");
+const fs = require("fs");
 const Quadra = require("@models/Quadra");
 const ImagemQuadra = require("@models/ImagemQuadra");
 
@@ -108,32 +109,43 @@ exports.editarQuadra = async (req,res) => {
 };
 exports.adicionarImagem = async (req,res) => {
     try{
-        const token = req.body.token;
-        const imagens = ["imagem1","imagem2","imagem3"];
+        const token = req.headers["authorization"];
+        const upload = req.files;
 
-        if(Object.entries(imagens).length == 0){
-            return res.json({message:"invalid"});
-        }else{
-            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-                if(error || decoded.afiliado != true){
-                    return res.json({message:"unauthorized"});
-                }else{
-                    const quadra = await Quadra.findOne({usuarioId:decoded.id});
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error || decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+                const imagens = await ImagemQuadra.find({quadraId:quadra._id});
 
-                    for(let imagem of imagens){
-                        const dados = {
-                            quadraId:quadra._id,
-                            imagemBase64:imagem
-                        };
-        
-                        await ImagemQuadra(dados).save();
+                //Verificando se ocorreu algum problema no fileFilter
+                if(req.fileType){
+                    for(const imagem of upload){
+                        fs.unlinkSync(imagem.path);
                     };
-        
-                    return res.json({message:"success"});
-                    
+                    return res.json({message:"invalid"});
                 };
-            });
-        };
+                //Verificar se a soma das imagens da quadra com as imagens do upload são iguais ou maiores que 7
+                if((upload.length + imagens.length) > 7){
+                    for(const imagem of upload){
+                        fs.unlinkSync(imagem.path);
+                    };
+                    return res.json({message:"imagens limit"});
+                };
+                
+                for(let imagem of upload){
+                    const dados = {
+                        quadraId:quadra._id,
+                        localizacao:"/uploads/"+imagem.filename
+                    };
+                    await ImagemQuadra(dados).save();
+                };
+    
+                return res.json({message:"success"});                
+            };
+        });
+        
     }catch(error){
         return res.json({message:"error"});
     };

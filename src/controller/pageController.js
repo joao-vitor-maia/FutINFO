@@ -33,7 +33,7 @@ exports.renderHome = async (req, res) => {
             },
             quadras: await Promise.all(quadras.map(async (quadra) => {
 
-                const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({data:1}).limit(3)
+                const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({data:1}).limit(7)
 
                 const dados = {
                     quadra: quadra.toJSON(),
@@ -137,7 +137,7 @@ exports.renderRegistrarQuadra = async (req,res) => {
         const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
         
         res.render("pages/Afiliado/registrarQuadra",{
-            horarioLength:horarios.length
+            horariosLength:horarios.length
         });
     }catch(err){
         return res.json({message:"error"});
@@ -145,7 +145,11 @@ exports.renderRegistrarQuadra = async (req,res) => {
 };
 exports.renderEditarQuadra = async (req,res) => {
     try{
-        res.render("pages/Afiliado/editarQuadra");
+        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+
+        res.render("pages/Afiliado/editarQuadra",{
+            horariosLength:horarios.length
+        });
     }catch(err){
         return res.json({message:"error"});
     };
@@ -174,10 +178,9 @@ exports.renderAfiliadoHistorico = async (req, res) => {
                 horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
                 return horario.toJSON();
             }),
-            horarioLength:horariosPendenteLength.length
+            horariosLength:horariosPendenteLength.length
         })
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     }
 };
@@ -213,4 +216,17 @@ exports.renderHorarioSolicitado = async (req, res) => {
             message: "error"
         });
     }
+};
+exports.renderAdicionarImagens = async (req,res) => {
+    try{
+        const imagens = await ImagemQuadra.find().limit(7);
+        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+
+        res.render("pages/Afiliado/adicionarimagens",{
+            imagens:imagens.map(imagem => imagem.toJSON()),
+            horariosLength:horarios.length
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
 };

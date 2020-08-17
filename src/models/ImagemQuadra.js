@@ -7,7 +7,7 @@ const imagemQuadra = new Schema({
         ref:"Quadra",
         required:true
     },
-    imagemBase64: {
+    localizacao: {
         type:String,
         required:true
     },

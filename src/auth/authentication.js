@@ -1,4 +1,6 @@
 const Usuario = require("@models/Usuario");
+const Quadra = require("@models/Quadra");
+const ImagemQuadra = require("@models/ImagemQuadra");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -47,18 +49,23 @@ exports.autorizarUsuario = async (req,res,next) => {
         return res.json({message:"error"});
     };
 };
-exports.autorizarAfiliado = async (req,res,next) => {
+exports.autenticarAdicionarImagens = async (req,res,next) => {
     try{
-        if(req.headers["authorization"] == undefined){
+        const token = req.headers["authorization"];
+
+        if(token == undefined || token == "null"){
             return res.json({message:"unauthorized"});
         };
 
-        const token = req.headers["authorization"];
-
-        jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
-            if(error && decoded.afiliado != true){
+        jwt.verify(token,process.env.SECRETKEY,async (error,decoded) => {
+            if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
             }else{
+                const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+                
+                if(!quadra){
+                    return res.json({message:"quadra empty"});
+                };
                 next();
             };
         });
