@@ -519,7 +519,7 @@ footer {
 
 @media screen and (max-width:378px){
     aside {
-        height: 535px;
+        height: 600px;
     }
     .p-slideName-aside{
         margin-left: 10px;
