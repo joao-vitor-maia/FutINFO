@@ -30,6 +30,7 @@ router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
 router.get("/afiliado/registrar-quadra",pageController.renderRegistrarQuadra);
 router.get("/afiliado/editar-quadra",pageController.renderEditarQuadra);
 router.get("/afiliado/adicionar-imagens",pageController.renderAdicionarImagens);
+router.get("/afiliado/deletar-imagens",pageController.renderDeletarImagens);
 router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
 router.get("/afiliado/historico-horarios",pageController.renderAfiliadoHistorico);
 router.get("/afiliado/historico-horarios/:page",pageController.renderAfiliadoHistorico);
@@ -51,7 +52,7 @@ router.post("/efetuando-comentario",comentarioController.comentar);
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
 router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",auth.autenticarAdicionarImagens,multer(multerConfig).array("file"),quadraController.adicionarImagem);
-router.delete("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
+router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
 
 //Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);

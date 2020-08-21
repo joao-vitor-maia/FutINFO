@@ -230,3 +230,16 @@ exports.renderAdicionarImagens = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderDeletarImagens = async (req,res) => {
+    try{
+        const imagens = await ImagemQuadra.find().limit(7);
+        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+
+        res.render("pages/Afiliado/deletarimagens",{
+            imagens:imagens.map(imagem => imagem.toJSON()),
+            horariosLength:horarios.length
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};

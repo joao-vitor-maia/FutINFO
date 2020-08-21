@@ -152,17 +152,15 @@ exports.adicionarImagem = async (req,res) => {
 };
 exports.deletarImagem = async (req,res) => {
     try{
-        const token = req.body.token;
-        const Imagem = req.body.imagem64;
+        const token = req.headers["authorization"];
+        const idImagem = req.body.idImagem;
 
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
             }else{
-                const quadra = await Quadra.findOne({usuarioId:decoded.id});
-                const resultadoDelete = await ImagemQuadra.findOneAndDelete({imagemBase64:Imagem, quadraId:quadra});
-                const resultado = resultadoDelete == null?"not found":"success";
-                return res.json({message:resultado});
+                await ImagemQuadra.findOneAndDelete({_id:idImagem});
+                return res.json({message:"sucess"});
                 
             };
         });

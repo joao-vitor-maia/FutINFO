@@ -21,7 +21,7 @@ async function adicionarImagens(){
         const resultado = await resultadoObject.json();
 
         if (resultado.message == "error") {
-            alert("Ocorreu um erro ao registrar quadra");
+            alert("Ocorreu um erro ao deletar imagem");
 
         } else if (resultado.message == "imagens limit") {
             alert("Você só pode ter no máximo 7 imagens");
