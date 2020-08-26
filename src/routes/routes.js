@@ -34,6 +34,7 @@ router.get("/afiliado/deletar-imagens",pageController.renderDeletarImagens);
 router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
 router.get("/afiliado/historico-horarios",pageController.renderAfiliadoHistorico);
 router.get("/afiliado/historico-horarios/:page",pageController.renderAfiliadoHistorico);
+router.get("/afiliado/ver-quadra",pageController.renderVerQuadra);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);

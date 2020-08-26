@@ -37,7 +37,7 @@ const usuario = new Schema({
     },
     data: {
         type:Date,
-        default:new Date()
+        default:Date.now()
     }
 });
 

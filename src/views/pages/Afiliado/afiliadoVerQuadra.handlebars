@@ -45,7 +45,7 @@
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/bell.svg" height="23">
                 <span class="li-text">Ver solicitações</span>
-                <div class="btn-danger d-inline-block notificacao">0</div>
+                    <div class="btn-danger d-inline-block notificacao">{{horariosLength}}</div>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/clock.svg" height="23">
@@ -102,43 +102,36 @@
                   <div class="quadra-content-area">
                     <div class="quadra-content-image">
                     <div class="img-quadra">
-                      <img src="/Images/Slide/img-1.jpg" class="image-quadra">
-                      <img src="/Images/Slide/img-1.jpg" class="image-quadra">
-
-                      <img src="/Images/Slide/img-1.jpg" class="image-quadra">
-
-                      <img src="/Images/Slide/img-1.jpg" class="image-quadra">
-
-                      <img src="/Images/Slide/img-1.jpg" class="image-quadra">
-
+                      {{#each imagens}}
+                      <img src="{{this.localizacao}}" class="image-quadra">
+                      {{/each}}
                     </div>
                     </div>
                     <div class="quadra-info-area">
       <!------- Nome da quadra ------>
                       <div class="quadra-info-nome">
                         <h2 class="quadra-title-h2">Nome:</h2>
-                        <p class="quadra-nome-p">Quadra Alinharess Ribeiro</p>
+                        <p class="quadra-nome-p">{{quadra.nome}}</p>
                       </div>
       <!------- Rua da quadra ------>
                         <div class="quadra-info-nome">
                         <h2 class="quadra-title-h2">Rua:</h2>
-                        <p class="quadra-nome-p">Avenida Orlando da Cunha Carlos</p>
+                        <p class="quadra-nome-p">{{quadra.rua}}</p>
                       </div>
       <!------- Cep da quadra ------>
                         <div class="quadra-info-nome">
                         <h2 class="quadra-title-h2">CEP:</h2>
-                        <p class="quadra-nome-p">96508-562</p>
+                        <p class="quadra-nome-p">{{quadra.cep}}</p>
                       </div>
       <!------- Número da quadra ------>
                         <div class="quadra-info-nome">
                         <h2 class="quadra-title-h2">Número:</h2>
-                        <p class="quadra-nome-p">1877</p>
+                        <p class="quadra-nome-p">{{quadra.numeroRua}}</p>
                       </div>
       <!------- Descrição da quadra ------>
                         <div class="quadra-info-nome">
                         <h2 class="quadra-title-h2">Descrição:</h2>
-                        <p class="quadra-nome-p">Lorem ipsum dolor generator, Lorem ipsum dolor generator,
-                        Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,Lorem ipsum dolor generator,</p>
+                        <p class="quadra-nome-p">{{quadra.descricao}}</p>
                       </div>
                     </div>
                   </div>

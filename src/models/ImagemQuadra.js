@@ -13,7 +13,7 @@ const imagemQuadra = new Schema({
     },
     data: {
         type:Date,
-        default:new Date()
+        default:Date.now()
     }
 });
 

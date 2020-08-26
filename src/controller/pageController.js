@@ -243,3 +243,19 @@ exports.renderDeletarImagens = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderVerQuadra = async (req,res) => {
+    try{
+        const quadra = await Quadra.findOne().sort({data: -1});
+        const imagens = await ImagemQuadra.find().limit(7);
+        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+
+        res.render("pages/Afiliado/afiliadoVerQuadra",{
+            quadra:quadra.toJSON(),
+            imagens:imagens.map(imagem => imagem.toJSON()),
+            horariosLength:horarios.length
+        });
+    }catch(err){
+        console.log(err)
+        return res.json({message:"error"});
+    };
+};
