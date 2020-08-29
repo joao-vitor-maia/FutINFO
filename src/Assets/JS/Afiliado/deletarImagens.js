@@ -24,6 +24,7 @@ async function deletarImagem(){
         location.href = "/usuario/login";
 
     }else {
+        alert("Imagen deletada com sucesso");
         location.href = "/pagina-inicial";
     };
 };

@@ -16,7 +16,8 @@ const multerConfig = require("../config/multer");
 //---ROTAS---
 
 //Auth
-router.get("/autorizar",auth.autorizarUsuario)
+router.get("/autorizar",auth.autorizarUsuario);
+router.post("/autorizar-afiliado",auth.autorizarAfiliado);
 
 //Páginas 
 router.get("/pagina-inicial",pageController.renderHome);
@@ -27,14 +28,14 @@ router.get("/usuario/cadastrar",pageController.renderCadastro);
 router.get("/usuario/horarios-reservados",pageController.renderHorarioUsuario);
 router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
 //Afiliado
-router.get("/afiliado/registrar-quadra",pageController.renderRegistrarQuadra);
-router.get("/afiliado/editar-quadra",pageController.renderEditarQuadra);
-router.get("/afiliado/adicionar-imagens",pageController.renderAdicionarImagens);
-router.get("/afiliado/deletar-imagens",pageController.renderDeletarImagens);
-router.get("/afiliado/horarios-solicitados",pageController.renderHorarioSolicitado);
-router.get("/afiliado/historico-horarios",pageController.renderAfiliadoHistorico);
-router.get("/afiliado/historico-horarios/:page",pageController.renderAfiliadoHistorico);
-router.get("/afiliado/ver-quadra",pageController.renderVerQuadra);
+router.get("/afiliado/registrar-quadra", auth.autorizarAfiliado, pageController.renderRegistrarQuadra);
+router.get("/afiliado/editar-quadra", auth.autorizarAfiliado, pageController.renderEditarQuadra);
+router.get("/afiliado/adicionar-imagens", auth.autorizarAfiliado, pageController.renderAdicionarImagens);
+router.get("/afiliado/deletar-imagens", auth.autorizarAfiliado, pageController.renderDeletarImagens);
+router.get("/afiliado/horarios-solicitados", auth.autorizarAfiliado, pageController.renderHorarioSolicitado);
+router.get("/afiliado/historico-horarios", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
+router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
+router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);

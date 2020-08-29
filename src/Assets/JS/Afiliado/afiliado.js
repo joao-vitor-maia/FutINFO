@@ -18,6 +18,7 @@ async function aprovar(){
         alert("Você não está autorizado a acessar essa página");
         location.href = "/usuario/login";
     }else{
+        alert("Horário aprovado com sucesso")
         location.href = "/afiliado/horarios-solicitados";
     };
 };
@@ -40,6 +41,7 @@ async function recusar(){
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
     }else{
+        alert("Horário recusado com sucesso");
         location.href = "/afiliado/horarios-solicitados";
     };
 };

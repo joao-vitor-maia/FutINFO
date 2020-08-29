@@ -5,8 +5,6 @@ async function redefinirSenha() {
 
     if(senhaReserva == senhaNova){
         alert("A senha não pode ser igual a senha reserva")
-    }else if(senhaNova.toString().length < 8){
-        alert("A senha devem ter no minimo 8 caracteres")
     }else {
         const dados = {
             email:email,

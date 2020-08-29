@@ -9,7 +9,7 @@ async function adicionarImagens(){
         for(const file of files){
             formData.append("file",file);
         };
-
+        alert("Aguarde...");
         const resultadoObject = await fetch("/efetuando-adicionar-imagens-da-quadra", {
             method: "POST",
             headers: {
@@ -36,6 +36,7 @@ async function adicionarImagens(){
         } else if (resultado.message == "invalid") {
             alert("Tipo de imagem inválido");
         }else {
+            alert("Imagens salvas com sucesso")
             location.href = "/pagina-inicial";
         };
     };

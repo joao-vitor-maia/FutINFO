@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const paginate = require("handlebars-paginate");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const path = require("path");
 require("dotenv").config();
 require("module-alias/register");
@@ -31,6 +32,8 @@ app.use(bodyParser.json({
     limit: '50mb',
     extended: true
 }));
+//Cookie Parser
+app.use(cookieParser());
 
 //Rotas
 app.use("/", routes);

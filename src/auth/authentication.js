@@ -25,7 +25,11 @@ exports.gerarToken = async (req,res) => {
                     afiliado:usuario.afiliado,
                     admin:usuario.admin
                 },process.env.SECRETKEY,{expiresIn:"10h"});
-                
+
+                //Salvando token no cookie e no localStorage
+                //Cookie:Autenticar views
+                //LocalStorage:Autenticar API
+                res.cookie("token",token,{maxAge:1000 * 60 * 60 * 10, httpOnly:true, /* secure:true */});
                 return res.json({message:token});
             };
         };
@@ -36,13 +40,31 @@ exports.gerarToken = async (req,res) => {
 };
 exports.autorizarUsuario = async (req,res,next) => {
     try{
-        const token = req.headers["authorization"];
+        const token = req.cookies.token;
     
         jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
             if(error){
                 return res.json({message:"unauthorized"});
             }else{
-                return res.json({message:"authorized"});
+                req.decoded = decoded;
+                next();
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.autorizarAfiliado = async (req,res,next) => {
+    try{
+        const token = req.cookies.token;
+        
+        jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
+            if(error || decoded.afiliado == false){
+                
+                return res.json({message:"unauthorized"});
+            }else{
+                req.decoded = decoded;
+                next();
             };
         });
     }catch(err){

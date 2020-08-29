@@ -9,6 +9,9 @@ const jwt = require("jsonwebtoken");
 
 exports.renderHome = async (req, res) => {
     try {
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+
         //Paginação
         const pageAtual = Number(req.params.page) || 1;
         const limit = 3;
@@ -18,7 +21,7 @@ exports.renderHome = async (req, res) => {
         const quadras = await Quadra.find().sort({data: -1}).limit(2);
         const noticias = await Noticia.find().sort({data: -1}).skip(skip).limit(limit);
         
-        const noticiasTotal = await Noticia.find();
+        const noticiasTotal = await Noticia.find().sort({data: -1});
         const pagesTotal = Math.ceil(noticiasTotal.length/limit );
 
         const time1Divisao = await Time.find({divisao: 1}).sort({classificacao:1});
@@ -50,6 +53,7 @@ exports.renderHome = async (req, res) => {
             time2Divisao:time2Divisao.map(time => time.toJSON()),
             time3Divisao:time3Divisao.map(time => time.toJSON()),  
             time4Divisao:time4Divisao.map(time => time.toJSON()),
+            decoded:decoded
         });
     }catch (err){
         return res.json({message: "error"});
@@ -58,50 +62,44 @@ exports.renderHome = async (req, res) => {
 //Usuario
 exports.renderHorarioUsuario = async (req, res) => {
     try{
-        // const token = req.headers["Authorization"];
+        const decoded = req.decoded;
 
-        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
-        //     if (error) {
-        //         res.redirect("/login");
-        //     } else {
-                //Pegando lista de horarios 
-                const horariosPendentes = await Horario.find({aprovado: "pendente"}).populate("usuarioId").sort({data: "-1"});
+        //Pegando lista de horarios 
+        const horariosPendentes = await Horario.find({usuarioId:decoded.id,aprovado: "pendente"}).populate("usuarioId").sort({data: "-1"});
 
-                const horariosAprovados = await Horario.find({aprovado: "verdadeiro"}).populate("usuarioId").sort({data: "-1"});
+        const horariosAprovados = await Horario.find({usuarioId:decoded.id,aprovado: "verdadeiro"}).populate("usuarioId").sort({data: "-1"});
 
-                const horariosRecusados = await Horario.find({aprovado: "falso"}).populate("usuarioId").sort({data: "-1"});
+        const horariosRecusados = await Horario.find({usuarioId:decoded.id,aprovado: "falso"}).populate("usuarioId").sort({data: "-1"});
 
-                res.render("pages/Usuario/HorarioUsuario", {
-                    horarioPendente: horariosPendentes.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+        res.render("pages/Usuario/HorarioUsuario", {
+            horarioPendente: horariosPendentes.map(horario => {
+                //Formatando data para hora
+                const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
 
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    }),
-                    horarioAprovado: horariosAprovados.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+                horario.horarioIntervalo.start = horaInicial;
+                horario.horarioIntervalo.end = horaFinal;
+                return horario.toJSON();
+            }),
+            horarioAprovado: horariosAprovados.map(horario => {
+                //Formatando data para hora
+                const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
 
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    }),
-                    horarioRecusado: horariosRecusados.map(horario => {
-                        //Formatando data para hora
-                        const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
-                        const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
+                horario.horarioIntervalo.start = horaInicial;
+                horario.horarioIntervalo.end = horaFinal;
+                return horario.toJSON();
+            }),
+            horarioRecusado: horariosRecusados.map(horario => {
+                //Formatando data para hora
+                const horaInicial = fns.format(horario.horarioIntervalo.start, "HH:mm")
+                const horaFinal = fns.format(horario.horarioIntervalo.end, "HH:mm")
 
-                        horario.horarioIntervalo.start = horaInicial;
-                        horario.horarioIntervalo.end = horaFinal;
-                        return horario.toJSON();
-                    })
-                });
-        //     };
-        // });
+                horario.horarioIntervalo.start = horaInicial;
+                horario.horarioIntervalo.end = horaFinal;
+                return horario.toJSON();
+            })
+        });
     }catch(err){
         return res.json({message: "error"});
     };
@@ -134,7 +132,9 @@ exports.renderRedefinirSenha = async (req,res) => {
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
-        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const decoded = req.decoded;
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
         
         res.render("pages/Afiliado/registrarQuadra",{
             horariosLength:horarios.length
@@ -145,7 +145,9 @@ exports.renderRegistrarQuadra = async (req,res) => {
 };
 exports.renderEditarQuadra = async (req,res) => {
     try{
-        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const decoded = req.decoded;
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
 
         res.render("pages/Afiliado/editarQuadra",{
             horariosLength:horarios.length
@@ -156,17 +158,20 @@ exports.renderEditarQuadra = async (req,res) => {
 };
 exports.renderAfiliadoHistorico = async (req, res) => {
     try{
+        const decoded = req.decoded;
+
         //Paginação
         const pageAtual = Number(req.params.page) || 1;
         const limit = 8;
         const skip = (pageAtual*limit)-limit;
 
         //Consulta
-        const horarios = await Horario.find({aprovado:"verdadeiro"}).sort({data:1}).populate("quadraId usuarioId").skip(skip).limit(limit);
-        const horariosTotal = await Horario.find({aprovado:"verdadeiro"});
-        const pagesTotal = Math.ceil(horariosTotal.length/limit );
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"verdadeiro"}).sort({data:1}).populate("quadraId usuarioId").skip(skip).limit(limit);
+        const horariosTotal = await Horario.find({usuarioId:decoded.id,aprovado:"verdadeiro"});
+        const pagesTotal = Math.ceil(horariosTotal.length/limit);
 
-        const horariosPendenteLength = await Horario.find({aprovado:"pendente"});
+        const horariosPendenteLength = await Horario.find({quadraId:quadra._id,aprovado:"pendente"});
 
         res.render("pages/Afiliado/AfiliadoHistorico",{
             pagination:{
@@ -186,41 +191,32 @@ exports.renderAfiliadoHistorico = async (req, res) => {
 };
 exports.renderHorarioSolicitado = async (req, res) => {
     try{
-        // const token = req.headers["Authorization"];
+        const decoded = req.decoded;
+        
+        const quadra = await Quadra.findOne({usuarioId:decoded.id});
+        const horarios = await Horario.find({quadraId:quadra._id});
+        
+        res.render("pages/Afiliado/afiliado.handlebars",{
+            //Formatando hoario
+            horarios:horarios.map(horario => {
+                horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
+                horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
+                return horario.toJSON();
+            }),
+            horariosLength:horarios.length
 
-        // jwt.verify(token, process.env.SECRETKEY, async (error, decoded) => {
-        //     if (error || decoded.afiliado != true) {
-        //         res.redirect("/usuario/login");
-        //     }else {
-                    // //peguei todas as quadras no nome do admin, peguei os horarios delas (ou seja todos os horarios solicitados)
-                    // const quadras = await Quadra.find({_id:decoded.id});
-                    // const horarios = quadras.map(async (quadra) => {
-                    //     return await Horario.find({quadraId:quadra._id})
-                    // });
-                    const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
-                    res.render("pages/Afiliado/afiliado.handlebars",{
-                        //Formatando hoario
-                        horarios:horarios.map(horario => {
-                            horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");
-                            horario.horarioIntervalo.end = fns.format(horario.horarioIntervalo.end,"HH:mm");
-                            return horario.toJSON();
-                        }),
-                        horariosLength:horarios.length
-
-                    });
-        //     };
-        // }); 
-    } catch (err) {
-        console.log(err)
-        return res.json({
-            message: "error"
         });
-    }
+    } catch (err) {
+        return res.json({message: "error"});
+    };
 };
 exports.renderAdicionarImagens = async (req,res) => {
     try{
-        const imagens = await ImagemQuadra.find().limit(7);
-        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const decoded = req.decoded;
+
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const imagens = await ImagemQuadra.find({quadraId:quadra._id}).limit(7);
 
         res.render("pages/Afiliado/adicionarimagens",{
             imagens:imagens.map(imagem => imagem.toJSON()),
@@ -232,8 +228,11 @@ exports.renderAdicionarImagens = async (req,res) => {
 };
 exports.renderDeletarImagens = async (req,res) => {
     try{
-        const imagens = await ImagemQuadra.find().limit(7);
-        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const decoded = req.decoded;
+        
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const imagens = await ImagemQuadra.find({quadraId:quadra._id}).limit(7);
 
         res.render("pages/Afiliado/deletarimagens",{
             imagens:imagens.map(imagem => imagem.toJSON()),
@@ -245,9 +244,11 @@ exports.renderDeletarImagens = async (req,res) => {
 };
 exports.renderVerQuadra = async (req,res) => {
     try{
-        const quadra = await Quadra.findOne().sort({data: -1});
-        const imagens = await ImagemQuadra.find().limit(7);
-        const horarios = await Horario.find({aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const decoded = req.decoded;
+
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente"}).sort({data:1}).populate("quadraId usuarioId");
+        const imagens = await ImagemQuadra.find({quadraId:quadra._id}).limit(7);
 
         res.render("pages/Afiliado/afiliadoVerQuadra",{
             quadra:quadra.toJSON(),
@@ -255,7 +256,6 @@ exports.renderVerQuadra = async (req,res) => {
             horariosLength:horarios.length
         });
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     };
 };

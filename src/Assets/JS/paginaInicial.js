@@ -1,22 +1,3 @@
-function parseJwt (token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload);
-};
-
-const btnBotao = document.querySelector("#btnCadastrar");
-
-if(localStorage.getItem("token")){
-    const token = parseJwt(localStorage.getItem("token"));
-    btnBotao.textContent = "Olá, "+token.nome;
-
-    if(token.afiliado == true){
-    
-    };
-}else{
-    btnBotao.textContent = "Entrar ou inscrever-se";
+async function redirecionarLogin(){
+    location.href = "/usuario/login";
 };

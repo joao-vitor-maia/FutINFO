@@ -50,9 +50,26 @@
           </ul>
           <!------- Botão inscrever-se ------>
           <div class="ml-auto py-1">
-            <a href="/usuario/login">
-              <button type="button" class="btn btn-person" id="btnCadastrar"></button>
-            </a>
+           <div class="dropdown">
+              {{#if decoded.afiliado}}
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{decoded.nome}}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="divAcessarAfiliado" onclick="">
+                <div class="d-flex justify-content-center">
+                <a class="dropdown-item" href="/afiliado/horarios-solicitados">Acessar configurações <br> da quadra ></a>
+              </div>
+              {{else if decoded}}
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{decoded.nome}}
+              </button>
+              {{else}}
+              <button type="button" onclick="redirecionarLogin()" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Entrar ou inscrever-se
+              </button>
+              {{/if}}
+              </div>
+            </div>
           </div>
         </div>
       </nav>

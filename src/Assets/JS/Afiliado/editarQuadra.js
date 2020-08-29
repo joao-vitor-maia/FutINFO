@@ -35,6 +35,7 @@ async function editarQuadra() {
             alert("Voçê não está autorizado a acessar essa página");
             location.href = "/usuario/login";
         } else {
+            alert("Quadra editada com sucesso")
             location.href = "/pagina-inicial";
         };
     }
