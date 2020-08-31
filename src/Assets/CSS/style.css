@@ -43,13 +43,22 @@ header {
     text-decoration: none;
 }
 .dropdown-item {
-    font-size: 13.5px;
+    font-size: 13px;
     color: #000;
     font-weight: bolder;
 }
 .dropdown-menu,
 .dropdown-item {
-    background-color: #EFEFEF;
+    background-color: #FFFF;
+}
+.dropdown-menu {
+    border-radius: 4px;
+}
+.inicio-text {
+    font-size: 18px;
+}
+.btn-danger-person {
+    font-size: 13.5px;
 }
 
 /***** Menu bottom *****/
