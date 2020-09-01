@@ -53,24 +53,29 @@
            <div class="dropdown">
               {{#if decoded.afiliado}}
               <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{decoded.nome}}
+                Olá {{decoded.nome}}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="divAcessarAfiliado" onclick="">
                 <div class="d-flex justify-content-center">
                 <a class="dropdown-item" href="/afiliado/horarios-solicitados">Acessar configurações <br> da quadra ></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
               </div>
               {{else if decoded}}
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item py-2" href="#"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
                 <a class="dropdown-item py-2" href="#"><span class="inicio-text">-</span> Editar meu perfil</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item py-2" href="#">
+                <a class="dropdow n-item py-2" onclick="logout()">
                  <div class="btn btn-danger btn-danger-person"> Fazer logout
                  </div>
                  </a>
               </div>
               <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{decoded.nome}}
+                Olá {{decoded.nome}}
               </button>
               {{else}}
               <button type="button" onclick="redirecionarLogin()" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

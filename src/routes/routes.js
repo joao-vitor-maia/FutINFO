@@ -39,6 +39,7 @@ router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.render
 
 //Usuarios
 router.post("/efetuando-login",auth.gerarToken);
+router.get("/efetuando-logout",auth.logout);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
 router.post("/efetuando-atualizacao-de-senha",usuarioController.editar);
 

@@ -96,3 +96,11 @@ exports.autenticarAdicionarImagens = async (req,res,next) => {
         return res.json({message:"error"});
     };
 };
+exports.logout = async(req,res) => {
+    try{
+        res.clearCookie("token")
+        return res.json({message:"sucess"});
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
