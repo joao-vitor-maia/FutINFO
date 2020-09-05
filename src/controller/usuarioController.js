@@ -57,9 +57,8 @@ exports.cadastrar = async(req,res) => {
         return res.json({message:"error"});
     };
 };
-exports.editar = async(req,res) => {
-    try{        
-        
+exports.redefinirSenha = async(req,res) => {
+    try{                
         const email = req.body.email;
         const senhaNova = req.body.senhaNova;
         const senhaReserva = req.body.senhaReserva;
@@ -93,7 +92,33 @@ exports.editar = async(req,res) => {
         };
 
    }catch(err){
-        res.json({message:"error"});
+        return res.json({message:"error"});
+   }
+    
+};
+exports.editarNome = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const nome1 = req.body.nome1;
+        const nome2 = req.body.nome2;
+        
+        if(validator.isLength(nome1,{min:2,max:60}) && sanitize(nome1,{allowedTags:[], allowedAttributes:{} }) == nome1 && nome1 == nome2){
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const usuario = await Usuario.findOne({email:decoded.email});
+                    usuario.nome = nome1;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+   }catch(err){
+        return res.json({message:"error"});
    }
     
 };

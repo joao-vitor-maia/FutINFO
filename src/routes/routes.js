@@ -25,8 +25,10 @@ router.get("/pagina-inicial/:page",pageController.renderHome);
 //Usuario
 router.get("/usuario/login",pageController.renderLogin);
 router.get("/usuario/cadastrar",pageController.renderCadastro);
-router.get("/usuario/horarios-reservados",pageController.renderHorarioUsuario);
 router.get("/usuario/redefinir-senha",pageController.renderRedefinirSenha);
+router.get("/usuario/ver-perfil", auth.autorizarUsuario, pageController.renderVerPerfil);
+router.get("/usuario/horarios-reservados",pageController.renderHorarioUsuario);
+router.get("/usuario/editar-nome", auth.autorizarUsuario, pageController.renderEditarNome);
 //Afiliado
 router.get("/afiliado/registrar-quadra", auth.autorizarAfiliado, pageController.renderRegistrarQuadra);
 router.get("/afiliado/editar-quadra", auth.autorizarAfiliado, pageController.renderEditarQuadra);
@@ -41,7 +43,8 @@ router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.render
 router.post("/efetuando-login",auth.gerarToken);
 router.get("/efetuando-logout",auth.logout);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
-router.post("/efetuando-atualizacao-de-senha",usuarioController.editar);
+router.post("/efetuando-editar-nome",usuarioController.editarNome);
+router.post("/efetuando-atualizacao-de-senha",usuarioController.redefinirSenha);
 
 //Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);
