@@ -153,6 +153,17 @@ exports.renderEditarNome = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderEditarEmail = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        
+        res.render("pages/Usuario/editarEmail",{
+            email:decoded.email
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{

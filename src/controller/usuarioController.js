@@ -122,3 +122,29 @@ exports.editarNome = async(req,res) => {
    }
     
 };
+exports.editarEmail = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const email1 = req.body.email1;
+        const email2 = req.body.email2;
+        
+        if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && email1 == email2){
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const usuario = await Usuario.findOne({email:decoded.email});
+                    usuario.email = email1;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+   }catch(err){
+        return res.json({message:"error"});
+   }
+    
+};

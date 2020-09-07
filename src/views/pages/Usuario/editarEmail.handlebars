@@ -48,9 +48,9 @@
           </a></span>
           <div class="collapse show collapse-person collapse-show" id="edit-perfil">
             <div class="items-collapse">
-              <span class="name-user"><a href="#" style="color: #FFF;">Nome</a></span>
-              <span class="name-user user-options-active"><a href="#">E-mail</a></span>
-              <span class="name-user"><a href="#" style="color:#FFF;">Senha</a></span>
+              <span class="name-user"><a href="/usuario/editar-nome" style="color: #FFF;">Nome</a></span>
+              <span class="name-user user-options-active"><a href="/usuario/editar-email">E-mail</a></span>
+              <span class="name-user"><a href="/usuario/editar-senha" style="color:#FFF;">Senha</a></span>
             </div>
           </div>
         </li>
@@ -72,18 +72,18 @@
         <div class="edit-name-area mx-auto">
           <div class="name-atual-area py-3">
           <h1 class="h1-name">E-mail atual:</h1>
-          <span class="span-name">ylfernando3@gmail.com</span>
+          <span class="span-name">{{email}}</span>
         </div>
         <div class="name-input-area py-3">
           <h1 class="h1-name">Novo e-mail:</h1>
-          <input class="input-name" type="text" placeholder="Digite o nome desejado">
+          <input class="input-name" type="text" placeholder="Digite o nome desejado" id="email1">
         </div>
         <div class="name-input-area py-3">
           <h1 class="h1-name">Confirmar novo e-mail:</h1>
-          <input class="input-name" type="text" placeholder="Digite o nome desejado">
+          <input class="input-name" type="text" placeholder="Digite o nome desejado" id="email2">
         </div>
         <div class="button-name-area pt-3">
-           <button type="button" class="btn btn-success">Salvar alterações</button>
+           <button type="button" class="btn btn-success" onclick="editarEmail()">Salvar alterações</button>
         </div>
         </div>
       </div>
@@ -106,5 +106,5 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
-</body>
+   <script src="/JS/usuario/editarEmail.js" type="text/javascript"></script>
 </html>
