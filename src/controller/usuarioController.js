@@ -145,6 +145,46 @@ exports.editarEmail = async(req,res) => {
         };
    }catch(err){
         return res.json({message:"error"});
-   }
+   };
+    
+};
+exports.editarSenha = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const senhaAtual = req.body.senhaAtual;
+        const senha1 = req.body.senha1;
+        const senha2 = req.body.senha2;
+        
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error){
+                return res.json({message:"unauthorized"});
+            }else{
+                //Busco usuario e verifico se senha input é igual senha do usuario
+                const usuario = await Usuario.findOne({email:decoded.email});
+                const senhaIsValid = await bcrypt.compare(senhaAtual,usuario.senha);
+
+                if(senha1 == senha2 && senhaIsValid == true){
+
+                    const senhaHash = await new Promise((resolve, reject) => {
+                        bcrypt.hash(senha1, 10, function(err, hash) {
+                            if(err) {
+                              reject(err)
+                            }else{
+                              resolve(hash)
+                            };
+                        });  
+                    });
+                    usuario.senha = senhaHash;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                }else{
+                    return res.json({message:"invalid"});
+                };
+            };
+        });
+   }catch(err){
+        return res.json({message:"error"});
+   };
     
 };

@@ -164,6 +164,17 @@ exports.renderEditarEmail = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderEditarSenha = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        
+        res.render("pages/Usuario/editarSenha",{
+            senha:decoded.senha
+        });
+    }catch(err){        
+        return res.json({message:"error"});
+    };
+};
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
