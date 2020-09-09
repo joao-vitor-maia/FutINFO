@@ -118,37 +118,26 @@ section {
     color: #4577ff; 
 }
 /***** Edit input *****/
-.area-info-edit {
-    height: auto;
-}
-.info-edit-content {
-    display: flex;
-    flex-direction: column;
-}
-/***** Imagem user *****/
-.info-img-user {
-    border-bottom: 2px solid #011a5f;
-    text-align: center;
-}
-.user-img {
-    margin: 10px 0px 15px 0px;
-    height: 90px;
-}
-/***** Detalhes user *****/
-.h1-name {
+.h1-input {
     font-weight: 600;
-    font-size: 20px;
+    font-size: 25px;
     color: #011a5f;
+
 }
-.span-name {
-    font-weight: 500;
-    color: #002747;
+.input-text {
+    border-color:#002747;
+    width: 300px;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 16px;
 }
-.input-name {
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 15px;
-   color: #011a5f;
+.text-noticia {
+    width: 400px;
+    height: 300px;
+    padding: 10px;
+}
+.btn-person {
+    font-size: 16px;
 }
 /***** Footer *****/
 footer {
