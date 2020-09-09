@@ -106,7 +106,7 @@ exports.renderHorarioUsuario = async (req, res) => {
 };
 exports.renderLogin = async (req, res) => {
     try {
-        res.render("pages/Usuario/login.handlebars");
+        res.render("pages/Usuario/login");
     } catch (err) {
         return res.json({
             message: "error"
@@ -115,7 +115,7 @@ exports.renderLogin = async (req, res) => {
 };
 exports.renderCadastro = async (req, res) => {
     try {
-        res.render("pages/Usuario/cadastro.handlebars");
+        res.render("pages/Usuario/cadastro");
     } catch (err) {
         return res.json({
             message: "error"
@@ -124,10 +124,56 @@ exports.renderCadastro = async (req, res) => {
 };
 exports.renderRedefinirSenha = async (req,res) => {
     try {
-        res.render("pages/Usuario/redefinirSenha.handlebars");
+        res.render("pages/Usuario/redefinirSenha");
     } catch(err){
         return res.json({message: "error"});
     }
+};
+exports.renderVerPerfil = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+
+        res.render("pages/Usuario/verPerfil",{
+            nome:decoded.nome,
+            email:decoded.email,
+            senha:decoded.senha
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarNome = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        
+        res.render("pages/Usuario/editarNome",{
+            nome:decoded.nome
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarEmail = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        
+        res.render("pages/Usuario/editarEmail",{
+            email:decoded.email
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarSenha = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        
+        res.render("pages/Usuario/editarSenha",{
+            senha:decoded.senha
+        });
+    }catch(err){        
+        return res.json({message:"error"});
+    };
 };
 //Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
@@ -196,7 +242,7 @@ exports.renderHorarioSolicitado = async (req, res) => {
         const quadra = await Quadra.findOne({usuarioId:decoded.id});
         const horarios = await Horario.find({quadraId:quadra._id});
         
-        res.render("pages/Afiliado/afiliado.handlebars",{
+        res.render("pages/Afiliado/afiliado",{
             //Formatando hoario
             horarios:horarios.map(horario => {
                 horario.horarioIntervalo.start = fns.format(horario.horarioIntervalo.start,"HH:mm");

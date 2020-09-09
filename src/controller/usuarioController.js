@@ -57,9 +57,8 @@ exports.cadastrar = async(req,res) => {
         return res.json({message:"error"});
     };
 };
-exports.editar = async(req,res) => {
-    try{        
-        
+exports.redefinirSenha = async(req,res) => {
+    try{                
         const email = req.body.email;
         const senhaNova = req.body.senhaNova;
         const senhaReserva = req.body.senhaReserva;
@@ -93,7 +92,99 @@ exports.editar = async(req,res) => {
         };
 
    }catch(err){
-        res.json({message:"error"});
+        return res.json({message:"error"});
    }
+    
+};
+exports.editarNome = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const nome1 = req.body.nome1;
+        const nome2 = req.body.nome2;
+        
+        if(validator.isLength(nome1,{min:2,max:60}) && sanitize(nome1,{allowedTags:[], allowedAttributes:{} }) == nome1 && nome1 == nome2){
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const usuario = await Usuario.findOne({email:decoded.email});
+                    usuario.nome = nome1;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+   }catch(err){
+        return res.json({message:"error"});
+   }
+    
+};
+exports.editarEmail = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const email1 = req.body.email1;
+        const email2 = req.body.email2;
+        
+        if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && email1 == email2){
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const usuario = await Usuario.findOne({email:decoded.email});
+                    usuario.email = email1;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+   }catch(err){
+        return res.json({message:"error"});
+   };
+    
+};
+exports.editarSenha = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const senhaAtual = req.body.senhaAtual;
+        const senha1 = req.body.senha1;
+        const senha2 = req.body.senha2;
+        
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error){
+                return res.json({message:"unauthorized"});
+            }else{
+                //Busco usuario e verifico se senha input é igual senha do usuario
+                const usuario = await Usuario.findOne({email:decoded.email});
+                const senhaIsValid = await bcrypt.compare(senhaAtual,usuario.senha);
+
+                if(senha1 == senha2 && senhaIsValid == true){
+
+                    const senhaHash = await new Promise((resolve, reject) => {
+                        bcrypt.hash(senha1, 10, function(err, hash) {
+                            if(err) {
+                              reject(err)
+                            }else{
+                              resolve(hash)
+                            };
+                        });  
+                    });
+                    usuario.senha = senhaHash;
+                    await usuario.save();
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                }else{
+                    return res.json({message:"invalid"});
+                };
+            };
+        });
+   }catch(err){
+        return res.json({message:"error"});
+   };
     
 };

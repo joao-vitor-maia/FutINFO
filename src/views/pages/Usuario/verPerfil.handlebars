@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!------- Fonte importada ------>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!------- Estilização ------>
+  <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/CSS/ver-perfil.css">
+  <title>Editar meu perfil</title>
+</head>
+
+<body>
+  <!------- Header ------>
+  <header>
+    <div class="container">
+      <div class="logo text-center">
+        <a href="#" class="navbar-brand">
+          <img height="63" src="/Images/LOGO-FUTINFO.jpg">
+        </a>
+      </div>
+    </div>
+  </header>
+  <!------- Article ------>
+  <article class="container-fluid">
+    <section class="row p-0">
+  <!------- Título do edit ------>
+      <div class="edit-title">
+       <h2 class="h2-edit-title text-center">Meu perfil</h2>
+      </div>
+  <!------- Lista do edit ------>
+  <div class="col-xl-4 col-lg-4 col-md-5 pt-1 col-sm p-0 mt-1 area-items-edit">
+    <div class="list-edit">
+      <ul class="ul-edit pt-3">
+        <li class="li-edit">
+          <img src="/Images/Afiliados/user.svg" height="23">
+          <span class="text-li li-active"><a href="/usuario/ver-perfil">Meu perfil</a></span>
+        </li>
+        <li class="li-edit" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <img src="/Images/Afiliados/order.svg" height="23">
+          <span class="text-li"><a href="#">Editar perfil
+            <img src="/Images/Afiliados/down-arrow.svg" height="18">
+          </a></span>
+          <div class="collapse collapse-person" id="collapseExample">
+            <div class="items-collapse">
+              <span class="name-user"><a href="/usuario/editar-nome" style="color:#FFF;">Nome</a></span>
+              <span class="name-user"><a href="/usuario/editar-email" style="color:#FFF;">E-mail</a></span>
+              <span class="name-user"><a href="/usuario/editar-senha" style="color:#FFF;">Senha</a></span>
+            </div>
+          </div>
+        </li>
+        </ul>
+                              <div class="link-inicio-area pt-5">
+                <li class="item-li-link">
+                  <img class="img-li-aside" src="/Images/Afiliados/logout.svg" height="23">
+                  <span class="li-text-link text-li"><a href="/pagina-inicial">Voltar para o início do site</a></span>
+                </li>
+              </div>
+    </div>
+  </div>
+  <!------- Conteúdo do edit ------>
+    <div class="col-xl-8 col-lg-8 col-md-7 col-12 mt-1 area-info-edit">
+      <div class="info-edit-content pb-3">
+        <div class="info-img-user">
+          <img class="user-img" src="/Images/Afiliados/user-black.svg">
+        </div>
+        <div class="info-user-area mx-auto">
+          <div class="info-name-user py-3">
+            <h1 class="h1-name">Nome:</h1>
+            <span class="span-name-user">{{nome}}</span>
+          </div>
+          <div class="info-email-user py-3">
+            <h1 class="h1-name">E-mail:</h1>
+            <span class="span-email-user">{{email}}</span>
+          </div>
+          <div class="info-password-user py-3">
+            <h1 class="h1-name">Senha:</h1>
+            <input type="password" value="hiddenPSW" class="input-password" id="input-pass">
+            <button type="button" class="btn btn-success btn-person" onclick="mostrarSenha()">Mostrar senha</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+  </article>
+      <!------- Footer ------>
+      <footer class="mt-1">
+        <div class="container">
+            <div class="logo text-center">
+              <a href="#" class="navbar-brand">
+                  <img height="63" src="/Images/LOGO-FUTINFO.jpg">
+              </a>
+            </div>
+        </div>
+    </footer>
+   <!------- Scripts ------>
+   <script src="/JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+   <script src="/JS/hidden-pass.js" type="text/javascript"></script>
+   <script src="/JS/click-user.js" type="text/javascript"></script>
+   <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
+   <script src="/JS/popper.min.js" type="text/javascript"></script>
+</body>
+</html>

@@ -60,7 +60,6 @@ exports.autorizarAfiliado = async (req,res,next) => {
         
         jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
             if(error || decoded.afiliado == false){
-                
                 return res.json({message:"unauthorized"});
             }else{
                 req.decoded = decoded;
@@ -98,7 +97,7 @@ exports.autenticarAdicionarImagens = async (req,res,next) => {
 };
 exports.logout = async(req,res) => {
     try{
-        res.clearCookie("token")
+        res.clearCookie("token");
         return res.json({message:"sucess"});
     }catch(err){
         return res.json({message:"error"});
