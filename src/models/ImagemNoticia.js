@@ -1,17 +1,18 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema
-const fns = require("date-fns");
+const Schema = mongoose.Schema;
 
-const noticia = new Schema({
-    manchete: {
-        type:String,
-        min:2,
-        max:60,
+const imagemNoticia = new Schema({
+    noticiaId: {
+        type:Schema.Types.ObjectId,
+        ref:"Noticia",
         required:true
     },
-    conteudo: {
+    url: {
         type:String,
-        min:2,
+        required:true
+    },
+    diretorio: {
+        type:String,
         required:true
     },
     data: {
@@ -24,4 +25,4 @@ const noticia = new Schema({
     }
 });
 
-module.exports = mongoose.model("Noticia",noticia);
+module.exports = mongoose.model("ImagemNoticia",imagemNoticia);

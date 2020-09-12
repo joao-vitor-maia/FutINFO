@@ -36,7 +36,11 @@ const time = Schema({
     },
     data: {
         type:Date,
-        default:Date.now()
+        default:new Date()
+    },
+    dataTimestamp: {
+        type:Date,
+        default:Date.now
     }
 });
 

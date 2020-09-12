@@ -45,12 +45,16 @@
             <ul>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/bell.svg" height="23">
+                <a href="/afiliado/horarios-solicitados">
                 <span class="li-text">Ver solicitações</span>
+                </a>
                 <div class="btn-danger d-inline-block notificacao">{{horariosLength}}</div>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/clock.svg" height="23">
+                <a href="/afiliado/historico-horarios">
                 <span class="li-text">Histórico de agendamento</span>
+                </a>
               </li>
         <!------- Item com collapse ------>
               <li class="item-li item-li-collapse" data-toggle="" href="#imgs-li" aria-expanded="" aria-controls="imgs-li">
@@ -60,26 +64,36 @@
                 </span>
                 <div class="collapse show" id="imgs-li">
                                   <ul class="ul-collapse">
+                    <a href="/afiliado/adicionar-imagens">
                     <li class="li-collapse">Adicionar imagens
                 <img class="arrowDown-li" src="/Images/Afiliados/plus.svg" height="17">
                     </li>
+                    </a>
+                    <a href="/afiliado/deletar-imagens">
                     <li class="li-collapse-active">Remover imagens
                 <img class="arrowDown-li" src="/Images/Afiliados/minus.svg" height="17">
                     </li>
+                    </a>
                   </ul>
                 </div>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/add.svg" height="23">
+                <a href="/afiliado/registrar-quadra">
                 <span class="li-text">Registrar endereço da quadra</span>
+                </a>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/order.svg" height="23">
+                <a href="/afiliado/editar-quadra">
                 <span class="li-text">Editar endereço da quadra</span>
+                </a>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/cursor.svg" height="23">
+                <a href="/afiliado/ver-quadra">
                 <span class="li-text">Ver minha quadra</span>
+                </a>
               </li>
               <div class="link-inicio-area pt-5">
                 <li class="item-li-link">
@@ -109,7 +123,7 @@
                   <div class="img-area">
                     {{#each imagens}}
                     <div class="img-content">
-                      <img class="image-content w-100 h-100" src="{{this.localizacao}}">
+                      <img class="image-content w-100 h-100" src="{{this.url}}">
                       <button class="btn btn-remove btn-success btn-font-person" value="{{this._id}}" onclick="deletarImagem()">
                         Remover imagem
                       </button>

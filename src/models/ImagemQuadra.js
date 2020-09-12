@@ -7,13 +7,21 @@ const imagemQuadra = new Schema({
         ref:"Quadra",
         required:true
     },
-    localizacao: {
+    url: {
+        type:String,
+        required:true
+    },
+    diretorio: {
         type:String,
         required:true
     },
     data: {
         type:Date,
-        default:Date.now()
+        default:new Date()
+    },
+    dataTimestamp: {
+        type:Date,
+        default:Date.now
     }
 });
 

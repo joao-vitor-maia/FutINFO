@@ -31,7 +31,7 @@ async function editarSenha() {
         alert("Os dados estão inválidos");
 
     }else{
-        localStorage.clear("token");
+        localStorage.removeItem("token");
         location.href = "/pagina-inicial";
     };
 }

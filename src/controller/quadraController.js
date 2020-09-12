@@ -36,16 +36,6 @@ exports.salvarQuadra = async (req,res) => {
                     };
                     const quadra = await new Quadra(dadosQuadra).save();
 
-                    // //Salvando cada imagem do array separadamente
-                    //     for(let imagem of imagens){
-                    //         const dadosImagem = {
-                    //             quadraId:quadra._id,
-                    //             imagemBase64:imagem
-                    //         };
-                    //         await new ImagemQuadra(dadosImagem).save();
-                            
-                    //     };
-
                     return res.json({message:"success"});
                     
                 };
@@ -78,7 +68,7 @@ exports.editarQuadra = async (req,res) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
                 }else{
-                    const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+                    const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({dataTimestamp:-1});
 
                     quadra.nome = nome;
                     quadra.rua = rua;
@@ -116,7 +106,7 @@ exports.adicionarImagem = async (req,res) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
             }else{
-                const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({data:-1});
+                const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({dataTimestamp:-1});
                 const imagens = await ImagemQuadra.find({quadraId:quadra._id});
 
                 //Verificando se ocorreu algum problema no fileFilter
@@ -137,7 +127,8 @@ exports.adicionarImagem = async (req,res) => {
                 for(let imagem of upload){
                     const dados = {
                         quadraId:quadra._id,
-                        localizacao:"/uploads/"+imagem.filename
+                        url:"/uploads/"+imagem.filename,
+                        diretorio:imagem.path
                     };
                     await ImagemQuadra(dados).save();
                 };
@@ -159,7 +150,9 @@ exports.deletarImagem = async (req,res) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
             }else{
-                await ImagemQuadra.findOneAndDelete({_id:idImagem});
+                const imagem = await ImagemQuadra.findOne({_id:idImagem});
+                fs.unlinkSync(imagem.diretorio);
+                await imagem.deleteOne();
                 return res.json({message:"sucess"});
                 
             };

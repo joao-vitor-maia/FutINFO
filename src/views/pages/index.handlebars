@@ -56,7 +56,7 @@
                 Olá {{decoded.nome}}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="divAcessarAfiliado" onclick="">
-                <a class="dropdown-item" href="/afiliado/horarios-solicitados">Acessar configurações <br> da quadra ></a>
+                <a class="dropdown-item" href="/afiliado/registrar-quadra">Acessar configurações <br> da quadra ></a>
                 <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item py-2" onclick="logout()">
@@ -65,7 +65,7 @@
                  </a>
               {{else if decoded}}
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item py-2" href="#"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
+                <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
                 <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item py-2" onclick="logout()">
@@ -106,11 +106,11 @@
                   {{#each this.imagens}}
                   {{#if @first}}
                     <div class="carousel-item active">
-                      <img class="d-block w-100" src="{{this.localizacao}}" alt="Primeiro Slide">
+                      <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
                     </div>
                   {{else}}
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="{{this.localizacao}}" alt="Primeiro Slide">
+                      <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
                     </div>
                   {{/if}}
                 {{/each}}
@@ -262,17 +262,17 @@
         {{#each noticias}}
         <div class="news d-flex">
           <div class="newsImg">
-            <img class="imgNews" src="/Images/Slide/img-1.jpg">
+            <img class="imgNews" src="{{this.imagem.url}}">
           </div>
           <div class="newsText text-center w-100">
-            <h1 class="h1TitleNews">{{this.manchete}}</h1>
+            <h1 class="h1TitleNews">{{this.noticia.manchete}}</h1>
             <p class="sbTitleNews">
-              {{this.conteudo}}
+              {{this.noticia.conteudo}}
             </p>
             <div class="dateNews d-flex mt-1">
               <div class="textDate">
                 <img width="15" class="calendarIMG" src="/Images/News/calendar.svg">
-                {{this.data.data}}
+                {{this.data}}
               </div>
               <div class="dateNews-links mt-2">
                 <h3 class="news-h3-Link"><a href="#">Ver classificação atualizada >></a></h3>
@@ -300,11 +300,11 @@
                 {{#each this.imagens}}
                   {{#if @first}}
                     <div class="carousel-item active">
-                      <img class="d-block w-100" src="{{this.localizacao}}" alt="Primeiro Slide">
+                      <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
                     </div>
                   {{else}}
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="{{this.localizacao}}" alt="Primeiro Slide">
+                      <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
                     </div>
                   {{/if}}
                 {{/each}}

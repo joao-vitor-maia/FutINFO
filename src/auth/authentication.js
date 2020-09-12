@@ -70,6 +70,22 @@ exports.autorizarAfiliado = async (req,res,next) => {
         return res.json({message:"error"});
     };
 };
+exports.autorizarAdmin = async (req,res,next) => {
+    try{
+        const token = req.cookies.token;
+        
+        jwt.verify(token,process.env.SECRETKEY, (error,decoded) => {
+            if(error || decoded.admin == false){
+                return res.json({message:"unauthorized"});
+            }else{
+                req.decoded = decoded;
+                next();
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
 exports.autenticarAdicionarImagens = async (req,res,next) => {
     try{
         const token = req.headers["authorization"];

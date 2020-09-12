@@ -73,23 +73,23 @@
             <h1 class="h1-input">Adicionar imagem da notícia</h1>
           </div>
           <div class="input-imagem-area py-2">
-            <input type="file">
+            <input type="file" id="imagem" enctype="multipart/form-data">
           </div>
           </div>
           <div class="input-title py-2">
             <h1 class="h1-input">Título da notícia</h1>
           </div>
           <div class="input-text-area">
-            <input type="text" class="input-text">
+            <input type="text" class="input-text" id="manchete">
           </div>
           <div class="noticia-area mt-3">
             <div class="input-title py-2">
             <h1 class="h1-input">Registrar notícia</h1>
           </div>
-            <textarea class="text-noticia"></textarea>
+            <textarea class="text-noticia" id="conteudo"></textarea>
           </div>
           <div class="button-area pt-3">
-            <button type="button" class="btn btn-success btn-person">Registrar notícia</button>
+            <button type="button" class="btn btn-success btn-person" onclick="adicionarNoticia()">Registrar notícia</button>
           </div>
         </div>
       </div>
@@ -112,5 +112,6 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/Admin/editarNoticia.js" type="text/javascript"></script>
 </body>
 </html>

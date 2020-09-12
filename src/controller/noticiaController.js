@@ -1,33 +1,51 @@
 const Noticia = require("@models/Noticia");
 const validator = require("validator");
-const sanitize = require("sanitize-html");
+const fs = require("fs")
+const ImagemNoticia = require("@models/ImagemNoticia");
 const jwt = require("jsonwebtoken");
 
 exports.postarNoticia = async (req,res) => {
-    const token = req.body.token;
-    const manchete = req.body.manchete;
-    const divisao = req.body.divisao;
-    const conteudo = req.body.conteudo; 
+    try{
+        const token = req.headers["authorization"];
+        const manchete = req.body.manchete;
+        const conteudo = req.body.conteudo; 
+        const imagem = req.file;
 
-    if(validator.isLength(manchete,{min:2,max:60}) &&
-    validator.isInt(divisao) &&
-    validator.isLength(conteudo,{min:2})){
-        
-        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error || decoded.admin == false){
-                return res.json({message:"unauthorized"});
-            }else{
-                const dados = {
-                    manchete:manchete,
-                    divisao:divisao,
-                    conteudo:conteudo
+        //Verificando se ocorreu algum problema no fileFilter
+        if(req.fileType){
+            fs.unlinkSync(imagem.path);
+            return res.json({message:"invalidType"});
+        };
+        //Validando dados
+        if(validator.isLength(manchete,{min:2}) &&
+        validator.isLength(conteudo,{min:2})){
+            
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error || decoded.admin == false){
+                    fs.unlinkSync(imagem.path);
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const dadosNoticia = {
+                        manchete:manchete,
+                        conteudo:conteudo
+                    };
+                    const noticia = await Noticia(dadosNoticia).save();
+
+                    const dadosImagem = {
+                        noticiaId:noticia._id,
+                        url:"/uploads/"+imagem.filename,
+                        diretorio:imagem.path
+                    };
+                    await ImagemNoticia(dadosImagem).save();
+                    return res.json({message:"success"});
                 };
-                await Noticia(dados).save();
-                return res.json({message:"success"});
-            };
-        });
+            });
 
-    }else{
-        return res.json({message:"invalid"});
-    }
+        }else{
+            fs.unlinkSync(imagem.path);
+            return res.json({message:"invalid"});
+        };
+    }catch(error){
+        return res.json({message:"error"});
+    };
 };
