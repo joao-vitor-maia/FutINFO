@@ -1,0 +1,265 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/***** Header *****/
+header {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+}
+section {
+    font-family: 'Montserrat', sans-serif;
+}
+/***** Edit lista *****/
+.edit-title {
+   background-color: #011a5f;
+    width: 100%;
+    height: 90px;
+}
+.h2-edit-title {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 90px;
+}
+.area-items-edit {
+    height: auto;
+ background-color: #002747;
+    display: flex;
+    flex-direction: column;
+}
+/***** Botão de voltar para o início *****/
+.link-inicio-area {
+    padding: 16px;
+}
+.item-li-link {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    border-top: 2px solid #FFF;
+    cursor: pointer;
+    list-style: none;
+    margin-left: 15px;
+}
+.item-li-link a {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    cursor: pointer;
+    margin-left: 15px;
+
+    text-decoration: none;
+}
+.img-li-aside {
+    height: 27px;
+    margin-left: 10px;
+}
+/***** Fim do botão *****/
+.ul-edit {
+    list-style: none;
+}
+.li-edit {
+    padding:15px 0px 10px 0px!important;
+    border-bottom: 1x solid #FFF;
+}
+.li-active a {
+     padding: 9px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+}
+.text-li a {
+    color: #FFF;
+    font-weight: 500;
+    font-size: 17.5px;
+    margin-left: 7px;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    transition: all 0.5s;
+    padding: 5px;
+}
+.text-li a:hover {
+     padding: 15px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+}
+.text-li-click a {
+         padding: 9px;
+    color: #FFF;
+    border-radius: 3px;
+}
+.collapse-person {
+    text-align: center;
+    max-width: 30%;
+    margin-top: 8px;
+    color: #FFF;
+}
+.items-collapse {
+    display: flex;
+    flex-direction: column;
+}
+.name-user {
+    padding-top: 15px;
+    color: #FFF;
+    font-weight: 600;
+    font-size: 14.5px;
+}
+.user-options-active a {
+    color: #4577ff; 
+}
+/***** Edit classificação *****/
+.h1-divisao {
+    font-weight: 600;
+    font-size: 25px;
+    color: #011a5f;
+}
+.thead-person {
+    background-color:#002747;
+    color: #FFF;
+}
+.th-time {
+    width: 100px;
+    padding-left:15px;
+}
+.btn-person {
+    font-size: 16px;
+}
+.input-jogador {
+    width: 200px;
+       padding: 5px 15px 5px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.input-posicao,
+.input-pontos,
+.input-jogos,
+.input-vitorias,
+.input-derrotas {
+    width: 30px;
+    border-radius: 5px;
+}
+.input-time {
+    width: 200px;
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+/***** Footer *****/
+footer {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+    width: 100%;
+}
+/***** Responsivo *****/
+@media screen and (max-width: 992px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+    .text-input-name, .text-input-location, .text-input-image {
+    font-size: 16px;
+    color: #011a5f;
+    font-weight: 600;
+}
+    .input-name,
+    .input-location {
+        width: 300px;
+    }
+    .input-description {
+        width: 300px;
+        height: 250px;
+        padding: 8px;
+    }
+    .input-send {
+        font-size: 13px;
+    }
+    .limite-text {
+        font-size: 13px;
+    }
+        .btn-success-person {
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 895px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+}
+@media screen and (max-width:768px) {
+    aside {
+        height: auto;
+    }
+    nav {
+        padding-top: 0px;
+    }
+    .navbar-toggler {
+        padding: .25rem .75rem;
+        margin-left: 30px;
+        font-size: 1.5rem;
+        line-height: 1;
+        background-color: #0679dc;
+        border: 1px solid #5d000000;
+        border-radius: .25rem;
+        text-align: center;
+    }
+        .inputs-edit-area {
+        height: 75rem;
+    }
+}
+@media screen and (max-width: 525px) {
+    .inputs-edit-area {
+        height: 75rem;
+    }
+    .input-number {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 399px) {
+    .inputs-edit-area {
+        height: 75rem;
+        
+    }
+    .input-name,
+    .input-location,
+    .input-cep {
+        width: 300px!important;
+    }
+}
+@media screen and (max-width: 344px) {
+    .btn-success-person {
+        width: 300px;
+        font-size: 14px;
+    }
+    .inputs-edit-area {
+        height: 79rem;   
+    }
+    .input-send {
+        padding: 0;
+        width: auto!important;
+    }
+    .inputs-area {
+        flex-direction: column;
+        width: auto;
+    }
+    .input-number {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 100%;
+    }
+    .input-name,
+    .input-location,
+    .input-cep {
+        width: auto!important;
+    }
+}
+
