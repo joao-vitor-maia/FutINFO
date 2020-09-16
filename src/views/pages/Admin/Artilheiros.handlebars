@@ -69,7 +69,7 @@
   <!------- Tabela ------>
     <div class="tabela-area">
       <div class="divisao-texto d-flex py-2 px-2">
-        <input type="text" class="input-posicao mr-2" maxlength="2">
+        <input type="text" class="input-posicao mr-2" maxlength="2" id="divisao">
         <h1 class="h1-divisao">
          Divisão</h1>
       </div>
@@ -89,13 +89,13 @@
           <tbody>
             <tr>
               <th scope="row">
-                <input type="text" class="input-time">
+                <input type="text" class="input-time" id="nomeTime">
               </th>
               <th>
-                <input type="text" class="input-jogador">
+                <input type="text" class="input-jogador" id="nomeArtilheiro">
               </th>
                <th>
-                <input type="text" class="input-pontos" maxlength="2">
+                <input type="text" class="input-pontos" maxlength="2" id="gol">
               </th>
             </tr>
           </tbody>
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="botao-area text-center pt-5">
-      <button class="btn-person btn btn-success" type="button">Salvar alterações
+      <button class="btn-person btn btn-success" type="button" onclick="adicionarArtilheiro()">Salvar alterações
     </div>
       </div>
     </div>
@@ -125,5 +125,6 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/admin/adicionarArtilheiro.js" type="text/javascript"></script>
 </body>
 </html>

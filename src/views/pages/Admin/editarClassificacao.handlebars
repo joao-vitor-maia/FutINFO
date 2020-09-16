@@ -71,7 +71,7 @@
   <!------- Tabela ------>
     <div class="tabela-area">
       <div class="divisao-texto d-flex py-2 px-2">
-        <input type="text" class="input-posicao mr-2" maxlength="2">
+        <input type="text" class="input-posicao mr-2" maxlength="2" id="divisao">
         <h1 class="h1-divisao">
          Divisão</h1>
       </div>
@@ -94,22 +94,22 @@
           <tbody>
             <tr>
               <th scope="row">
-                <input type="text" maxlength="2" class="input-posicao">
+                <input type="text" maxlength="2" class="input-posicao" id="classificacao">
               </th>
               <th>
-                <input type="text" class="input-time">
+                <input type="text" class="input-time" id="nome">
               </th>
                <th>
-                <input type="text" class="input-pontos" maxlength="2">
+                <input type="text" class="input-pontos" maxlength="2" id="ponto">
               </th>
                <th>
-                <input type="text" class="input-jogos" maxlength="2">
+                <input type="text" class="input-jogos" maxlength="2" id="jogo">
               </th>
                <th>
-                <input type="text" class="input-vitorias" maxlength="2">
+                <input type="text" class="input-vitorias" maxlength="2" id="vitoria">
               </th>
                <th>
-                <input type="text" class="input-derrotas" maxlength="2">
+                <input type="text" class="input-derrotas" maxlength="2" id="derrota">
               </th>
             </tr>
           </tbody>
@@ -117,7 +117,7 @@
       </div>
     </div>
     <div class="botao-area text-center pt-5">
-      <button class="btn-person btn btn-success" type="button">Salvar alterações
+      <button class="btn-person btn btn-success" onclick="adicionarTime()" type="button">Salvar alterações
     </div>
       </div>
     </div>
@@ -139,5 +139,6 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/admin/adicionarTime.js" type="text/javascript"></script>
 </body>
 </html>

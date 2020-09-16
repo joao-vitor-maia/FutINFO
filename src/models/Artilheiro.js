@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const time = Schema({
+const artilheiro = Schema({
     divisao: {
         type:Number,
         min:1,
         required:true
     },
-    classificacao: {
-        type:Number,
+    time: {
+        type:Schema.Types.ObjectId,
         required:true   
     },
     nome: {
@@ -17,19 +17,7 @@ const time = Schema({
         max:60,
         required:true
     },
-    ponto: {
-        type:Number,
-        required:true
-    },
-    jogo: {
-        type:Number,
-        required:true
-    },
-    vitoria: {
-        type:Number,
-        required:true
-    },
-    derrota: {
+    gol: {
         type:Number,
         required:true
     },
@@ -43,4 +31,4 @@ const time = Schema({
     }
 });
 
-module.exports = mongoose.model("Time",time);
+module.exports = mongoose.model("Artilheiro",artilheiro);
