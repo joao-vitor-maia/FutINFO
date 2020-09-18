@@ -336,3 +336,10 @@ exports.renderAdicionarArtilheiro = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderAdicionarAfiliado = async (req,res) => {
+    try{
+        res.render("pages/Admin/adicionarAfiliado");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};

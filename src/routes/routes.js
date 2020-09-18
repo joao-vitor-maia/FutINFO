@@ -45,6 +45,7 @@ router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.render
 router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
 router.get("/admin/adicionar-artilheiro", auth.autorizarAdmin, pageController.renderAdicionarArtilheiro);
+router.get("/admin/adicionar-afiliado", auth.autorizarAdmin, pageController.renderAdicionarAfiliado);
 
 //Api Usuarios
 router.post("/efetuando-login",auth.gerarToken);
@@ -54,6 +55,7 @@ router.post("/efetuando-editar-nome",usuarioController.editarNome);
 router.post("/efetuando-editar-email",usuarioController.editarEmail);
 router.post("/efetuando-editar-senha",usuarioController.editarSenha);
 router.post("/efetuando-atualizacao-de-senha",usuarioController.redefinirSenha);
+router.post("/efetuando-adicionar-afiliado", auth.autorizarAdmin, usuarioController.adicionarAfiliado);
 
 //Api Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);

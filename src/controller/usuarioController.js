@@ -156,7 +156,7 @@ exports.editarSenha = async(req,res) => {
         const senha2 = req.body.senha2;
         
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error){
+            if(error) {
                 return res.json({message:"unauthorized"});
             }else{
                 //Busco usuario e verifico se senha input é igual senha do usuario
@@ -187,4 +187,58 @@ exports.editarSenha = async(req,res) => {
         return res.json({message:"error"});
    };
     
+};
+exports.adicionarAfiliado = async(req,res) => {
+    try{
+        const nome = req.body.nome;
+        const email = req.body.email;
+        const Senha = req.body.senha;
+        const SenhaReserva = req.body.senhaReserva;
+
+        const usuarioComEmailIgual = await Usuario.find({email:email});
+
+        //Validando dados do Usuário e salvando no banco
+        if(Object.entries(usuarioComEmailIgual).length > 0){
+            return res.json({message:"users equal"});
+
+        }else if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
+        validator.isEmail(email) && sanitize(email,{allowedTags:[], allowedAttributes:{} }) == email && validator.isLength(email,{min:11,max:60}) &&
+        validator.isLength(Senha,{min:8,max:30}) &&
+        validator.isLength(SenhaReserva,{min:2,max:60}) ){
+            const senha = await new Promise((resolve, reject) => {
+                bcrypt.hash(Senha, 10, function(err, hash) {
+                    if(err) {
+                      reject(err)
+                    }else{
+                      resolve(hash)
+                    };
+                });  
+            });
+            const senhaReserva = await new Promise((resolve, reject) => {
+                bcrypt.hash(SenhaReserva, 10, function(err, hash) {
+                    if(err) {
+                      reject(err)
+                    }else{
+                      resolve(hash)
+                    };
+                });  
+            });
+
+            const dados = {
+                nome:nome,
+                email:email,
+                senha:senha,
+                senhaReserva:senhaReserva,
+                afiliado:true
+            };
+
+            await new Usuario(dados).save();            
+            return res.json({message:"success"});
+        }else{
+            return res.json({message:"invalid"});
+        };
+
+    }catch(err){
+        return res.json({message:"error"});
+    };
 };

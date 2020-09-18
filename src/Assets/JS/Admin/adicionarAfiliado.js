@@ -1,4 +1,4 @@
-async function cadastrar() {
+async function adicionarAfiliado() {
     const nome = document.querySelector("#nome").value;
     const email = document.querySelector("#email").value;
     const senha = document.querySelector("#senha").value;
@@ -16,12 +16,13 @@ async function cadastrar() {
             senhaReserva: senhaReserva
         };
     
-        const resultadoObject = await fetch("http://localhost:3333/efetuando-cadastrar", {
+        const resultadoObject = await fetch("/efetuando-adicionar-afiliado", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type":"application/json",
+                "authorization": localStorage.getItem("token")
             },
-            body: JSON.stringify(dados)
+            body:JSON.stringify(dados)
         });
     
         const resultado = await resultadoObject.json();
