@@ -315,9 +315,23 @@ exports.renderVerQuadra = async (req,res) => {
     };
 };
 //Admin
-exports.renderEditarNoticia = async (req,res) => {
+exports.renderAdicionarNoticia = async (req,res) => {
     try{
         res.render("pages/Admin/editarNoticia");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderAdicionarTime = async (req,res) => {
+    try{
+        res.render("pages/Admin/editarClassificacao ");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderAdicionarArtilheiro = async (req,res) => {
+    try{
+        res.render("pages/Admin/Artilheiros");
     }catch(err){
         return res.json({message:"error"});
     };

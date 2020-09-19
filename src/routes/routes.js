@@ -10,6 +10,7 @@ const comentarioController = require("@controller/comentarioController");
 const horarioController = require("@controller/horarioController");
 const noticiaController = require("@controller/noticiaController");
 const timeController = require("@controller/timeController");
+const artilheiroController = require("@controller/artilheiroController");
 //Middlewares
 const multerConfig = require("../config/multer");
 
@@ -41,7 +42,9 @@ router.get("/afiliado/historico-horarios", auth.autorizarAfiliado, pageControlle
 router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
 router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
 //Páginas Admin
-router.get("/admin/editar-noticia", auth.autorizarAdmin, pageController.renderEditarNoticia);
+router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
+router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
+router.get("/admin/adicionar-artilheiro", auth.autorizarAdmin, pageController.renderAdicionarArtilheiro);
 
 //Api Usuarios
 router.post("/efetuando-login",auth.gerarToken);
@@ -68,6 +71,9 @@ router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImage
 
 //Api Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);
+
+//Api Artilheiro
+router.post("/efetuando-adicionar-artilheiro",artilheiroController.registrarArtilheiro);
 
 //Api Noticia
 router.post("/efetuando-postar-noticias",multer(multerConfig).single("file"),noticiaController.postarNoticia);

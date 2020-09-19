@@ -1,40 +1,35 @@
+const Artilheiro = require("@models/Artilheiro");
 const Time = require("@models/Time");
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
 
-exports.registrarTime = async (req,res) => {
+exports.registrarArtilheiro = async (req,res) => {
     try{
         const token = req.headers["authorization"];
+        const nomeArtilheiro = req.body.nomeArtilheiro;
         const divisao = req.body.divisao;
-        const classificacao = req.body.classificacao; 
-        const nome = req.body.nome;
-        const ponto = req.body.ponto;
-        const jogo = req.body.jogo;
-        const vitoria = req.body.vitoria;
-        const derrota = req.body.derrota;
+        const nomeTime = req.body.nomeTime;
+        const gol = req.body.gol;
 
-        if(validator.isLength(nome,{min:2,max:60}) && 
+        //Buscando time
+        const time = await Time.findOne({nome:nomeTime});
+
+        if(time &&
+        validator.isLength(nomeArtilheiro,{min:2,max:60}) && 
         validator.isInt(divisao) &&
-        validator.isInt(classificacao) &&
-        validator.isInt(ponto) &&
-        validator.isInt(jogo) &&
-        validator.isInt(vitoria) &&
-        validator.isInt(derrota)){
+        validator.isInt(gol) ){
 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
                 }else{
                     const dados = {
+                        nome:nomeArtilheiro,
+                        time:time._id,
                         divisao:divisao,
-                        nome:nome,
-                        ponto:ponto,
-                        jogo:jogo,
-                        vitoria:vitoria,
-                        derrota:derrota,
-                        classificacao:classificacao
+                        gol:gol
                     };
-                    await Time(dados).save();
+                    await Artilheiro(dados).save();
 
                     return res.json({message:"success"});
                 };
