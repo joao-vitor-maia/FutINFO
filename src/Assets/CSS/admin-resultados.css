@@ -122,6 +122,14 @@ section {
     font-weight: 600;
     font-size: 25px;
 }
+.input-rodada {
+    width: 50px;
+    text-align: center;
+}
+.h1-rodada {
+    font-weight: 600;
+    font-size: 25px;
+}
 .thead-person {
     background-color: #011a5f;
     color: #FFF;
