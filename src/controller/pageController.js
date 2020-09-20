@@ -343,3 +343,10 @@ exports.renderAdicionarAfiliado = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderAdicionarResultadoJogo = async (req,res) => {
+    try{
+        res.render("pages/Admin/resultadoJogos");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};

@@ -11,6 +11,7 @@ const horarioController = require("@controller/horarioController");
 const noticiaController = require("@controller/noticiaController");
 const timeController = require("@controller/timeController");
 const artilheiroController = require("@controller/artilheiroController");
+const resultadoJogoController = require("@controller/resultadoJogoController");
 //Middlewares
 const multerConfig = require("../config/multer");
 
@@ -46,6 +47,7 @@ router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.rende
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
 router.get("/admin/adicionar-artilheiro", auth.autorizarAdmin, pageController.renderAdicionarArtilheiro);
 router.get("/admin/adicionar-afiliado", auth.autorizarAdmin, pageController.renderAdicionarAfiliado);
+router.get("/admin/adicionar-resultado-jogo", auth.autorizarAdmin, pageController.renderAdicionarResultadoJogo);
 
 //Api Usuarios
 router.post("/efetuando-login",auth.gerarToken);
@@ -73,6 +75,9 @@ router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImage
 
 //Api Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);
+
+//Api ResultadoJogo
+router.post("/efetuando-adicionar-resultado-jogo",resultadoJogoController.adicionarResultadoJogo);
 
 //Api Artilheiro
 router.post("/efetuando-adicionar-artilheiro",artilheiroController.registrarArtilheiro);
