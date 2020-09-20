@@ -12,6 +12,7 @@ exports.registrarTime = async (req,res) => {
         const jogo = req.body.jogo;
         const vitoria = req.body.vitoria;
         const derrota = req.body.derrota;
+        const empate = req.body.empate;
 
         if(validator.isLength(nome,{min:2,max:60}) && 
         validator.isInt(divisao) &&
@@ -19,7 +20,8 @@ exports.registrarTime = async (req,res) => {
         validator.isInt(ponto) &&
         validator.isInt(jogo) &&
         validator.isInt(vitoria) &&
-        validator.isInt(derrota)){
+        validator.isInt(derrota) &&
+        validator.isInt(empate) ){
 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
@@ -32,7 +34,8 @@ exports.registrarTime = async (req,res) => {
                         jogo:jogo,
                         vitoria:vitoria,
                         derrota:derrota,
-                        classificacao:classificacao
+                        classificacao:classificacao,
+                        empate:empate
                     };
                     await Time(dados).save();
 

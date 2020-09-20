@@ -324,7 +324,7 @@ exports.renderAdicionarNoticia = async (req,res) => {
 };
 exports.renderAdicionarTime = async (req,res) => {
     try{
-        res.render("pages/Admin/editarClassificacao ");
+        res.render("pages/Admin/editarClassificacao");
     }catch(err){
         return res.json({message:"error"});
     };

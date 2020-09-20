@@ -33,6 +33,10 @@ const time = Schema({
         type:Number,
         required:true
     },
+    empate: {
+        type:Number,
+        required:true
+    },
     data: {
         type:Date,
         default:new Date()

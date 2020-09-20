@@ -10,13 +10,17 @@ exports.adicionarResultadoJogo = async (req,res) => {
         const nomeTime2 = req.body.time2;
         const golTime1 = req.body.golTime1;
         const golTime2 = req.body.golTime2;
+        const rodada = req.body.rodada;
 
         const time1 = await Time.findOne({nome:nomeTime1});
         const time2 = await Time.findOne({nome:nomeTime2}); 
 
         if(!time1 || !time2) {
             return res.json({message:"not found"});
-        } else if (validator.isInt(golTime1) && validator.isInt(golTime2) ){
+
+        } else if (validator.isInt(golTime1) &&
+        validator.isInt(golTime2) &&
+        validator.isInt(rodada) ){
 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
@@ -26,7 +30,8 @@ exports.adicionarResultadoJogo = async (req,res) => {
                         timeId1:time1._id,
                         timeId2:time2._id,
                         golTime1:golTime1,
-                        golTime2:golTime2
+                        golTime2:golTime2,
+                        rodada:rodada
                     };
                     await ResultadoJogo(dados).save();
 
@@ -38,7 +43,6 @@ exports.adicionarResultadoJogo = async (req,res) => {
             return res.json({message:"invalid"});
         };
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     };
 };

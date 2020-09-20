@@ -6,7 +6,8 @@ async function adicionarTime() {
     const jogo = document.querySelector("#jogo").value;
     const vitoria = document.querySelector("#vitoria").value;
     const derrota = document.querySelector("#derrota").value;
-    
+    const empate = document.querySelector("#empate").value;
+
     const dados = {
         divisao:divisao,
         classificacao:classificacao,
@@ -14,7 +15,8 @@ async function adicionarTime() {
         ponto:ponto,
         jogo:jogo,
         vitoria:vitoria,
-        derrota:derrota
+        derrota:derrota,
+        empate:empate
     };
 
     const resultadoObject = await fetch("/efetuando-adicionar-time", {

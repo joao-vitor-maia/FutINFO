@@ -3,12 +3,14 @@ async function adicionarResultadoJogo() {
     const time2 = document.querySelector("#time2").value;
     const golTime1 = document.querySelector("#golTime1").value;
     const golTime2 = document.querySelector("#golTime2").value;
+    const rodada = document.querySelector("#rodada").value;
     
     const dados = {
         time1:time1,
         time2:time2,
         golTime1:golTime1,
-        golTime2:golTime2
+        golTime2:golTime2,
+        rodada:rodada
     };
 
     const resultadoObject = await fetch("/efetuando-adicionar-resultado-jogo", {
