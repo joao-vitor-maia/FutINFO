@@ -5,6 +5,8 @@ const validator = require("validator");
 exports.registrarTime = async (req,res) => {
     try{
         const token = req.headers["authorization"];
+        const modalidade = req.body.modalidade;
+        const categoria = req.body.categoria;
         const divisao = req.body.divisao;
         const classificacao = req.body.classificacao; 
         const nome = req.body.nome;
@@ -14,8 +16,10 @@ exports.registrarTime = async (req,res) => {
         const derrota = req.body.derrota;
         const empate = req.body.empate;
 
-        if(validator.isLength(nome,{min:2,max:60}) && 
+        if((modalidade == "Futebol" || modalidade == "Futsal") &&
+        (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
+        validator.isLength(nome,{min:2,max:60}) && 
         validator.isInt(classificacao) &&
         validator.isInt(ponto) &&
         validator.isInt(jogo) &&
@@ -28,6 +32,8 @@ exports.registrarTime = async (req,res) => {
                     return res.json({message:"unauthorized"});
                 }else{
                     const dados = {
+                        modalidade:modalidade,
+                        categoria:categoria,
                         divisao:divisao,
                         nome:nome,
                         ponto:ponto,

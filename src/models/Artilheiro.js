@@ -7,8 +7,9 @@ const artilheiro = Schema({
         min:1,
         required:true
     },
-    time: {
+    timeId: {
         type:Schema.Types.ObjectId,
+        ref:"Time",
         required:true   
     },
     nome: {

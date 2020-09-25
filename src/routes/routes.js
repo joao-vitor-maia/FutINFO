@@ -24,6 +24,8 @@ router.post("/autorizar-afiliado",auth.autorizarAfiliado);
 //Páginas 
 router.get("/pagina-inicial",pageController.renderHome);
 router.get("/pagina-inicial/:page",pageController.renderHome);
+router.get("/classificacao-e-artilheiros",pageController.renderClassificacaoEArtilheiro);
+
 //Páginas Usuario
 router.get("/usuario/login", pageController.renderLogin);
 router.get("/usuario/cadastrar", pageController.renderCadastro);

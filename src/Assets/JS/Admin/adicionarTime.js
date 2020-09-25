@@ -1,4 +1,6 @@
 async function adicionarTime() {    
+    const modalidade = document.querySelector("#modalidade").value;
+    const categoria = document.querySelector("#categoria").value;
     const divisao = document.querySelector("#divisao").value;
     const classificacao = document.querySelector("#classificacao").value;
     const nome = document.querySelector("#nome").value;
@@ -9,6 +11,8 @@ async function adicionarTime() {
     const empate = document.querySelector("#empate").value;
 
     const dados = {
+        modalidade:modalidade,
+        categoria:categoria,
         divisao:divisao,
         classificacao:classificacao,
         nome:nome,
