@@ -49,10 +49,17 @@ header {
 }
 .dropdown-menu,
 .dropdown-item {
-    background-color: #FFFF;
+    background-color:
 }
 .dropdown-menu {
     border-radius: 4px;
+}
+.item-dropdown-classificacao:hover {
+    background-color: unset;
+    color: #FFF;
+}
+.dropdown-classificacao {
+    background-color: #006FC7;
 }
 .inicio-text {
     font-size: 18px;
