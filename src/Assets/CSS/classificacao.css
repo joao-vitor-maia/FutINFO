@@ -33,6 +33,14 @@ header {
     color: #000;
     font-size: 15px;
 }
+.btn-person-categoria {
+    font-size: 25px;
+    padding:10px;
+}
+.btn-person-categoria:hover {
+    color: #FFF;
+    background-color: #004377;
+}
 .btn-person:hover {
     color: #FFF;
     background-color: #004377;
@@ -42,17 +50,34 @@ header {
     color: #000;
     text-decoration: none;
 }
-.dropdown-item {
-    font-size: 13px;
+.btn-active {
+    color: #FFF;
+    background-color: #004377;
+    font-size: 25px;
+    padding:10px;
+    border:unset;
+}
+.btn-active:hover {
+   color: #FFF;
+    background-color: #004377;
+} 
+.dropdown-item a{
+    font-size: 11px;
     color: #000;
     font-weight: bolder;
 }
-.dropdown-menu,
-.dropdown-item {
-    background-color: #FFFF;
+.item-dropdown-classificacao:hover {
+    background-color: unset;
+    color: #FFF;
+}
+.item-dropdownRight {
+    
 }
 .dropdown-menu {
     border-radius: 4px;
+}
+.dropdown-classificacao {
+    background-color: #006FC7;
 }
 .inicio-text {
     font-size: 18px;
