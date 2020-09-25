@@ -1,10 +1,14 @@
 async function adicionarArtilheiro() {    
+    const modalidade = document.querySelector("#modalidade").value;
+    const categoria = document.querySelector("#categoria").value;
     const divisao = document.querySelector("#divisao").value;
     const nomeTime = document.querySelector("#nomeTime").value;
     const nomeArtilheiro = document.querySelector("#nomeArtilheiro").value;
     const gol = document.querySelector("#gol").value;
     
     const dados = {
+        modalidade:modalidade,
+        categoria:categoria,
         divisao:divisao,
         nomeTime:nomeTime,
         nomeArtilheiro:nomeArtilheiro,
