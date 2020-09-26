@@ -25,6 +25,10 @@ router.post("/autorizar-afiliado",auth.autorizarAfiliado);
 router.get("/pagina-inicial",pageController.renderHome);
 router.get("/pagina-inicial/:page",pageController.renderHome);
 router.get("/classificacao-e-artilheiros",pageController.renderClassificacaoEArtilheiro);
+router.get("/classificacao-e-artilheiros/Masculino-Campo",pageController.renderClassificacaoEArtilheiroMasculinoCampo);
+router.get("/classificacao-e-artilheiros/Masculino-Futsal",pageController.renderClassificacaoEArtilheiroMasculinoFutsal);
+router.get("/classificacao-e-artilheiros/Feminino-Campo",pageController.renderClassificacaoEArtilheiroFemininoCampo);
+router.get("/classificacao-e-artilheiros/Feminino-Futsal",pageController.renderClassificacaoEArtilheiroFemininoFutsal);
 
 //Páginas Usuario
 router.get("/usuario/login", pageController.renderLogin);

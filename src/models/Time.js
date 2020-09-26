@@ -2,6 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const time = Schema({
+    modalidade: {
+        type:String,
+        required:true
+    },
+    categoria: {
+        type:String,
+        required:true
+    },
     divisao: {
         type:Number,
         min:1,
