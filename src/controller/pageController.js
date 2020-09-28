@@ -70,6 +70,9 @@ exports.renderHome = async (req, res) => {
 };
 exports.renderClassificacaoEArtilheiro = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+
         //Array será adivionado por divisão
         const times_resultadoJogos_divisao = [];
         const artilheiros_divisao = [];
@@ -122,7 +125,8 @@ exports.renderClassificacaoEArtilheiro = async (req,res) => {
         };
         res.render("pages/ClassificacaoeArtilheiros", {
             times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao
+            artilheiros_divisao:artilheiros_divisao,
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
@@ -130,6 +134,9 @@ exports.renderClassificacaoEArtilheiro = async (req,res) => {
 };
 exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+
         //Array será adivionado por divisão
         const times_resultadoJogos_divisao = [];
         const artilheiros_divisao = [];
@@ -185,7 +192,8 @@ exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
         };
         res.render("pages/ClassificacaoMasculinoCampo", {
             times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao
+            artilheiros_divisao:artilheiros_divisao,
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
@@ -193,6 +201,9 @@ exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
 };
 exports.renderClassificacaoEArtilheiroMasculinoFutsal = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+        
         //Array será adivionado por divisão
         const times_resultadoJogos_divisao = [];
         const artilheiros_divisao = [];
@@ -246,7 +257,8 @@ exports.renderClassificacaoEArtilheiroMasculinoFutsal = async (req,res) => {
         };
         res.render("pages/ClassificacaoMasculinoFutsal", {
             times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao
+            artilheiros_divisao:artilheiros_divisao,
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
@@ -254,6 +266,9 @@ exports.renderClassificacaoEArtilheiroMasculinoFutsal = async (req,res) => {
 };
 exports.renderClassificacaoEArtilheiroFemininoCampo = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+
         //Array será adivionado por divisão
         const times_resultadoJogos_divisao = [];
         const artilheiros_divisao = [];
@@ -307,7 +322,8 @@ exports.renderClassificacaoEArtilheiroFemininoCampo = async (req,res) => {
         };
         res.render("pages/ClassificacaoFemininoCampo", {
             times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao
+            artilheiros_divisao:artilheiros_divisao,
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
@@ -315,6 +331,9 @@ exports.renderClassificacaoEArtilheiroFemininoCampo = async (req,res) => {
 };
 exports.renderClassificacaoEArtilheiroFemininoFutsal = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
+
         //Array será adivionado por divisão
         const times_resultadoJogos_divisao = [];
         const artilheiros_divisao = [];
@@ -368,7 +387,8 @@ exports.renderClassificacaoEArtilheiroFemininoFutsal = async (req,res) => {
         };
         res.render("pages/ClassificacaoFemininoFutsal", {
             times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao
+            artilheiros_divisao:artilheiros_divisao,
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
