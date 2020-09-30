@@ -13,7 +13,7 @@
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/CSS/admin-classificacao.css">
-  <title>Editar classificação</title>
+  <title>Editar artilheiros</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
     <section class="row p-0">
   <!------- Título do edit ------>
       <div class="edit-title">
-       <h2 class="h2-edit-title text-center">Editar classificação</h2>
+       <h2 class="h2-edit-title text-center">Editar artilheiros</h2>
       </div>
   <!------- Lista do edit ------>
   <div class="col-xl-4 col-lg-4 col-md-4 pt-1 col-sm p-0 mt-1 area-items-edit">
@@ -44,11 +44,11 @@
         </li>
         <li class="li-edit">
           <img src="/Images/Admin/leaderboard.svg" height="27">
-          <span class="text-li li-active"><a href="#">Editar classificação</a></span>
+          <span class="text-li"><a href="#">Classificação</a></span>
         </li>
         <li class="li-edit">
           <img src="/Images/Admin/soccer-player.svg" height="27">
-          <span class="text-li"><a href="#">Artilheiros</a></span>
+          <span class="text-li li-active"><a href="#">Editar artilheiros</a></span>
         </li>
            <li class="li-edit">
           <img src="/Images/Admin/plus.svg" height="27">
@@ -58,8 +58,7 @@
   <!------- Botão de voltar para o início do site ------>
                               <div class="link-inicio-area pt-5">
                 <li class="item-li-link">
-                  <img class="img-li-aside" src="/Images/Admin/l
-                  3ogout.svg" height="23">
+                  <img class="img-li-aside" src="/Images/Admin/logout.svg" height="23">
                   <span class="li-text-link text-li"><a href="/pagina-inicial">Voltar para o início do site</a></span>
                 </li>
               </div>
@@ -70,9 +69,9 @@
       <div class="info-edit-content pb-3">
   <!------- Tabela ------>
     <div class="tabela-area">
-        <!------- Modalidade (campo ou futsal) ------>
+  <!------- Modalidade (campo ou futsal) ------>
       <div class="modalidade-area d-flex py-2 px-2">
-        <h1 class="h1-divisao">Modalidade:</h1>
+        <h1 class="h1-modalidade">Modalidade:</h1>
         <input type="text" class="input-time ml-2">
       </div>
   <!------- Categoria (masculino ou feminino) ------>
@@ -80,7 +79,7 @@
         <h1 class="h1-divisao">Categoria:</h1>
         <input type="text" class="input-time ml-2">
       </div>
-      <div class="divisao-texto d-flex py-2 px-2">
+      <div class="divisao-texto d-flex soccer-player-2 px-2 py-4">
         <input type="text" class="input-posicao mr-2" maxlength="2">
         <h1 class="h1-divisao">
          Divisão</h1>
@@ -90,40 +89,24 @@
           <thead class="thead-person">
             <tr>
   <!------- Thead ------>
-              <th scope="col">Posição</th>
               <th scope="col" class="th-time">
                 Time
               </th>
-              <th scope="col">PTS</th>
-              <th scope="col">J</th>
-              <th scope="col">V</th>
-              <th scope="col">D</th>
-              <th scope="col">E</th>
+              <th scope="col">Jogador</th>
+              <th scope="col">Gols</th>
             </tr>
           </thead>
   <!------- Tbody ------>
           <tbody>
             <tr>
               <th scope="row">
-                <input type="text" maxlength="2" class="input-posicao">
+                <input type="text" class="input-time">
               </th>
               <th>
-                <input type="text" class="input-time">
+                <input type="text" class="input-jogador">
               </th>
                <th>
                 <input type="text" class="input-pontos" maxlength="2">
-              </th>
-               <th>
-                <input type="text" class="input-jogos" maxlength="2">
-              </th>
-               <th>
-                <input type="text" class="input-vitorias" maxlength="2">
-              </th>
-               <th>
-                <input type="text" class="input-derrotas" maxlength="2">
-              </th>
-               <th>
-                <input type="text" class="input-derrotas" maxlength="2">
               </th>
             </tr>
           </tbody>
@@ -131,7 +114,7 @@
       </div>
     </div>
     <div class="botao-area text-center pt-5">
-      <button class="btn-person btn btn-success" type="button">Editar classificação
+      <button class="btn-person btn btn-success" type="button">Editar artilheiros
     </div>
       </div>
     </div>
