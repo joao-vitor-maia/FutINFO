@@ -643,21 +643,14 @@ exports.renderVerQuadra = async (req,res) => {
 //Admin
 exports.renderAdicionarNoticia = async (req,res) => {
     try{
-        res.render("pages/Admin/editarNoticia");
+        res.render("pages/Admin/Noticia");
     }catch(err){
         return res.json({message:"error"});
     };
 };
 exports.renderAdicionarTime = async (req,res) => {
     try{
-        res.render("pages/Admin/editarClassificacao");
-    }catch(err){
-        return res.json({message:"error"});
-    };
-};
-exports.renderAdicionarArtilheiro = async (req,res) => {
-    try{
-        res.render("pages/Admin/Artilheiros");
+        res.render("pages/Admin/Classificacao");
     }catch(err){
         return res.json({message:"error"});
     };
@@ -672,6 +665,42 @@ exports.renderAdicionarAfiliado = async (req,res) => {
 exports.renderAdicionarResultadoJogo = async (req,res) => {
     try{
         res.render("pages/Admin/resultadoJogos");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderAdicionarArtilheiro = async (req,res) => {
+    try{
+        res.render("pages/Admin/Artilheiros");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+
+exports.renderEditarNoticia = async (req,res) => {
+    try{
+        res.render("pages/Admin/editarNoticias");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarArtilheiro = async (req,res) => {
+    try{
+        res.render("pages/Admin/editarArtilheiros");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarTime = async (req,res) => {
+    try{
+        res.render("pages/Admin/editarClassificacao");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderEditarResultadoJogo = async (req,res) => {
+    try{
+        res.render("pages/Admin/editarResultados");
     }catch(err){
         return res.json({message:"error"});
     };

@@ -73,15 +73,15 @@
         <!------- Modalidade (campo ou futsal) ------>
       <div class="modalidade-area d-flex py-2 px-2">
         <h1 class="h1-divisao">Modalidade:</h1>
-        <input type="text" class="input-time ml-2">
+        <input type="text" class="input-time ml-2" id="modalidade">
       </div>
   <!------- Categoria (masculino ou feminino) ------>
     <div class="categoria-area d-flex py-2 px-2">
         <h1 class="h1-divisao">Categoria:</h1>
-        <input type="text" class="input-time ml-2">
+        <input type="text" class="input-time ml-2" id="categoria">
       </div>
       <div class="divisao-texto d-flex py-2 px-2">
-        <input type="text" class="input-posicao mr-2" maxlength="2">
+        <input type="text" class="input-posicao mr-2" maxlength="2" id="divisao">
         <h1 class="h1-divisao">
          Divisão</h1>
       </div>
@@ -105,25 +105,25 @@
           <tbody>
             <tr>
               <th scope="row">
-                <input type="text" maxlength="2" class="input-posicao">
+                <input type="text" maxlength="2" class="input-posicao" id="posicao">
               </th>
               <th>
-                <input type="text" class="input-time">
+                <input type="text" class="input-time" id="time">
               </th>
                <th>
-                <input type="text" class="input-pontos" maxlength="2">
+                <input type="text" class="input-pontos" maxlength="2" id="ponto">
               </th>
                <th>
-                <input type="text" class="input-jogos" maxlength="2">
+                <input type="text" class="input-jogos" maxlength="2" id="jogo">
               </th>
                <th>
-                <input type="text" class="input-vitorias" maxlength="2">
+                <input type="text" class="input-vitorias" maxlength="2" id="vitoria">
               </th>
                <th>
-                <input type="text" class="input-derrotas" maxlength="2">
+                <input type="text" class="input-derrotas" maxlength="2" id="derrota">
               </th>
                <th>
-                <input type="text" class="input-derrotas" maxlength="2">
+                <input type="text" class="input-derrotas" maxlength="2" id="empate">
               </th>
             </tr>
           </tbody>
@@ -131,7 +131,7 @@
       </div>
     </div>
     <div class="botao-area text-center pt-5">
-      <button class="btn-person btn btn-success" type="button">Editar classificação
+      <button class="btn-person btn btn-success" onclick="editarTime()" type="button">Editar classificação
     </div>
       </div>
     </div>

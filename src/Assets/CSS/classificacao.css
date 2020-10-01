@@ -61,7 +61,7 @@ header {
    color: #FFF;
     background-color: #004377;
 } 
-.dropdown-item a{
+.dropdown-item {
     font-size: 11px;
     color: #000;
     font-weight: bolder;

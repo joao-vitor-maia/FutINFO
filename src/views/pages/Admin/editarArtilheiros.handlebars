@@ -72,15 +72,15 @@
   <!------- Modalidade (campo ou futsal) ------>
       <div class="modalidade-area d-flex py-2 px-2">
         <h1 class="h1-modalidade">Modalidade:</h1>
-        <input type="text" class="input-time ml-2">
+        <input type="text" class="input-time ml-2" id="modalidade">
       </div>
   <!------- Categoria (masculino ou feminino) ------>
     <div class="categoria-area d-flex py-2 px-2">
         <h1 class="h1-divisao">Categoria:</h1>
-        <input type="text" class="input-time ml-2">
+        <input type="text" class="input-time ml-2" id="categoria">
       </div>
       <div class="divisao-texto d-flex soccer-player-2 px-2 py-4">
-        <input type="text" class="input-posicao mr-2" maxlength="2">
+        <input type="text" class="input-posicao mr-2" maxlength="2" id="divisao">
         <h1 class="h1-divisao">
          Divisão</h1>
       </div>
@@ -100,13 +100,13 @@
           <tbody>
             <tr>
               <th scope="row">
-                <input type="text" class="input-time">
+                <input type="text" class="input-time" id="nomeTime">
               </th>
               <th>
-                <input type="text" class="input-jogador">
+                <input type="text" class="input-jogador" id="nomeArtilheiro">
               </th>
                <th>
-                <input type="text" class="input-pontos" maxlength="2">
+                <input type="text" class="input-pontos" maxlength="2" id="gol">
               </th>
             </tr>
           </tbody>
@@ -114,7 +114,7 @@
       </div>
     </div>
     <div class="botao-area text-center pt-5">
-      <button class="btn-person btn btn-success" type="button">Editar artilheiros
+      <button class="btn-person btn btn-success" onclick="editarArtilheiro()" type="button">Editar artilheiros
     </div>
       </div>
     </div>
@@ -136,5 +136,6 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/admin/editarArtilheiro.js" type="text/javascript"></script>
 </body>
 </html>

@@ -54,6 +54,10 @@ router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController
 router.get("/admin/adicionar-artilheiro", auth.autorizarAdmin, pageController.renderAdicionarArtilheiro);
 router.get("/admin/adicionar-afiliado", auth.autorizarAdmin, pageController.renderAdicionarAfiliado);
 router.get("/admin/adicionar-resultado-jogo", auth.autorizarAdmin, pageController.renderAdicionarResultadoJogo);
+router.get("/admin/editar-noticia", auth.autorizarAdmin, pageController.renderEditarNoticia);
+router.get("/admin/editar-classificacao", auth.autorizarAdmin, pageController.renderEditarTime);
+router.get("/admin/editar-artilheiro", auth.autorizarAdmin, pageController.renderEditarArtilheiro);
+router.get("/admin/editar-resultado-jogo", auth.autorizarAdmin, pageController.renderEditarResultadoJogo);
 
 //Api Usuarios
 router.post("/efetuando-login",auth.gerarToken);
@@ -81,14 +85,17 @@ router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImage
 
 //Api Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);
+router.post("/efetuando-editar-time",timeController.editarTime);
 
 //Api ResultadoJogo
 router.post("/efetuando-adicionar-resultado-jogo",resultadoJogoController.adicionarResultadoJogo);
 
 //Api Artilheiro
 router.post("/efetuando-adicionar-artilheiro",artilheiroController.registrarArtilheiro);
+router.post("/efetuando-editar-artilheiro",artilheiroController.editarArtilheiro);
 
 //Api Noticia
 router.post("/efetuando-postar-noticias",multer(multerConfig).single("file"),noticiaController.postarNoticia);
+router.post("/efetuando-editar-noticias",multer(multerConfig).single("file"),noticiaController.editarNoticia);
 
 module.exports = router

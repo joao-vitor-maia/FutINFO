@@ -1,4 +1,4 @@
-async function adicionarNoticia(){
+async function editarNoticia(){
     const file = document.querySelector("#imagem").files[0];
     const manchete = document.querySelector("#manchete").value;
     const conteudo = document.querySelector("#conteudo").value;
@@ -9,7 +9,7 @@ async function adicionarNoticia(){
     formData.append("conteudo",conteudo);
 
     alert("Aguarde...");
-    const resultadoObject = await fetch("/efetuando-postar-noticias", {
+    const resultadoObject = await fetch("/efetuando-editar-noticias", {
         method: "POST",
         headers: {
             "authorization": localStorage.getItem("token"),
@@ -20,7 +20,7 @@ async function adicionarNoticia(){
     const resultado = await resultadoObject.json();
 
     if (resultado.message == "error") {
-        alert("Ocorreu um erro ao registrar noticia");
+        alert("Ocorreu um erro ao editar noticia");
         
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
