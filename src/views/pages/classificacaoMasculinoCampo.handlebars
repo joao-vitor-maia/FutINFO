@@ -133,7 +133,11 @@
               <tody>
                 {{#each this.times}}
                 <tr>
-                  <th scope="row">{{this.classificacao}}º - {{this.nome}}</th>
+                  <th scope="row">{{this.classificacao}}º - {{this.nome}}
+                      <!------- Botão de editar ------>
+                <div class="botao-area">
+                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                </div></th>
                     <th class="th-center">{{this.ponto}}</th>
                     <th class="th-center">{{this.jogo}}</th>
                     <th class="th-center">{{this.vitoria}}</th>
@@ -210,14 +214,14 @@
               {{#each this.artilheiros}}
               <tbody>
                 <tr>
-                  <td scope="row" class="th-center">{{this.timeId.nome}}</td>
+                  <td scope="row" class="th-center">{{this.timeId.nome}}
+                      <!------- Botão de editar ------>
+                <div class="botao-area">
+                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                </div></td>
                   <td class="th-center">{{this.nome}}</td>
                   <td class="th-center">{{this.gol}}</td>
                 </tr>
-                    <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
               </tbody>
               {{/each}}
             </table>
