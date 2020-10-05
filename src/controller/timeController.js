@@ -16,7 +16,7 @@ exports.registrarTime = async (req,res) => {
         const derrota = req.body.derrota;
         const empate = req.body.empate;
 
-        if((modalidade == "Futebol" || modalidade == "Futsal") &&
+        if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         validator.isLength(nome,{min:2,max:60}) && 
@@ -72,7 +72,7 @@ exports.editarTime = async (req,res) => {
         const derrota = req.body.derrota;
         const empate = req.body.empate;
 
-        if((modalidade == "Futebol" || modalidade == "Futsal") &&
+        if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         validator.isLength(nome,{min:2,max:60}) && 

@@ -27,10 +27,10 @@ exports.renderHome = async (req, res) => {
         const noticiasTotal = await Noticia.find().sort({dataTimestamp:-1});
         const pagesTotal = Math.ceil(noticiasTotal.length/limit );
 
-        const time1Divisao = await Time.find({divisao: 1}).sort({classificacao:1});
-        const time2Divisao = await Time.find({divisao: 2}).sort({classificacao:1});
-        const time3Divisao = await Time.find({divisao: 3}).sort({classificacao:1});
-        const time4Divisao = await Time.find({divisao: 4}).sort({classificacao:1});
+        const time1Divisao = await Time.find({divisao: 1, modalidade: "Campo", categoria: "Masculino"}).sort({classificacao:1});
+        const time2Divisao = await Time.find({divisao: 2, modalidade: "Campo", categoria: "Masculino"}).sort({classificacao:1});
+        const time3Divisao = await Time.find({divisao: 3, modalidade: "Campo", categoria: "Masculino"}).sort({classificacao:1});
+        const time4Divisao = await Time.find({divisao: 4, modalidade: "Campo", categoria: "Masculino"}).sort({classificacao:1});
 
         res.render("pages/index", {
             pagination:{
@@ -143,14 +143,14 @@ exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
 
         //Loop com divisão atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i, categoria:"Masculino", modalidade:"Futebol"}).sort({classificacao: 1});
+            const times = await Time.find({divisao: i, categoria:"Masculino", modalidade:"Campo"}).sort({classificacao: 1});
 
             //Array será dividido por rodada
             const resultadoJogosRodada = [];
 
             //Loop com rodada atual
             for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Masculino", modalidade:"Futebol"})
+                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Masculino", modalidade:"Campo"})
                 .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
                 
                 if(resultadoJogos.length > 0) {
@@ -181,7 +181,7 @@ exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
                 });
             };
 
-            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Masculino", modalidade:"Futebol"}).populate("timeId").sort({classificacao: 1});
+            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Masculino", modalidade:"Campo"}).populate("timeId").sort({classificacao: 1});
             
             if(artilheiros.length > 0) {
                 artilheiros_divisao.push({

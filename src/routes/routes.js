@@ -89,6 +89,7 @@ router.post("/efetuando-editar-time",timeController.editarTime);
 
 //Api ResultadoJogo
 router.post("/efetuando-adicionar-resultado-jogo",resultadoJogoController.adicionarResultadoJogo);
+router.post("/efetuando-editar-resultado-jogo",resultadoJogoController.editarResultadoJogo);
 
 //Api Artilheiro
 router.post("/efetuando-adicionar-artilheiro",artilheiroController.registrarArtilheiro);

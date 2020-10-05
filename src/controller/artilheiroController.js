@@ -16,7 +16,7 @@ exports.registrarArtilheiro = async (req,res) => {
         //Buscando time
         const time = await Time.findOne({nome:nomeTime});
 
-        if((modalidade == "Futebol" || modalidade == "Futsal") &&
+        if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         time &&
@@ -65,7 +65,7 @@ exports.editarArtilheiro = async (req,res) => {
         //Buscando time
         const time = await Time.findOne({nome:nomeTime});
 
-        if((modalidade == "Futebol" || modalidade == "Futsal") &&
+        if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         time &&
