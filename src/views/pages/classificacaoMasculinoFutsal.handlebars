@@ -122,7 +122,8 @@
             <table class="table table-bordered mt-2">
               <thead>
                 <tr>
-                  <th scope="col" class="th-time">Time</th>
+                  <th scope="col" class="th-time">Time
+                  </th>
                   <th scope="col">Pts</th>
                   <th scope="col">J</th>
                   <th scope="col">V</th>
@@ -153,15 +154,9 @@
           {{#each this.resultadoJogosRodada}}
           <div class="rodada-area">
             <div class="rodada">
-              <div class="arrow-left-area">
-                <img src="/Images/Classificação-artilheiros/left-arrow.svg" class="arrow-left">
-              </div>
-              <div class="text-rodada-area">
+              <div class="text-rodada-area mx-auto">
               <h1 class="h1-rodada">{{this.rodadaAtual}}º Rodada</h1>
             </div>
-               <div class="arrow-right-area">
-                <img src="/Images/Classificação-artilheiros/right-arrow.svg" class="arrow-right">
-              </div>
             </div>
    <!------- Resultado dos jogos ------>
    
@@ -170,6 +165,10 @@
                 {{#each this.resultadoJogos}}
                 <div class="time-resultado-area py-3">
                   <div class="time-gol-area">
+                    <!------- Botão de editar ------>
+                <div class="botao-area">
+                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                </div>
                   <span class="span-time px-1">{{this.timeId1.nome}}</span>
                   <span class="span-gol px-1">{{this.golTime1}}</span>
                   <span class="span-X px-2">X</span>
@@ -226,6 +225,28 @@
          </div>
        </div>
        </div>
+  <!------- Paginação ------>
+        <div class="paginacao-area d-flex justify-content-center">
+       <nav aria-label="Navegação de página exemplo">
+  <ul class="pagination text-center"> 
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Anterior">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Anterior</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" href="#">1º Divisão</a></li>
+    <li class="page-item"><a class="page-link" href="#">2º Divisão</a></li>
+    <li class="page-item"><a class="page-link" href="#">3º Divisão</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Próximo">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Próximo</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div>
    </section>
   <!------- Footer ------>
   <footer>
