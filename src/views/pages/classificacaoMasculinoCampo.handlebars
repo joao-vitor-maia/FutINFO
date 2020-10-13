@@ -170,9 +170,13 @@
                   <span class="span-gol px-1">{{this.golTime2}}</span>
                   <span class="span-time px-1">{{this.timeId2.nome}}</span>
     <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                {{#if ../decoded.admin}}
+                  <a href="/admin/editar-resultado-jogo/{{this._id}}">
+                    <div class="botao-area">
+                      <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                    </div>
+                  </a>
+                {{/if}}
                 </div>
                 {{/each}}
                 </div>
@@ -215,9 +219,13 @@
                   <td class="th-center">{{this.gol}}</td>
                 </tr>
                     <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                {{#if ../../decoded.admin}}
+                  <a href="/admin/editar-artilheiro/{{this._id}}">
+                    <div class="botao-area">
+                      <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                    </div>
+                  </a>
+                {{/if}}
               </tbody>
               {{/each}}
             </table>

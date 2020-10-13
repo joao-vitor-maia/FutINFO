@@ -36,7 +36,7 @@ exports.registrarArtilheiro = async (req,res) => {
                         divisao:divisao,
                         gol:gol
                     };
-                    await Artilheiro(dados).save();
+                    await new Artilheiro(dados).save();
 
                     return res.json({message:"success"});
                 };
@@ -53,8 +53,8 @@ exports.registrarArtilheiro = async (req,res) => {
 exports.editarArtilheiro = async (req,res) => {
     try{
         const token = req.headers["authorization"];
-        const artilheiroId = req.artilheiroId;
 
+        const artilheiroId = req.body.artilheiroId;
         const modalidade = req.body.modalidade;
         const categoria = req.body.categoria;
         const divisao = req.body.divisao;
@@ -76,14 +76,14 @@ exports.editarArtilheiro = async (req,res) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
                 }else{
-                    const artilheiro = await Artilheiro({_id:artilheiroId});
+                    const artilheiro = await Artilheiro.findOne({_id:artilheiroId});
                     artilheiro.modalidade = modalidade;
                     artilheiro.categoria = categoria;
                     artilheiro.divisao = divisao;
                     artilheiro.nome = nomeArtilheiro;
                     artilheiro.divisao = divisao;
                     artilheiro.gol = gol;
-                    artilheiro.save();
+                    await artilheiro.save();
                     
                     return res.json({message:"success"});
                 };

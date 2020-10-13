@@ -54,10 +54,10 @@ router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController
 router.get("/admin/adicionar-artilheiro", auth.autorizarAdmin, pageController.renderAdicionarArtilheiro);
 router.get("/admin/adicionar-afiliado", auth.autorizarAdmin, pageController.renderAdicionarAfiliado);
 router.get("/admin/adicionar-resultado-jogo", auth.autorizarAdmin, pageController.renderAdicionarResultadoJogo);
-router.get("/admin/editar-noticia", auth.autorizarAdmin, pageController.renderEditarNoticia);
-router.get("/admin/editar-classificacao", auth.autorizarAdmin, pageController.renderEditarTime);
-router.get("/admin/editar-artilheiro", auth.autorizarAdmin, pageController.renderEditarArtilheiro);
-router.get("/admin/editar-resultado-jogo", auth.autorizarAdmin, pageController.renderEditarResultadoJogo);
+router.get("/admin/editar-noticia/:noticiaId", auth.autorizarAdmin, pageController.renderEditarNoticia);
+router.get("/admin/editar-classificacao/:timeId", auth.autorizarAdmin, pageController.renderEditarTime);
+router.get("/admin/editar-artilheiro/:artilheiroId", auth.autorizarAdmin, pageController.renderEditarArtilheiro);
+router.get("/admin/editar-resultado-jogo/:resultadoJogoId", auth.autorizarAdmin, pageController.renderEditarResultadoJogo);
 
 //Api Usuarios
 router.post("/efetuando-login",auth.gerarToken);

@@ -29,14 +29,14 @@ exports.postarNoticia = async (req,res) => {
                         manchete:manchete,
                         conteudo:conteudo
                     };
-                    const noticia = await Noticia(dadosNoticia).save();
+                    const noticia = await new Noticia(dadosNoticia).save();
 
                     const dadosImagem = {
                         noticiaId:noticia._id,
                         url:"/uploads/"+imagem.filename,
                         diretorio:imagem.path
                     };
-                    await ImagemNoticia(dadosImagem).save();
+                    await new ImagemNoticia(dadosImagem).save();
                     return res.json({message:"success"});
                 };
             });
@@ -45,15 +45,15 @@ exports.postarNoticia = async (req,res) => {
             fs.unlinkSync(imagem.path);
             return res.json({message:"invalid"});
         };
-    }catch(error){
+    }catch(err){
         return res.json({message:"error"});
     };
 };
 exports.editarNoticia = async (req,res) => {
     try{
         const token = req.headers["authorization"];
-        const noticiaId = req.noticiaId;
 
+        const noticiaId = req.body.noticiaId;
         const manchete = req.body.manchete;
         const conteudo = req.body.conteudo; 
         const imagem = req.file;
@@ -72,22 +72,17 @@ exports.editarNoticia = async (req,res) => {
                     fs.unlinkSync(imagem.path);
                     return res.json({message:"unauthorized"});
                 }else{
-                    const noticia = await Noticia({_id:noticiId});
+                    const noticia = await Noticia.findOne({_id:noticiaId});
                     noticia.manchete = manchete;
                     noticia.conteudo = conteudo;
-                    noticia.save();
+                    await noticia.save();
 
-                    const dadosImagem = {
-                        noticiaId:noticia._id,
-                        url:"/uploads/"+imagem.filename,
-                        diretorio:imagem.path
-                    };
-                    const imagemNoticia = await ImagemNoticia({noticiaId:noticiaId});
+                    const imagemNoticia = await ImagemNoticia.findOne({noticiaId:noticiaId});
                     fs.unlinkSync(imagemNoticia.diretorio);
 
                     imagemNoticia.url = "/uploads/"+imagem.filename;
                     imagemNoticia.diretorio = imagem.path;
-                    imagemNoticia.save();
+                    await imagemNoticia.save();
 
                     return res.json({message:"success"});
                 };
@@ -97,7 +92,8 @@ exports.editarNoticia = async (req,res) => {
             fs.unlinkSync(imagem.path);
             return res.json({message:"invalid"});
         };
-    }catch(error){
+    }catch(err){
+        console.log(err)
         return res.json({message:"error"});
     };
 };

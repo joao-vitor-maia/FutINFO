@@ -43,7 +43,7 @@ exports.registrarTime = async (req,res) => {
                         classificacao:classificacao,
                         empate:empate
                     };
-                    await Time(dados).save();
+                    await new Time(dados).save();
 
                     return res.json({message:"success"});
                 };
@@ -59,8 +59,8 @@ exports.registrarTime = async (req,res) => {
 exports.editarTime = async (req,res) => {
     try{
         const token = req.headers["authorization"];
-        const timeId = req.timeId;
 
+        const timeId = req.body.timeId;
         const modalidade = req.body.modalidade;
         const categoria = req.body.categoria;
         const divisao = req.body.divisao;
@@ -87,19 +87,7 @@ exports.editarTime = async (req,res) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
                 }else{
-                    const dados = {
-                        modalidade:modalidade,
-                        categoria:categoria,
-                        divisao:divisao,
-                        nome:nome,
-                        ponto:ponto,
-                        jogo:jogo,
-                        vitoria:vitoria,
-                        derrota:derrota,
-                        classificacao:classificacao,
-                        empate:empate
-                    };
-                    const time = await Time({_id:timeId}).save();
+                    const time = await Time.findOne({_id:timeId});
                     time.modalidade = modalidade;
                     time.categoria = categoria;
                     time.divisao = divisao;
@@ -110,7 +98,7 @@ exports.editarTime = async (req,res) => {
                     time.derrota = derrota;
                     time.classificacao = classificacao;
                     time.empate = empate;
-                    time.save();
+                    await time.save();
 
                     return res.json({message:"success"});
                 };

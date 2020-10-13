@@ -104,11 +104,12 @@
   <!------- Tbody ------>
           <tbody>
             <tr>
+              <input type="hidden" value="{{timeId}}" id="timeId"> 
               <th scope="row">
-                <input type="text" maxlength="2" class="input-posicao" id="posicao">
+                <input type="text" maxlength="2" class="input-posicao" id="classificacao">
               </th>
               <th>
-                <input type="text" class="input-time" id="time">
+                <input type="text" class="input-time" id="nome">
               </th>
                <th>
                 <input type="text" class="input-pontos" maxlength="2" id="ponto">
@@ -123,7 +124,7 @@
                 <input type="text" class="input-derrotas" maxlength="2" id="derrota">
               </th>
                <th>
-                <input type="text" class="input-derrotas" maxlength="2" id="empate">
+                <input type="text" class="input-pontos" maxlength="2" id="empate">
               </th>
             </tr>
           </tbody>

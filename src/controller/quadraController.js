@@ -76,15 +76,6 @@ exports.editarQuadra = async (req,res) => {
                     quadra.cep = cep;
                     quadra.descricao = descricao;
                     await quadra.save();
-                    // //Salvando cada imagem do array separadamente
-                    //     for(let imagem of imagens){
-                    //         const dadosImagem = {
-                    //             quadraId:quadra._id,
-                    //             imagemBase64:imagem
-                    //         };
-                    //         await new ImagemQuadra(dadosImagem).save();
-                            
-                    //     };
 
                     return res.json({message:"success"});
                     
@@ -130,7 +121,7 @@ exports.adicionarImagem = async (req,res) => {
                         url:"/uploads/"+imagem.filename,
                         diretorio:imagem.path
                     };
-                    await ImagemQuadra(dados).save();
+                    await new ImagemQuadra(dados).save();
                 };
     
                 return res.json({message:"success"});                

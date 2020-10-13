@@ -135,9 +135,13 @@
                 <tr>
                   <th scope="row">{{this.classificacao}}º - {{this.nome}}
                         <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                {{#if ../../decoded.admin}}
+                  <a href="/admin/editar-classificacao/{{this._id}}">
+                    <div class="botao-area">
+                      <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                    </div>
+                  </a>
+                {{/if}}
                   </th>
                     <th class="th-center">{{this.ponto}}</th>
                     <th class="th-center">{{this.jogo}}</th>

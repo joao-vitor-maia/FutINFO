@@ -1,4 +1,5 @@
 async function editarArtilheiro() {    
+    const artilheiroId = document.querySelector("#artilheiroId").value;
     const modalidade = document.querySelector("#modalidade").value;
     const categoria = document.querySelector("#categoria").value;
     const divisao = document.querySelector("#divisao").value;
@@ -7,6 +8,7 @@ async function editarArtilheiro() {
     const gol = document.querySelector("#gol").value;
     
     const dados = {
+        artilheiroId:artilheiroId,
         modalidade:modalidade,
         categoria:categoria,
         divisao:divisao,

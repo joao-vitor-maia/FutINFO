@@ -114,7 +114,7 @@ exports.recusar = async(req,res) => {
             }else{
                 const horario = await Horario.findById(idHorario);
                 horario.aprovado = "falso";
-                horario.save();
+                await horario.save();
                 return res.json({message:"success"})
             };
         });

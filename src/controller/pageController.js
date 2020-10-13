@@ -7,7 +7,7 @@ const Noticia = require("@models/Noticia");
 const Artilheiro = require("@models/Artilheiro");
 const Time = require("@models/Time");
 const ResultadoJogo = require("@models/ResultadoJogo");
-const fns = require("date-fns")
+const fns = require("date-fns");
 const jwt = require("jsonwebtoken");
 
 exports.renderHome = async (req, res) => {
@@ -49,7 +49,6 @@ exports.renderHome = async (req, res) => {
             })),
             noticias: await Promise.all(noticias.map(async (noticia) => {
                 const imagem = await ImagemNoticia.findOne({noticiaId:noticia._id});
-                
                 const dados = {
                     noticia:noticia.toJSON(),
                     data:fns.format(noticia.data, "dd/MM/yyyy"),
@@ -655,13 +654,6 @@ exports.renderAdicionarTime = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-exports.renderAdicionarAfiliado = async (req,res) => {
-    try{
-        res.render("pages/Admin/adicionarAfiliado");
-    }catch(err){
-        return res.json({message:"error"});
-    };
-};
 exports.renderAdicionarResultadoJogo = async (req,res) => {
     try{
         res.render("pages/Admin/resultadoJogos");
@@ -676,31 +668,54 @@ exports.renderAdicionarArtilheiro = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderAdicionarAfiliado = async (req,res) => {
+    try{
+        res.render("pages/Admin/adicionarAfiliado");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
 
 exports.renderEditarNoticia = async (req,res) => {
     try{
-        res.render("pages/Admin/editarNoticias");
+        const noticiaId = req.params.noticiaId;
+        
+        res.render("pages/Admin/editarNoticias",{
+            noticiaId:noticiaId
+        });
     }catch(err){
         return res.json({message:"error"});
     };
 };
 exports.renderEditarArtilheiro = async (req,res) => {
     try{
-        res.render("pages/Admin/editarArtilheiros");
+        const artilheiroId = req.params.artilheiroId;
+
+        res.render("pages/Admin/editarArtilheiros",{
+            artilheiroId:artilheiroId
+        });
     }catch(err){
         return res.json({message:"error"});
     };
 };
 exports.renderEditarTime = async (req,res) => {
     try{
-        res.render("pages/Admin/editarClassificacao");
+        const timeId = req.params.timeId;
+
+        res.render("pages/Admin/editarClassificacao",{
+            timeId:timeId
+        });
     }catch(err){
         return res.json({message:"error"});
     };
 };
 exports.renderEditarResultadoJogo = async (req,res) => {
     try{
-        res.render("pages/Admin/editarResultados");
+        const resultadoJogoId = req.params.resultadoJogoId;
+
+        res.render("pages/Admin/editarResultados",{
+            resultadoJogoId:resultadoJogoId
+        });
     }catch(err){
         return res.json({message:"error"});
     };

@@ -1,4 +1,5 @@
 async function editarTime() {    
+    const timeId = document.querySelector("#timeId").value;
     const modalidade = document.querySelector("#modalidade").value;
     const categoria = document.querySelector("#categoria").value;
     const divisao = document.querySelector("#divisao").value;
@@ -11,6 +12,7 @@ async function editarTime() {
     const empate = document.querySelector("#empate").value;
 
     const dados = {
+        timeId:timeId,
         modalidade:modalidade,
         categoria:categoria,
         divisao:divisao,

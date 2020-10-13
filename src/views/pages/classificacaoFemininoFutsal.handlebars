@@ -69,11 +69,24 @@
                  <div class="btn btn-danger btn-danger-person"> Fazer logout
                  </div>
                  </a>
+              {{else if decoded.admin}}
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
+                <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
+                                <a class="dropdown-item py-2" href="/admin/adicionar-classificacao"><span class="inicio-text">-</span> Acessar Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
+              </div>
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Olá, {{decoded.nome}}!
+              </button>
               {{else if decoded}}
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
                 <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
-                <a class="dropdown-item py-2" href="/admin/adicionar-classificacao"><span class="inicio-text">-</span> Acessar Dashboard</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item py-2" onclick="logout()">
                  <div class="btn btn-danger btn-danger-person"> Fazer logout
@@ -135,9 +148,11 @@
                 <tr>
                   <th scope="row">{{this.classificacao}}º - {{this.nome}}
                         <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                {{#if ../../decoded.admin}}
+                  <div class="botao-area">
+                    <a href="/admin/editar-classificacao/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
+                  </div>
+                {{/if}}
                   </th>
                     <th class="th-center">{{this.ponto}}</th>
                     <th class="th-center">{{this.jogo}}</th>
@@ -176,9 +191,11 @@
                   <span class="span-gol px-1">{{this.golTime2}}</span>
                   <span class="span-time px-1">{{this.timeId2.nome}}</span>
                       <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                {{#if ../../../decoded.admin}}
+                  <div class="botao-area">
+                    <a href="/admin/editar-resultado-jogo/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
+                  </div>
+                {{/if}}
                 </div>
                 {{/each}}
                 </div>
@@ -221,9 +238,11 @@
                   <td class="th-center">{{this.gol}}</td>
                 </tr>
                     <!------- Botão de editar ------>
-                <div class="botao-area">
-                  <button type="button" class="btn btn-success btn-font-person">Editar</button>
-                </div>
+                <a href="/admin/editar-artilheiro/{{this._id}}">
+                  <div class="botao-area">
+                    <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                  </div>
+                </a>
               </tbody>
               {{/each}}
             </table>

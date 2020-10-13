@@ -1,23 +1,24 @@
 async function editarResultadoJogo() {    
+    const resultadoJogoId = document.querySelector("#resultadoJogoId").value;
     const modalidade = document.querySelector("#modalidade").value;
     const categoria = document.querySelector("#categoria").value;
-    const divisao = document.querySelector("#divisao").value;
+    // const divisao = document.querySelector("#divisao").value;
     const time1 = document.querySelector("#time1").value;
     const time2 = document.querySelector("#time2").value;
     const golTime1 = document.querySelector("#golTime1").value;
     const golTime2 = document.querySelector("#golTime2").value;
-    const rodada = document.querySelector("#rodada").value;
-    
+    // const rodada = document.querySelector("#rodada").value;
     
     const dados = {
+        resultadoJogoId:resultadoJogoId,
         modalidade:modalidade,
         categoria:categoria,
-        divisao:divisao,
+        // divisao:divisao,
         time1:time1,
         time2:time2,
         golTime1:golTime1,
         golTime2:golTime2,
-        rodada:rodada
+        // rodada:rodada
     };
 
     const resultadoObject = await fetch("/efetuando-editar-resultado-jogo", {
