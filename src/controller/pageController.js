@@ -17,6 +17,7 @@ exports.renderHome = async (req, res) => {
 
         //Paginação
         const pageAtual = Number(req.params.page) || 1;
+        
         const limit = 3;
         const skip = (pageAtual*limit)-limit;
 
@@ -72,59 +73,40 @@ exports.renderClassificacaoEArtilheiro = async (req,res) => {
         const token = req.cookies.token;
         const decoded = jwt.decode(token);
 
-        //Array será adivionado por divisão
-        const times_resultadoJogos_divisao = [];
-        const artilheiros_divisao = [];
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
 
-        //Loop com divisão atual
+        const times = await Time.find({divisao: pageAtual}).sort({classificacao: 1});
+
+        //Array será dividido por rodada
+        const resultadoJogosRodada = [];
+
+        //Loop com rodada atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i}).sort({classificacao: 1});
-
-            //Array será dividido por rodada
-            const resultadoJogosRodada = [];
-
-            //Loop com rodada atual
-            for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii}).populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
-                
-                if(resultadoJogos.length > 0) {
-                    resultadoJogosRodada.push({
-                        resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
-                        rodadaAtual:ii
-                    });
-                };
-          
-            };
-
-            //Verifico se retornou algo do banco e adiciono ao array de times_resultadoJogos_divisao
-            if(times.length > 0 && resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            }else if(times.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    divisaoAtual: i
-                });
-            }else if(resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    resultadoJogosRodada:resultadoJogosRodada
+            var resultadoJogos = await ResultadoJogo.find({divisao: pageAtual, rodada: i})
+            .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
+            
+            if(resultadoJogos.length > 0) {
+                resultadoJogosRodada.push({
+                    resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
+                    rodadaAtual:i
                 });
             };
-
-            const artilheiros = await Artilheiro.find({divisao: i}).populate("timeId").sort({classificacao: 1});
-            if(artilheiros.length > 0) {
-                artilheiros_divisao.push({
-                    artilheiros: artilheiros.map(artilheiro => artilheiro.toJSON()),
-                    divisaoAtual: i});
-            };
-
         };
+
+        const artilheiros = await Artilheiro.find({divisao: pageAtual})
+        .populate("timeId").sort({classificacao: 1});
+
+        const pagesTotal = 20;
         res.render("pages/ClassificacaoeArtilheiros", {
-            times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao,
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal 
+            },
+            times:times.map(time => time.toJSON()),
+            resultadoJogosRodada:resultadoJogosRodada,
+            artilheiros:artilheiros.map(artilheiro => artilheiro.toJSON()),
+            divisao:pageAtual,
             decoded:decoded
         });
     }catch(err){
@@ -136,62 +118,40 @@ exports.renderClassificacaoEArtilheiroMasculinoCampo = async (req,res) => {
         const token = req.cookies.token;
         const decoded = jwt.decode(token);
 
-        //Array será adivionado por divisão
-        const times_resultadoJogos_divisao = [];
-        const artilheiros_divisao = [];
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
+        
+        const times = await Time.find({divisao: pageAtual, categoria:"Masculino", modalidade:"Campo"}).sort({classificacao: 1});
 
-        //Loop com divisão atual
+        //Array será dividido por rodada
+        const resultadoJogosRodada = [];
+
+        //Loop com rodada atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i, categoria:"Masculino", modalidade:"Campo"}).sort({classificacao: 1});
-
-            //Array será dividido por rodada
-            const resultadoJogosRodada = [];
-
-            //Loop com rodada atual
-            for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Masculino", modalidade:"Campo"})
-                .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
-                
-                if(resultadoJogos.length > 0) {
-                    resultadoJogosRodada.push({
-                        resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
-                        rodadaAtual:ii
-                    });
-                };
-          
-            };
-
-            //Verifico se retornou algo do banco e adiciono ao array de times_resultadoJogos_divisao
-            if(times.length > 0 && resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            }else if(times.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    divisaoAtual: i
-                });
-            }else if(resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            };
-
-            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Masculino", modalidade:"Campo"}).populate("timeId").sort({classificacao: 1});
+            var resultadoJogos = await ResultadoJogo.find({divisao: pageAtual, rodada: i, categoria:"Masculino", modalidade:"Campo"})
+            .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
             
-            if(artilheiros.length > 0) {
-                artilheiros_divisao.push({
-                    artilheiros: artilheiros.map(artilheiro => artilheiro.toJSON()),
-                    divisaoAtual: i});
+            if(resultadoJogos.length > 0) {
+                resultadoJogosRodada.push({
+                    resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
+                    rodadaAtual:i
+                });
             };
-
         };
+
+        const artilheiros = await Artilheiro.find({divisao: pageAtual, categoria:"Masculino", modalidade:"Campo"})
+        .populate("timeId").sort({classificacao: 1});
+
+        const pagesTotal = 20;
         res.render("pages/ClassificacaoMasculinoCampo", {
-            times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao,
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal 
+            },
+            times:times.map(time => time.toJSON()),
+            resultadoJogosRodada:resultadoJogosRodada,
+            artilheiros:artilheiros.map(artilheiro => artilheiro.toJSON()),
+            divisao:pageAtual,
             decoded:decoded
         });
     }catch(err){
@@ -202,61 +162,41 @@ exports.renderClassificacaoEArtilheiroMasculinoFutsal = async (req,res) => {
     try{
         const token = req.cookies.token;
         const decoded = jwt.decode(token);
-        
-        //Array será adivionado por divisão
-        const times_resultadoJogos_divisao = [];
-        const artilheiros_divisao = [];
 
-        //Loop com divisão atual
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
+
+        const times = await Time.find({divisao: pageAtual, categoria:"Masculino", modalidade:"Futsal"}).sort({classificacao: 1});
+
+        //Array será dividido por rodada
+        const resultadoJogosRodada = [];
+
+        //Loop com rodada atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i, categoria:"Masculino", modalidade:"Futsal"}).sort({classificacao: 1});
-
-            //Array será dividido por rodada
-            const resultadoJogosRodada = [];
-
-            //Loop com rodada atual
-            for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Masculino", modalidade:"Futsal"})
-                .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
-                
-                if(resultadoJogos.length > 0) {
-                    resultadoJogosRodada.push({
-                        resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
-                        rodadaAtual:ii
-                    });
-                };
-          
-            };
-
-            //Verifico se retornou algo do banco e adiciono ao array de times_resultadoJogos_divisao
-            if(times.length > 0 && resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            }else if(times.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    divisaoAtual: i
-                });
-            }else if(resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    resultadoJogosRodada:resultadoJogosRodada
+            var resultadoJogos = await ResultadoJogo.find({divisao: pageAtual, rodada: i, categoria:"Masculino", modalidade:"Futsal"})
+            .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
+            
+            if(resultadoJogos.length > 0) {
+                resultadoJogosRodada.push({
+                    resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
+                    rodadaAtual:i
                 });
             };
-
-            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Masculino", modalidade:"Futsal"}).populate("timeId").sort({classificacao: 1});
-            if(artilheiros.length > 0) {
-                artilheiros_divisao.push({
-                    artilheiros: artilheiros.map(artilheiro => artilheiro.toJSON()),
-                    divisaoAtual: i});
-            };
-
         };
-        res.render("pages/ClassificacaoMasculinoFutsal", {
-            times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao,
+
+        const artilheiros = await Artilheiro.find({divisao: pageAtual, categoria:"Masculino", modalidade:"Futsal"})
+        .populate("timeId").sort({classificacao: 1});
+
+        const pagesTotal = 20;
+        res.render("pages/classificacaoMasculinoFutsal", {
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal 
+            },
+            times:times.map(time => time.toJSON()),
+            resultadoJogosRodada:resultadoJogosRodada,
+            artilheiros:artilheiros.map(artilheiro => artilheiro.toJSON()),
+            divisao:pageAtual,
             decoded:decoded
         });
     }catch(err){
@@ -268,60 +208,40 @@ exports.renderClassificacaoEArtilheiroFemininoCampo = async (req,res) => {
         const token = req.cookies.token;
         const decoded = jwt.decode(token);
 
-        //Array será adivionado por divisão
-        const times_resultadoJogos_divisao = [];
-        const artilheiros_divisao = [];
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
 
-        //Loop com divisão atual
+        const times = await Time.find({divisao: pageAtual, categoria:"Feminino", modalidade:"Campo"}).sort({classificacao: 1});
+
+        //Array será dividido por rodada
+        const resultadoJogosRodada = [];
+
+        //Loop com rodada atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i, categoria:"Feminino", modalidade:"Campo"}).sort({classificacao: 1});
-
-            //Array será dividido por rodada
-            const resultadoJogosRodada = [];
-
-            //Loop com rodada atual
-            for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Feminino", modalidade:"Campo"})
-                .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
-                
-                if(resultadoJogos.length > 0) {
-                    resultadoJogosRodada.push({
-                        resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
-                        rodadaAtual:ii
-                    });
-                };
-          
-            };
-
-            //Verifico se retornou algo do banco e adiciono ao array de times_resultadoJogos_divisao
-            if(times.length > 0 && resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            }else if(times.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    divisaoAtual: i
-                });
-            }else if(resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    resultadoJogosRodada:resultadoJogosRodada
+            var resultadoJogos = await ResultadoJogo.find({divisao: pageAtual, rodada: i, categoria:"Feminino", modalidade:"Campo"})
+            .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
+            
+            if(resultadoJogos.length > 0) {
+                resultadoJogosRodada.push({
+                    resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
+                    rodadaAtual:i
                 });
             };
-
-            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Feminino", modalidade:"Campo"}).populate("timeId").sort({classificacao: 1});
-            if(artilheiros.length > 0) {
-                artilheiros_divisao.push({
-                    artilheiros: artilheiros.map(artilheiro => artilheiro.toJSON()),
-                    divisaoAtual: i});
-            };
-
         };
-        res.render("pages/ClassificacaoFemininoCampo", {
-            times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao,
+
+        const artilheiros = await Artilheiro.find({divisao: pageAtual, categoria:"Feminino", modalidade:"Campo"})
+        .populate("timeId").sort({classificacao: 1});
+
+        const pagesTotal = 20;
+        res.render("pages/classificacaoFemininoCampo", {
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal 
+            },
+            times:times.map(time => time.toJSON()),
+            resultadoJogosRodada:resultadoJogosRodada,
+            artilheiros:artilheiros.map(artilheiro => artilheiro.toJSON()),
+            divisao:pageAtual,
             decoded:decoded
         });
     }catch(err){
@@ -333,60 +253,40 @@ exports.renderClassificacaoEArtilheiroFemininoFutsal = async (req,res) => {
         const token = req.cookies.token;
         const decoded = jwt.decode(token);
 
-        //Array será adivionado por divisão
-        const times_resultadoJogos_divisao = [];
-        const artilheiros_divisao = [];
+        //Paginação
+        const pageAtual = Number(req.params.page) || 1;
 
-        //Loop com divisão atual
+        const times = await Time.find({divisao: pageAtual, categoria:"Feminino", modalidade:"Futsal"}).sort({classificacao: 1});
+
+        //Array será dividido por rodada
+        const resultadoJogosRodada = [];
+
+        //Loop com rodada atual
         for (i = 1; i <= 4; i++) {
-            const times = await Time.find({divisao: i, categoria:"Feminino", modalidade:"Futsal"}).sort({classificacao: 1});
-
-            //Array será dividido por rodada
-            const resultadoJogosRodada = [];
-
-            //Loop com rodada atual
-            for (ii = 1; ii <= 4; ii++) {
-                var resultadoJogos = await ResultadoJogo.find({divisao: i, rodada: ii, categoria:"Feminino", modalidade:"Futsal"})
-                .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
-                
-                if(resultadoJogos.length > 0) {
-                    resultadoJogosRodada.push({
-                        resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
-                        rodadaAtual:ii
-                    });
-                };
-          
-            };
-
-            //Verifico se retornou algo do banco e adiciono ao array de times_resultadoJogos_divisao
-            if(times.length > 0 && resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    resultadoJogosRodada:resultadoJogosRodada,
-                    divisaoAtual: i
-                });
-            }else if(times.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    times: times.map(time => time.toJSON()),
-                    divisaoAtual: i
-                });
-            }else if(resultadoJogosRodada.length > 0) {
-                times_resultadoJogos_divisao.push({
-                    resultadoJogosRodada:resultadoJogosRodada
+            var resultadoJogos = await ResultadoJogo.find({divisao: pageAtual, rodada: i, categoria:"Feminino", modalidade:"Futsal"})
+            .populate("timeId1").populate("timeId2").sort({dataTimestamp: "1"});
+            
+            if(resultadoJogos.length > 0) {
+                resultadoJogosRodada.push({
+                    resultadoJogos: resultadoJogos.map(resultadoJogo => resultadoJogo.toJSON()),
+                    rodadaAtual:i
                 });
             };
-
-            const artilheiros = await Artilheiro.find({divisao: i, categoria:"Feminino", modalidade:"Futsal"}).populate("timeId").sort({classificacao: 1});
-            if(artilheiros.length > 0) {
-                artilheiros_divisao.push({
-                    artilheiros: artilheiros.map(artilheiro => artilheiro.toJSON()),
-                    divisaoAtual: i});
-            };
-
         };
-        res.render("pages/ClassificacaoFemininoFutsal", {
-            times_resultadoJogos_divisao:times_resultadoJogos_divisao,
-            artilheiros_divisao:artilheiros_divisao,
+
+        const artilheiros = await Artilheiro.find({divisao: pageAtual, categoria:"Feminino", modalidade:"Futsal"})
+        .populate("timeId").sort({classificacao: 1});
+
+        const pagesTotal = 20;
+        res.render("pages/classificacaoFemininoFutsal.handlebars", {
+            pagination:{
+                page:pageAtual,
+                pageCount:pagesTotal 
+            },
+            times:times.map(time => time.toJSON()),
+            resultadoJogosRodada:resultadoJogosRodada,
+            artilheiros:artilheiros.map(artilheiro => artilheiro.toJSON()),
+            divisao:pageAtual,
             decoded:decoded
         });
     }catch(err){

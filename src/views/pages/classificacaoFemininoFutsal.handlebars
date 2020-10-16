@@ -119,17 +119,15 @@
         <div class="botao-modalidade d-flex justify-content-center">
           <a href="/classificacao-e-artilheiros/feminino-campo"><button class="btn btn-success btn-person-categoria my-3" type="button">Campo</button></a>
           <a href="/classificacao-e-artilheiros/feminino-futsal"><button class="btn btn-success btn-active mx-3 my-3" type="button">Futsal</button></a>
-
         </div>
       </div>
        <div class="row py-3">
    <!------- Área da tabela de classificação ------>
         <div class="px-3 col-xl-7 col-lg-6 col-md-7 col-sm-12 tabela-col">
    <!------- Tabela ------>
-          {{#each times_resultadoJogos_divisao}}
             <div class="tabela-content-area py-3">
               <div class="divisao-text-area my-3 mb-2">
-              <span class="divisao-text mt-2">{{this.divisaoAtual}}º Divisão</span>
+              <span class="divisao-text mt-2">{{divisao}}º Divisão</span>
             </div>
           <div class="tabela-area">
             <table class="table table-bordered mt-2">
@@ -148,7 +146,7 @@
                 <tr>
                   <th scope="row">{{this.classificacao}}º - {{this.nome}}
                         <!------- Botão de editar ------>
-                {{#if ../../decoded.admin}}
+                {{#if ../decoded.admin}}
                   <div class="botao-area">
                     <a href="/admin/editar-classificacao/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
                   </div>
@@ -165,21 +163,14 @@
             </table>
           </div>
    <!------- Rodada ------>
-          {{#each this.resultadoJogosRodada}}
+          {{#each resultadoJogosRodada}}
           <div class="rodada-area">
             <div class="rodada">
-              <div class="arrow-left-area">
-                <img src="/Images/Classificação-artilheiros/left-arrow.svg" class="arrow-left">
-              </div>
-              <div class="text-rodada-area">
+              <div class="text-rodada-area mx-auto">
               <h1 class="h1-rodada">{{this.rodadaAtual}}º Rodada</h1>
             </div>
-               <div class="arrow-right-area">
-                <img src="/Images/Classificação-artilheiros/right-arrow.svg" class="arrow-right">
-              </div>
             </div>
    <!------- Resultado dos jogos ------>
-   
             <div class="resultado-area mt-2">
               <div class="resultado mx-auto py-3">
                 {{#each this.resultadoJogos}}
@@ -191,7 +182,7 @@
                   <span class="span-gol px-1">{{this.golTime2}}</span>
                   <span class="span-time px-1">{{this.timeId2.nome}}</span>
                       <!------- Botão de editar ------>
-                {{#if ../../../decoded.admin}}
+                {{#if ../../decoded.admin}}
                   <div class="botao-area">
                     <a href="/admin/editar-resultado-jogo/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
                   </div>
@@ -204,7 +195,6 @@
             {{/each}}
           </div>
         </div>
-       {{/each}}
    <!------- Artilheiros ------>
         <div class="col-xl-5 col-lg-6 col-md-5 col-sm-12 artilheiros-col py-3">
           <div class="artilheiros-content-area">
@@ -213,11 +203,10 @@
               <h1 class="h1-artilheiros">Artilheiros</h1>
             </div>
    <!------- Divisão artilheiros ------>
-          {{#each artilheiros_divisao}}
           <div class="artilheiros-table-area">
           <div class="text-divisao-artilheiros my-3 mb-2">
             <span class="text-artilheiros-divisao">
-              {{this.divisaoAtual}}º Divisão
+              {{divisao}}º Divisão
             </span>
           </div>
    <!------- Tabela artilheiros ------>
@@ -230,7 +219,7 @@
                   <th scope="col" class="th-center">Gols</td>
                 </tr>
               </thead>
-              {{#each this.artilheiros}}
+              {{#each artilheiros}}
               <tbody>
                 <tr>
                   <td scope="row" class="th-center">{{this.timeId.nome}}</td>
@@ -238,22 +227,47 @@
                   <td class="th-center">{{this.gol}}</td>
                 </tr>
                     <!------- Botão de editar ------>
-                <a href="/admin/editar-artilheiro/{{this._id}}">
+                {{#if ../decoded.admin}}
                   <div class="botao-area">
-                    <button type="button" class="btn btn-success btn-font-person">Editar</button>
+                    <a href="/admin/editar-artilheiro/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
                   </div>
-                </a>
+                {{/if}}
               </tbody>
               {{/each}}
             </table>
           </div>
           </div>
-          {{/each}}
         </div>
          </div>
        </div>
        </div>
    </section>
+     <!------- Paginação ------>
+        <div class="paginacao-area d-flex justify-content-center">
+       <nav aria-label="Navegação de página exemplo">
+  <ul class="pagination text-center"> 
+    <li class="page-item">
+      {{#paginate pagination type="previous"}}
+          <a class="page-link {{#if disabled}}disabled{{/if}}" href="/classificacao-e-artilheiros/feminino-futsal/{{n}}" aria-label="Anterior">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Anterior</span>
+          </a>
+        {{/paginate}}
+    </li>
+    {{#paginate pagination type="middle" limit="3"}}
+      <li class="page-item {{#if active}}active{{/if}}"><a class="page-link" href="/classificacao-e-artilheiros/feminino-futsal/{{n}}">{{n}}º Divisão</a>
+      </li>
+    {{/paginate}}
+      {{#paginate pagination type="next"}}
+        <a class="page-link {{#if disabled}}disabled{{/if}}" href="/classificacao-e-artilheiros/feminino-futsal/{{n}}" aria-label="Próximo">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      {{/paginate}}
+    </li>
+  </ul>
+</nav>
+</div>
   <!------- Footer ------>
   <footer>
     <div class="container-footer">

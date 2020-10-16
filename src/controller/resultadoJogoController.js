@@ -15,22 +15,8 @@ exports.adicionarResultadoJogo = async (req,res) => {
         const golTime2 = req.body.golTime2;
         const rodada = req.body.rodada;
 
-        if(categoria == "Masculino" && modalidade == "Campo"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Campo", categoria:"Masculino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Campo", categoria:"Masculino"});
-
-        }else if(categoria == "Masculino" && modalidade == "Futsal"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Futsal", categoria:"Masculino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Futsal", categoria:"Masculino"});
-
-        }else if(categoria == "Feminino" && modalidade == "Campo"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Campo", categoria:"Feminino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Campo", categoria:"Feminino"});
-
-        }else if(categoria == "Feminino" && modalidade == "Futsal"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Futsal", categoria:"Feminino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Futsal", categoria:"Feminino"});
-        };
+        var time1 = await Time.findOne({nome:nomeTime1, modalidade: modalidade, categoria: categoria});
+        var time2 = await Time.findOne({nome:nomeTime2, modalidade: modalidade, categoria: categoria});
 
         if(!time1 || !time2) {
             return res.json({message:"not found"});
@@ -83,22 +69,8 @@ exports.editarResultadoJogo = async (req,res) => {
         const golTime1 = req.body.golTime1;
         const golTime2 = req.body.golTime2;
 
-        if(categoria == "Masculino" && modalidade == "Campo"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Campo", categoria:"Masculino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Campo", categoria:"Masculino"});
-
-        }else if(categoria == "Masculino" && modalidade == "Futsal"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Futsal", categoria:"Masculino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Futsal", categoria:"Masculino"});
-
-        }else if(categoria == "Feminino" && modalidade == "Campo"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Campo", categoria:"Feminino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Campo", categoria:"Feminino"});
-
-        }else if(categoria == "Feminino" && modalidade == "Futsal"){
-            var time1 = await Time.findOne({nome:nomeTime1, modalidade:"Futsal", categoria:"Feminino"});
-            var time2 = await Time.findOne({nome:nomeTime2, modalidade:"Futsal", categoria:"Feminino"});
-        };
+        var time1 = await Time.findOne({nome:nomeTime1, modalidade: modalidade, categoria: categoria});
+        var time2 = await Time.findOne({nome:nomeTime2, modalidade: modalidade, categoria: categoria});
 
         if(!time1 || !time2) {
             return res.json({message:"not found"});
