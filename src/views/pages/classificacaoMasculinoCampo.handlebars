@@ -100,7 +100,6 @@
     <div class="text-classificacao-area w-100">
       <h1 class="h1-classificacao">Classificação e artilheiros (masculino)</h1>
     </div>
-     <div class="container-fluid">
    <!------- Modalidade ------>
       <div class="botao-modalidade-area">
         <div class="botao-modalidade d-flex justify-content-center">
@@ -109,9 +108,10 @@
 
         </div>
       </div>
+           <div class="container-fluid">
        <div class="row py-3">
    <!------- Área da tabela de classificação ------>
-        <div class="px-2 col-xl-7 col-lg-6 col-md-7 col-sm-12 tabela-col">
+        <div class="px-2 col-10 tabela-col">
    <!------- Tabela ------>
             <div class="tabela-content-area py-3">
               <div class="divisao-text-area my-3 mb-2">
@@ -151,7 +151,7 @@
           </div>
    <!------- Rodada ------>
           {{#each resultadoJogosRodada}}
-          <div class="rodada-area">
+          <div class="rodada-area my-5">
             <div class="rodada">
               <div class="text-rodada-area mx-auto">
               <h1 class="h1-rodada">{{this.rodadaAtual}}º Rodada</h1>
@@ -179,11 +179,12 @@
                 </div>
               </div>
             </div>
-            {{/each}}
           </div>
+          {{/each}}
+        </div>
         </div>
    <!------- Artilheiros ------>
-        <div class="col-xl-5 col-lg-6 col-md-5 col-sm-12 artilheiros-col py-3">
+        <div class="col-10 col-sm-12 artilheiros-col py-3 px-2">
           <div class="artilheiros-content-area">
    <!------- H1 Artilheiros ------>
             <div class="artilheiros-text-h1">
@@ -192,9 +193,6 @@
    <!------- Divisão artilheiros ------>
           <div class="artilheiros-table-area">
           <div class="text-divisao-artilheiros my-3 mb-2">
-            <span class="text-artilheiros-divisao">
-              {{divisao}}º Divisão
-            </span>
           </div>
    <!------- Tabela artilheiros ------>
           <div class="tabela-artilheiros-area">
