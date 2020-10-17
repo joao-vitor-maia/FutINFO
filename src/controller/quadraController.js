@@ -47,6 +47,41 @@ exports.salvarQuadra = async (req,res) => {
         return res.json({message:"error"});
     }
 };
+exports.salvarPreco = async (req,res) => {
+    try{
+        const preco = req.body.preco 
+        const promocao = req.body.promocao;
+        
+        //Validação
+        if(validator.isLength(preco,{min:2,max:60}) && sanitize(preco,{allowedTags:[], allowedAttributes:{} }) == preco 
+        ) {
+            const token = req.headers["authorization"];
+            
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error || decoded.afiliado != true){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const dadosQuadra = {
+                        preco:preco,
+                        promocao:promocao
+                    };
+                    const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({dataTimestamp:-1});
+                    quadra.preco = preco;
+                    quadra.promocao = promocao
+                    await quadra.save();
+
+                    return res.json({message:"success"});
+                    
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+    }catch(err){
+        console.log(err)
+        return res.json({message:"error"});
+    }
+};
 exports.editarQuadra = async (req,res) => {
     try{
         const nome = req.body.nome; 

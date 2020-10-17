@@ -54,6 +54,7 @@ router.get("/afiliado/horarios-solicitados", auth.autorizarAfiliado, pageControl
 router.get("/afiliado/historico-horarios", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
 router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
 router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
+router.get("/afiliado/registrar-preco", auth.autorizarAfiliado, pageController.renderRegistrarPreco);
 //Páginas Admin
 router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
@@ -85,6 +86,7 @@ router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Api Quadra
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);
+router.post("/efetuando-registrar-preco",quadraController.salvarPreco);
 router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",multer(multerConfig).array("file"),quadraController.adicionarImagem);
 router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);

@@ -321,7 +321,7 @@
           </div>
           <!------- Slide ------>
           <div class="slideConteudo">
-            <div id="slide{{this._id}}" class="carousel slide" data-ride="carousel">
+            <div id="slide{{this.quadra._id}}" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner carouselPerson">
                 {{#each this.imagens}}
                   {{#if @first}}
@@ -336,11 +336,11 @@
                 {{/each}}
               </div>
               <!------- Controladores slide ------>
-              <a class="carousel-control-prev" href="#slide{{this._id}}" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#slide{{this.quadra._id}}" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Anterior</span>
               </a>
-              <a class="carousel-control-next" href="#slide{{this._id}}" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#slide{{this.quadra._id}}" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Próximo</span>
               </a>

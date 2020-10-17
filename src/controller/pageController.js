@@ -539,6 +539,15 @@ exports.renderVerQuadra = async (req,res) => {
         return res.json({message:"error"});
     };
 };
+exports.renderRegistrarPreco = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+
+        res.render("pages/Afiliado/registrarPreco");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
 //Admin
 exports.renderAdicionarNoticia = async (req,res) => {
     try{

@@ -33,6 +33,12 @@ const quadra = new Schema({
         type:String,
         max:500
     },
+    preco: {
+        type:Number
+    },
+    promocao: {
+        type:Number
+    },
     data: {
         type:Date,
         default:new Date()
