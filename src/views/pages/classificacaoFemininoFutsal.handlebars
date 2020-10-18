@@ -123,7 +123,7 @@
       </div>
        <div class="row py-3">
    <!------- Área da tabela de classificação ------>
-        <div class="px-3 col-xl-7 col-lg-6 col-md-7 col-sm-12 tabela-col">
+        <div class="px-3 col-xl-10 col-lg-6 col-md-7 col-sm-12 tabela-col">
    <!------- Tabela ------>
             <div class="tabela-content-area py-3">
               <div class="divisao-text-area my-3 mb-2">
@@ -196,7 +196,7 @@
           </div>
         </div>
    <!------- Artilheiros ------>
-        <div class="col-xl-5 col-lg-6 col-md-5 col-sm-12 artilheiros-col py-3">
+        <div class="col-xl-10 col-lg-6 col-md-5 col-sm-12 artilheiros-col py-3">
           <div class="artilheiros-content-area">
    <!------- H1 Artilheiros ------>
             <div class="artilheiros-text-h1">
@@ -205,9 +205,6 @@
    <!------- Divisão artilheiros ------>
           <div class="artilheiros-table-area">
           <div class="text-divisao-artilheiros my-3 mb-2">
-            <span class="text-artilheiros-divisao">
-              {{divisao}}º Divisão
-            </span>
           </div>
    <!------- Tabela artilheiros ------>
           <div class="tabela-artilheiros-area">
@@ -222,16 +219,16 @@
               {{#each artilheiros}}
               <tbody>
                 <tr>
-                  <td scope="row" class="th-center">{{this.timeId.nome}}</td>
-                  <td class="th-center">{{this.nome}}</td>
-                  <td class="th-center">{{this.gol}}</td>
-                </tr>
-                    <!------- Botão de editar ------>
+                    <td scope="row" class="th-center">{{this.timeId.nome}}
+                      <!------- Botão de editar ------>
                 {{#if ../decoded.admin}}
                   <div class="botao-area">
                     <a href="/admin/editar-artilheiro/{{this._id}}"><button type="button" class="btn btn-success btn-font-person">Editar</button></a>
                   </div>
-                {{/if}}
+                {{/if}}</td>
+                  <td class="th-center">{{this.nome}}</td>
+                  <td class="th-center">{{this.gol}}</td>
+                </tr>
               </tbody>
               {{/each}}
             </table>
