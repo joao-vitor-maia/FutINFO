@@ -1,0 +1,229 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/***** Header *****/
+header {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+}
+section {
+    font-family: 'Montserrat', sans-serif;
+}
+aside {
+    height: auto;
+    /*background-color: #005194;*/
+    background-color: #002747;
+}
+aside > nav {
+    font-family: 'Montserrat', sans-serif;
+}
+.title-afiliado {
+    font-family: 'Reem Kufi', sans-serif;
+    height: 95px;
+    background-color: #005194;
+    display: flex;
+    align-items: center;
+    justify-content: center!important;
+    border-bottom: 5px solid #FFF;
+}
+.h1-titleAfiliado {
+    font-size: 30px;
+    color: #FFF;
+}
+/***** Lista aside *****/
+nav ul, li {
+    list-style: none!important;
+}
+nav ul {
+    background-color: #002747;
+    padding-right: 20px;
+    padding-top: 20px;
+    margin: auto;
+    width: 100%;
+}
+.item-li {
+    font-size:15px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 40px; 
+    cursor: pointer;
+}
+.li-active {
+    padding: 10px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+    font-size: 14px;
+    border-bottom: 2px solid #FFF;
+}
+.img-li-aside {
+    height: 27px;
+    margin-right: 10px;
+}
+.notificacao {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 8px;
+    border-radius: 3px;
+}
+.li-text {
+    transition: ease 0.5s;
+    border-bottom: 2px solid #FFF;
+    padding-bottom: 20px;
+    border-width: thin;
+}
+.li-text:hover {
+     padding: 10px;
+    background-color: #0679d8;
+    color: #FFF;
+    border-radius: 3px;
+}
+/***** Item da lista person *****/
+.item-li-link {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    border-top: 2px solid #FFF;
+    cursor: pointer;
+}
+.item-li-link a {
+    font-size:18px;
+    font-weight: 500;
+    color: #FFF;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    cursor: pointer;
+    text-decoration: none;
+}
+.li-text-link {
+    transition: ease 0.5s;
+    padding-bottom: 20px;
+}
+.li-text-link:hover {
+    padding: 10px;
+   background-color: #0679d8;
+   color: #FFF;
+   border-radius: 3px;
+}
+.li-active-jQuery {
+     padding: 10px;
+   background-color: #0679d8;
+   color: #FFF;
+   border-radius: 3px;
+}
+
+/***** Main *****/
+main {
+    height:auto;
+    font-family: 'Reem Kufi', sans-serif;
+}
+.title-day {
+    font-family: 'Reem Kufi', sans-serif;
+    height:90px;
+    background-color: #011a5f;
+}
+.h1-title-day {
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 90px;
+}
+/***** Área dos inputs *****/
+.inputs-edit-area {
+    font-family: 'Montserrat', Arial, sans-serif;
+    /*border:1px solid #002747;*/
+    height: auto;
+}
+.input-text-p {
+    font-size: 21px;
+    font-weight:600;
+    color: #011a5f;
+    border-bottom:2px solid #000a24;
+    text-align: center!important;
+}
+/***** Inputs content *****/
+/***** Input horarios *****/
+.horario-text,
+.as-text,
+.data-text {
+    font-weight: 600;
+    font-size: 20px;
+}
+.select,
+.input-data {
+    padding:3px 10px 3px 10px;
+    font-size: 19px;
+}
+/***** bottons *****/
+.btn-area {
+  margin-top: 70px;
+}
+.btn-success-person {
+    width: 350px;
+    font-size: 16px;
+}
+.btn-person {
+    font-size: 16px;
+}
+/***** Footer *****/
+footer {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+    width: 100%;
+}
+/***** Responsivo *****/
+@media screen and (max-width:768px) {
+    aside {
+        height: auto;
+    }
+    nav {
+        padding-top: 0px;
+    }
+    .navbar-toggler {
+        padding: .25rem .75rem;
+        margin-left: 30px;
+        font-size: 1.5rem;
+        line-height: 1;
+        background-color: #0679dc;
+        border: 1px solid #5d000000;
+        border-radius: .25rem;
+        text-align: center;
+    }
+
+}
+@media screen and (max-width: 473px) {
+    .horario-text, .as-text, .data-text {
+        font-weight: 600;
+        font-size: 15px;
+    }
+    .select, .input-data {
+        padding: 3px 5px 3px 5px;
+        font-size: 15px;
+    }
+    .btn-person {
+        font-size: 13.3px!important;
+    }
+    .select-area {
+        display: flex;
+        flex-wrap: wrap!important;
+    }
+}
+@media screen and (max-width: 295px) {
+    .select-area {
+        display: flex;
+        flex-wrap: wrap!important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
+
