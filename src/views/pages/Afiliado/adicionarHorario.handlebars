@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <!------- Fonte importada ------>
   <style>
@@ -11,10 +12,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-ver-quadra.css">
-  <title>Ver minha quadra</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-adicionar-horario.css">
+  <title>Adicionar horários</title>
 </head>
-
 <body>
   <!------- Header ------>
   <header>
@@ -44,64 +44,41 @@
             <ul>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/bell.svg" height="23">
-                <a href="/afiliado/horarios-solicitados">
                 <span class="li-text">Ver solicitações</span>
-                </a>
-                    <div class="btn-danger d-inline-block notificacao">{{horariosLength}}</div>
+                <div class="btn-danger d-inline-block notificacao">0</div>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/clock.svg" height="23">
-                <a href="/afiliado/historico-horarios">
                 <span class="li-text">Histórico de agendamento</span>
-                </a>
               </li>
         <!------- Item com collapse ------>
               <li class="item-li item-li-collapse" data-toggle="collapse" href="#imgs-li" aria-expanded="false" aria-controls="imgs-li">
                 <img class="img-li-aside" src="/Images/Afiliados/photo.svg" height="23">
-                <span class="li-text li-textjQuery">Imagens da quadra
-                <img class="arrowDown-li" src="/Images/Afiliados/down-arrow.svg" height="17">
-                </span>
+                <span class="li-text li-textjQuery">Adicionar ou remover imagens</span>
+                <img class="arrowDown-li" src="/Images/Afiliados/down-arrow.svg" height="23">
                 <div class="collapse" id="imgs-li">
-                  <ul class="ul-collapse">
-                    <a href="/afiliado/adicionar-imagens">
-                    <li class="li-collapse">Adicionar imagens
-                <img class="arrowDown-li" src="/Images/Afiliados/plus.svg" height="17">
-                    </li>
-                    </a>
-                    <a href="/afiliado/deletar-imagens">
-                    <li class="li-collapse">Remover imagens
-                <img class="arrowDown-li" src="/Images/Afiliados/minus.svg" height="17">
-                    </li>
-                    </a>
+                  <ul>
+                    <li>Adicionar imagens</li>
+                    <li>Remover imagens</li>
                   </ul>
                 </div>
               </li>
-        <!------- Fim do Item com collapse ------>
-         <li class="item-li">
-          <img class="img-li-aside" src="/Images/Afiliados/simbolo-do-dolar.svg" height="23">
-          <span class="li-text">Registrar preço da quadra</span>
-        </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/add.svg" height="23">
-                <a href="/afiliado/registrar-quadra">
                 <span class="li-text">Registrar endereço da quadra</span>
-                </a>
               </li>
+        <!------- Horário ------>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/timetable.svg" height="23">
-                <span class="li-text">Adicionar horários disponiveis</span>
+                <span class="li-active">Adicionar horários disponiveis</span>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/order.svg" height="23">
-                <a href="/afiliado/editar-quadra">
                 <span class="li-text">Editar minha quadra</span>
-                </a>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/cursor.svg" height="23">
-                <a href="/afiliado/ver-quadra">
-                <span class="li-active">Ver minha quadra</span>
-                </a>
+                <span class="li-text">Ver minha quadra</span>
               </li>
               <div class="link-inicio-area pt-5">
                 <li class="item-li-link">
@@ -116,47 +93,51 @@
       <!------- Main ------>
       <main class="main-area px-1 pt-1 p-0 col-xl-8 col-lg-8 col-md-7 col-12">
             <div class="title-day w-100">
-                    <h1 class="h1-title-day">Ver minha quadra</h1>
+                    <h1 class="h1-title-day">Adicionar horários disponiveis</h1>
                   </div>
-      <!------- p  ------>
-                    <p class="input-text-p py-4">Todas informações da sua quadra salvas até agora, estarão abaixo.</p>
-      <!------- Área dos conteúdos  ------>
-                  <div class="quadra-content-area">
-                    <div class="quadra-content-image">
-                    <div class="img-quadra">
-                      {{#each imagens}}
-                      <img src="{{this.url}}" class="image-quadra">
-                      {{/each}}
-                    </div>
-                    </div>
-                    <div class="quadra-info-area">
-      <!------- Nome da quadra ------>
-                      <div class="quadra-info-nome">
-                        <h2 class="quadra-title-h2">Nome:</h2>
-                        <p class="quadra-nome-p">{{quadra.nome}}</p>
-                      </div>
-      <!------- Rua da quadra ------>
-                        <div class="quadra-info-nome">
-                        <h2 class="quadra-title-h2">Rua:</h2>
-                        <p class="quadra-nome-p">{{quadra.rua}}</p>
-                      </div>
-      <!------- Cep da quadra ------>
-                        <div class="quadra-info-nome">
-                        <h2 class="quadra-title-h2">CEP:</h2>
-                        <p class="quadra-nome-p">{{quadra.cep}}</p>
-                      </div>
-      <!------- Número da quadra ------>
-                        <div class="quadra-info-nome">
-                        <h2 class="quadra-title-h2">Número:</h2>
-                        <p class="quadra-nome-p">{{quadra.numeroRua}}</p>
-                      </div>
-      <!------- Descrição da quadra ------>
-                        <div class="quadra-info-nome">
-                        <h2 class="quadra-title-h2">Descrição:</h2>
-                        <p class="quadra-nome-p">{{quadra.descricao}}</p>
-                      </div>
-                    </div>
+      <!------- Área dos inputs ------>
+                <div class="inputs-edit-area">
+      <!------- Inputs content ------>
+                    <div class="inputs-content col-12 mt-2">
+                            <!------- Input data area ------>
+                <div class="input-data-content mt-4 d-flex justify-content-center">
+                  <div class="data-text-area">
+                  <p class="data-text">Data:</p>
+                </div>
+      <!------- Input data ------>
+                  <div class="input-data-area ml-2 mr-2">
+                    <div class="input-area">
+                  <input class="input-data" type="date" min="09:00" max="18:00" required>
+                </div>
+                </div>
+                </div>
+      <!------- Select ------>
+                <div class="select-area d-flex justify-content-center mt-4">
+                  <div class="horario-text-area">
+                  <p class="horario-text">Horário:</p>
+                </div>
+      <!------- Select horario ------>
+                <div class="inputTime-area-item ml-2 mr-2">
+                 <input type="time" class="input-data">
+                </div>
+                  <div class="as-text-area">
+                  <p class="as-text">ás:</p>
+                </div>
+      <!------- Select horario ------>
+                <div class="select-area-item">
+                  <!------- Select horario ------>
+                  <div class="inputTime-area-item ml-2 mr-2">
+                    <input type="time" class="input-data">
+                   </div>
+                </div>
+                </div>
+                <div class="btn-area text-center">
+                  <div class="botao-area">
+                  <button class="btn btn-success btn-person">Registrar horário</button>
                   </div>
+                </div>
+                </div>
+              </div>
         </main>
     </section>
   </article>
