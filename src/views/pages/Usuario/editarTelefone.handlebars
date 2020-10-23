@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <!------- Fonte importada ------>
   <style>
@@ -11,10 +12,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/usuario-editar-nome.css">
-  <title>Editar meu perfil</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/usuario-editar-telefone.css">
+  <title>Editar meu e-mail</title>
 </head>
-
 <body>
   <!------- Header ------>
   <header>
@@ -31,7 +31,7 @@
     <section class="row p-0">
   <!------- Título do edit ------>
       <div class="edit-title">
-       <h2 class="h2-edit-title text-center">Editar nome</h2>
+       <h2 class="h2-edit-title text-center">Editar telefone</h2>
       </div>
   <!------- Lista do edit ------>
   <div class="col-xl-4 col-lg-4 col-md-5 pt-1 col-sm p-0 mt-1 area-items-edit">
@@ -39,7 +39,7 @@
       <ul class="ul-edit pt-3">
         <li class="li-edit">
           <img src="/Images/Afiliados/user.svg" height="23">
-          <span class="text-li"><a href="/usuario/editar-senha">Meu perfil</a></span>
+          <span class="text-li"><a href="#">Meu perfil</a></span>
         </li>
         <li class="li-edit" data-toggle="collapse" href="#edit-perfil" role="button" aria-expanded=""aria-controls="">
           <img src="/Images/Afiliados/order.svg" height="23">
@@ -48,10 +48,10 @@
           </a></span>
           <div class="collapse show collapse-person collapse-show" id="edit-perfil">
             <div class="items-collapse">
-              <span class="name-user user-options-active"><a href="/usuario/editar-nome">Nome</a></span>
-              <span class="name-user"><a href="/" style="color: #FFF;">Telefone</a></span>
-              <span class="name-user"><a href="/usuario/editar-email" style="color:#FFF;">E-mail</a></span>
-              <span class="name-user"><a href="/usuario/editar-senha" style="color:#FFF;">Senha</a></span>
+              <span class="name-user"><a href="#" style="color: #FFF;">Nome</a></span>
+              <span class="name-user user-options-active"><a href="#">Telefone</a></span>
+              <span class="name-user"><a href="#"  style="color: #FFF;">E-mail</a></span>
+              <span class="name-user"><a href="#" style="color:#FFF;">Senha</a></span>
             </div>
           </div>
         </li>
@@ -72,19 +72,19 @@
         </div>
         <div class="edit-name-area mx-auto">
           <div class="name-atual-area py-3">
-          <h1 class="h1-name">Nome atual:</h1>
-          <span class="span-name">{{nome}}</span>
+          <h1 class="h1-name">Telefone:</h1>
+          <span class="span-name">(51) 99867-4763</span>
         </div>
         <div class="name-input-area py-3">
-          <h1 class="h1-name">Alterar nome:</h1>
-          <input class="input-name" type="text" placeholder="Digite o nome desejado" id="nome1">
+          <h1 class="h1-name">Novo número:</h1>
+          <input class="input-name" type="text" placeholder="Digite o número desejado">
         </div>
         <div class="name-input-area py-3">
-          <h1 class="h1-name">Confirmar nome:</h1>
-          <input class="input-name" type="text" placeholder="Digite o nome desejado" id="nome2">
+          <h1 class="h1-name">Confirmar novo número:</h1>
+          <input class="input-name" type="text" placeholder="Digite o número desejado">
         </div>
         <div class="button-name-area pt-3">
-           <button type="button" class="btn btn-success" onclick="editarNome()">Salvar alterações</button>
+           <button type="button" class="btn btn-success">Salvar alterações</button>
         </div>
         </div>
       </div>
@@ -107,6 +107,5 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
-   <script src="/JS/Usuario/editarNome.js" type="text/javascript"></script>
 </body>
 </html>
