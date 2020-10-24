@@ -1,15 +1,13 @@
-async function editarSenha() {
-    const senhaAtual = document.querySelector("#senhaAtual").value;
-    const senha1 = document.querySelector("#senha1").value;
-    const senha2 = document.querySelector("#senha2").value;
+async function editarTelefone() {
+    const telefone1 = document.querySelector("#telefone1").value;
+    const telefone2 = document.querySelector("#telefone2").value;
 
     const dados = {
-        senhaAtual:senhaAtual,
-        senha1:senha1,
-        senha2:senha2
+        telefone1:telefone1,
+        telefone2:telefone2
     };
 
-    const resultadoObject = await fetch("/efetuando-editar-senha", {
+    const resultadoObject = await fetch("/efetuando-editar-telefone", {
         method: "POST",
         headers: {
             "authorization": localStorage.getItem("token"),
@@ -21,7 +19,7 @@ async function editarSenha() {
     const resultado = await resultadoObject.json();
 
     if (resultado.message == "error") {
-        alert("Ocorreu um erro ao editar senha");
+        alert("Ocorreu um erro ao editar telefone");
 
     }else if(resultado.message == "unauthorized"){
         alert("Voçê não está autorizado a acessar essa página");
@@ -31,7 +29,7 @@ async function editarSenha() {
         alert("Os dados estão inválidos");
 
     }else{
-        alert("Senha editada com sucesso");
+        alert("Telefone editado com sucesso");
         localStorage.removeItem("token");
         location.href = "/pagina-inicial";
     };

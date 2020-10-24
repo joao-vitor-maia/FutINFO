@@ -29,6 +29,7 @@ async function editarEmail() {
         alert("Os dados estão inválidos");
 
     }else{
+        alert("Email editado com sucesso");
         localStorage.removeItem("token");
         location.href = "/pagina-inicial";
     };

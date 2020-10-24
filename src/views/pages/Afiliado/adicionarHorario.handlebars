@@ -107,7 +107,7 @@
       <!------- Input data ------>
                   <div class="input-data-area ml-2 mr-2">
                     <div class="input-area">
-                  <input class="input-data" type="date" min="09:00" max="18:00" required>
+                  <input class="input-data" type="date" min="09:00" max="18:00" id="data" required>
                 </div>
                 </div>
                 </div>
@@ -118,7 +118,7 @@
                 </div>
       <!------- Select horario ------>
                 <div class="inputTime-area-item ml-2 mr-2">
-                 <input type="time" class="input-data">
+                 <input type="time" class="input-data" id="horarioInicial">
                 </div>
                   <div class="as-text-area">
                   <p class="as-text">ás:</p>
@@ -127,13 +127,13 @@
                 <div class="select-area-item">
                   <!------- Select horario ------>
                   <div class="inputTime-area-item ml-2 mr-2">
-                    <input type="time" class="input-data">
+                    <input type="time" class="input-data" id="horarioFinal">
                    </div>
                 </div>
                 </div>
                 <div class="btn-area text-center">
                   <div class="botao-area">
-                  <button class="btn btn-success btn-person">Registrar horário</button>
+                  <button onclick="adicionarHorarioDisponivel()" class="btn btn-success btn-person">Registrar horário</button>
                   </div>
                 </div>
                 </div>
@@ -156,5 +156,6 @@
    <script src="/JS/app.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/afiliado/adicionarHorarioDisponivel.js" type="text/javascript"></script>
 </body>
 </html>

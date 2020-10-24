@@ -24,6 +24,10 @@ const horario = new Schema({
         type:String,
         required:true
     },
+    solicitado: {
+        type:Boolean,
+        required:true
+    },
     aprovado: {
         type:String,
         default:"pendente"

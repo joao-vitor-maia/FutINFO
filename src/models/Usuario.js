@@ -27,6 +27,9 @@ const usuario = new Schema({
         max:60,
         required:true
     },
+    telefone:{
+        type:String
+    },
     admin: {
         type:Boolean,
         default:false

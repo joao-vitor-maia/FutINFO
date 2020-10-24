@@ -46,8 +46,8 @@ exports.cadastrar = async(req,res) => {
                 senha:senha,
                 senhaReserva:senhaReserva
             };
-
-            await new Usuario(dados).save();            
+            await new Usuario(dados).save();   
+            
             return res.json({message:"success"});
         }else{
             return res.json({message:"invalid"});
@@ -87,6 +87,7 @@ exports.redefinirSenha = async(req,res) => {
                 });
                 usuario.senha = senha;
                 await usuario.save();
+
                 return res.json({message:"success"});
             };
         };
@@ -102,7 +103,8 @@ exports.editarNome = async(req,res) => {
         const nome1 = req.body.nome1;
         const nome2 = req.body.nome2;
         
-        if(validator.isLength(nome1,{min:2,max:60}) && sanitize(nome1,{allowedTags:[], allowedAttributes:{} }) == nome1 && nome1 == nome2){
+        if(validator.isLength(nome1,{min:2,max:60}) && sanitize(nome1,{allowedTags:[], allowedAttributes:{} }) == nome1 && 
+        nome1 == nome2 ){
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -110,7 +112,8 @@ exports.editarNome = async(req,res) => {
                     const usuario = await Usuario.findOne({email:decoded.email});
                     usuario.nome = nome1;
                     await usuario.save();
-                    res.clearCookie("token");
+
+                    res.clearCookie("token");                    
                     return res.json({message:"sucess"});
                 };
             });
@@ -128,7 +131,8 @@ exports.editarEmail = async(req,res) => {
         const email1 = req.body.email1;
         const email2 = req.body.email2;
         
-        if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && email1 == email2){
+        if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && 
+        email1 == email2 ){
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -136,6 +140,7 @@ exports.editarEmail = async(req,res) => {
                     const usuario = await Usuario.findOne({email:decoded.email});
                     usuario.email = email1;
                     await usuario.save();
+                    
                     res.clearCookie("token");
                     return res.json({message:"sucess"});
                 };
@@ -176,6 +181,7 @@ exports.editarSenha = async(req,res) => {
                     });
                     usuario.senha = senhaHash;
                     await usuario.save();
+
                     res.clearCookie("token");
                     return res.json({message:"sucess"});
                 }else{
@@ -186,6 +192,34 @@ exports.editarSenha = async(req,res) => {
    }catch(err){
         return res.json({message:"error"});
    };
+    
+};
+exports.editarTelefone = async(req,res) => {
+    try{
+        const token = req.headers["authorization"];
+        const telefone1 = req.body.telefone1;
+        const telefone2 = req.body.telefone2;
+        
+        if(validator.isLength(telefone1,{min:8,max:60}) && sanitize(telefone1,{allowedTags:[], allowedAttributes:{} }) == telefone1 && 
+        telefone1 == telefone2 ){
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const usuario = await Usuario.findOne({_id:decoded.id});
+                    usuario.telefone = telefone1;
+                    await usuario.save();
+                    
+                    res.clearCookie("token");
+                    return res.json({message:"sucess"});
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
+   }catch(err){
+        return res.json({message:"error"});
+   }
     
 };
 exports.adicionarAfiliado = async(req,res) => {

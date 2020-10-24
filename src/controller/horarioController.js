@@ -2,15 +2,16 @@ const Horario = require("@models/Horario");
 const Quadra = require("@models/Quadra");
 const jwt = require("jsonwebtoken");
 const fns = require("date-fns");
+const validator = require("validator");
 const nodemailer = require("nodemailer");
 
 exports.agendarHorario = async(req,res) => {
     try{
         //Pegando informacoes        
-        const token = req.body.token;
+        const token = req.headers["authorization"];
         const quadraId = req.body.quadraId;
-        const ano = new Date().getFullYear();
-        const mes = new Date().getMonth()+1;
+        const ano = req.body.ano;
+        const mes = req.body.mes;
         const dia = req.body.dia;
         const HorarioInicial = req.body.horarioInicial;
         const HorarioFinal = req.body.horarioFinal;
@@ -35,7 +36,7 @@ exports.agendarHorario = async(req,res) => {
                 //Horários não podem se sobrepor
                 if(fns.areIntervalsOverlapping(horarioIntervalo,horarioDoBanco.horarioIntervalo)){
                     return res.json({message:"conflict"});
-                }
+                };
             };
 
             jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
@@ -49,6 +50,7 @@ exports.agendarHorario = async(req,res) => {
                         ano:ano,
                         mes:mes,
                         dia:dia,
+                        solicitado:true,
                         horarioIntervalo:horarioIntervalo
                     };
 
@@ -80,7 +82,62 @@ exports.agendarHorario = async(req,res) => {
             });
         };
     }catch(err){
-        console.log(err)
+        return res.json({message:"error"});
+    }
+};
+exports.adicionarHorarioDisponivel = async(req,res) => {
+    try{
+        //Pegando informacoes        
+        const token = req.headers["authorization"];
+        const ano = req.body.ano;
+        const mes = req.body.mes;
+        const dia = req.body.dia;
+        const HorarioInicial = req.body.horarioInicial;
+        const HorarioFinal = req.body.horarioFinal;
+
+        //Pegando dados da data
+        const horarioInicial = new Date(`${ano},${mes},${dia} ${HorarioInicial}`);
+        const horarioFinal = new Date(`${ano},${mes},${dia} ${HorarioFinal}`);
+
+        //Horario inicial não pode ser maior ou igual ao final
+        if(fns.compareAsc(horarioInicial,horarioFinal) == 1 || fns.compareAsc(horarioInicial,horarioFinal) == 0 ||
+        !ano ||
+        !mes || 
+        !dia ||
+        !HorarioInicial ||
+        !HorarioFinal ){
+            return res.json({message:"invalid"});
+
+        }else{
+            const horarioIntervalo = {
+                start:horarioInicial,
+                end:horarioFinal
+            };
+
+            jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
+                if(error || decoded.afiliado != true){
+                    return res.json({message:"unauthorized"});
+
+                }else{
+                    const quadra = await Quadra.findOne({usuarioId:decoded.id});
+
+                    const dados = {
+                        usuarioId:decoded.id,
+                        quadraId:quadra._id,
+                        ano:ano,
+                        mes:mes,
+                        dia:dia,
+                        solicitado:false,
+                        horarioIntervalo:horarioIntervalo
+                    };
+
+                    await new Horario(dados).save();
+
+                    return res.json({message:"success"});
+                };
+            });
+        };
+    }catch(err){
         return res.json({message:"error"});
     }
 };
