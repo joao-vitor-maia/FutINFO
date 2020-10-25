@@ -409,7 +409,19 @@ exports.renderEditarSenha = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-//Afiliado
+exports.renderEditarTelefone = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+        const usuario = await Usuario.findOne({_id:decoded.id})
+
+        res.render("pages/Usuario/editarTelefone",{
+            telefone:usuario.telefone
+        });
+    }catch(err){        
+        return res.json({message:"error"});
+    };
+};
+//Afiliado1
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
         const decoded = req.decoded;
@@ -502,6 +514,15 @@ exports.renderAdicionarImagens = async (req,res) => {
             imagens:imagens.map(imagem => imagem.toJSON()),
             horariosLength:horarios.length
         });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderAdicionarHorarioDisponivel = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+
+        res.render("pages/Afiliado/adicionarHorario");
     }catch(err){
         return res.json({message:"error"});
     };

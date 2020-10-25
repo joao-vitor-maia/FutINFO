@@ -45,6 +45,7 @@ router.get("/usuario/horarios-reservados", auth.autorizarUsuario, pageController
 router.get("/usuario/editar-nome", auth.autorizarUsuario, pageController.renderEditarNome);
 router.get("/usuario/editar-email", auth.autorizarUsuario, pageController.renderEditarEmail);
 router.get("/usuario/editar-senha", auth.autorizarUsuario, pageController.renderEditarSenha);
+router.get("/usuario/editar-telefone", auth.autorizarUsuario, pageController.renderEditarTelefone);
 //Páginas Afiliado
 router.get("/afiliado/registrar-quadra", auth.autorizarAfiliado, pageController.renderRegistrarQuadra);
 router.get("/afiliado/editar-quadra", auth.autorizarAfiliado, pageController.renderEditarQuadra);
@@ -55,6 +56,7 @@ router.get("/afiliado/historico-horarios", auth.autorizarAfiliado, pageControlle
 router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
 router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
 router.get("/afiliado/registrar-preco", auth.autorizarAfiliado, pageController.renderRegistrarPreco);
+router.get("/afiliado/adicionar-horario-disponivel", auth.autorizarAfiliado, pageController.renderAdicionarHorarioDisponivel);
 //Páginas Admin
 router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
@@ -73,11 +75,13 @@ router.post("/efetuando-cadastrar",usuarioController.cadastrar);
 router.post("/efetuando-editar-nome",usuarioController.editarNome);
 router.post("/efetuando-editar-email",usuarioController.editarEmail);
 router.post("/efetuando-editar-senha",usuarioController.editarSenha);
+router.post("/efetuando-editar-telefone",usuarioController.editarTelefone);
 router.post("/efetuando-atualizacao-de-senha",usuarioController.redefinirSenha);
 router.post("/efetuando-adicionar-afiliado", auth.autorizarAdmin, usuarioController.adicionarAfiliado);
 
 //Api Horário
 router.post("/efetuando-agendamento-de-horarios",horarioController.agendarHorario);
+router.post("/efetuando-adicionar-horario-disponivel",horarioController.adicionarHorarioDisponivel);
 router.post("/efetuando-aprovar-horario",horarioController.aprovar);
 router.post("/efetuando-recusar-horario",horarioController.recusar);
 

@@ -73,18 +73,18 @@
         <div class="edit-name-area mx-auto">
           <div class="name-atual-area py-3">
           <h1 class="h1-name">Telefone:</h1>
-          <span class="span-name">(51) 99867-4763</span>
+          <span class="span-name">{{telefone}}</span>
         </div>
         <div class="name-input-area py-3">
           <h1 class="h1-name">Novo número:</h1>
-          <input class="input-name" type="text" placeholder="Digite o número desejado">
+          <input class="input-name" type="text" placeholder="Digite o número desejado" id="telefone1">
         </div>
         <div class="name-input-area py-3">
           <h1 class="h1-name">Confirmar novo número:</h1>
-          <input class="input-name" type="text" placeholder="Digite o número desejado">
+          <input class="input-name" type="text" placeholder="Digite o número desejado" id="telefone2">
         </div>
         <div class="button-name-area pt-3">
-           <button type="button" class="btn btn-success">Salvar alterações</button>
+           <button type="button" onclick="editarTelefone()" class="btn btn-success">Salvar alterações</button>
         </div>
         </div>
       </div>
@@ -107,5 +107,6 @@
    <script src="/JS/click-user.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
+   <script src="/JS/usuario/editarTelefone.js" type="text/javascript"></script>
 </body>
 </html>

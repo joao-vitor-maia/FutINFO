@@ -29,6 +29,7 @@ async function editarNome() {
         alert("Os dados estão inválidos");
 
     }else{
+        alert("Nome editado com sucesso");
         localStorage.removeItem("token");
         location.href = "/pagina-inicial";
     };
