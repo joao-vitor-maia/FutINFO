@@ -486,7 +486,7 @@ exports.renderHorarioSolicitado = async (req, res) => {
         const decoded = req.decoded;
         
         const quadra = await Quadra.findOne({usuarioId:decoded.id});
-        const horarios = await Horario.find({quadraId:quadra._id});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente",solicitado:true});
         
         res.render("pages/Afiliado/afiliado",{
             //Formatando hoario

@@ -128,6 +128,7 @@ exports.adicionarHorarioDisponivel = async(req,res) => {
                         mes:mes,
                         dia:dia,
                         solicitado:false,
+                        aprovado:null,
                         horarioIntervalo:horarioIntervalo
                     };
 

@@ -56,7 +56,7 @@ router.get("/afiliado/historico-horarios", auth.autorizarAfiliado, pageControlle
 router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageController.renderAfiliadoHistorico);
 router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
 router.get("/afiliado/registrar-preco", auth.autorizarAfiliado, pageController.renderRegistrarPreco);
-router.get("/afiliado/adicionar-horario-disponivel", auth.autorizarAfiliado, pageController.renderAdicionarHorarioDisponivel);
+router.get("/afiliado/adicionar-horarios-disponiveis", auth.autorizarAfiliado, pageController.renderAdicionarHorarioDisponivel);
 //Páginas Admin
 router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);

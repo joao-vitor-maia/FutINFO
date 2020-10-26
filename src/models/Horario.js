@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+//Campo "aprovado" pode ser pendente, aprovado ou recusado se for solicitado pelo usuário
+//Se não for solicitado é porque vem do admin e terá o campo "aprovado" igual null
 const horario = new Schema({
     usuarioId: {
         type:Schema.Types.ObjectId,

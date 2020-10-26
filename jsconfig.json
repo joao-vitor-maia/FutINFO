@@ -9,7 +9,8 @@
         "@controller/*": ["src/controller/*"],
         "@models/*": ["src/models/*"],
         "@auth/*": ["src/auth/*"],
-        "@config/*": ["src/config/*"]
+        "@config/*": ["src/config/*"],
+        "@routes/*": ["src/routes/route.js"]
       }
     },
     "exclude": ["node_modules", "dist"]

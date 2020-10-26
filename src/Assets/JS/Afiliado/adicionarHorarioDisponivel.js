@@ -34,6 +34,6 @@ async function adicionarHorarioDisponivel() {
         location.href = "/usuario/login";
     } else {
         alert("Horário disponível adicionado com sucesso")
-        location.href = "/afiliado/adicionar-horario-disponivel";
+        location.href = "/afiliado/adicionar-horarios-disponiveis";
     };
 }
