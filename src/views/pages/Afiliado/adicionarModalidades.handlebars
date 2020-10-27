@@ -12,10 +12,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-remover-imagem.css">
-  <title>Remover imagens</title>
+  <link rel="stylesheet" type="text/css" href="/CSS/afiliado-adicionar-modalidades.css">
+  <title>Registrar modalidades</title>
 </head>
-
 <body>
   <!------- Header ------>
   <header>
@@ -47,37 +46,38 @@
                 <img class="img-li-aside" src="/Images/Afiliados/bell.svg" height="23">
                 <a href="/afiliado/horarios-solicitados">
                 <span class="li-text">Ver solicitações</span>
-                </a>
+              </a>
                 <div class="btn-danger d-inline-block notificacao">{{horariosLength}}</div>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/clock.svg" height="23">
                 <a href="/afiliado/historico-horarios">
                 <span class="li-text">Histórico de agendamento</span>
-                </a>
+              </a>
               </li>
         <!------- Item com collapse ------>
-              <li class="item-li item-li-collapse" data-toggle="" href="#imgs-li" aria-expanded="" aria-controls="imgs-li">
+              <li class="item-li item-li-collapse" data-toggle="collapse" href="#imgs-li" aria-expanded="false" aria-controls="imgs-li">
                 <img class="img-li-aside" src="/Images/Afiliados/photo.svg" height="23">
-                <span class="li-active-jQuery li-textjQuery">Imagens da quadra
+                <span class="li-text li-textjQuery">Imagens da quadra
                 <img class="arrowDown-li" src="/Images/Afiliados/down-arrow.svg" height="17">
                 </span>
-                <div class="collapse show" id="imgs-li">
-                                  <ul class="ul-collapse">
+                <div class="collapse" id="imgs-li">
+                  <ul class="ul-collapse">
                     <a href="/afiliado/adicionar-imagens">
                     <li class="li-collapse">Adicionar imagens
                 <img class="arrowDown-li" src="/Images/Afiliados/plus.svg" height="17">
                     </li>
-                    </a>
+                  </a>
                     <a href="/afiliado/deletar-imagens">
-                    <li class="li-collapse-active">Remover imagens
+                    <li class="li-collapse">Remover imagens
                 <img class="arrowDown-li" src="/Images/Afiliados/minus.svg" height="17">
                     </li>
-                    </a>
+                  </a>
                   </ul>
                 </div>
               </li>
-               <li class="item-li">
+        <!------- Fim do Item com collapse ------>
+       <li class="item-li">
           <img class="img-li-aside" src="/Images/Afiliados/simbolo-do-dolar.svg" height="23">
           <span class="li-text">Registrar preço da quadra</span>
         </li>
@@ -85,11 +85,11 @@
                 <img class="img-li-aside" src="/Images/Afiliados/add.svg" height="23">
                 <a href="/afiliado/registrar-quadra">
                 <span class="li-text">Registrar endereço da quadra</span>
-                </a>
+              </a>
               </li>
                <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/sport.svg" height="23">
-                <span class="li-text">Registrar modalidades</span>
+                <span class="li-active">Registrar modalidades</span>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/timetable.svg" height="23">
@@ -98,14 +98,14 @@
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/order.svg" height="23">
                 <a href="/afiliado/editar-quadra">
-                <span class="li-text">Editar endereço da quadra</span>
-                </a>
+                <span class="li-text">Editar minha quadra</span>
+              </a>
               </li>
               <li class="item-li">
                 <img class="img-li-aside" src="/Images/Afiliados/cursor.svg" height="23">
                 <a href="/afiliado/ver-quadra">
                 <span class="li-text">Ver minha quadra</span>
-                </a>
+              </a>
               </li>
               <div class="link-inicio-area pt-5">
                 <li class="item-li-link">
@@ -120,30 +120,33 @@
       <!------- Main ------>
       <main class="main-area px-1 pt-1 p-0 col-xl-8 col-lg-8 col-md-7 col-12">
             <div class="title-day w-100">
-                    <h1 class="h1-title-day">Remover imagens</h1>
+                    <h1 class="h1-title-day">Adicionar modalidades disponiveis</h1>
                   </div>
-      <!------- Input file ------>
-                  <div class="text-title-input">
-                  <p class="input-text-p py-4">Abaixo, as imagens da quadra estarão disponíveis para remoção.</p>
+      <!------- Área dos inputs ------>
+                <div class="inputs-edit-area">
+      <!------- Inputs content ------>
+                    <div class="inputs-content mt-4">
+                      <div class="modalidade-area text-center">
+                        <p class="text-input-name py-2">Modalidade principal:</p>
+                        <input class="input-name" type="text" placeholder="Ex: Futebol">
+                      </div>
+                       <div class="modalidade-area py-3 text-center">
+                        <p class="text-input-name py-2">Modalidade 2:</p>
+                        <input class="input-name" type="text" placeholder="Ex: Basquete">
+                      </div>
+                      <div class="modalidade-area py-3 text-center">
+                        <p class="text-input-name py-2">Modalidade 3:</p>
+                        <input class="input-name" type="text" placeholder="Ex: Vôlei">
+                      </div>
+                      <div class="modalidade-area py-3 text-center">
+                        <p class="text-input-name py-2">Modalidade 4:</p>
+                        <input class="input-name" type="text" placeholder="Ex: Handebol">
+                      </div>
                 </div>
-                  <div class="input-file-content pt-1">
-      <!------- Imagens ------>
-                  <div class="images-area pt-3 w-100">
-                  <div class="images-title w-100">
-                    <h2 class="text-center pt-3 h2-input-file">Imagens selecionadas:</h2>
-                  </div>
-                  <div class="img-area">
-                    {{#each imagens}}
-                    <div class="img-content">
-                      <img class="image-content w-100 h-100" src="{{this.url}}">
-                      <button class="btn btn-remove btn-success btn-font-person" value="{{this._id}}" onclick="deletarImagem()">
-                        Remover imagem
-                      </button>
-                    </div>
-                    {{/each}}
-                  </div>
-                  </div>
-                </div>
+                                      <div class="btn-area mb-4">
+                        <button class=" btn btn-success btn-success-person">Registrar modalidades</button>
+                          </div>
+              </div>
         </main>
     </section>
   </article>
@@ -159,8 +162,8 @@
     </footer>
    <!------- Scripts ------>
    <script src="/JS/jquery-3.1.1.min.js" type="text/javascript"></script>
+   <script src="/JS/app.js" type="text/javascript"></script>
    <script src="/JS/bootstrap.min.js" type="text/javascript"></script>
    <script src="/JS/popper.min.js" type="text/javascript"></script>
-   <script src="/JS/Afiliado/deletarImagens.js" type="text/javascript"></script>
 </body>
 </html>
