@@ -45,6 +45,9 @@ nav ul {
     margin: auto;
     width: 100%;
 }
+nav a:hover {
+    text-decoration: none;
+}
 .item-li {
     font-size:15px;
     font-weight: 500;
@@ -76,6 +79,7 @@ nav ul {
     border-bottom: 2px solid #FFF;
     padding-bottom: 20px;
     border-width: thin;
+    color: #FFF;
 }
 .li-text:hover {
      padding: 10px;
