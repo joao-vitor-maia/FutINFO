@@ -28,7 +28,6 @@
     "socket.io": "^2.3.0",
     "validator": "^13.1.1"
   },
-  "devDependencies": {},
   "_moduleAliases": {
     "@routes": "src/routes/routes.js",
     "@middlewares": "src/middleware",
