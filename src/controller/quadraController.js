@@ -4,6 +4,7 @@ const validator = require("validator");
 const fs = require("fs");
 const Quadra = require("@models/Quadra");
 const ImagemQuadra = require("@models/ImagemQuadra");
+const ModalidadeQuadra = require("@models/ModalidadeQuadra");
 
 exports.salvarQuadra = async (req,res) => {
     try{
@@ -12,7 +13,6 @@ exports.salvarQuadra = async (req,res) => {
         const rua = req.body.rua; 
         const cep = req.body.cep; 
         const numeroRua = req.body.numeroRua;
-        // const imagens = req.files;
         
         //Validação
         if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome && 
@@ -183,6 +183,60 @@ exports.deletarImagem = async (req,res) => {
                 
             };
         });
+    }catch(err){
+        return res.json({message:"error"});
+    }
+};
+exports.adicionarModalidade = async (req,res) => {
+    try{
+        const modalidade1 = req.body.modalidade1; 
+        const modalidade2 = req.body.modalidade2;
+        const modalidade3 = req.body.modalidade3; 
+        const modalidade4 = req.body.modalidade4;
+        
+        //Validação
+        if(validator.isLength(modalidade1,{max:60}) && sanitize(modalidade1,{allowedTags:[], allowedAttributes:{} }) == modalidade1 && 
+        validator.isLength(modalidade2,{max:60}) && sanitize(modalidade2,{allowedTags:[], allowedAttributes:{} }) == modalidade2 &&
+        validator.isLength(modalidade3,{max:60}) && sanitize(modalidade3,{allowedTags:[], allowedAttributes:{} }) == modalidade3 &&
+        validator.isLength(modalidade4,{max:60}) && sanitize(modalidade4,{allowedTags:[], allowedAttributes:{} }) == modalidade4  
+        ) {
+            const token = req.headers["authorization"];
+            
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error || decoded.afiliado != true){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    //Busco quadra referente ao usuário e verifico se já existe modalidade relacionada a ela
+                    const quadra = await Quadra.findOne({usuarioId:decoded.id});
+                    const modalidade = await ModalidadeQuadra.findOne({quadraId:quadra._id});
+
+                    if(modalidade) {
+                        modalidade.modalidade1 = modalidade1;
+                        modalidade.modalidade2 = modalidade2;
+                        modalidade.modalidade3 = modalidade3;
+                        modalidade.modalidade4 = modalidade4;
+
+                        await modalidade.save();
+                    }else{
+                        const dados = {
+                            modalidade1:modalidade1,
+                            modalidade2:modalidade2,
+                            modalidade3:modalidade3,
+                            modalidade4:modalidade4,
+                            quadraId:quadra._id
+                        };
+
+
+                        await new ModalidadeQuadra(dados).save();
+                    };
+
+                    return res.json({message:"success"});
+                    
+                };
+            });
+        }else{
+            return res.json({message:"invalid"});
+        };
     }catch(err){
         return res.json({message:"error"});
     }

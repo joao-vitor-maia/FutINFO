@@ -68,6 +68,26 @@ exports.renderHome = async (req, res) => {
         return res.json({message: "error"});
     }
 };
+exports.renderQuadra = async (req,res) => {
+    try{
+        const quadras = await Quadra.find();
+        
+        res.render("pages/quadras",{
+            quadras:await Promise.all(quadras.map(async (quadra) => {
+                const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({dataTimestamp:1}).limit(7);
+
+                const dados = {
+                    quadra: quadra.toJSON(),
+                    imagens: imagens.map(imagem => imagem.toJSON())
+                };
+                    
+                return dados;
+            }))
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
 exports.renderClassificacaoEArtilheiro = async (req,res) => {
     try{
         const token = req.cookies.token;
@@ -421,7 +441,7 @@ exports.renderEditarTelefone = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-//Afiliado1
+//Afiliado
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
         const decoded = req.decoded;
@@ -565,6 +585,15 @@ exports.renderRegistrarPreco = async (req,res) => {
         const decoded = req.decoded;
 
         res.render("pages/Afiliado/registrarPreco");
+    }catch(err){
+        return res.json({message:"error"});
+    };
+};
+exports.renderAdicionarModalidade = async (req,res) => {
+    try{
+        const decoded = req.decoded;
+
+        res.render("pages/Afiliado/adicionarModalidades");
     }catch(err){
         return res.json({message:"error"});
     };

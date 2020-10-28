@@ -74,29 +74,32 @@
    <!------- Área das quadras ------>
       <main class="col-xl-12 col-12 col-quadras">
         <aside class="container container-quadra">
+          {{#each quadras}}
           <div class="quadra-content-area px-3 py-3">
    <!------- Conteúdo da quadra ------>
             <div class="quadra-content">
               <div class="row">
    <!------- Slide da quadra ------>
               <div class="slide-quadra-area col-xl-6 col-lg-6 col-md-12">
-                <div id="slideQuadra" class="carousel slide" data-ride="carousel">
+                <div id="slideQuadra{{this.quadra._id}}" class="carousel slide" data-ride="carousel">
                   <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img class="d-block w-100 img-quadra" src="/Images/Slide/img-1.jpg" alt="Primeiro Slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100 img-quadra" src="/Images/Slide/img-2.jpg" alt="Segundo Slide">
-                    </div>
-                    <div class="carousel-item">
-                      <img class="d-block w-100 img-quadra" src="/Images/Slide/img-3.jpg" alt="Terceiro Slide">
-                    </div>
+                    {{#each this.imagens}}
+                      {{#if @first}}
+                        <div class="carousel-item active">
+                          <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
+                        </div>
+                      {{else}}
+                        <div class="carousel-item">
+                          <img class="d-block w-100" src="{{this.url}}" alt="Primeiro Slide">
+                        </div>
+                      {{/if}}
+                    {{/each}}
                   </div>
-                  <a class="carousel-control-prev" href="#slideQuadra" role="button" data-slide="prev">
+                  <a class="carousel-control-prev" href="#slideQuadra{{this.quadra._id}}" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Anterior</span>
                   </a>
-                  <a class="carousel-control-next" href="#slideQuadra" role="button" data-slide="next">
+                  <a class="carousel-control-next" href="#slideQuadra{{this.quadra._id}}" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Próximo</span>
                   </a>
@@ -107,20 +110,20 @@
    <!------- Nome da quadra ------>
                 <div class="info-quadra-content pl-3">
                <div class="quadra-nome-area mt-2 text-center">
-                 <h1 class="h1-nome-quadra">Quadra Medeiros José Siqueira</h1>
+                 <h1 class="h1-nome-quadra">{{this.nome}}</h1>
                </div>
    <!------- Endereço da quadra ------>
                <div class="endereco-valor-area mt-3 pt-2">
                <div class="endereco-quadra-area py-2">
-                 <span class="span-endereco"><span class="span-bold">Endereço:</span> Av. Orlando da Cunha Carlos, 4897</span>
+                 <span class="span-endereco"><span class="span-bold">Endereço:</span> {{this.quadra.rua}}, {{this.numeroRua}}</span>
                </div>
                  <!------- Valor da quadra ------>
                  <div class="valor-quadra-area py-2">
-                  <span class="span-valor"><span class="span-bold">Preço:</span> R$200,00</span>
+                  <span class="span-valor"><span class="span-bold">Preço:</span> R${{this.quadra.preco}}</span>
                 </div>
                 <!------- Descrição da quadra ------>
                 <div class="descricao-quadra-area py-2">
-                  <span class="span-descricao"><span class="span-bold">Descrição:</span> "Quadra de esportes com área de bar e churrascaria, disponível de Segunda-Feira a Domingos."</span>
+                  <span class="span-descricao"><span class="span-bold">Descrição:</span> "{{this.quadra.descricao}}"</span>
                 </div>
                 <!------- Botão de agendamento ------>
                 <div class="botoes-area text-center mt-3">
@@ -176,9 +179,11 @@
                 <!------- Texto OU ------>
                 <span class="text-center text-OU">OU</span>
                 <!------- Botão de agendamento pelo site ------>
-                <div class="botao-agendamento-area py-3">
-                  <button class="btn btn-success btn-whatsPerson">Agendar pelo Whatsapp</button>
-                </div>
+                <a href="https://api.whatsapp.com/send?1=pt_BR&phone={{this.telefone}}">
+                  <div class="botao-agendamento-area py-3">
+                    <button class="btn btn-success btn-whatsPerson">Agendar pelo Whatsapp</button>
+                  </div>
+                </a>
                 </div>
                </div>
              </div>
@@ -187,6 +192,7 @@
             </div>
           </div>
           </div>
+          {{/each}}
         </aside>
       </main>
   </div>

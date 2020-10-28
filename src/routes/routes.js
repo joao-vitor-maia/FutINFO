@@ -23,6 +23,7 @@ router.post("/autorizar-afiliado",auth.autorizarAfiliado);
 
 //Páginas 
 router.get("/pagina-inicial",pageController.renderHome);
+router.get("/quadras",pageController.renderQuadra);
 router.get("/classificacao-e-artilheiros",pageController.renderClassificacaoEArtilheiro);
 router.get("/classificacao-e-artilheiros/Masculino-Campo",pageController.renderClassificacaoEArtilheiroMasculinoCampo);
 router.get("/classificacao-e-artilheiros/Masculino-Futsal",pageController.renderClassificacaoEArtilheiroMasculinoFutsal);
@@ -57,6 +58,7 @@ router.get("/afiliado/historico-horarios/:page", auth.autorizarAfiliado, pageCon
 router.get("/afiliado/ver-quadra", auth.autorizarAfiliado, pageController.renderVerQuadra);
 router.get("/afiliado/registrar-preco", auth.autorizarAfiliado, pageController.renderRegistrarPreco);
 router.get("/afiliado/adicionar-horarios-disponiveis", auth.autorizarAfiliado, pageController.renderAdicionarHorarioDisponivel);
+router.get("/afiliado/adicionar-modalidade", auth.autorizarAfiliado, pageController.renderAdicionarModalidade);
 //Páginas Admin
 router.get("/admin/adicionar-noticia", auth.autorizarAdmin, pageController.renderAdicionarNoticia);
 router.get("/admin/adicionar-classificacao", auth.autorizarAdmin, pageController.renderAdicionarTime);
@@ -94,6 +96,7 @@ router.post("/efetuando-registrar-preco",quadraController.salvarPreco);
 router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",multer(multerConfig).array("file"),quadraController.adicionarImagem);
 router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
+router.post("/efetuando-adicionar-modalidade",quadraController.adicionarModalidade);
 
 //Api Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);
