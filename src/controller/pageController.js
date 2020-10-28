@@ -70,6 +70,8 @@ exports.renderHome = async (req, res) => {
 };
 exports.renderQuadra = async (req,res) => {
     try{
+        const token = req.cookies.token;
+        const decoded = jwt.decode(token);
         const quadras = await Quadra.find();
         
         res.render("pages/quadras",{
@@ -82,7 +84,8 @@ exports.renderQuadra = async (req,res) => {
                 };
                     
                 return dados;
-            }))
+            })),
+            decoded:decoded
         });
     }catch(err){
         return res.json({message:"error"});
