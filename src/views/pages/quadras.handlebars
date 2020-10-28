@@ -56,9 +56,53 @@
           </ul>
           <!------- Botão inscrever-se ------>
           <div class="ml-auto py-1">
-            <button type="button" class="btn btn-person dropdown-toggle" href="/login" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown">
+              {{#if decoded.afiliado}}
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Olá, {{decoded.nome}}!
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="divAcessarAfiliado" onclick="">
+                <a class="dropdown-item" href="/afiliado/registrar-quadra">Acessar configurações <br> da quadra ></a>
+                <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
+              {{else if decoded.admin}}
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
+                <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
+                                <a class="dropdown-item py-2" href="/admin/adicionar-classificacao"><span class="inicio-text">-</span> Acessar Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
+              </div>
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Olá, {{decoded.nome}}!
+              </button>
+              {{else if decoded}}
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
+                <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
+              </div>
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Olá, {{decoded.nome}}!
+              </button>
+              {{else}}
+              <button type="button" onclick="redirecionarLogin()" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Entrar ou inscrever-se
               </button>
+              {{/if}}
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -110,7 +154,7 @@
    <!------- Nome da quadra ------>
                 <div class="info-quadra-content pl-3">
                <div class="quadra-nome-area mt-2 text-center">
-                 <h1 class="h1-nome-quadra">{{this.nome}}</h1>
+                 <h1 class="h1-nome-quadra">{{this.quadra.nome}}</h1>
                </div>
    <!------- Endereço da quadra ------>
                <div class="endereco-valor-area mt-3 pt-2">
