@@ -1,6 +1,7 @@
 const Usuario = require("@models/Usuario");
 const ImagemQuadra = require("@models/ImagemQuadra");
-const ImagemNoticia = require("@models/ImagemNoticia")
+const ImagemNoticia = require("@models/ImagemNoticia");
+const ModalidadeQuadra = require("@models/ModalidadeQuadra");
 const Horario = require("@models/Horario");
 const Quadra = require("@models/Quadra");
 const Noticia = require("@models/Noticia");
@@ -77,17 +78,27 @@ exports.renderQuadra = async (req,res) => {
         res.render("pages/quadras",{
             quadras:await Promise.all(quadras.map(async (quadra) => {
                 const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({dataTimestamp:1}).limit(7);
-
-                const dados = {
-                    quadra: quadra.toJSON(),
-                    imagens: imagens.map(imagem => imagem.toJSON())
+                const modalidade = await ModalidadeQuadra.findOne({quadraId:quadra._id}).sort({dataTimestamp:1});
+                
+                if(modalidade) {
+                    var dados = {
+                        quadra: quadra.toJSON(),
+                        imagens: imagens.map(imagem => imagem.toJSON()),
+                        modalidades: modalidade.toJSON()
+                    };
+                }else {
+                    var dados = {
+                        quadra: quadra.toJSON(),
+                        imagens: imagens.map(imagem => imagem.toJSON())
+                    };
                 };
-                    
+
                 return dados;
             })),
             decoded:decoded
         });
     }catch(err){
+        console.log(err)
         return res.json({message:"error"});
     };
 };

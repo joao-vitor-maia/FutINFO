@@ -190,9 +190,12 @@
           <div class="modalidade-area">
             <span class="opcao-texto">Modalidade:</span>
             <select class="selecao-modalidade">
-              <option class="option-item">Vôlei</option>
-              <option class="option-item">Basquete</option>
-              <option class="option-item">Futebol</option>
+              {{#if modalidades}}
+                {{#if modalidades.modalidade1}} <option class="option-item">{{modalidades.modalidade1}}</option> {{/if}}
+                {{#if modalidades.modalidade2}} <option class="option-item">{{modalidades.modalidade2}}</option> {{/if}}
+                {{#if modalidades.modalidade3}} <option class="option-item">{{modalidades.modalidade3}}</option> {{/if}}
+                {{#if modalidades.modalidade4}} <option class="option-item">{{modalidades.modalidade4}}</option> {{/if}}
+              {{/if}}
             </select>
           </div>
         <!------- Horários modal ------>
