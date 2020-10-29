@@ -5,7 +5,7 @@ const fns = require("date-fns");
 const validator = require("validator");
 const nodemailer = require("nodemailer");
 
-exports.agendarHorario = async(req,res) => {
+exports.solicitarHorario = async(req,res) => {
     try{
         //Pegando informacoes        
         const token = req.headers["authorization"];
@@ -15,6 +15,7 @@ exports.agendarHorario = async(req,res) => {
         const dia = req.body.dia;
         const HorarioInicial = req.body.horarioInicial;
         const HorarioFinal = req.body.horarioFinal;
+        const modalidade = req.body.modalidade;
 
         //Pegando dados da data
         const horarioInicial = new Date(`${ano},${mes},${dia} ${HorarioInicial}`);
@@ -30,14 +31,14 @@ exports.agendarHorario = async(req,res) => {
                 end:horarioFinal
             };
 
-            const horariosDoBanco = await Horario.find({quadraId:quadraId});
+            // const horariosDoBanco = await Horario.find({quadraId:quadraId, solicitado:true});
             
-            for(let horarioDoBanco of horariosDoBanco){ 
-                //Horários não podem se sobrepor
-                if(fns.areIntervalsOverlapping(horarioIntervalo,horarioDoBanco.horarioIntervalo)){
-                    return res.json({message:"conflict"});
-                };
-            };
+            // for(let horarioDoBanco of horariosDoBanco){ 
+            //     //Horários não podem se sobrepor
+            //     if(fns.areIntervalsOverlapping(horarioIntervalo,horarioDoBanco.horarioIntervalo)){
+            //         return res.json({message:"conflict"});
+            //     };
+            // };
 
             jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
                 if(error){
@@ -51,6 +52,7 @@ exports.agendarHorario = async(req,res) => {
                         mes:mes,
                         dia:dia,
                         solicitado:true,
+                        modalidade:modalidade,
                         horarioIntervalo:horarioIntervalo
                     };
 

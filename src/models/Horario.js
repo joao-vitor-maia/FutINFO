@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-//Campo "aprovado" pode ser pendente, aprovado ou recusado se for solicitado pelo usuário
-//Se não for solicitado é porque vem do admin e terá o campo "aprovado" igual null
+//Horário pode ser criado por Afiliado ou Usuário
+//Horário disponível(Afiliado): possuirá campo "aprovado" igual a null, o campo "solicitado" será igual a false e não possuirá
+// campo modalidade
+
+//Horário solicitado(Usuário): campo "aprovado" poderá ser pendente, aprovado ou recusado isso será de acordo com a resposta
+// do afiliado, terá campo solicitado igual a true e modalidade de acordo com as opções da quadra
+
 const horario = new Schema({
     usuarioId: {
         type:Schema.Types.ObjectId,
@@ -36,6 +41,10 @@ const horario = new Schema({
     horarioIntervalo: {
         type:Object,
         required:true
+    },
+    modalidade: {
+        type:String,
+        max:60
     },
     data: {
         type:Date,

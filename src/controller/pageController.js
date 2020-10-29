@@ -79,17 +79,28 @@ exports.renderQuadra = async (req,res) => {
             quadras:await Promise.all(quadras.map(async (quadra) => {
                 const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({dataTimestamp:1}).limit(7);
                 const modalidade = await ModalidadeQuadra.findOne({quadraId:quadra._id}).sort({dataTimestamp:1});
+                const horariosDisponiveis = await Horario.find({quadraId:quadra._id, solicitado:false}).sort({dataTimestamp:1});
                 
                 if(modalidade) {
                     var dados = {
                         quadra: quadra.toJSON(),
                         imagens: imagens.map(imagem => imagem.toJSON()),
-                        modalidades: modalidade.toJSON()
+                        modalidades: modalidade.toJSON(),
+                        horariosDisponiveis: horariosDisponiveis.map(horarioDisponivel => {
+                            horarioDisponivel.horarioIntervalo.start = fns.format(horarioDisponivel.horarioIntervalo.start,"HH:mm");
+                            horarioDisponivel.horarioIntervalo.end = fns.format(horarioDisponivel.horarioIntervalo.end,"HH:mm");
+                            return horarioDisponivel.toJSON();
+                        })
                     };
                 }else {
                     var dados = {
                         quadra: quadra.toJSON(),
-                        imagens: imagens.map(imagem => imagem.toJSON())
+                        imagens: imagens.map(imagem => imagem.toJSON()),
+                        horariosDisponiveis: horariosDisponiveis.map(horarioDisponivel => {
+                            horarioDisponivel.horarioIntervalo.start = fns.format(horarioDisponivel.horarioIntervalo.start,"HH:mm");
+                            horarioDisponivel.horarioIntervalo.end = fns.format(horarioDisponivel.horarioIntervalo.end,"HH:mm");
+                            return horarioDisponivel.toJSON();
+                        })
                     };
                 };
 
@@ -98,7 +109,6 @@ exports.renderQuadra = async (req,res) => {
             decoded:decoded
         });
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     };
 };
