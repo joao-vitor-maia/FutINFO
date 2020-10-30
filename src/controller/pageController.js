@@ -410,11 +410,13 @@ exports.renderRedefinirSenha = async (req,res) => {
 exports.renderVerPerfil = async (req,res) => {
     try{
         const decoded = req.decoded;
+        const usuario = await Usuario.findOne({email:decoded.email});
 
         res.render("pages/Usuario/verPerfil",{
-            nome:decoded.nome,
-            email:decoded.email,
-            senha:decoded.senha
+            nome:usuario.nome,
+            email:usuario.email,
+            senha:usuario.senha,
+            telefone:usuario.telefone
         });
     }catch(err){
         return res.json({message:"error"});
