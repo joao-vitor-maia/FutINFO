@@ -13,7 +13,7 @@
   <!------- Estilização ------>
   <link rel="stylesheet" type="text/css" href="/CSS/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/CSS/ver-perfil.css">
-  <title>Editar meu perfil</title>
+  <title>Ver meu perfil</title>
 </head>
 
 <body>
@@ -51,6 +51,7 @@
             <div class="items-collapse">
               <span class="name-user"><a href="/usuario/editar-nome" style="color:#FFF;">Nome</a></span>
               <span class="name-user"><a href="/usuario/editar-email" style="color:#FFF;">E-mail</a></span>
+              <span class="name-user"><a href="/usuario/editar-telefone" style="color:#FFF;">Telefone</a></span>
               <span class="name-user"><a href="/usuario/editar-senha" style="color:#FFF;">Senha</a></span>
             </div>
           </div>
@@ -79,10 +80,9 @@
             <h1 class="h1-name">E-mail:</h1>
             <span class="span-email-user">{{email}}</span>
           </div>
-          <div class="info-password-user py-3">
-            <h1 class="h1-name">Senha:</h1>
-            <input type="password" value="hiddenPSW" class="input-password" id="input-pass">
-            <button type="button" class="btn btn-success btn-person" onclick="mostrarSenha()">Mostrar senha</button>
+          <div class="info-email-user py-3">
+            <h1 class="h1-name">Telefone:</h1>
+            <span class="span-email-user">{{telefone}}</span>
           </div>
         </div>
       </div>
