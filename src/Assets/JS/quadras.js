@@ -1,17 +1,21 @@
 async function solicitarHorario() {
     const horario = document.querySelector("#horario").value;
+    const horarioDividido = horario.split(" - ");
     const modalidade = document.querySelector("#modalidade").value;
+    const data = document.querySelector("#data").value;
+    const dataDividida = data.split("/");
     const quadraId = event.target.value;
 
     const dados = {
         quadraId:quadraId,
-        // ano:,
-        // mes: ,
-        // dia: ,
-        horarioInicial: horario.start,
-        horarioFinal: horario.end,
+        ano: dataDividida[2],
+        mes: dataDividida[1],
+        dia: dataDividida[0],
+        horarioInicial: horarioDividido[0],
+        horarioFinal: horarioDividido[1],
         modalidade:modalidade
     };
+console.log(dados)
 
     const resultadoObject = await fetch("/efetuando-solicitar-horario", {
         method: "POST",
@@ -36,5 +40,6 @@ async function solicitarHorario() {
 
     }else{
         alert("Horário solicitado com sucesso");
+        location.href = "/pagina-inicial";
     };
 }

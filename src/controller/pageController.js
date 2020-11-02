@@ -86,6 +86,13 @@ exports.renderQuadra = async (req,res) => {
                         quadra: quadra.toJSON(),
                         imagens: imagens.map(imagem => imagem.toJSON()),
                         modalidades: modalidade.toJSON(),
+                        datasDisponiveis:horariosDisponiveis.map(horarioDisponivel => {
+                            return {
+                                ano:horarioDisponivel.ano,
+                                mes:horarioDisponivel.mes,
+                                dia:horarioDisponivel.dia
+                            };
+                        }),
                         horariosDisponiveis: horariosDisponiveis.map(horarioDisponivel => {
                             horarioDisponivel.horarioIntervalo.start = fns.format(horarioDisponivel.horarioIntervalo.start,"HH:mm");
                             horarioDisponivel.horarioIntervalo.end = fns.format(horarioDisponivel.horarioIntervalo.end,"HH:mm");
@@ -96,6 +103,13 @@ exports.renderQuadra = async (req,res) => {
                     var dados = {
                         quadra: quadra.toJSON(),
                         imagens: imagens.map(imagem => imagem.toJSON()),
+                        datasDisponiveis:horariosDisponiveis.map(horarioDisponivel => {
+                            return {
+                                ano:horarioDisponivel.ano,
+                                mes:horarioDisponivel.mes,
+                                dia:horarioDisponivel.dia
+                            };
+                        }),
                         horariosDisponiveis: horariosDisponiveis.map(horarioDisponivel => {
                             horarioDisponivel.horarioIntervalo.start = fns.format(horarioDisponivel.horarioIntervalo.start,"HH:mm");
                             horarioDisponivel.horarioIntervalo.end = fns.format(horarioDisponivel.horarioIntervalo.end,"HH:mm");
@@ -532,7 +546,7 @@ exports.renderHorarioSolicitado = async (req, res) => {
         const decoded = req.decoded;
         
         const quadra = await Quadra.findOne({usuarioId:decoded.id});
-        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente",solicitado:true});
+        const horarios = await Horario.find({quadraId:quadra._id,aprovado:"pendente",solicitado:true}).populate("quadraId").populate("usuarioId");
         
         res.render("pages/Afiliado/afiliado",{
             //Formatando hoario

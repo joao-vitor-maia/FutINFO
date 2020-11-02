@@ -82,7 +82,7 @@ router.post("/efetuando-atualizacao-de-senha",usuarioController.redefinirSenha);
 router.post("/efetuando-adicionar-afiliado", auth.autorizarAdmin, usuarioController.adicionarAfiliado);
 
 //Api Horário
-router.post("/efetuando-solicitadr-horario",horarioController.solicitarHorario);
+router.post("/efetuando-solicitar-horario",horarioController.solicitarHorario);
 router.post("/efetuando-adicionar-horario-disponivel",horarioController.adicionarHorarioDisponivel);
 router.post("/efetuando-aprovar-horario",horarioController.aprovar);
 router.post("/efetuando-recusar-horario",horarioController.recusar);

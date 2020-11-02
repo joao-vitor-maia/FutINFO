@@ -241,3 +241,20 @@ exports.adicionarModalidade = async (req,res) => {
         return res.json({message:"error"});
     }
 };
+exports.deletarModalidade = async (req,res) => {
+    try{
+        const token = req.headers["authorization"];
+
+        jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+            if(error || decoded.afiliado != true){
+                return res.json({message:"unauthorized"});
+            }else{
+                
+                return res.json({message:"sucess"});
+                
+            };
+        });
+    }catch(err){
+        return res.json({message:"error"});
+    }
+};

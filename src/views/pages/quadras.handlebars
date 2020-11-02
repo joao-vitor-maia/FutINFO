@@ -173,9 +173,9 @@
                 <div class="botoes-area text-center mt-3">
                 <!------- Botão de agendamento pelo site ------>
                 <div class="botao-agendamento-area py-3">
-                  <button data-toggle="modal" data-target="#modalQuadra" class="btn btn-agendamento">Agendar pelo site</button>
+                  <button data-toggle="modal" data-target="#modalQuadra{{this.quadra._id}}" class="btn btn-agendamento">Agendar pelo site</button>
                                   <!------- Modal ------>
-<div class="modal fade" id="modalQuadra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalQuadra{{this.quadra._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -188,21 +188,21 @@
         <div class="opcoes-area-content py-2">
         <div class="dia-area py-3">
           <span class="opcao-texto">Dia:</span>
-          <select class="selecao-modalidade">
-            <option class="option-item">30/10/2020</option>
-            <option class="option-item">31/10/2020</option>
-            <option class="option-item">1/11/2020</option>
+          <select class="selecao-modalidade" id="data">
+            {{#each this.datasDisponiveis}}
+              <option class="option-item">{{this.dia}}/{{this.mes}}/{{this.ano}}</option>
+            {{/each}}
           </select>
         </div>
        <!------- Modalidade modal ------>
           <div class="modalidade-area py-3">
             <span class="opcao-texto">Modalidade:</span>
             <select class="selecao-modalidade" id="modalidade">
-              {{#if modalidades}}
-                {{#if modalidades.modalidade1}} <option class="option-item">{{modalidades.modalidade1}}</option> {{/if}}
-                {{#if modalidades.modalidade2}} <option class="option-item">{{modalidades.modalidade2}}</option> {{/if}}
-                {{#if modalidades.modalidade3}} <option class="option-item">{{modalidades.modalidade3}}</option> {{/if}}
-                {{#if modalidades.modalidade4}} <option class="option-item">{{modalidades.modalidade4}}</option> {{/if}}
+              {{#if this.modalidades}}
+                {{#if this.modalidades.modalidade1}} <option class="option-item">{{this.modalidades.modalidade1}}</option> {{/if}}
+                {{#if this.modalidades.modalidade2}} <option class="option-item">{{this.modalidades.modalidade2}}</option> {{/if}}
+                {{#if this.modalidades.modalidade3}} <option class="option-item">{{this.modalidades.modalidade3}}</option> {{/if}}
+                {{#if this.modalidades.modalidade4}} <option class="option-item">{{this.modalidades.modalidade4}}</option> {{/if}}
               {{/if}}
             </select>
           </div>
@@ -210,8 +210,8 @@
           <div class="horarios-area py-3">
             <span class="opcao-texto">Horários disponíveis:</span>
             <select class="selecao-horarios" id="horario">
-              {{#each horariosDisponiveis}}
-                <option class="option-item" value="{{this.horarioIntervalo}}">{{this.horarioIntervalo.start}} - {{this.horarioIntervalo.end}}</option>
+              {{#each this.horariosDisponiveis}}
+                <option class="option-item">{{this.horarioIntervalo.start}} - {{this.horarioIntervalo.end}}</option>
               {{/each}}
             </select>
           </div>
