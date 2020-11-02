@@ -83,7 +83,6 @@ router.post("/efetuando-adicionar-afiliado", auth.autorizarAdmin, usuarioControl
 
 //Api Horário
 router.post("/efetuando-solicitar-horario",horarioController.solicitarHorario);
-router.post("/efetuando-adicionar-horario-disponivel",horarioController.adicionarHorarioDisponivel);
 router.post("/efetuando-aprovar-horario",horarioController.aprovar);
 router.post("/efetuando-recusar-horario",horarioController.recusar);
 
@@ -97,6 +96,8 @@ router.post("/efetuando-editar-quadra",quadraController.editarQuadra);
 router.post("/efetuando-adicionar-imagens-da-quadra",multer(multerConfig).array("file"),quadraController.adicionarImagem);
 router.post("/efetuando-deletar-imagens-da-quadra",quadraController.deletarImagem);
 router.post("/efetuando-adicionar-modalidade",quadraController.adicionarModalidade);
+router.post("/efetuando-adicionar-horario-disponivel",quadraController.adicionarHorarioDisponivel);
+router.post("/efetuando-deletar-horario-disponivel",quadraController.deletarHorarioDisponivel);
 
 //Api Time
 router.post("/efetuando-adicionar-time",timeController.registrarTime);

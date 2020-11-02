@@ -147,10 +147,6 @@
                 </div>
       <!------- Select ------>
                 <div class="select-area d-flex justify-content-center mt-4">
-                      <!------- Botão de descartar horário ------>
-                <div class="botao-area mt-2">
-                  <button class="btn btn-danger btn-person">Descartar</button>
-                </div>
                   <div class="horario-text-area">
                   <p class="horario-text">Horário:</p>
                 </div>
@@ -176,6 +172,27 @@
                 </div>
                 </div>
               </div>
+              {{#each horariosDisponiveis}}
+                <div class="select-area d-flex justify-content-center mt-4">
+      <!------- Select horario ------>
+                <div class="inputTime-area-item ml-2 mr-2">
+                 <input type="time" class="input-data" value={{this.horarioIntervalo.start}}>
+                </div>
+                  <div class="as-text-area">
+                  <p class="as-text">ás:</p>
+                </div>
+      <!------- Select horario ------>
+                <div class="select-area-item">
+                  <!------- Select horario ------>
+                  <div class="inputTime-area-item ml-2 mr-2">
+                    <input type="time" class="input-data" value={{this.horarioIntervalo.end}}>
+                   </div>
+                </div>
+                <div class="botao-area mt-2">
+                  <button class="btn btn-danger btn-person" onclick="deletarHorarioDisponivel()" value="{{this._id}}">Descartar</button>
+                </div>
+                </div>
+              {{/each}}
         </main>
     </section>
   </article>

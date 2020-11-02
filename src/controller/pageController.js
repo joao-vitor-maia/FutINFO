@@ -581,8 +581,16 @@ exports.renderAdicionarImagens = async (req,res) => {
 exports.renderAdicionarHorarioDisponivel = async (req,res) => {
     try{
         const decoded = req.decoded;
+        const quadra = await Quadra.findOne({usuarioId:decoded.id}).sort({dataTimestamp:-1});
+        const horariosDisponiveis = await Horario.find({quadraId:quadra._id, solicitado:false}).sort({dataTimestamp:1});
 
-        res.render("pages/Afiliado/adicionarHorario");
+        res.render("pages/Afiliado/adicionarHorario",{
+            horariosDisponiveis:horariosDisponiveis.map(horarioDisponivel => {
+                horarioDisponivel.horarioIntervalo.start = fns.format(horarioDisponivel.horarioIntervalo.start,"HH:mm");
+                horarioDisponivel.horarioIntervalo.end = fns.format(horarioDisponivel.horarioIntervalo.end,"HH:mm");
+                return horarioDisponivel.toJSON();
+            })
+        });
     }catch(err){
         return res.json({message:"error"});
     };

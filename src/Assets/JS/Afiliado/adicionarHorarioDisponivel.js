@@ -36,4 +36,35 @@ async function adicionarHorarioDisponivel() {
         alert("Horário disponível adicionado com sucesso")
         location.href = "/afiliado/adicionar-horarios-disponiveis";
     };
-}
+};
+
+async function deletarHorarioDisponivel(){
+    const horarioId = event.target.value;
+
+    const dados = {
+        horarioId:horarioId
+    };
+
+    const resultadoObject = await fetch("/efetuando-deletar-horario-disponivel", {
+        method: "POST",
+        headers: {
+            "authorization": localStorage.getItem("token"),
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify(dados)
+    });
+
+    const resultado = await resultadoObject.json();
+
+    if (resultado.message == "error") {
+        alert("Ocorreu um erro ao deletar horário");
+        
+    } else if (resultado.message == "unauthorized") {
+        alert("Voçê não está autorizado a acessar essa página");
+        location.href = "/usuario/login";
+
+    }else {
+        alert("Horáro deletado com sucesso");
+        location.href = "/afiliado/adicionar-horarios-disponiveis";
+    };
+};

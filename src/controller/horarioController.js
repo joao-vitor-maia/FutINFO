@@ -87,63 +87,6 @@ exports.solicitarHorario = async(req,res) => {
         return res.json({message:"error"});
     }
 };
-exports.adicionarHorarioDisponivel = async(req,res) => {
-    try{
-        //Pegando informacoes        
-        const token = req.headers["authorization"];
-        const ano = req.body.ano;
-        const mes = req.body.mes;
-        const dia = req.body.dia;
-        const HorarioInicial = req.body.horarioInicial;
-        const HorarioFinal = req.body.horarioFinal;
-
-        //Pegando dados da data
-        const horarioInicial = new Date(`${ano},${mes},${dia} ${HorarioInicial}`);
-        const horarioFinal = new Date(`${ano},${mes},${dia} ${HorarioFinal}`);
-
-        //Horario inicial não pode ser maior ou igual ao final
-        if(fns.compareAsc(horarioInicial,horarioFinal) == 1 || fns.compareAsc(horarioInicial,horarioFinal) == 0 ||
-        !ano ||
-        !mes || 
-        !dia ||
-        !HorarioInicial ||
-        !HorarioFinal ){
-            return res.json({message:"invalid"});
-
-        }else{
-            const horarioIntervalo = {
-                start:horarioInicial,
-                end:horarioFinal
-            };
-
-            jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
-                if(error || decoded.afiliado != true){
-                    return res.json({message:"unauthorized"});
-
-                }else{
-                    const quadra = await Quadra.findOne({usuarioId:decoded.id});
-
-                    const dados = {
-                        usuarioId:decoded.id,
-                        quadraId:quadra._id,
-                        ano:ano,
-                        mes:mes,
-                        dia:dia,
-                        solicitado:false,
-                        aprovado:null,
-                        horarioIntervalo:horarioIntervalo
-                    };
-
-                    await new Horario(dados).save();
-
-                    return res.json({message:"success"});
-                };
-            });
-        };
-    }catch(err){
-        return res.json({message:"error"});
-    }
-};
 exports.aprovar = async(req,res) => {
     try{
         const token = req.headers["authorization"];
