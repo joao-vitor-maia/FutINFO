@@ -155,6 +155,11 @@ section {
     color: #011a5f;
     font-weight: 500;
 }
+.span-valor-promocao {
+    font-size: 22px;
+    color: #23882f;
+    font-weight: 600;
+}
 .span-bold {
     font-weight: 600;
     color: #011a5f;
