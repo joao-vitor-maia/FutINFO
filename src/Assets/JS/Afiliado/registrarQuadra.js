@@ -1,5 +1,6 @@
 async function registrar() {
     const cep = document.querySelector("#cep").value;
+    
     if(/[0-9]{5}-[0-9]{3}/.test(cep) == false) {
         alert("Digite o cep no formato correto");
     } else {
@@ -29,11 +30,14 @@ async function registrar() {
 
         if (resultado.message == "error") {
             alert("Ocorreu um erro ao registrar quadra");
+
         } else if (resultado.message == "invalid") {
             alert("Os dados estão inválidos");
+
         } else if (resultado.message == "unauthorized") {
             alert("Voçê não está autorizado a acessar essa página");
             location.href = "/usuario/login";
+            
         } else {
             alert("Quadra salva com sucesso")
             location.href = "/pagina-inicial";

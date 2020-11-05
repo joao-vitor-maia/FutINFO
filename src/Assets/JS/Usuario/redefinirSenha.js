@@ -24,10 +24,13 @@ async function redefinirSenha() {
     
         if (resultado.message == "error") {
             alert("Ocorreu um erro ao redefinir senha.");
+
         }else if(resultado.message == "not found" || resultado.message == "incorrect password"){
             alert("O email ou senha reserva digitados estão incorretos.");
+            
         } else if(resultado.message == "invalid"){
             alert("A senha devem ter no minimo 8 caracteres")
+            
         }else{
             location.href = "/pagina-inicial";
         };

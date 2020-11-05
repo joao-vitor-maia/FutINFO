@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 exports.postarNoticia = async (req,res) => {
     try{
         const token = req.headers["authorization"];
+
         const manchete = req.body.manchete;
         const conteudo = req.body.conteudo; 
         const imagem = req.file;
@@ -16,10 +17,11 @@ exports.postarNoticia = async (req,res) => {
             fs.unlinkSync(imagem.path);
             return res.json({message:"invalidType"});
         };
-        //Validando dados
+
+        //Validação
         if(validator.isLength(manchete,{min:2}) &&
         validator.isLength(conteudo,{min:2})){
-            
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     fs.unlinkSync(imagem.path);
@@ -63,10 +65,11 @@ exports.editarNoticia = async (req,res) => {
             fs.unlinkSync(imagem.path);
             return res.json({message:"invalidType"});
         };
-        //Validando dados
+        
+        //Validação
         if(validator.isLength(manchete,{min:2}) &&
         validator.isLength(conteudo,{min:2})){
-            
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     fs.unlinkSync(imagem.path);
@@ -93,7 +96,6 @@ exports.editarNoticia = async (req,res) => {
             return res.json({message:"invalid"});
         };
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     };
 };

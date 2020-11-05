@@ -1,8 +1,11 @@
+//Envio de horário do usuário ao afiliado
 async function solicitarHorario() {
     const horario = document.querySelector("#horario").value;
+    //Horario dividido em inicial e final em forma de array
     const horarioDividido = horario.split(" - ");
     const modalidade = document.querySelector("#modalidade").value;
     const data = document.querySelector("#data").value;
+    //Data dividida em ano mês e dia em forma de array
     const dataDividida = data.split("/");
     const quadraId = event.target.value;
 
@@ -14,8 +17,7 @@ async function solicitarHorario() {
         horarioInicial: horarioDividido[0],
         horarioFinal: horarioDividido[1],
         modalidade:modalidade
-    };
-console.log(dados)
+    }; 
 
     const resultadoObject = await fetch("/efetuando-solicitar-horario", {
         method: "POST",

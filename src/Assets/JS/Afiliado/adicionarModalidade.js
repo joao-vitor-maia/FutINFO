@@ -24,11 +24,14 @@ async function adicionarModalidade() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao adicionar modalidade");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Modalidade salva com sucesso")
         location.href = "/pagina-inicial";

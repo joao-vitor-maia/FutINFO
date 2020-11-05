@@ -5,6 +5,7 @@ const validator = require("validator");
 exports.registrarTime = async (req,res) => {
     try{
         const token = req.headers["authorization"];
+        
         const modalidade = req.body.modalidade;
         const categoria = req.body.categoria;
         const divisao = req.body.divisao;
@@ -16,6 +17,7 @@ exports.registrarTime = async (req,res) => {
         const derrota = req.body.derrota;
         const empate = req.body.empate;
 
+        //Validação
         if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
@@ -27,6 +29,7 @@ exports.registrarTime = async (req,res) => {
         validator.isInt(derrota) &&
         validator.isInt(empate) ){
 
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
@@ -72,6 +75,7 @@ exports.editarTime = async (req,res) => {
         const derrota = req.body.derrota;
         const empate = req.body.empate;
 
+        //Validação
         if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
@@ -82,7 +86,7 @@ exports.editarTime = async (req,res) => {
         validator.isInt(vitoria) &&
         validator.isInt(derrota) &&
         validator.isInt(empate) ){
-
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});

@@ -1,6 +1,9 @@
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//O campo "modalidade" pode ser "Campo" ou "Futsal"
+//O campo "categoria" pode ser "Masculino" ou "Feminino"
 const artilheiro = Schema({
     modalidade: {
         type:String,

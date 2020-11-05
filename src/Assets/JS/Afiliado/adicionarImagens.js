@@ -1,4 +1,5 @@
 async function adicionarImagens(){
+    //Imagens
     const files = document.querySelector("#imagens").files;
     
     if(files.length < 1){
@@ -6,6 +7,7 @@ async function adicionarImagens(){
     }else{
 
         const formData = new FormData();
+        //Loop pegando cada imagem e adicionando ao formData
         for(const file of files){
             formData.append("file",file);
         };
@@ -21,7 +23,7 @@ async function adicionarImagens(){
         const resultado = await resultadoObject.json();
 
         if (resultado.message == "error") {
-            alert("Ocorreu um erro ao deletar imagem");
+            alert("Ocorreu um erro ao adicionar imagem");
 
         } else if (resultado.message == "imagens limit") {
             alert("Você só pode ter no máximo 7 imagens");
@@ -37,7 +39,7 @@ async function adicionarImagens(){
             alert("Tipo de imagem inválido");
         }else {
             alert("Imagens salvas com sucesso")
-            location.href = "/pagina-inicial";
+            location.href = "/afiliado/adicionar-imagens";
         };
     };
 };

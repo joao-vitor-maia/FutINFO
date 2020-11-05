@@ -6,7 +6,6 @@ const usuarioController = require("@controller/usuarioController");
 const pageController = require("@controller/pageController");
 const auth = require("@auth/authentication");
 const quadraController = require("@controller/quadraController");
-const comentarioController = require("@controller/comentarioController");
 const horarioController = require("@controller/horarioController");
 const noticiaController = require("@controller/noticiaController");
 const timeController = require("@controller/timeController");
@@ -19,10 +18,10 @@ const multerConfig = require("../config/multer");
 
 //Auth
 router.get("/autorizar",auth.autorizarUsuario);
-router.post("/autorizar-afiliado",auth.autorizarAfiliado);
 
-//Páginas 
+//--- Páginas ---
 router.get("/pagina-inicial",pageController.renderHome);
+router.get("/pagina-inicial/:page",pageController.renderHome);
 router.get("/quadras",pageController.renderQuadra);
 router.get("/classificacao-e-artilheiros",pageController.renderClassificacaoEArtilheiro);
 router.get("/classificacao-e-artilheiros/Masculino-Campo",pageController.renderClassificacaoEArtilheiroMasculinoCampo);
@@ -35,7 +34,6 @@ router.get("/classificacao-e-artilheiros/Masculino-Campo/:page",pageController.r
 router.get("/classificacao-e-artilheiros/Masculino-Futsal/:page",pageController.renderClassificacaoEArtilheiroMasculinoFutsal);
 router.get("/classificacao-e-artilheiros/Feminino-Campo/:page",pageController.renderClassificacaoEArtilheiroFemininoCampo);
 router.get("/classificacao-e-artilheiros/Feminino-Futsal/:page",pageController.renderClassificacaoEArtilheiroFemininoFutsal);
-router.get("/pagina-inicial/:page",pageController.renderHome);
 
 //Páginas Usuario
 router.get("/usuario/login", pageController.renderLogin);
@@ -69,8 +67,10 @@ router.get("/admin/editar-noticia/:noticiaId", auth.autorizarAdmin, pageControll
 router.get("/admin/editar-classificacao/:timeId", auth.autorizarAdmin, pageController.renderEditarTime);
 router.get("/admin/editar-artilheiro/:artilheiroId", auth.autorizarAdmin, pageController.renderEditarArtilheiro);
 router.get("/admin/editar-resultado-jogo/:resultadoJogoId", auth.autorizarAdmin, pageController.renderEditarResultadoJogo);
+//--- Fim Páginas ---
 
-//Api Usuarios
+
+//Api Usuarios,Afiliados e Admin
 router.post("/efetuando-login",auth.gerarToken);
 router.get("/efetuando-logout",auth.logout);
 router.post("/efetuando-cadastrar",usuarioController.cadastrar);
@@ -79,15 +79,12 @@ router.post("/efetuando-editar-email",usuarioController.editarEmail);
 router.post("/efetuando-editar-senha",usuarioController.editarSenha);
 router.post("/efetuando-editar-telefone",usuarioController.editarTelefone);
 router.post("/efetuando-atualizacao-de-senha",usuarioController.redefinirSenha);
-router.post("/efetuando-adicionar-afiliado", auth.autorizarAdmin, usuarioController.adicionarAfiliado);
+router.post("/efetuando-adicionar-afiliado", usuarioController.adicionarAfiliado);
 
 //Api Horário
 router.post("/efetuando-solicitar-horario",horarioController.solicitarHorario);
 router.post("/efetuando-aprovar-horario",horarioController.aprovar);
 router.post("/efetuando-recusar-horario",horarioController.recusar);
-
-//Api Comentário
-router.post("/efetuando-comentario",comentarioController.comentar);
 
 //Api Quadra
 router.post("/efetuando-registrar-quadra",quadraController.salvarQuadra);

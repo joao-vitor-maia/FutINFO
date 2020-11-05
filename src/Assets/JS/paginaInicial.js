@@ -13,6 +13,7 @@ async function logout(){
 
     if(resultado.message == "error") {
         alert("Ocorreu um erro ao fazer logout");
+        
     }else {
         localStorage.removeItem("token");
         location.href = "/pagina-inicial";

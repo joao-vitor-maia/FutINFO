@@ -1,4 +1,5 @@
 async function adicionarNoticia(){
+    //Imagens
     const file = document.querySelector("#imagem").files[0];
     
     if(!file){

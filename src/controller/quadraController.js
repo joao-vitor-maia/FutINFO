@@ -10,7 +10,8 @@ const ModalidadeQuadra = require("@models/ModalidadeQuadra");
 
 exports.salvarQuadra = async (req,res) => {
     try{
-        const nome = req.body.nome; 
+        const token = req.headers["authorization"];
+        const nome = req.body.nome;
         const descricao = req.body.descricao;
         const rua = req.body.rua; 
         const cep = req.body.cep; 
@@ -21,9 +22,8 @@ exports.salvarQuadra = async (req,res) => {
         validator.isLength(rua,{min:2,max:60}) && sanitize(rua,{allowedTags:[], allowedAttributes:{} }) == rua &&
         validator.isLength(cep,{min:8,max:9}) && sanitize(cep,{allowedTags:[], allowedAttributes:{} }) == cep && /[0-9]{5}-[0-9]{3}/.test(cep) &&
         validator.isLength(numeroRua,{min:1,max:5}) && sanitize(numeroRua,{allowedTags:[], allowedAttributes:{} }) == numeroRua && validator.isInt(numeroRua) 
-        ) {
-            const token = req.headers["authorization"];
-            
+        ) { 
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
@@ -51,14 +51,15 @@ exports.salvarQuadra = async (req,res) => {
 };
 exports.salvarPreco = async (req,res) => {
     try{
+        const token = req.headers["authorization"];
+
         const preco = req.body.preco 
         const promocao = req.body.promocao;
         
         //Validação
         if(validator.isLength(preco,{min:2,max:60}) && sanitize(preco,{allowedTags:[], allowedAttributes:{} }) == preco 
         ) {
-            const token = req.headers["authorization"];
-            
+            //Verificação token    
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
@@ -85,12 +86,13 @@ exports.salvarPreco = async (req,res) => {
 };
 exports.editarQuadra = async (req,res) => {
     try{
+        const token = req.headers["authorization"];
+
         const nome = req.body.nome; 
         const descricao = req.body.descricao;
         const rua = req.body.rua; 
         const cep = req.body.cep; 
         const numeroRua = req.body.numeroRua;
-        // const imagens = req.files;
         
         //Validação
         if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome && 
@@ -98,8 +100,7 @@ exports.editarQuadra = async (req,res) => {
         validator.isLength(cep,{min:8,max:9}) && sanitize(cep,{allowedTags:[], allowedAttributes:{} }) == cep && /[0-9]{5}-[0-9]{3}/.test(cep) &&
         validator.isLength(numeroRua,{min:1,max:5}) && sanitize(numeroRua,{allowedTags:[], allowedAttributes:{} }) == numeroRua && validator.isInt(numeroRua) 
         ) {
-            const token = req.headers["authorization"];
-            
+            //Verificação token    
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
@@ -129,6 +130,7 @@ exports.adicionarImagem = async (req,res) => {
         const token = req.headers["authorization"];
         const upload = req.files;
 
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
@@ -173,6 +175,7 @@ exports.deletarImagem = async (req,res) => {
         const token = req.headers["authorization"];
         const idImagem = req.body.idImagem;
 
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
             if(error || decoded.afiliado != true){
                 return res.json({message:"unauthorized"});
@@ -190,6 +193,8 @@ exports.deletarImagem = async (req,res) => {
 };
 exports.adicionarModalidade = async (req,res) => {
     try{
+        const token = req.headers["authorization"];
+
         const modalidade1 = req.body.modalidade1; 
         const modalidade2 = req.body.modalidade2;
         const modalidade3 = req.body.modalidade3; 
@@ -201,8 +206,7 @@ exports.adicionarModalidade = async (req,res) => {
         validator.isLength(modalidade3,{max:60}) && sanitize(modalidade3,{allowedTags:[], allowedAttributes:{} }) == modalidade3 &&
         validator.isLength(modalidade4,{max:60}) && sanitize(modalidade4,{allowedTags:[], allowedAttributes:{} }) == modalidade4  
         ) {
-            const token = req.headers["authorization"];
-            
+            //Verificação token 
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
@@ -244,8 +248,8 @@ exports.adicionarModalidade = async (req,res) => {
 };
 exports.adicionarHorarioDisponivel = async(req,res) => {
     try{
-        //Pegando informacoes        
         const token = req.headers["authorization"];
+        
         const ano = req.body.ano;
         const mes = req.body.mes;
         const dia = req.body.dia;
@@ -271,6 +275,7 @@ exports.adicionarHorarioDisponivel = async(req,res) => {
                 end:horarioFinal
             };
 
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
                 if(error || decoded.afiliado != true){
                     return res.json({message:"unauthorized"});
@@ -296,7 +301,6 @@ exports.adicionarHorarioDisponivel = async(req,res) => {
             });
         };
     }catch(err){
-        console.log(err)
         return res.json({message:"error"});
     }
 };
@@ -305,8 +309,9 @@ exports.deletarHorarioDisponivel = async (req,res) => {
         const token = req.headers["authorization"];
         const horarioId = req.body.horarioId;
 
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error || decoded.afiliado != true){
+            if(error || decoded.afiliado == false){
                 return res.json({message:"unauthorized"});
             }else{
                 await Horario.findByIdAndDelete(horarioId);

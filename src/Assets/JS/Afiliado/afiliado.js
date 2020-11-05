@@ -14,14 +14,18 @@ async function aprovar(){
         
     if(resultado.message == "error"){
         alert("Ocorreu um erro ao aprovar horário");
+
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+
     }else{
         alert("Horário aprovado com sucesso")
         location.href = "/afiliado/horarios-solicitados";
     };
 };
+
+
 async function recusar(){
     const idHorario = event.target.id;
 
@@ -38,8 +42,10 @@ async function recusar(){
         
     if(resultado.message == "error"){
         alert("Ocorreu um erro ao recusar horário");
+
     }else if(resultado.message == "unauthorized"){
         alert("Você não está autorizado a acessar essa página");
+
     }else{
         alert("Horário recusado com sucesso");
         location.href = "/afiliado/horarios-solicitados";

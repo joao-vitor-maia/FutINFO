@@ -29,10 +29,16 @@ async function adicionarAfiliado() {
     
         if (resultado.message == "error") {
             alert("Ocorreu um erro ao efetuar cadastro");
+
         } else if (resultado.message == "invalid") {
             alert("Os dados estão inválidos");
+
         } else if (resultado.message == "users equal") {
             alert("O email já existe");
+            
+        } else if (resultado.message == "unauthorized") {
+            alert("Voçê não está autorizado a acessar essa página");
+            
         } else {
             location.href = "/pagina-inicial";
         };

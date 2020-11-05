@@ -81,6 +81,7 @@ exports.renderQuadra = async (req,res) => {
                 const modalidade = await ModalidadeQuadra.findOne({quadraId:quadra._id}).sort({dataTimestamp:1});
                 const horariosDisponiveis = await Horario.find({quadraId:quadra._id, solicitado:false}).sort({dataTimestamp:1});
                 
+                //Se existir modalidade crio o JSON com modalidade, se não crio a mesma estrutura JSON sem modalidade
                 if(modalidade) {
                     var dados = {
                         quadra: quadra.toJSON(),
@@ -351,7 +352,7 @@ exports.renderClassificacaoEArtilheiroFemininoFutsal = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-//Usuario
+//--- Usuario ---
 exports.renderHorarioUsuario = async (req, res) => {
     try{
         const decoded = req.decoded;
@@ -400,18 +401,14 @@ exports.renderLogin = async (req, res) => {
     try {
         res.render("pages/Usuario/login");
     } catch (err) {
-        return res.json({
-            message: "error"
-        });
+        return res.json({message: "error"});
     }
 };
 exports.renderCadastro = async (req, res) => {
     try {
         res.render("pages/Usuario/cadastro");
     } catch (err) {
-        return res.json({
-            message: "error"
-        });
+        return res.json({message: "error"});
     };
 };
 exports.renderRedefinirSenha = async (req,res) => {
@@ -481,7 +478,7 @@ exports.renderEditarTelefone = async (req,res) => {
         return res.json({message:"error"});
     };
 };
-//Afiliado
+//--- Afiliado ---
 exports.renderRegistrarQuadra = async (req,res) => {
     try{
         const decoded = req.decoded;
@@ -630,8 +627,6 @@ exports.renderVerQuadra = async (req,res) => {
 };
 exports.renderRegistrarPreco = async (req,res) => {
     try{
-        const decoded = req.decoded;
-
         res.render("pages/Afiliado/registrarPreco");
     }catch(err){
         return res.json({message:"error"});
@@ -639,14 +634,12 @@ exports.renderRegistrarPreco = async (req,res) => {
 };
 exports.renderAdicionarModalidade = async (req,res) => {
     try{
-        const decoded = req.decoded;
-
         res.render("pages/Afiliado/adicionarModalidades");
     }catch(err){
         return res.json({message:"error"});
     };
 };
-//Admin
+//--- Admin ---
 exports.renderAdicionarNoticia = async (req,res) => {
     try{
         res.render("pages/Admin/Noticia");

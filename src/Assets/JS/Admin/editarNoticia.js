@@ -1,4 +1,5 @@
 async function editarNoticia(){
+    //Imagens
     const file = document.querySelector("#imagem").files[0];
 
     if(!file){
@@ -39,7 +40,7 @@ async function editarNoticia(){
             alert("Os dados estão inválidos");
 
         }else {
-            alert("Noticia salva com sucesso");
+            alert("Noticia editada com sucesso");
             location.href = "/pagina-inicial";
         };
     };

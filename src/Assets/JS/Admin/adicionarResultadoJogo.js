@@ -33,13 +33,17 @@ async function adicionarResultadoJogo() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao adicionar resultado de jogo");
+
     } else if (resultado.message == "not found") {
         alert("Time não encontrado, digite o nome correto");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Resultado de jogo salvo com sucesso")
         location.href = "/pagina-inicial";

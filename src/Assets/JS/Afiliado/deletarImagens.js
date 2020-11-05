@@ -25,6 +25,6 @@ async function deletarImagem(){
 
     }else {
         alert("Imagen deletada com sucesso");
-        location.href = "/pagina-inicial";
+        location.href = "/afiliado/deletar-imagens";
     };
 };

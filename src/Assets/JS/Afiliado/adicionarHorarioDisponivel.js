@@ -1,5 +1,6 @@
 async function adicionarHorarioDisponivel() {
     const data = document.querySelector("#data").value;
+    //Dividindo data em ano mes e dia
     const ano = new Date(data).getFullYear();
     const mes = new Date(data).getMonth()+1;
     const dia = new Date(data).getDate();
@@ -27,11 +28,14 @@ async function adicionarHorarioDisponivel() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao adicionar horário disponivel");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Horário disponível adicionado com sucesso")
         location.href = "/afiliado/adicionar-horarios-disponiveis";

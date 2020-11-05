@@ -36,11 +36,14 @@ async function adicionarTime() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao adicionar time");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Time salvo com sucesso")
         location.href = "/pagina-inicial";

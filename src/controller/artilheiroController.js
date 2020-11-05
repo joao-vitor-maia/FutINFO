@@ -6,6 +6,7 @@ const validator = require("validator");
 exports.registrarArtilheiro = async (req,res) => {
     try{
         const token = req.headers["authorization"];
+        
         const modalidade = req.body.modalidade;
         const categoria = req.body.categoria;
         const divisao = req.body.divisao;
@@ -13,16 +14,17 @@ exports.registrarArtilheiro = async (req,res) => {
         const nomeTime = req.body.nomeTime;
         const gol = req.body.gol;
 
-        //Buscando time
+        //Buscando time no banco de dados com nome que veio do frontend 
         const time = await Time.findOne({nome:nomeTime, modalidade: modalidade, categoria: categoria});
 
+        //Validação
         if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         time &&
         validator.isLength(nomeArtilheiro,{min:2,max:60}) && 
         validator.isInt(gol) ) {
-
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
@@ -65,13 +67,14 @@ exports.editarArtilheiro = async (req,res) => {
         //Buscando time
         const time = await Time.findOne({nome:nomeTime, modalidade: modalidade, categoria: categoria});
 
+        //Validação
         if((modalidade == "Campo" || modalidade == "Futsal") &&
         (categoria == "Masculino" || categoria == "Feminino") &&
         validator.isInt(divisao) &&
         time &&
         validator.isLength(nomeArtilheiro,{min:2,max:60}) && 
         validator.isInt(gol) ) {
-
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error || decoded.admin == false){
                     return res.json({message:"unauthorized"});
@@ -88,7 +91,6 @@ exports.editarArtilheiro = async (req,res) => {
                     return res.json({message:"success"});
                 };
             });
-
         }else{
             return res.json({message:"invalid"});
         };

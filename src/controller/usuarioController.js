@@ -17,6 +17,7 @@ exports.cadastrar = async(req,res) => {
         if(Object.entries(usuarioComEmailIgual).length > 0){
             return res.json({message:"users equal"});
 
+        //Validação
         }else if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
         validator.isEmail(email) && sanitize(email,{allowedTags:[], allowedAttributes:{} }) == email && validator.isLength(email,{min:11,max:60}) &&
         validator.isLength(Senha,{min:8,max:30}) &&
@@ -64,7 +65,8 @@ exports.redefinirSenha = async(req,res) => {
         const senhaReserva = req.body.senhaReserva;
         
         const usuario = await Usuario.findOne({email:email});
-        
+
+        //Validação
         if(usuario == null) { 
             return res.json({message:"not found"}) 
         }else{   
@@ -100,11 +102,14 @@ exports.redefinirSenha = async(req,res) => {
 exports.editarNome = async(req,res) => {
     try{
         const token = req.headers["authorization"];
+
         const nome1 = req.body.nome1;
         const nome2 = req.body.nome2;
         
+        //Validação
         if(validator.isLength(nome1,{min:2,max:60}) && sanitize(nome1,{allowedTags:[], allowedAttributes:{} }) == nome1 && 
         nome1 == nome2 ){
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -128,11 +133,14 @@ exports.editarNome = async(req,res) => {
 exports.editarEmail = async(req,res) => {
     try{
         const token = req.headers["authorization"];
+
         const email1 = req.body.email1;
         const email2 = req.body.email2;
         
+        //Validação
         if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && 
         email1 == email2 ){
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -160,6 +168,7 @@ exports.editarSenha = async(req,res) => {
         const senha1 = req.body.senha1;
         const senha2 = req.body.senha2;
         
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
             if(error) {
                 return res.json({message:"unauthorized"});
@@ -197,11 +206,14 @@ exports.editarSenha = async(req,res) => {
 exports.editarTelefone = async(req,res) => {
     try{
         const token = req.headers["authorization"];
+
         const telefone1 = req.body.telefone1;
         const telefone2 = req.body.telefone2;
         
+        //Validação
         if(validator.isLength(telefone1,{min:8,max:60}) && sanitize(telefone1,{allowedTags:[], allowedAttributes:{} }) == telefone1 && 
         telefone1 == telefone2 ){
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -219,11 +231,12 @@ exports.editarTelefone = async(req,res) => {
         };
    }catch(err){
         return res.json({message:"error"});
-   }
-    
+   };
 };
 exports.adicionarAfiliado = async(req,res) => {
     try{
+        const token = req.headers["authorization"];
+        
         const nome = req.body.nome;
         const email = req.body.email;
         const Senha = req.body.senha;
@@ -235,43 +248,50 @@ exports.adicionarAfiliado = async(req,res) => {
         if(Object.entries(usuarioComEmailIgual).length > 0){
             return res.json({message:"users equal"});
 
+        //Validação
         }else if(validator.isLength(nome,{min:2,max:60}) && sanitize(nome,{allowedTags:[], allowedAttributes:{} }) == nome &&
         validator.isEmail(email) && sanitize(email,{allowedTags:[], allowedAttributes:{} }) == email && validator.isLength(email,{min:11,max:60}) &&
         validator.isLength(Senha,{min:8,max:30}) &&
         validator.isLength(SenhaReserva,{min:2,max:60}) ){
-            const senha = await new Promise((resolve, reject) => {
-                bcrypt.hash(Senha, 10, function(err, hash) {
-                    if(err) {
-                      reject(err)
-                    }else{
-                      resolve(hash)
+            //Verificação token
+            jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
+                if(error || decoded.admin == false){
+                    return res.json({message:"unauthorized"});
+                }else{
+                    const senha = await new Promise((resolve, reject) => {
+                        bcrypt.hash(Senha, 10, function(err, hash) {
+                            if(err) {
+                              reject(err)
+                            }else{
+                              resolve(hash)
+                            };
+                        });  
+                    });
+                    const senhaReserva = await new Promise((resolve, reject) => {
+                        bcrypt.hash(SenhaReserva, 10, function(err, hash) {
+                            if(err) {
+                              reject(err)
+                            }else{
+                              resolve(hash)
+                            };
+                        });  
+                    });
+        
+                    const dados = {
+                        nome:nome,
+                        email:email,
+                        senha:senha,
+                        senhaReserva:senhaReserva,
+                        afiliado:true
                     };
-                });  
+        
+                    await new Usuario(dados).save();            
+                    return res.json({message:"success"});     
+                };
             });
-            const senhaReserva = await new Promise((resolve, reject) => {
-                bcrypt.hash(SenhaReserva, 10, function(err, hash) {
-                    if(err) {
-                      reject(err)
-                    }else{
-                      resolve(hash)
-                    };
-                });  
-            });
-
-            const dados = {
-                nome:nome,
-                email:email,
-                senha:senha,
-                senhaReserva:senhaReserva,
-                afiliado:true
-            };
-
-            await new Usuario(dados).save();            
-            return res.json({message:"success"});
         }else{
             return res.json({message:"invalid"});
         };
-
     }catch(err){
         return res.json({message:"error"});
     };

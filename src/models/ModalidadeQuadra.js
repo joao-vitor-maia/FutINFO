@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//Os campos de Modalidade podem ser "Campo" ou "Futsal"
 const modalidadeQuadra = new Schema({
     quadraId: {
         type:Schema.Types.ObjectId,

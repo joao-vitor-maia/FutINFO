@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//Url será chamada ao levar a imagem pro front no handlebars
+//Diretório será chamado ao deletar imagem
 const imagemQuadra = new Schema({
     quadraId: {
         type:Schema.Types.ObjectId,

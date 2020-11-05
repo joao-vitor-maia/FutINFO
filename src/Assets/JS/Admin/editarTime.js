@@ -38,11 +38,14 @@ async function editarTime() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao editar time");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Time editado com sucesso");
         location.href = "/pagina-inicial";

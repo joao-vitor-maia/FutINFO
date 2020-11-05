@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 //Horário disponível(Afiliado): possuirá campo "aprovado" igual a null, o campo "solicitado" será igual a false e não possuirá
 // campo modalidade
 
-//Horário solicitado(Usuário): campo "aprovado" poderá ser pendente, aprovado ou recusado isso será de acordo com a resposta
-// do afiliado, terá campo solicitado igual a true e modalidade de acordo com as opções da quadra
+//Horário solicitado(Usuário): campo "aprovado" poderá ser pendente, aprovado ou recusado(virá pendente como padrão) isso será de 
+// acordo com a resposta do afiliado, terá campo "solicitado" igual a true e modalidade de acordo com as opções da quadra
 
 const horario = new Schema({
     usuarioId: {

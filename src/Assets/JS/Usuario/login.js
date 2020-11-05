@@ -1,3 +1,5 @@
+//Se existir senha no localStorage adiciono ela no input senha(Senha é adicionado no localStorage
+//se for marcado checkbox "lembrar senha")
 document.querySelector("#senha").value = atob(localStorage.getItem("senha"));
 
 async function login(){
@@ -21,10 +23,16 @@ async function login(){
     
     if(resultado.message == "error"){
         alert("Ocorreu um erro ao efetuar login.");
+
     }else if(resultado.message == "not found" || resultado.message == "incorrect password"){
         alert("O email ou senha digitados estão incorretos.");
+
     }else{
+        //Adicionando token ao localStorage(será usado na autenticação do fetch ao consultar APIs)
         localStorage.setItem("token",resultado.message);
+
+        //Se login for realizado corretamente e checkbox de "lembrar senha" estiver marcado,
+        //adiciono senha em base64 no localStorage
         if(lembrarMe == true){
             localStorage.setItem("senha",btoa(senha))
         }else{

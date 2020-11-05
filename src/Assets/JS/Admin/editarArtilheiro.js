@@ -30,11 +30,14 @@ async function editarArtilheiro() {
 
     if (resultado.message == "error") {
         alert("Ocorreu um erro ao editar artilheiro");
+
     } else if (resultado.message == "invalid") {
         alert("Os dados estão inválidos");
+
     } else if (resultado.message == "unauthorized") {
         alert("Voçê não está autorizado a acessar essa página");
         location.href = "/usuario/login";
+        
     } else {
         alert("Artilheiro editado com sucesso")
         location.href = "/pagina-inicial";

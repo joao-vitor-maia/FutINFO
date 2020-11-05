@@ -1,8 +1,6 @@
 const Horario = require("@models/Horario");
-const Quadra = require("@models/Quadra");
 const jwt = require("jsonwebtoken");
 const fns = require("date-fns");
-const validator = require("validator");
 const nodemailer = require("nodemailer");
 
 exports.solicitarHorario = async(req,res) => {
@@ -31,15 +29,7 @@ exports.solicitarHorario = async(req,res) => {
                 end:horarioFinal
             };
 
-            // const horariosDoBanco = await Horario.find({quadraId:quadraId, solicitado:true});
-            
-            // for(let horarioDoBanco of horariosDoBanco){ 
-            //     //Horários não podem se sobrepor
-            //     if(fns.areIntervalsOverlapping(horarioIntervalo,horarioDoBanco.horarioIntervalo)){
-            //         return res.json({message:"conflict"});
-            //     };
-            // };
-
+            //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async(error,decoded) => {
                 if(error){
                     return res.json({message:"unauthorized"});
@@ -92,8 +82,9 @@ exports.aprovar = async(req,res) => {
         const token = req.headers["authorization"];
         const idHorario = req.body.idHorario;
         
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error || decoded.afiliado != true){
+            if(error || decoded.afiliado == false){
                 return res.json({message:"unauthorized"});
             }else{
                 const horario = await Horario.findById(idHorario);
@@ -111,8 +102,9 @@ exports.recusar = async(req,res) => {
         const token = req.headers["authorization"];
         const idHorario = req.body.idHorario;
         
+        //Verificação token
         jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
-            if(error || decoded.afiliado != true){
+            if(error || decoded.afiliado == false){
                 return res.json({message:"unauthorized"});
             }else{
                 const horario = await Horario.findById(idHorario);
