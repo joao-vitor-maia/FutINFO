@@ -161,14 +161,17 @@
                <div class="endereco-quadra-area py-2">
                  <span class="span-endereco"><span class="span-bold">Endereço:</span> {{this.quadra.rua}}, {{this.numeroRua}}</span>
                </div>
-                 <!------- Valor da quadra ------>
-                 <div class="valor-quadra-area py-2">
-                  <span class="span-valor"><span class="span-bold">Preço:</span> R${{this.quadra.preco}}</span>
-                </div>
-                 <!------- Valor da quadra em promoção ------>
-                 <div class="valor-quadra-area py-2">
-                  <span class="span-valor-promocao"><span class="span-bold">EM PROMOÇÃO:</span> R$200,00</span>
-                </div>
+                 {{#if this.quadra.promocao}}
+                  <!------- Valor da quadra em promoção ------>
+                  <div class="valor-quadra-area py-2">
+                    <span class="span-valor-promocao"><span class="span-bold">EM PROMOÇÃO:</span> R${{this.quadra.promocao}}</span>
+                  </div>
+                 {{else}}
+                  <!------- Valor da quadra ------>
+                  <div class="valor-quadra-area py-2">
+                    <span class="span-valor"><span class="span-bold">Preço:</span> R${{this.quadra.preco}}</span>
+                  </div>
+                 {{/if}}
                 <!------- Descrição da quadra ------>
                 <div class="descricao-quadra-area py-2">
                   <span class="span-descricao"><span class="span-bold">Descrição:</span> "{{this.quadra.descricao}}"</span>
