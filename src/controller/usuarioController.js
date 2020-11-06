@@ -138,8 +138,8 @@ exports.editarEmail = async(req,res) => {
         const email2 = req.body.email2;
         
         //Validação
-        if(validator.isLength(email1,{min:2,max:60}) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 && 
-        email1 == email2 ){
+        if(validator.isEmail(email1) && sanitize(email1,{allowedTags:[], allowedAttributes:{} }) == email1 &&  
+        validator.isLength(email1,{min:11,max:60}) && email1 == email2 ){
             //Verificação token
             jwt.verify(token,process.env.SECRETKEY, async (error,decoded) => {
                 if(error){

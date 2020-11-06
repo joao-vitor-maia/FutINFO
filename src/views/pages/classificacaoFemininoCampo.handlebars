@@ -69,11 +69,24 @@
                  <div class="btn btn-danger btn-danger-person"> Fazer logout
                  </div>
                  </a>
+              {{else if decoded.admin}}
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
+                <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
+                                <a class="dropdown-item py-2" href="/admin/adicionar-classificacao"><span class="inicio-text">-</span> Acessar Dashboard</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item py-2" onclick="logout()">
+                 <div class="btn btn-danger btn-danger-person"> Fazer logout
+                 </div>
+                 </a>
+              </div>
+              <button type="button" class="btn btn-person dropdown-toggle" href="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Olá, {{decoded.nome}}!
+              </button>
               {{else if decoded}}
                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item py-2" href="/usuario/horarios-reservados"><span class="inicio-text">-</span> Histórico de agendamento<br>de quadras </a>
                 <a class="dropdown-item py-2" href="/usuario/ver-perfil"><span class="inicio-text">-</span> Editar meu perfil</a>
-                <a class="dropdown-item py-2" href="/admin/adicionar-classificacao"><span class="inicio-text">-</span> Acessar Dashboard</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item py-2" onclick="logout()">
                  <div class="btn btn-danger btn-danger-person"> Fazer logout

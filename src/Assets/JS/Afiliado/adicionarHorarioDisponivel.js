@@ -1,12 +1,14 @@
 async function adicionarHorarioDisponivel() {
-    const data = document.querySelector("#data").value;
     //Dividindo data em ano mes e dia
-    const ano = new Date(data).getFullYear();
-    const mes = new Date(data).getMonth()+1;
-    const dia = new Date(data).getDate();
+    const data = document.querySelector("#data").value;
+    const dataArray = data.split("-");
+    const ano = dataArray[0];
+    const mes = dataArray[1];
+    const dia = dataArray[2];
     const horarioInicial = document.querySelector("#horarioInicial").value;
     const horarioFinal = document.querySelector("#horarioFinal").value;
-    
+      
+
     const dados = {
         ano:ano,
         mes:mes,

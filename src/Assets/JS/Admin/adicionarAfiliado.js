@@ -40,6 +40,7 @@ async function adicionarAfiliado() {
             alert("Voçê não está autorizado a acessar essa página");
             
         } else {
+            alert("Afiliado adicionado com sucesso");
             location.href = "/pagina-inicial";
         };
     }

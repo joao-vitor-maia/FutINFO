@@ -80,7 +80,7 @@ exports.renderQuadra = async (req,res) => {
                 const imagens = await ImagemQuadra.find({quadraId:quadra._id}).sort({dataTimestamp:1}).limit(7);
                 const modalidade = await ModalidadeQuadra.findOne({quadraId:quadra._id}).sort({dataTimestamp:1});
                 const horariosDisponiveis = await Horario.find({quadraId:quadra._id, solicitado:false}).sort({dataTimestamp:1});
-                
+        
                 //Se existir modalidade crio o JSON com modalidade, se não crio a mesma estrutura JSON sem modalidade
                 if(modalidade) {
                     var dados = {
