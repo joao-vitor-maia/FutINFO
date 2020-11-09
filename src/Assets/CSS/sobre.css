@@ -1,0 +1,219 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/***** Header *****/
+header {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #006FC7;
+    height: 80px;
+}
+.container_header {
+    background-color: #006FC7;
+}
+.logo_header {
+    max-height: 60px!important;
+}
+.nav-item a {
+    color: #FFF;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 15.9px;
+    font-weight: 500;
+}
+.nav-item a:hover {
+    text-decoration: none;
+    transition: all ease 0.7s;
+    color: #011a5f;
+}
+.btn-person {
+    font-weight: bolder;
+    color: #000;
+    font-size: 15px;
+}
+.btn-person-categoria {
+    font-size: 25px;
+    padding:10px;
+}
+.btn-person-categoria:hover {
+    color: #FFF;
+    background-color: #004377;
+}
+.btn-person:hover {
+    color: #FFF;
+    background-color: #004377;
+}
+.btn-person a {
+    font-weight: bolder;
+    color: #000;
+    text-decoration: none;
+}
+.btn-active {
+    color: #FFF;
+    background-color: #004377;
+    font-size: 25px;
+    padding:10px;
+    border:unset;
+}
+.btn-active:hover {
+   color: #FFF;
+    background-color: #004377;
+} 
+.dropdown-item a{
+    font-size: 11px;
+    color: #000;
+    font-weight: bolder;
+}
+.item-dropdown-classificacao:hover {
+    background-color: unset;
+    color: #FFF;
+}
+.dropdown-menu {
+    border-radius: 4px;
+}
+.dropdown-classificacao {
+    background-color: #006FC7;
+}
+.inicio-text {
+    font-size: 18px;
+}
+.btn-danger-person {
+    font-size: 13.5px;
+}
+
+/***** Menu bottom *****/
+.menuMobile_bottom {
+    height: 20vh;
+    background-color: #006FC7;
+    font-family: 'Montserrat', sans-serif!important;
+}
+.menuArea {
+    display: flex!important;
+    align-items: center;
+    height: 100%;
+    max-width: 100%;
+    justify-content: space-evenly!important;
+}
+.optionsContainer {
+    padding-top: 4px;
+    min-width: 85px;
+    color: #FFF;
+}
+/***** Opções menu bottom *****/
+.menuItem {
+    cursor: pointer;
+    padding: 0px 25px 0px 25px;
+    display: flex;
+    flex-direction: column;
+}
+.iconItem {
+    height: 35px;
+    max-height: 35px!important;
+}
+.textItem {
+    margin-top: 1px;
+    padding: 4px 0px 0px 0px;
+    font-size: 14.5px;
+}
+/***** Section *****/
+section {
+    height: auto;
+    font-family: 'Montserrat', sans-serif;
+}
+.text-top-sobre {
+    text-align: center;
+    background-color: #011a5f;
+}
+.h1-text-top{
+    font-size: 25px;
+    font-weight: 600;
+    color: #FFF;
+}
+.h1-sobre {
+    font-weight: bold;
+    font-size: 25px;
+    color: #011a5f;
+}
+.p-sobre {
+    font-size: 19px;
+    color: #011a5f;
+}
+.a-sobre {
+    color: #011a5f;
+}
+.a-sobre:hover {
+    color: #011a5f;
+}
+/***** Footer *****/
+footer {
+    font-family: 'Montserrat', sans-serif;
+    height:auto;
+    margin-top: 10px;
+    background-color: #006fc7;
+    display: flex;
+    justify-content: center; 
+}
+.container-footer {
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.brand-footer {
+    justify-content: center;
+    max-height: 80px!important;
+}
+.brand-footer-IMG {
+    width: 8em;
+}
+.copyText {
+    line-height: 105px;
+    margin-left: 1.5em;
+    color: #FFF;
+    font-size: 14px;
+}
+.list-footer {
+    padding-top: 2em;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.h1TitleFooter {
+    color: #FFF;
+    font-size: 25px;
+    font-weight: 600;
+}
+.liFooter li {
+    list-style: none;
+    font-size: 12.5px;
+    align-items: center;
+    color: #FFF;
+    padding: 5px 0px 5px 0px;
+}
+.liFooter a {
+    color: #FFF;
+}
+/***** Responsivo menu header mobile *****/
+@media screen and (max-width:991px) {
+    header {
+        height: auto!important;
+    }
+    @media screen and (max-width:576px) {
+        aside,
+        section {
+            height: auto;
+        }
+        .container-footer {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .copyText {
+            line-height: unset;
+            font-size: 14px;
+        }
+        .brand-footer-IMG {
+            display: none;
+        }
+    }
